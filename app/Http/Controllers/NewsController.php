@@ -11,6 +11,6 @@ class NewsController extends Controller
         // Mengambil berita yang dipublikasikan dari database
         $news = News::where('is_published', true)->latest()->paginate(6);
 
-        return view('news', compact('news'));
+        return view('pages.news', compact('news'));
     }
 }
