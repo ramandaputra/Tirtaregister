@@ -1,3 +1,26 @@
+@php
+    // Ambil setting dari database
+    $settings = \App\Models\Setting::pluck('value', 'key')->toArray();
+@endphp
+
+<header class="fixed top-0 left-0 right-0 z-50">
+    <div class="w-full bg-primary text-on-primary py-space-xs">
+        <div class="max-w-[1280px] mx-auto px-margin flex items-center justify-between font-body-sm text-body-sm">
+            <div class="flex items-center gap-space-xs truncate">
+                <span class="material-symbols-outlined text-[15px] shrink-0">verified</span>
+                {{-- Dinamis dari Dasbor Super Admin --}}
+                <span class="truncate">{{ $settings['navbar_topbar_text'] ?? 'Portal Resmi Layanan Pelanggan PERUMDA Air Minum Tirta Kepri' }}</span>
+            </div>
+            <div class="hidden md:flex items-center gap-space-md shrink-0 font-label-sm text-label-sm">
+                <span class="flex items-center gap-space-xs">
+                    <span class="material-symbols-outlined text-[15px]">call</span>Call Center: {{ $settings['navbar_call_center'] ?? '(0771) 21555' }}
+                </span>
+            </div>
+        </div>
+    </div>
+    ...
+</header>
+
 <header class="fixed top-0 left-0 right-0 z-50">
     {{-- Top Bar Info --}}
     <div class="w-full bg-primary text-on-primary py-space-xs">
