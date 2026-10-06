@@ -6,10 +6,10 @@
     <title>@yield('title', 'Dashboard Super Admin') - PERUMDA Tirta Kepri</title>
 
     <!-- Google Material Icons -->
-    <link rel="stylesheet" href="[https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200](https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200)" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
     <!-- Tailwind CSS Play CDN -->
-    <script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -66,11 +66,11 @@
 
                 <div class="px-3 py-2 mt-4 text-[11px] font-bold text-gray-400 uppercase tracking-wider">Manajemen Pengguna</div>
 
-                <a href="{{ route('superadmin.admins.index') }}" 
+                <!-- <a href="{{ route('superadmin.admins.index') }}" 
                    class="flex items-center gap-3 px-3 py-2.5 rounded-xl font-semibold text-sm transition {{ request()->routeIs('superadmin.admins.index') ? 'bg-primary text-white' : 'text-on-surface-variant hover:bg-gray-100' }}">
                     <span class="material-symbols-outlined text-[20px]">manage_accounts</span>
                     <span>Kelola Admin</span>
-                </a>
+                </a> -->
 
                 <a href="{{ route('superadmin.admins.create') }}" 
                    class="flex items-center gap-3 px-3 py-2.5 rounded-xl font-semibold text-sm transition {{ request()->routeIs('superadmin.admins.create') ? 'bg-primary text-white' : 'text-on-surface-variant hover:bg-gray-100' }}">

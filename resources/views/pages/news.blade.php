@@ -129,7 +129,7 @@
         ::-webkit-scrollbar { display: none; }
     </style>
 </head>
-<body class="bg-surface-ice text-on-surface antialiased flex flex-col min-h-screen">
+<body class="bg-surface-ice text-on-surface antialiased flex flex-col min-h-screen" style="padding-top: 80px;">
 
   {{-- Panggil Navbar Partial yang Sudah Dibuat --}}
     @include('layouts.partials.navbar')
@@ -143,7 +143,7 @@
                     <span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
                     Pusat Informasi &amp; Publikasi
                 </div>
-                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-on-surface tracking-tight font-headline-xl leading-tight" style="margin-top: 50px;">
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-on-surface tracking-tight font-headline-xl leading-tight">
     Berita &amp; Pengumuman Resmi
 </h1>
                 <p class="text-sm md:text-base text-on-surface-variant font-body-md leading-relaxed max-w-2xl">

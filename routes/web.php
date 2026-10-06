@@ -62,9 +62,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     |--------------------------------------------------------------------------
     */
 
-Route::get('/dashboard', function () {
-    return redirect()->route('superadmin.dashboard');
-})->name('dashboard');
+    Route::get('/dashboard', function () {
+        return redirect()->route('superadmin.dashboard');
+    })->name('dashboard');
 
 
     /*
@@ -130,14 +130,12 @@ Route::get('/dashboard', function () {
 
 
             // --------------------------------------------------------
-            // Manajemen Admin
+            // Manajemen Admin (SUDAH DIREVISI)
             // --------------------------------------------------------
 
             Route::resource('admins', AdminManagementController::class)
                 ->except([
-                    'show',
-                    'edit',
-                    'update',
+                    'show', // Hanya mengecualikan halaman 'show' (edit & update tetap diaktifkan)
                 ]);
         });
 

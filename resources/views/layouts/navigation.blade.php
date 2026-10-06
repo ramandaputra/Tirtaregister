@@ -20,7 +20,7 @@
 
             <!-- Settings Dropdown -->
             <div style="display: flex; align-items: center; margin-left: 1.5rem;">
-                <x-dropdown align="right" width="48">
+                <x-dropdown allign="right" width="48">
                     <x-slot name="trigger">
                         <button style="display: inline-flex; align-items: center; padding: 0.5rem 0.75rem; border: 1px solid transparent; font-size: 0.875rem; line-height: 1rem; font-weight: 500; border-radius: 0.375rem; color: #6b7280; background-color: #ffffff; outline: none; cursor: pointer; transition: all 150ms ease-in-out;">
                             <div>{{ Auth::user()->name }}</div>

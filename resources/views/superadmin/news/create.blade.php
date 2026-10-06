@@ -10,6 +10,8 @@
         tailwind.config = { theme: { extend: { colors: { primary: "#006689", "surface-ice": "#F4F8FA", "surface-border": "#D5E2E8" } } } }
     </script>
 </head>
+
+
 <body class="bg-surface-ice text-gray-800 p-8">
     <div class="max-w-3xl mx-auto">
         <div class="flex items-center justify-between mb-6">
