@@ -94,7 +94,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     |--------------------------------------------------------------------------
     */
 
-    Route::middleware(['role:super-admin'])
+    Route::middleware(['role:superadmin'])
         ->prefix('superadmin')
         ->name('superadmin.')
         ->group(function () {
@@ -148,7 +148,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     |--------------------------------------------------------------------------
     */
 
-    Route::middleware(['role:admin|super-admin'])
+    Route::middleware(['role:admin|superadmin'])
         ->prefix('admin')
         ->name('admin.')
         ->group(function () {

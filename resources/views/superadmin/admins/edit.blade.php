@@ -1,4 +1,4 @@
-@extends('layouts.app') {{-- Sesuaikan dengan nama file layout Anda jika ada --}}
+@extends('layouts.admin') {{-- Sesuaikan dengan nama file layout Anda jika ada --}}
 
 @section('content')
 <!-- KONTEN UTAMA -->
