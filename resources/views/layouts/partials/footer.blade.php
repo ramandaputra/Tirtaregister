@@ -1,6 +1,6 @@
 <footer class="bg-on-surface text-white">
 
-    <div class="max-w-[1280px] mx-auto px-margin py-space-xl">
+    <div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin py-space-md md:py-space-xl">
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-xl">
 
@@ -10,14 +10,12 @@
                 <div class="flex items-center gap-space-sm mb-space-md">
 
                     <div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center">
-                        <span class="material-symbols-outlined text-[28px]">
-                            water_drop
-                        </span>
+                        <img src="{{ setting('site_icon') ? asset('storage/' . setting('site_icon')) : asset('img/icon.jpg') }}" alt="Logo" class="w-7 h-7 object-contain rounded">
                     </div>
 
                     <div>
                         <h2 class="font-headline-sm text-headline-sm font-bold">
-                            PERUMDA Tirta Kepri
+                            {{ $settings['company_name'] ?? setting('company_name', 'PERUMDA Tirta Kepri') }}
                         </h2>
 
                         <p class="font-body-sm text-body-sm text-slate-300">
@@ -28,10 +26,7 @@
                 </div>
 
                 <p class="font-body-md text-body-md text-slate-300 leading-relaxed max-w-xl">
-                    Portal resmi PERUMDA Air Minum Tirta Kepri.
-                    Memberikan layanan air bersih yang berkualitas,
-                    transparan, dan berkelanjutan bagi masyarakat
-                    Provinsi Kepulauan Riau.
+                    {{ $settings['footer_description'] ?? setting('footer_description', 'Portal resmi PERUMDA Air Minum Tirta Kepri. Memberikan layanan air bersih yang berkualitas, transparan, dan berkelanjutan bagi masyarakat Provinsi Kepulauan Riau.') }}
                 </p>
 
             </div>
@@ -103,8 +98,7 @@
                         </span>
 
                         <p class="font-body-md text-body-md text-slate-300">
-                            Jl. MT Haryono No. 56,
-                            Batu 3, Tanjungpinang
+                            {{ $settings['footer_address'] ?? setting('footer_address', 'Jl. MT Haryono No. 56, Batu 3, Tanjungpinang') }}
                         </p>
 
                     </div>
@@ -116,7 +110,7 @@
                         </span>
 
                         <p class="font-body-md text-body-md text-slate-300">
-                            (0771) 21555
+                            {{ $settings['navbar_call_center'] ?? setting('navbar_call_center', '(0771) 21555') }}
                         </p>
 
                     </div>
@@ -128,7 +122,7 @@
                         </span>
 
                         <p class="font-body-md text-body-md text-slate-300">
-                            0811-778-2155
+                            {{ $settings['navbar_wa_center'] ?? setting('navbar_wa_center', '0811-778-2155') }}
                         </p>
 
                     </div>
@@ -146,7 +140,7 @@
                     items-center justify-between gap-space-sm">
 
             <p class="font-body-sm text-body-sm text-slate-400 text-center md:text-left">
-                © {{ date('Y') }} PERUMDA Air Minum Tirta Kepri.
+                © {{ date('Y') }} {{ $settings['company_name'] ?? setting('company_name', 'PERUMDA Air Minum Tirta Kepri') }}.
                 Seluruh hak cipta dilindungi.
             </p>
 

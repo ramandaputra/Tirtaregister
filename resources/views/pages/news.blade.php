@@ -224,18 +224,26 @@
                     <div class="lg:col-span-7 space-y-4">
                         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-lowest/15 border border-white/20 text-xs font-semibold backdrop-blur-sm">
                             <span class="w-2 h-2 rounded-full bg-civic-amber animate-pulse"></span>
-                            <span>Layanan Siaga 24/7 • Tim Reaksi Cepat (TRC)</span>
+                            <span>{{ $settings['news_247_badge'] ?? setting('news_247_badge', 'Layanan Siaga 24/7 • Tim Reaksi Cepat (TRC)') }}</span>
                         </div>
-                        <h2 class="text-2xl md:text-3xl font-bold tracking-tight font-headline-xl text-white">Layanan Pengaduan &amp; Bantuan Cepat 24 Jam</h2>
-                        <p class="text-sm md:text-base text-surface-container-low/90 leading-relaxed font-body-md">Mengalami gangguan distribusi air, pipa bocor, atau kendala meteran? Laporkan segera ke posko pengaduan resmi PERUMDA Air Minum Tirta Kepri.</p>
+                        <h2 class="text-2xl md:text-3xl font-bold tracking-tight font-headline-xl text-white">{{ $settings['news_247_title'] ?? setting('news_247_title', 'Layanan Pengaduan & Bantuan Cepat 24 Jam') }}</h2>
+                        <p class="text-sm md:text-base text-surface-container-low/90 leading-relaxed font-body-md">{{ $settings['news_247_subtitle'] ?? setting('news_247_subtitle', 'Mengalami gangguan distribusi air, pipa bocor, atau kendala meteran? Laporkan segera ke posko pengaduan resmi PERUMDA Air Minum Tirta Kepri.') }}</p>
                         <div class="flex flex-wrap items-center gap-3 pt-2">
-                            <a href="https://wa.me/6281270008888" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-status-success text-white font-semibold text-sm shadow hover:opacity-95 transition-all">
+                            @php
+                                $wa = $settings['news_247_wa'] ?? setting('news_247_wa', '0812-7000-8888');
+                                $cleanWa = preg_replace('/[^0-9]/', '', $wa);
+                                if(str_starts_with($cleanWa, '0')) $cleanWa = '62' . substr($cleanWa, 1);
+                                
+                                $call = $settings['news_247_call'] ?? setting('news_247_call', '(0771) 21574');
+                                $cleanCall = preg_replace('/[^0-9]/', '', $call);
+                            @endphp
+                            <a href="https://wa.me/{{ $cleanWa }}" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-status-success text-white font-semibold text-sm shadow hover:opacity-95 transition-all">
                                 <span class="material-symbols-outlined text-[18px]">chat</span>
                                 <span>Kirim Laporan via WhatsApp</span>
                             </a>
-                            <a href="tel:077121574" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/25 font-semibold text-sm transition-all">
+                            <a href="tel:{{ $cleanCall }}" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/25 font-semibold text-sm transition-all">
                                 <span class="material-symbols-outlined text-[18px]">call</span>
-                                <span>Hotline: (0771) 21574</span>
+                                <span>Hotline: {{ $call }}</span>
                             </a>
                         </div>
                     </div>
@@ -246,7 +254,7 @@
                                 <span class="material-symbols-outlined text-civic-amber text-[20px] shrink-0 mt-0.5">headset_mic</span>
                                 <div>
                                     <div class="text-xs text-surface-container-low/80">Call Center / Hotline</div>
-                                    <div class="text-sm font-bold text-white">(0771) 21574 / 0811-778-21574</div>
+                                    <div class="text-sm font-bold text-white">{{ $call }} / {{ $wa }}</div>
                                 </div>
                             </div>
                             <div class="flex items-start gap-3">

@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Resmi - PERUMDA Air Minum Tirta Kepri</title>
+    <title>{{ $settings['site_title'] ?? setting('site_title', 'Portal Resmi - PERUMDA Air Minum Tirta Kepri') }}</title>
 
     <!-- Google Fonts & Material Symbols -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
 
     <!-- Tailwind Config & Script -->
@@ -136,325 +136,431 @@
 
     {{-- Konten Utama Halaman Welcome --}}
     <main class="w-full pt-28 bg-surface-ice min-h-screen">
-        <div class="flex flex-col w-full max-w-[1280px] mx-auto px-margin">
-            <section class="relative w-full bg-surface-container-lowest overflow-hidden py-space-xl">
-<div class="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-primary-fixed/30 blur-3xl pointer-events-none"></div>
-<div class="absolute -left-20 bottom-0 w-80 h-80 rounded-full bg-tertiary-fixed/20 blur-2xl pointer-events-none"></div>
-<div class="relative max-w-[1280px] mx-auto px-margin">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
-<div class="lg:col-span-7 space-y-space-md">
-<div class="inline-flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-surface-container-low text-primary">
-<span class="material-symbols-outlined text-[16px]">water_drop</span>
-<span class="font-label-sm text-label-sm uppercase tracking-wider">Layanan Pasang Baru Mandiri &amp; Cepat</span>
-</div>
-<h1 class="font-headline-xl text-headline-xl text-on-surface font-bold tracking-tight leading-tight">
-            Pendaftaran Sambungan Baru Air Bersih <span class="text-primary">PERUMDA Tirta Kepri</span>
-</h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed max-w-2xl">
-            Kemudahan pengajuan pemasangan instalasi meter air bersih secara online untuk masyarakat dan instansi di wilayah Provinsi Kepulauan Riau (Tanjungpinang, Bintan, dan sekitarnya). Aman, transparan, dan dapat dipantau langsung.
-          </p>
-<!-- Quick Tracking Search Bar -->
-<div class="pt-space-sm">
-<div class="p-space-sm bg-surface-container-low rounded-xl shadow-sm">
-<label class="block font-label-md text-label-md text-on-surface mb-space-xs">
-                Sudah pernah mendaftar? Lacak Progres Pengajuan Anda
-              </label>
-<form class="flex flex-col sm:flex-row items-stretch gap-space-xs" id="trackForm" onsubmit="event.preventDefault(); window.handleTracking();">
-<div class="relative flex-1">
-<span class="absolute inset-y-0 left-0 pl-space-sm flex items-center pointer-events-none text-on-surface-variant">
-<span class="material-symbols-outlined text-[20px]">search</span>
-</span>
-<input class="w-full h-11 pl-10 pr-space-md rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md placeholder:text-outline focus:outline-none shadow-sm" id="trackInput" placeholder="Masukkan Nomor Registrasi (REG-XXXX) atau NIK KTP..." required="" type="text">
-</div>
-<button class="h-11 px-space-lg rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-on-primary-fixed-variant transition-colors flex items-center justify-center gap-space-xs shrink-0 shadow-sm" type="submit">
-<span class="material-symbols-outlined text-[18px]">travel_explore</span>
-<span class="">Cek Status</span>
-</button>
-</form>
-<div class="hidden mt-space-xs font-body-sm text-body-sm text-primary flex items-center gap-space-xs" id="trackingFeedback">
-<span class="material-symbols-outlined text-[16px] text-status-success">check_circle</span>
-<span id="feedbackText" class="">Nomor registrasi terverifikasi di pangkalan data BUMD.</span>
-</div>
-</div>
-</div>
-<!-- Trust Badges -->
-<div class="pt-space-xs flex flex-wrap items-center gap-space-lg text-on-surface-variant font-body-sm text-body-sm">
-<div class="flex items-center gap-space-xs">
-<span class="material-symbols-outlined text-primary text-[18px]">verified</span>
-<span class="">Resmi Pemprov Kepri</span>
-</div>
-<div class="flex items-center gap-space-xs">
-<span class="material-symbols-outlined text-primary text-[18px]">lock</span>
-<span class="">Data Terenkripsi</span>
-</div>
-<div class="flex items-center gap-space-xs">
-<span class="material-symbols-outlined text-primary text-[18px]">schedule</span>
-<span class="">Survei Maks. 3 Hari</span>
-</div>
-</div>
-</div>
-<!-- Hero Visual / Stat Panel -->
-<div class="lg:col-span-5 relative">
-<div class="relative rounded-2xl bg-surface-container p-space-md overflow-hidden shadow-sm">
-<div class="relative h-64 rounded-xl overflow-hidden mb-space-md">
-<img class="w-full h-full object-cover" data-alt="Modern clean water pipeline intake facility and reservoir in Kepulauan Riau, tropical blue sky, crystal clear water reflection, engineering precision, civic architectural backdrop in soft blue and white hues." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsl3UmPJr0ZlnnruhXUIMVx7nPSiAn4pZn1jfUVtyO27_kN-XT3aO7I1vhaYUjcWK5jTkBfh2bjD5ZcJQ1jiMWLCJ_CKDQKebZJsWbbSzwBl9ETsjGs6rXXu_nMs2fES60KfIBYtf9BGJ3G3bXJLv5po9WaUeTAk8Y0AMvKEJwih2EV7kw9NhlzWfcw5nFXScSFwOKTJ2gQWXzL3OxRbVfa_vw_tfOk5W3sPAIcRZRqZLqqovWCawiEA">
-<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-transparent to-transparent flex items-end p-space-md">
-<div class="text-inverse-on-surface">
-<span class="inline-block px-space-xs py-0.5 rounded bg-civic-amber text-on-surface font-label-sm text-label-sm font-bold uppercase mb-1">Infrastruktur Terintegrasi</span>
-<p class="font-headline-sm text-headline-sm font-semibold text-white leading-snug">Waduk Sei Gesek &amp; Kolam Kolong Enam</p>
-<p class="font-body-sm text-body-sm text-surface-container-highest">Sumber air baku utama pemenuhan kebutuhan Pulau Bintan &amp; Tanjungpinang</p>
-</div>
-</div>
-</div>
-<!-- Mini stats row -->
-<div class="grid grid-cols-2 gap-space-sm">
-<div class="bg-surface-container-lowest p-space-sm rounded-lg shadow-sm">
-<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Kapasitas Produksi</p>
-<p class="font-headline-sm text-headline-sm text-primary font-bold">450+ Ltr/dtk</p>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Standar Kontinuitas 24 Jam</p>
-</div>
-<div class="bg-surface-container-lowest p-space-sm rounded-lg shadow-sm">
-<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Biaya Transparan</p>
-<p class="font-headline-sm text-headline-sm text-tertiary font-bold">Sesuai SK</p>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Tanpa Biaya Tambahan Liar</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Main Selection Section: 2 Large Prominent Cards -->
-<section class="w-full py-space-xl px-margin">
-<div class="max-w-[1280px] mx-auto">
-<div class="text-center max-w-3xl mx-auto mb-space-xl">
-<span class="inline-flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-primary/10 text-primary font-label-sm text-label-sm uppercase tracking-wide">
-          Langkah Awal Registrasi
-        </span>
-<h2 class="font-headline-xl text-headline-xl text-on-surface font-bold mt-space-xs mb-space-xs">
-          Pilih Kategori Permohonan Sambungan Baru
-        </h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant">
-          Silakan pilih peruntukan bangunan Anda untuk mendapatkan persyaratan formulir dan skema tarif yang tepat sesuai regulasi daerah.
-        </p>
-</div>
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter items-stretch"><!-- CARD 1: Sambungan Rumah Tangga -->
-<div class="flex flex-col justify-between items-center text-center bg-surface-container-lowest rounded-2xl p-space-xl shadow-md hover:shadow-xl transition-all duration-300 relative group cursor-pointer border border-transparent hover:border-primary/20">
-  <div class="flex flex-col items-center">
-    <div class="mb-space-md">
-      <span class="px-space-sm py-1 rounded-full bg-civic-amber/20 text-on-surface font-label-sm text-label-sm uppercase font-bold tracking-wider">
-        Paling Populer • Residensial
-      </span>
-    </div>
-    <div class="w-20 h-20 rounded-2xl bg-surface-container-low flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-all duration-300 shadow-sm mb-space-md">
-      <span class="material-symbols-outlined text-[48px]">home</span>
-    </div>
-    <h3 class="font-headline-md text-headline-md text-on-surface font-bold group-hover:text-primary transition-colors mb-space-xs">
-      Sambungan Rumah Tangga
-    </h3>
-    <p class="font-body-md text-body-md text-on-surface-variant max-w-md leading-relaxed">
-      Pemasangan baru air bersih untuk rumah tinggal pribadi, komplek hunian keluarga, dan indekos.
-    </p>
-  </div>
-  <div class="w-full pt-space-lg mt-space-md border-t border-surface-container">
-    <button class="w-full h-12 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-on-primary-fixed-variant transition-all flex items-center justify-center gap-space-xs shadow-md" onclick="alert('Membuka Formulir Pendaftaran Sambungan Rumah Tangga...')" type="button">
-      <span class="">Pilih &amp; Daftar Sekarang</span>
-      <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-    </button>
-  </div>
-</div>
+        <div class="flex flex-col w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin">
+            <section class="relative w-full bg-surface-container-lowest overflow-hidden py-space-md md:py-space-xl">
+                <div class="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-primary-fixed/30 blur-3xl pointer-events-none"></div>
+                <div class="absolute -left-20 bottom-0 w-80 h-80 rounded-full bg-tertiary-fixed/20 blur-2xl pointer-events-none"></div>
+                <div class="relative max-w-[1280px] mx-auto px-margin-mobile md:px-margin">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-mobile md:gap-gutter items-center">
+                        <div class="lg:col-span-7 space-y-space-md">
+                            <div class="inline-flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-surface-container-low text-primary">
+                                <img src="{{ setting('site_icon') ? asset('storage/' . setting('site_icon')) : asset('img/icon.jpg') }}" alt="Logo" class="w-4 h-4 object-contain">
+                                <span class="font-label-sm text-label-sm uppercase tracking-wider">
+                                    {{ $settings['hero_badge'] ?? setting('hero_badge', 'Layanan Pasang Baru Mandiri & Cepat') }}
+                                </span>
+                            </div>
+                            <h1 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-surface font-bold tracking-tight leading-tight">
+                                {{ $settings['home_hero_title'] ?? setting('home_hero_title', 'Pendaftaran Sambungan Baru Air Bersih') }}
+                                <span class="text-primary">{{ $settings['company_name'] ?? setting('company_name', 'PERUMDA Tirta Kepri') }}</span>
+                            </h1>
+                            <p class="font-body-md md:font-body-lg text-body-md md:text-body-lg text-on-surface-variant leading-relaxed max-w-2xl">
+                                {{ $settings['home_hero_subtitle'] ?? setting('home_hero_subtitle', 'Kemudahan pengajuan pemasangan instalasi meter air bersih secara online untuk masyarakat dan instansi di wilayah Provinsi Kepulauan Riau (Tanjungpinang, Bintan, dan sekitarnya). Aman, transparan, dan dapat dipantau langsung.') }}
+                            </p>
+                            <!-- CTA Button -->
+                            <div class="pt-space-xs mb-space-sm">
+                                <a href="{{ $settings['home_hero_cta_url'] ?? setting('home_hero_cta_url', '/pasang-baru') }}" class="inline-flex items-center justify-center h-12 px-space-lg rounded-xl bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-on-primary-fixed-variant transition-colors shadow-sm">
+                                    {{ $settings['home_hero_cta_text'] ?? setting('home_hero_cta_text', 'Daftar Pasang Baru') }}
+                                </a>
+                            </div>
+                            <!-- Quick Tracking Search Bar -->
+                            <div class="pt-space-sm">
+                                <div class="p-space-sm bg-surface-container-low rounded-xl shadow-sm">
+                                    <label class="block font-label-md text-label-md text-on-surface mb-space-xs">
+                                        Sudah pernah mendaftar? Lacak Progres Pengajuan Anda
+                                    </label>
+                                    <form class="flex flex-col sm:flex-row items-stretch gap-space-xs" id="trackForm" onsubmit="event.preventDefault(); window.handleTracking();">
+                                        <div class="relative flex-1">
+                                            <span class="absolute inset-y-0 left-0 pl-space-sm flex items-center pointer-events-none text-on-surface-variant">
+                                                <span class="material-symbols-outlined text-[20px]">search</span>
+                                            </span>
+                                            <input class="w-full h-11 pl-10 pr-space-md rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md placeholder:text-outline focus:outline-none shadow-sm" id="trackInput" placeholder="Masukkan Nomor Registrasi (REG-XXXX) atau NIK KTP..." required="" type="text">
+                                        </div>
+                                        <button class="h-11 px-space-lg rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-on-primary-fixed-variant transition-colors flex items-center justify-center gap-space-xs shrink-0 shadow-sm" type="submit">
+                                            <span class="material-symbols-outlined text-[18px]">travel_explore</span>
+                                            <span>Cek Status</span>
+                                        </button>
+                                    </form>
+                                    <div class="hidden mt-space-xs font-body-sm text-body-sm text-primary flex items-center gap-space-xs" id="trackingFeedback">
+                                        <span class="material-symbols-outlined text-[16px] text-status-success">check_circle</span>
+                                        <span id="feedbackText">Nomor registrasi terverifikasi di pangkalan data BUMD.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Trust Badges -->
+                            <div class="pt-space-xs flex flex-wrap items-center gap-space-lg text-on-surface-variant font-body-sm text-body-sm">
+                                <div class="flex items-center gap-space-xs">
+                                    <span class="material-symbols-outlined text-primary text-[18px]">verified</span>
+                                    <span>{{ $settings['badge_1'] ?? setting('badge_1', 'Resmi Pemprov Kepri') }}</span>
+                                </div>
+                                <div class="flex items-center gap-space-xs">
+                                    <span class="material-symbols-outlined text-primary text-[18px]">lock</span>
+                                    <span>{{ $settings['badge_2'] ?? setting('badge_2', 'Data Terenkripsi') }}</span>
+                                </div>
+                                <div class="flex items-center gap-space-xs">
+                                    <span class="material-symbols-outlined text-primary text-[18px]">schedule</span>
+                                    <span>{{ $settings['badge_3'] ?? setting('badge_3', 'Survei Maks. 3 Hari') }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Hero Visual / Stat Panel -->
+                        <div class="lg:col-span-5 relative">
+                            <div class="relative rounded-2xl bg-surface-container p-space-md overflow-hidden shadow-sm">
+                                <div class="relative h-64 rounded-xl overflow-hidden mb-space-md" id="hero-slideshow">
+                                    @for($i = 1; $i <= 4; $i++)
+                                        @php
+                                            $isFirst = $i == 1;
+                                            $tag = $settings['hero_card_tag_'.$i] ?? setting('hero_card_tag_'.$i, $isFirst ? 'Infrastruktur Terintegrasi' : '');
+                                            $title = $settings['hero_card_title_'.$i] ?? setting('hero_card_title_'.$i, $isFirst ? 'Waduk Sei Gesek & Kolam Kolong Enam' : '');
+                                            $subtitle = $settings['hero_card_subtitle_'.$i] ?? setting('hero_card_subtitle_'.$i, $isFirst ? 'Sumber air baku utama pemenuhan kebutuhan Pulau Bintan & Tanjungpinang' : '');
+                                            
+                                            $defaultImg = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAsl3UmPJr0ZlnnruhXUIMVx7nPSiAn4pZn1jfUVtyO27_kN-XT3aO7I1vhaYUjcWK5jTkBfh2bjD5ZcJQ1jiMWLCJ_CKDQKebZJsWbbSzwBl9ETsjGs6rXXu_nMs2fES60KfIBYtf9BGJ3G3bXJLv5po9WaUeTAk8Y0AMvKEJwih2EV7kw9NhlzWfcw5nFXScSFwOKTJ2gQWXzL3OxRbVfa_vw_tfOk5W3sPAIcRZRqZLqqovWCawiEA';
+                                            $heroImage = $settings['hero_image_'.$i] ?? setting('hero_image_'.$i);
+                                            $image = $heroImage ? asset('storage/' . $heroImage) : ($isFirst ? $defaultImg : '');
+                                        @endphp
+                                        
+                                        @if($image || $title)
+                                        <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out hero-slide {{ $isFirst ? 'opacity-100' : 'opacity-0 pointer-events-none' }}">
+                                            @if($image)
+                                            <img class="w-full h-full object-cover" 
+                                                 alt="{{ $title }}" 
+                                                 src="{{ $image }}">
+                                            @else
+                                            <div class="w-full h-full bg-surface-dim"></div>
+                                            @endif
+                                            <div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/90 via-inverse-surface/20 to-transparent flex items-end p-space-md">
+                                                <div class="text-inverse-on-surface">
+                                                    @if($tag)
+                                                    <span class="inline-block px-space-xs py-0.5 rounded bg-civic-amber text-on-surface font-label-sm text-label-sm font-bold uppercase mb-1">
+                                                        {{ $tag }}
+                                                    </span>
+                                                    @endif
+                                                    @if($title)
+                                                    <p class="font-headline-sm text-headline-sm font-semibold text-white leading-snug">
+                                                        {{ $title }}
+                                                    </p>
+                                                    @endif
+                                                    @if($subtitle)
+                                                    <p class="font-body-sm text-body-sm text-surface-container-highest">
+                                                        {{ $subtitle }}
+                                                    </p>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @endif
+                                    @endfor
 
-<!-- CARD 2: Sambungan Fasilitas Umum & Sosial -->
-<div class="flex flex-col justify-between items-center text-center bg-surface-container-lowest rounded-2xl p-space-xl shadow-md hover:shadow-xl transition-all duration-300 relative group cursor-pointer border border-transparent hover:border-tertiary/20">
-  <div class="flex flex-col items-center">
-    <div class="mb-space-md">
-      <span class="px-space-sm py-1 rounded-full bg-tertiary-container/30 text-on-tertiary-container font-label-sm text-label-sm uppercase font-bold tracking-wider">
-        Sosial &amp; Fasum
-      </span>
-    </div>
-    <div class="w-20 h-20 rounded-2xl bg-surface-container-low flex items-center justify-center text-tertiary group-hover:bg-tertiary group-hover:text-on-tertiary transition-all duration-300 shadow-sm mb-space-md">
-      <span class="material-symbols-outlined text-[48px]">domain</span>
-    </div>
-    <h3 class="font-headline-md text-headline-md text-on-surface font-bold group-hover:text-tertiary transition-colors mb-space-xs">
-      Sambungan Fasilitas Umum
-    </h3>
-    <p class="font-body-md text-body-md text-on-surface-variant max-w-md leading-relaxed">
-      Layanan bersubsidi khusus tempat ibadah, sarana pendidikan, panti sosial, dan fasilitas warga.
-    </p>
-  </div>
-  <div class="w-full pt-space-lg mt-space-md border-t border-surface-container">
-    <button class="w-full h-12 rounded-lg bg-tertiary text-on-tertiary font-label-md text-label-md font-semibold hover:bg-on-tertiary-fixed-variant transition-all flex items-center justify-center gap-space-xs shadow-md" onclick="alert('Membuka Formulir Pendaftaran Fasilitas Umum &amp; Sosial...')" type="button">
-      <span class="">Pilih &amp; Daftar Sekarang</span>
-      <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-    </button>
-  </div>
-</div></div>
-</div>
-</section>
-<!-- 4 Langkah Mudah Pasang Baru -->
-<section class="w-full bg-surface-container-low py-space-xl px-margin">
-<div class="max-w-[1280px] mx-auto">
-<div class="flex flex-col md:flex-row md:items-end justify-between mb-space-lg gap-space-md">
-<div>
-<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold">Alur Pendaftaran Terpadu</span>
-<h2 class="font-headline-xl text-headline-xl text-on-surface font-bold mt-1">
-            4 Langkah Mudah Pasang Baru
-          </h2>
-</div>
-<p class="font-body-md text-body-md text-on-surface-variant max-w-md">
-          Proses resmi, transparan, dan dapat dipantau setiap saat tanpa perlu bolak-balik ke kantor cabang.
-        </p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter relative">
-<!-- Step 1 -->
-<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
-<div class="space-y-space-sm">
-<div class="flex items-center justify-between">
-<span class="w-9 h-9 rounded-full bg-primary text-on-primary font-title-md text-title-md font-bold flex items-center justify-center">1</span>
-<span class="material-symbols-outlined text-primary text-[24px]">app_registration</span>
-</div>
-<h3 class="font-title-md text-title-md text-on-surface font-bold">Pilih Kategori &amp; Formulir Online</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant">
-              Tentukan kategori bangunan, lengkapi identitas pemohon, dan unggah berkas KTP serta bukti kepemilikan/pengurus.
-            </p>
-</div>
-<span class="mt-space-md font-label-sm text-label-sm text-primary font-semibold">Estimasi: 5 - 10 Menit</span>
-</div>
-<!-- Step 2 -->
-<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
-<div class="space-y-space-sm">
-<div class="flex items-center justify-between">
-<span class="w-9 h-9 rounded-full bg-primary text-on-primary font-title-md text-title-md font-bold flex items-center justify-center">2</span>
-<span class="material-symbols-outlined text-primary text-[24px]">engineering</span>
-</div>
-<h3 class="font-title-md text-title-md text-on-surface font-bold">Verifikasi &amp; Survei Lapangan</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant">
-              Petugas teknis PERUMDA Tirta Kepri mendatangi lokasi Anda untuk mengukur jarak pipa distribusi dan tekanan jaringan.
-            </p>
-</div>
-<span class="mt-space-md font-label-sm text-label-sm text-primary font-semibold">Estimasi: 1 - 3 Hari Kerja</span>
-</div>
-<!-- Step 3 -->
-<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
-<div class="space-y-space-sm">
-<div class="flex items-center justify-between">
-<span class="w-9 h-9 rounded-full bg-primary text-on-primary font-title-md text-title-md font-bold flex items-center justify-center">3</span>
-<span class="material-symbols-outlined text-primary text-[24px]">receipt_long</span>
-</div>
-<h3 class="font-title-md text-title-md text-on-surface font-bold">Terbit SPK &amp; Pembayaran Resmi</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant">
-              Rincian biaya pemasangan diterbitkan secara transparan (cashless) melalui Bank Kepri Riau, Mandiri, BNI, atau loket resmi.
-            </p>
-</div>
-<span class="mt-space-md font-label-sm text-label-sm text-primary font-semibold">Sistem Cashless Bebas Pungli</span>
-</div>
-<!-- Step 4 -->
-<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
-<div class="space-y-space-sm">
-<div class="flex items-center justify-between">
-<span class="w-9 h-9 rounded-full bg-status-success text-on-primary font-title-md text-title-md font-bold flex items-center justify-center">4</span>
-<span class="material-symbols-outlined text-status-success text-[24px]">water</span>
-</div>
-<h3 class="font-title-md text-title-md text-on-surface font-bold">Pemasangan Meter &amp; Air Mengalir</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant">
-              Pemasangan fisik meteran air, pengujian kelancaran debit, dan penandatanganan Berita Acara Pemasangan (BAP).
-            </p>
-</div>
-<span class="mt-space-md font-label-sm text-label-sm text-status-success font-semibold">Siap Digunakan Pelanggan</span>
-</div>
-</div>
-</div>
-</section>
-<!-- Educational / About Section (Apa itu PERUMDA TIRTA KEPRI) -->
+                                    <!-- Slideshow Indicators -->
+                                    <div class="absolute bottom-3 right-3 flex gap-1.5 z-10" id="hero-indicators">
+                                        <!-- Indicators di-inject via JS -->
+                                    </div>
+                                </div>
+                                <!-- Mini stats row -->
+                                <div class="grid grid-cols-2 gap-space-sm">
+                                    <div class="bg-surface-container-lowest p-space-sm rounded-lg shadow-sm">
+                                        <p class="font-label-sm text-label-sm text-on-surface-variant uppercase">
+                                            {{ $settings['stat_1_title'] ?? setting('stat_1_title', 'Kapasitas Produksi') }}
+                                        </p>
+                                        <p class="font-headline-sm text-headline-sm text-primary font-bold">
+                                            {{ $settings['stat_1_value'] ?? setting('stat_1_value', '450+ Ltr/dtk') }}
+                                        </p>
+                                        <p class="font-body-sm text-body-sm text-on-surface-variant">
+                                            {{ $settings['stat_1_sub'] ?? setting('stat_1_sub', 'Standar Kontinuitas 24 Jam') }}
+                                        </p>
+                                    </div>
+                                    <div class="bg-surface-container-lowest p-space-sm rounded-lg shadow-sm">
+                                        <p class="font-label-sm text-label-sm text-on-surface-variant uppercase">
+                                            {{ $settings['stat_2_title'] ?? setting('stat_2_title', 'Biaya Transparan') }}
+                                        </p>
+                                        <p class="font-headline-sm text-headline-sm text-tertiary font-bold">
+                                            {{ $settings['stat_2_value'] ?? setting('stat_2_value', 'Sesuai SK') }}
+                                        </p>
+                                        <p class="font-body-sm text-body-sm text-on-surface-variant">
+                                            {{ $settings['stat_2_sub'] ?? setting('stat_2_sub', 'Tanpa Biaya Tambahan Liar') }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-<!-- FAQ & Quick Helpdesk -->
-<section class="w-full pb-space-xl px-margin">
-<div class="max-w-[1280px] mx-auto">
-<div class="w-full"><div class="max-w-3xl mx-auto w-full bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm space-y-space-md">
-<div>
-<span class="px-space-sm py-1 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm uppercase font-bold">
-Bantuan &amp; Konsultasi
-</span>
-<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold mt-space-xs">
-Pusat Layanan Konsultasi Pasang Baru
-</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
-Petugas Customer Care siap memandu proses pengisian formulir dan verifikasi berkas permohonan Anda.
-</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm">
-<a class="flex flex-col p-space-sm rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors" href="https://wa.me/628117782155" target="_blank">
-<div class="w-10 h-10 rounded-lg bg-status-success text-on-primary flex items-center justify-center shrink-0 mb-space-xs">
-<span class="material-symbols-outlined text-[20px]">chat</span>
-</div>
-<div class="min-w-0">
-<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">WhatsApp Pendaftaran</p>
-<p class="font-title-md text-title-md font-bold text-on-surface truncate">0811-778-2155</p>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Respon Cepat Hari Kerja</p>
-</div>
-</a>
-<div class="flex flex-col p-space-sm rounded-xl bg-surface-container-low">
-<div class="w-10 h-10 rounded-lg bg-primary text-on-primary flex items-center justify-center shrink-0 mb-space-xs">
-<span class="material-symbols-outlined text-[20px]">call</span>
-</div>
-<div class="min-w-0">
-<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Call Center Resmi</p>
-<p class="font-title-md text-title-md font-bold text-on-surface truncate">(0771) 21555</p>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Senin - Jumat: 08.00 - 15.00 WIB</p>
-</div>
-</div>
-<div class="flex flex-col p-space-sm rounded-xl bg-surface-container-low">
-<div class="w-10 h-10 rounded-lg bg-secondary text-on-secondary flex items-center justify-center shrink-0 mb-space-xs">
-<span class="material-symbols-outlined text-[20px]">location_on</span>
-</div>
-<div class="min-w-0">
-<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Kantor Pusat Pelayanan</p>
-<p class="font-body-sm text-body-sm text-on-surface font-semibold leading-snug">
-Jl. MT Haryono No. 56, Batu 3, Tanjungpinang
-</p>
-</div>
-</div>
-</div>
-<div class="pt-space-xs p-space-sm rounded-lg bg-surface-ice flex items-center justify-between flex-wrap gap-space-xs">
-<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-space-xs">
-<span class="material-symbols-outlined text-primary text-[16px]">security</span>
-<span class="">Portal Terkoneksi dengan Sistem Manajemen Pelanggan (SIM-PDAM)</span>
-</p>
-<span class="font-label-sm text-label-sm text-status-success font-semibold flex items-center gap-space-xs">
-<span class="inline-block w-2 h-2 rounded-full bg-status-success"></span>
-Layanan Pelanggan Aktif
-</span>
-</div>
-</div></div>
-</div>
-</section>
-<!-- Interactive Client-side Script -->
-<script>
-    window.handleTracking = function() {
-      const val = document.getElementById('trackInput').value.trim();
-      const feedback = document.getElementById('trackingFeedback');
-      const feedbackText = document.getElementById('feedbackText');
-      if (val) {
-        feedback.classList.remove('hidden');
-        feedbackText.textContent = 'Mencari data permohonan ' + val + '... Mohon tunggu pengalihan.';
-        setTimeout(() => {
-          alert('Status Registrasi [' + val + ']: Berkas Anda sedang dalam tahap verifikasi teknis wilayah. Hubungi 0811-778-2155 untuk info lanjut.');
-        }, 600);
-      }
-    };
+            <!-- Main Selection Section: 2 Large Prominent Cards -->
+            <section class="w-full py-space-md md:py-space-xl px-margin-mobile md:px-margin">
+                <div class="max-w-[1280px] mx-auto">
+                    <div class="text-center max-w-3xl mx-auto mb-space-lg md:mb-space-xl">
+                        <span class="inline-flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-primary/10 text-primary font-label-sm text-label-sm uppercase tracking-wide">
+                            Langkah Awal Registrasi
+                        </span>
+                        <h2 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-surface font-bold mt-space-xs mb-space-xs">
+                            Pilih Kategori Permohonan Sambungan Baru
+                        </h2>
+                        <p class="font-body-md md:font-body-lg text-body-md md:text-body-lg text-on-surface-variant">
+                            Silakan pilih peruntukan bangunan Anda untuk mendapatkan persyaratan formulir dan skema tarif yang tepat sesuai regulasi daerah.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter-mobile md:gap-gutter items-stretch">
+                        <!-- CARD 1: Sambungan Rumah Tangga -->
+                        <div class="flex flex-col justify-between items-center text-center bg-surface-container-lowest rounded-2xl p-space-xl shadow-md hover:shadow-xl transition-all duration-300 relative group cursor-pointer border border-transparent hover:border-primary/20">
+                            <div class="flex flex-col items-center">
+                                <div class="mb-space-md">
+                                    <span class="px-space-sm py-1 rounded-full bg-civic-amber/20 text-on-surface font-label-sm text-label-sm uppercase font-bold tracking-wider">
+                                        Paling Populer • Residensial
+                                    </span>
+                                </div>
+                                <div class="w-20 h-20 rounded-2xl bg-surface-container-low flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-all duration-300 shadow-sm mb-space-md">
+                                    <span class="material-symbols-outlined text-[48px]">home</span>
+                                </div>
+                                <h3 class="font-headline-md text-headline-md text-on-surface font-bold group-hover:text-primary transition-colors mb-space-xs">
+                                    Sambungan Rumah Tangga
+                                </h3>
+                                <p class="font-body-md text-body-md text-on-surface-variant max-w-md leading-relaxed">
+                                    Pemasangan baru air bersih untuk rumah tinggal pribadi, komplek hunian keluarga, dan indekos.
+                                </p>
+                            </div>
+                            <div class="w-full pt-space-lg mt-space-md border-t border-surface-container">
+                                <a href="{{ Route::has('register.rumah-tangga') ? route('register.rumah-tangga') : '#' }}" class="w-full h-12 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-on-primary-fixed-variant transition-all flex items-center justify-center gap-space-xs shadow-md">
+                                    <span>Pilih &amp; Daftar Sekarang</span>
+                                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                                </a>
+                            </div>
+                        </div>
 
-    window.toggleFaq = function(id) {
-      const el = document.getElementById(id);
-      const icon = document.getElementById(id + '-icon');
-      if (el.classList.contains('hidden')) {
-        el.classList.remove('hidden');
-        icon.textContent = 'expand_less';
-      } else {
-        el.classList.add('hidden');
-        icon.textContent = 'expand_more';
-      }
-    };
-  </script>
+                        <!-- CARD 2: Sambungan Fasilitas Umum & Sosial -->
+                        <div class="flex flex-col justify-between items-center text-center bg-surface-container-lowest rounded-2xl p-space-xl shadow-md hover:shadow-xl transition-all duration-300 relative group cursor-pointer border border-transparent hover:border-tertiary/20">
+                            <div class="flex flex-col items-center">
+                                <div class="mb-space-md">
+                                    <span class="px-space-sm py-1 rounded-full bg-tertiary-container/30 text-on-tertiary-container font-label-sm text-label-sm uppercase font-bold tracking-wider">
+                                        Sosial &amp; Fasum
+                                    </span>
+                                </div>
+                                <div class="w-20 h-20 rounded-2xl bg-surface-container-low flex items-center justify-center text-tertiary group-hover:bg-tertiary group-hover:text-on-tertiary transition-all duration-300 shadow-sm mb-space-md">
+                                    <span class="material-symbols-outlined text-[48px]">domain</span>
+                                </div>
+                                <h3 class="font-headline-md text-headline-md text-on-surface font-bold group-hover:text-tertiary transition-colors mb-space-xs">
+                                    Sambungan Fasilitas Umum
+                                </h3>
+                                <p class="font-body-md text-body-md text-on-surface-variant max-w-md leading-relaxed">
+                                    Layanan bersubsidi khusus tempat ibadah, sarana pendidikan, panti sosial, dan fasilitas warga.
+                                </p>
+                            </div>
+                            <div class="w-full pt-space-lg mt-space-md border-t border-surface-container">
+                                <a href="{{ Route::has('register.fasilitas-umum') ? route('register.fasilitas-umum') : '#' }}" class="w-full h-12 rounded-lg bg-tertiary text-on-tertiary font-label-md text-label-md font-semibold hover:bg-on-tertiary-fixed-variant transition-all flex items-center justify-center gap-space-xs shadow-md">
+                                    <span>Pilih &amp; Daftar Sekarang</span>
+                                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4 Langkah Mudah Pasang Baru -->
+            <section class="w-full bg-surface-container-low py-space-md md:py-space-xl px-margin-mobile md:px-margin rounded-2xl">
+                <div class="max-w-[1280px] mx-auto">
+                    <div class="flex flex-col md:flex-row md:items-end justify-between mb-space-md md:mb-space-lg gap-space-sm md:gap-space-md">
+                        <div>
+                            <span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold">Alur Pendaftaran Terpadu</span>
+                            <h2 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-surface font-bold mt-1">
+                                4 Langkah Mudah Pasang Baru
+                            </h2>
+                        </div>
+                        <p class="font-body-md text-body-md text-on-surface-variant max-w-md">
+                            Proses resmi, transparan, dan dapat dipantau setiap saat tanpa perlu bolak-balik ke kantor cabang.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter-mobile md:gap-gutter relative">
+                        <!-- Step 1 -->
+                        <div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+                            <div class="space-y-space-sm">
+                                <div class="flex items-center justify-between">
+                                    <span class="w-9 h-9 rounded-full bg-primary text-on-primary font-title-md text-title-md font-bold flex items-center justify-center">1</span>
+                                    <span class="material-symbols-outlined text-primary text-[24px]">app_registration</span>
+                                </div>
+                                <h3 class="font-title-md text-title-md text-on-surface font-bold">Pilih Kategori &amp; Formulir Online</h3>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant">
+                                    Tentukan kategori bangunan, lengkapi identitas pemohon, dan unggah berkas KTP serta bukti kepemilikan/pengurus.
+                                </p>
+                            </div>
+                            <span class="mt-space-md font-label-sm text-label-sm text-primary font-semibold">Estimasi: 5 - 10 Menit</span>
+                        </div>
+                        <!-- Step 2 -->
+                        <div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+                            <div class="space-y-space-sm">
+                                <div class="flex items-center justify-between">
+                                    <span class="w-9 h-9 rounded-full bg-primary text-on-primary font-title-md text-title-md font-bold flex items-center justify-center">2</span>
+                                    <span class="material-symbols-outlined text-primary text-[24px]">engineering</span>
+                                </div>
+                                <h3 class="font-title-md text-title-md text-on-surface font-bold">Verifikasi &amp; Survei Lapangan</h3>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant">
+                                    Petugas teknis {{ $settings['company_short_name'] ?? setting('company_short_name', 'PERUMDA Tirta Kepri') }} mendatangi lokasi Anda untuk mengukur jarak pipa distribusi dan tekanan jaringan.
+                                </p>
+                            </div>
+                            <span class="mt-space-md font-label-sm text-label-sm text-primary font-semibold">Estimasi: 1 - 3 Hari Kerja</span>
+                        </div>
+                        <!-- Step 3 -->
+                        <div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+                            <div class="space-y-space-sm">
+                                <div class="flex items-center justify-between">
+                                    <span class="w-9 h-9 rounded-full bg-primary text-on-primary font-title-md text-title-md font-bold flex items-center justify-center">3</span>
+                                    <span class="material-symbols-outlined text-primary text-[24px]">receipt_long</span>
+                                </div>
+                                <h3 class="font-title-md text-title-md text-on-surface font-bold">Terbit SPK &amp; Pembayaran Resmi</h3>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant">
+                                    Rincian biaya pemasangan diterbitkan secara transparan (cashless) melalui Bank Kepri Riau, Mandiri, BNI, atau loket resmi.
+                                </p>
+                            </div>
+                            <span class="mt-space-md font-label-sm text-label-sm text-primary font-semibold">Sistem Cashless Bebas Pungli</span>
+                        </div>
+                        <!-- Step 4 -->
+                        <div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+                            <div class="space-y-space-sm">
+                                <div class="flex items-center justify-between">
+                                    <span class="w-9 h-9 rounded-full bg-status-success text-on-primary font-title-md text-title-md font-bold flex items-center justify-center">4</span>
+                                    <span class="material-symbols-outlined text-status-success text-[24px]">water</span>
+                                </div>
+                                <h3 class="font-title-md text-title-md text-on-surface font-bold">Pemasangan Meter &amp; Air Mengalir</h3>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant">
+                                    Pemasangan fisik meteran air, pengujian kelancaran debit, dan penandatanganan Berita Acara Pemasangan (BAP).
+                                </p>
+                            </div>
+                            <span class="mt-space-md font-label-sm text-label-sm text-status-success font-semibold">Siap Digunakan Pelanggan</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ & Quick Helpdesk -->
+            <section class="w-full py-space-md md:py-space-xl px-margin-mobile md:px-margin">
+                <div class="max-w-[1280px] mx-auto">
+                    <div class="w-full">
+                        <div class="max-w-3xl mx-auto w-full bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm space-y-space-md">
+                            <div>
+                                <span class="px-space-sm py-1 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm uppercase font-bold">
+                                    Bantuan &amp; Konsultasi
+                                </span>
+                                <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold mt-space-xs">
+                                    Pusat Layanan Konsultasi Pasang Baru
+                                </h3>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                                    Petugas Customer Care siap memandu proses pengisian formulir dan verifikasi berkas permohonan Anda.
+                                </p>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm">
+                                @php
+                                    $whatsapp = $settings['navbar_wa_center'] ?? setting('navbar_wa_center', '0811-778-2155');
+                                    $whatsappClean = preg_replace('/[^0-9]/', '', $whatsapp);
+                                @endphp
+                                <a class="flex flex-col p-space-sm rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors" href="https://wa.me/{{ $whatsappClean }}" target="_blank">
+                                    <div class="w-10 h-10 rounded-lg bg-status-success text-on-primary flex items-center justify-center shrink-0 mb-space-xs">
+                                        <span class="material-symbols-outlined text-[20px]">chat</span>
+                                    </div>
+                                    <div class="min-w-0">
+                                        <p class="font-label-sm text-label-sm text-on-surface-variant uppercase">WhatsApp Pendaftaran</p>
+                                        <p class="font-title-md text-title-md font-bold text-on-surface truncate">
+                                            {{ $settings['navbar_wa_center'] ?? setting('navbar_wa_center', '0811-778-2155') }}
+                                        </p>
+                                        <p class="font-body-sm text-body-sm text-on-surface-variant">Respon Cepat Hari Kerja</p>
+                                    </div>
+                                </a>
+                                <div class="flex flex-col p-space-sm rounded-xl bg-surface-container-low">
+                                    <div class="w-10 h-10 rounded-lg bg-primary text-on-primary flex items-center justify-center shrink-0 mb-space-xs">
+                                        <span class="material-symbols-outlined text-[20px]">call</span>
+                                    </div>
+                                    <div class="min-w-0">
+                                        <p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Call Center Resmi</p>
+                                        <p class="font-title-md text-title-md font-bold text-on-surface truncate">
+                                            {{ $settings['navbar_call_center'] ?? setting('navbar_call_center', '(0771) 21555') }}
+                                        </p>
+                                        <p class="font-body-sm text-body-sm text-on-surface-variant">
+                                            {{ $settings['office_hours'] ?? setting('office_hours', 'Senin - Jumat: 08.00 - 15.00 WIB') }}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col p-space-sm rounded-xl bg-surface-container-low">
+                                    <div class="w-10 h-10 rounded-lg bg-secondary text-on-secondary flex items-center justify-center shrink-0 mb-space-xs">
+                                        <span class="material-symbols-outlined text-[20px]">location_on</span>
+                                    </div>
+                                    <div class="min-w-0">
+                                        <p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Kantor Pusat Pelayanan</p>
+                                        <p class="font-body-sm text-body-sm text-on-surface font-semibold leading-snug">
+                                            {{ $settings['footer_address'] ?? setting('footer_address', 'Jl. MT Haryono No. 56, Batu 3, Tanjungpinang') }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pt-space-xs p-space-sm rounded-lg bg-surface-ice flex items-center justify-between flex-wrap gap-space-xs">
+                                <p class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-space-xs">
+                                    <span class="material-symbols-outlined text-primary text-[16px]">security</span>
+                                    <span>Portal Terkoneksi dengan Sistem Manajemen Pelanggan (SIM-PDAM)</span>
+                                </p>
+                                <span class="font-label-sm text-label-sm text-status-success font-semibold flex items-center gap-space-xs">
+                                    <span class="inline-block w-2 h-2 rounded-full bg-status-success"></span>
+                                    Layanan Pelanggan Aktif
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Interactive Client-side Script -->
+            <script>
+                window.handleTracking = function() {
+                    const val = document.getElementById('trackInput').value.trim();
+                    const feedback = document.getElementById('trackingFeedback');
+                    const feedbackText = document.getElementById('feedbackText');
+                    if (val) {
+                        feedback.classList.remove('hidden');
+                        feedbackText.textContent = 'Mencari data permohonan ' + val + '... Mohon tunggu pengalihan.';
+                        setTimeout(() => {
+                            alert('Status Registrasi [' + val + ']: Berkas Anda sedang dalam tahap verifikasi teknis wilayah. Hubungi {{ $settings["navbar_wa_center"] ?? "0811-778-2155" }} untuk info lanjut.');
+                        }, 600);
+                    }
+                };
+
+                window.toggleFaq = function(id) {
+                    const el = document.getElementById(id);
+                    const icon = document.getElementById(id + '-icon');
+                    if (el.classList.contains('hidden')) {
+                        el.classList.remove('hidden');
+                        icon.textContent = 'expand_less';
+                    } else {
+                        el.classList.add('hidden');
+                        icon.textContent = 'expand_more';
+                    }
+                };
+
+                // Slideshow Logic
+                document.addEventListener("DOMContentLoaded", () => {
+                    const slides = document.querySelectorAll('.hero-slide');
+                    if (slides.length > 1) {
+                        const indicatorsContainer = document.getElementById('hero-indicators');
+                        slides.forEach((_, i) => {
+                            const dot = document.createElement('div');
+                            dot.className = `w-2 h-2 rounded-full transition-colors ${i === 0 ? 'bg-white' : 'bg-white/40'}`;
+                            indicatorsContainer.appendChild(dot);
+                        });
+                        const dots = indicatorsContainer.children;
+                        let currentSlide = 0;
+                        
+                        setInterval(() => {
+                            slides[currentSlide].classList.remove('opacity-100');
+                            slides[currentSlide].classList.add('opacity-0', 'pointer-events-none');
+                            dots[currentSlide].classList.remove('bg-white');
+                            dots[currentSlide].classList.add('bg-white/40');
+                            
+                            currentSlide = (currentSlide + 1) % slides.length;
+                            
+                            slides[currentSlide].classList.add('opacity-100');
+                            slides[currentSlide].classList.remove('opacity-0', 'pointer-events-none');
+                            dots[currentSlide].classList.add('bg-white');
+                            dots[currentSlide].classList.remove('bg-white/40');
+                        }, 5000); // 5 seconds per slide
+                    }
+                });
+            </script>
         </div>
     </main>
 

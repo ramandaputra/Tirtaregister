@@ -26,101 +26,137 @@
         }
     </script>
 </head>
-<body class="bg-surface-ice text-on-surface antialiased flex min-h-screen">
+<body class="bg-surface-ice text-on-surface antialiased min-h-screen">
 
-    <!-- SIDEBAR NAVIGASI -->
-<aside style="width: 260px; min-width: 260px; max-width: 260px; flex-shrink: 0; background-color: #ffffff; border-right: 1px solid #D5E2E8; display: flex; flex-direction: column; justify-content: space-between; height: 100vh; user-select: none;">
+    <!-- Mobile Top Bar -->
+    <div class="lg:hidden flex items-center justify-between p-4 bg-white border-b border-surface-border sticky top-0 z-40">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+                <img src="{{ asset('img/icon.jpg') }}" alt="Logo" class="w-5 h-5 object-contain rounded">
+            </div>
+            <h2 class="font-bold text-sm text-primary uppercase leading-tight truncate">Tirta Kepri</h2>
+        </div>
+        <button id="mobile-sidebar-toggle" class="p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+    </div>
+
+    <!-- Overlay -->
+    <div id="mobile-sidebar-overlay" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden transition-opacity"></div>
+
+    <div class="flex min-h-screen relative">
+        <!-- SIDEBAR NAVIGASI -->
+        <aside id="sidebar" class="w-64 bg-white border-r border-surface-border flex flex-col justify-between shrink-0 h-screen fixed lg:sticky top-0 left-0 z-50 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 select-none">
+            <!-- Bagian Atas: Brand & Menu -->
+            <div class="flex flex-col h-full overflow-y-auto">
+                
+                <!-- Header Brand -->
+                <div class="p-5 border-b border-surface-border flex items-center gap-3 shrink-0">
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary shrink-0">
+                        <img src="{{ asset('img/icon.jpg') }}" alt="Logo" class="w-6 h-6 object-contain rounded">
+                    </div>
+                    <div class="flex flex-col min-w-0">
+                        <h2 class="font-bold text-base text-primary uppercase leading-tight truncate">Tirta Kepri</h2>
+                        <span class="text-[11px] text-gray-500 font-semibold tracking-wide truncate">Panel Super Admin</span>
+                    </div>
+                </div>
+
+                <!-- Menu Navigasi Sidebar -->
+                <nav class="p-4 space-y-1 flex-1">
+                    <div class="px-3 pb-2 text-[10px] font-bold text-gray-400 uppercase tracking-wider">
+                        Navigasi Utama
+                    </div>
+
+                    <!-- Item Dashboard -->
+                    <a href="{{ route('superadmin.dashboard') }}" 
+                       class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 {{ request()->routeIs('superadmin.dashboard') ? 'bg-primary text-white shadow-sm' : 'text-gray-600 hover:bg-gray-100/80 hover:text-gray-900' }}">
+                        <span class="material-symbols-outlined text-[20px] shrink-0">dashboard</span>
+                        <span class="truncate">Dashboard Utama</span>
+                    </a>
+
+                    <!-- Item Kelola Berita -->
+                    <a href="{{ route('superadmin.news.index') }}" 
+                       class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 {{ request()->routeIs('superadmin.news.*') ? 'bg-primary text-white shadow-sm' : 'text-gray-600 hover:bg-gray-100/80 hover:text-gray-900' }}">
+                        <span class="material-symbols-outlined text-[20px] shrink-0">newspaper</span>
+                        <span class="truncate">Kelola Berita</span>
+                    </a>
+
+                    <!-- Item Edit Beranda -->
+                    <a href="{{ route('superadmin.settings.index') }}" 
+                       class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 {{ request()->routeIs('superadmin.settings.*') ? 'bg-primary text-white shadow-sm' : 'text-gray-600 hover:bg-gray-100/80 hover:text-gray-900' }}">
+                        <span class="material-symbols-outlined text-[20px] shrink-0">web</span>
+                        <span class="truncate">Edit Beranda & Site</span>
+                    </a>
+
+                    <!-- Header Section Manajemen Pengguna -->
+                    <div class="px-3 pt-5 pb-2 text-[10px] font-bold text-gray-400 uppercase tracking-wider">
+                        Manajemen Pengguna
+                    </div>
+
+                    <!-- Item Kelola Admin -->
+                    <a href="{{ route('superadmin.admins.index') }}" 
+                       class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 {{ request()->routeIs('superadmin.admins.*') ? 'bg-primary text-white shadow-sm' : 'text-gray-600 hover:bg-gray-100/80 hover:text-gray-900' }}">
+                        <span class="material-symbols-outlined text-[20px] shrink-0">manage_accounts</span>
+                        <span class="truncate">Kelola Admin</span>
+                    </a>
+                </nav>
+            </div>
+
+            <!-- Profil User & Logout (Footer Sidebar) -->
+            <div class="p-4 border-t border-surface-border bg-gray-50/50 shrink-0">
+                <div class="flex items-center justify-between gap-2">
+                    <div class="flex items-center gap-2.5 min-w-0">
+                        <div class="w-9 h-9 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-sm">
+                            {{ strtoupper(substr(auth()->user()->name ?? 'SA', 0, 2)) }}
+                        </div>
+                        <div class="flex flex-col min-w-0">
+                            <p class="font-semibold text-xs text-gray-900 truncate leading-tight">
+                                {{ auth()->user()->name ?? 'PUSINPEL' }}
+                            </p>
+                            <p class="text-[11px] text-gray-500 truncate leading-tight">
+                                {{ auth()->user()->email ?? 'pusinpel@tirtakepri.co.id' }}
+                            </p>
+                        </div>
+                    </div>
+
+                    <form action="{{ route('logout') }}" method="POST" class="shrink-0">
+                        @csrf
+                        <button type="submit" 
+                                class="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors flex items-center justify-center" 
+                                title="Keluar">
+                            <span class="material-symbols-outlined text-[20px]">logout</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </aside>
+
+        <!-- KONTEN UTAMA -->
+        <main class="flex-1 p-4 lg:p-8 overflow-y-auto w-full max-w-full">
+            @yield('content')
+        </main>
+    </div>
     
-    <!-- Bagian Atas: Brand & Menu -->
-    <div style="display: flex; flex-direction: column; height: 100%; overflow-y: auto;">
-        
-        <!-- Header Brand -->
-        <div style="padding: 1.25rem; border-bottom: 1px solid #D5E2E8; display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0;">
-            <div style="width: 2.5rem; height: 2.5rem; background-color: rgba(0, 102, 137, 0.1); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; color: #006689; flex-shrink: 0;">
-                <span class="material-symbols-outlined" style="font-size: 24px;">water_drop</span>
-            </div>
-            <div style="display: flex; flex-direction: column; min-width: 0;">
-                <h2 style="font-weight: 700; font-size: 1rem; color: #006689; text-transform: uppercase; line-height: 1.25; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">TIRTA KEPRI</h2>
-                <span style="font-size: 11px; color: #6b7280; font-weight: 600; tracking-wide: 0.025em; margin-top: 2px;">Panel Super Admin</span>
-            </div>
-        </div>
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('mobile-sidebar-overlay');
+        const toggleBtn = document.getElementById('mobile-sidebar-toggle');
 
-        <!-- Menu Navigasi Sidebar -->
-            <nav style="padding: 1rem; flex: 1 1 0%; display: flex; flex-direction: column; gap: 0.25rem;">
-                <div style="padding-left: 0.875rem; padding-right: 0.875rem; padding-bottom: 0.5rem; font-size: 10px; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.05em;">
-                    NAVIGASI UTAMA
-                </div>
+        function toggleSidebar() {
+            const isOpen = !sidebar.classList.contains('-translate-x-full');
+            if (isOpen) {
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            } else {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+        }
 
-                <!-- Item 1: Dashboard Utama -->
-                <a href="{{ route('superadmin.dashboard') }}" 
-                class="{{ request()->routeIs('superadmin.dashboard*') ? 'bg-[#006689] text-white shadow-sm' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}"
-                style="display: flex; align-items: center; gap: 0.75rem; padding: 0.625rem 0.875rem; border-radius: 0.75rem; font-weight: 600; font-size: 0.875rem; text-decoration: none; transition: all 0.15s ease;">
-                    <span class="material-symbols-outlined" style="font-size: 20px; flex-shrink: 0;">dashboard</span>
-                    <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Dashboard Utama</span>
-                </a>
-
-                <!-- Item 2: Kelola Berita (AKTIFF BILA BUKA PAGE BERITA/CREATE BERITA) -->
-                <a href="{{ route('superadmin.news.index') }}" 
-                class="{{ request()->routeIs('superadmin.news*') ? 'bg-[#006689] text-white shadow-sm' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}"
-                style="display: flex; align-items: center; gap: 0.75rem; padding: 0.625rem 0.875rem; border-radius: 0.75rem; font-weight: 600; font-size: 0.875rem; text-decoration: none; transition: all 0.15s ease;">
-                    <span class="material-symbols-outlined" style="font-size: 20px; flex-shrink: 0;">newspaper</span>
-                    <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Kelola Berita</span>
-                </a>
-
-                <!-- Item 3: Edit Beranda -->
-                <a href="{{ route('superadmin.settings.index') }}" 
-                class="{{ request()->routeIs('superadmin.settings*') ? 'bg-[#006689] text-white shadow-sm' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}"
-                style="display: flex; align-items: center; gap: 0.75rem; padding: 0.625rem 0.875rem; border-radius: 0.75rem; font-weight: 600; font-size: 0.875rem; text-decoration: none; transition: all 0.15s ease;">
-                    <span class="material-symbols-outlined" style="font-size: 20px; flex-shrink: 0;">web</span>
-                    <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Edit Beranda & Site</span>
-                </a>
-
-                <!-- Header Section -->
-                <div style="padding-left: 0.875rem; padding-right: 0.875rem; padding-top: 1.25rem; padding-bottom: 0.5rem; font-size: 10px; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.05em;">
-                    MANAJEMEN PENGGUNA
-                </div>
-
-                <!-- Item 4: Kelola Admin -->
-                <a href="{{ route('superadmin.admins.index') }}" 
-                class="{{ request()->routeIs('superadmin.admins*') ? 'bg-[#006689] text-white shadow-sm' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900' }}"
-                style="display: flex; align-items: center; gap: 0.75rem; padding: 0.625rem 0.875rem; border-radius: 0.75rem; font-weight: 600; font-size: 0.875rem; text-decoration: none; transition: all 0.15s ease;">
-                    <span class="material-symbols-outlined" style="font-size: 20px; flex-shrink: 0;">manage_accounts</span>
-                    <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Kelola Admin</span>
-                </a>
-            </nav>
-    </div>
-
-    <!-- Profil User & Logout (Bottom Sidebar) -->
-    <div style="padding: 1rem; border-top: 1px solid #D5E2E8; background-color: rgba(249, 250, 251, 0.5); flex-shrink: 0;">
-        <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;">
-            <div style="display: flex; align-items: center; gap: 0.625rem; min-width: 0;">
-                <div style="width: 2.25rem; height: 2.25rem; border-radius: 9999px; background-color: #006689; color: #ffffff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.75rem; flex-shrink: 0;">
-                    PU
-                </div>
-                <div style="display: flex; flex-direction: column; min-width: 0;">
-                    <p style="font-weight: 700; font-size: 0.75rem; color: #111827; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">PUSINPEL</p>
-                    <p style="font-size: 11px; color: #6b7280; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">pusinpel@tirtakepri.co.id</p>
-                </div>
-            </div>
-
-            <form action="{{ route('logout') }}" method="POST" style="margin: 0; flex-shrink: 0;">
-                @csrf
-                <button type="submit" 
-                        style="padding: 0.5rem; color: #9ca3af; border-radius: 0.5rem; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;"
-                        onmouseover="this.style.color='#dc2626'; this.style.backgroundColor='#fef2f2';"
-                        onmouseout="this.style.color='#9ca3af'; this.style.backgroundColor='transparent';"
-                        title="Keluar">
-                    <span class="material-symbols-outlined" style="font-size: 20px;">logout</span>
-                </button>
-            </form>
-        </div>
-    </div>
-</aside>
-
-    <!-- KONTEN UTAMA -->
-    <main class="flex-grow p-8 overflow-y-auto">
-        @yield('content')
-    </main>
-
+        toggleBtn?.addEventListener('click', toggleSidebar);
+        overlay?.addEventListener('click', toggleSidebar);
+    </script>
 </body>
 </html>

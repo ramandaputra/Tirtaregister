@@ -24,14 +24,31 @@
 </head>
 
 <body class="bg-surface-ice text-gray-800 antialiased">
-    <div class="flex h-screen overflow-hidden">
+
+    <!-- Mobile Top Bar -->
+    <div class="lg:hidden flex items-center justify-between p-4 bg-white border-b border-surface-border sticky top-0 z-40">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+                <img src="{{ asset('img/icon.jpg') }}" alt="Logo" class="w-5 h-5 object-contain rounded">
+            </div>
+            <h2 class="font-bold text-sm text-primary uppercase leading-tight truncate">Tirta Kepri</h2>
+        </div>
+        <button id="mobile-sidebar-toggle" class="p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+    </div>
+
+    <!-- Overlay -->
+    <div id="mobile-sidebar-overlay" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden transition-opacity"></div>
+
+    <div class="flex h-screen overflow-hidden relative">
         
         <!-- SIDEBAR NAVIGASI -->
-        <aside class="w-64 bg-white border-r border-surface-border flex flex-col justify-between shrink-0 h-screen sticky top-0 select-none">
+        <aside id="sidebar" class="w-64 bg-white border-r border-surface-border flex flex-col justify-between shrink-0 h-screen fixed lg:sticky top-0 left-0 z-50 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 select-none">
             <div class="flex flex-col h-full overflow-y-auto">
                 <div class="p-5 border-b border-surface-border flex items-center gap-3 shrink-0">
                     <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary shrink-0">
-                        <span class="material-symbols-outlined text-[24px]">water_drop</span>
+                        <img src="{{ asset('img/icon.jpg') }}" alt="Logo" class="w-6 h-6 object-contain rounded">
                     </div>
                     <div class="flex flex-col min-w-0">
                         <h2 class="font-bold text-base text-primary uppercase leading-tight truncate">Tirta Kepri</h2>
@@ -103,7 +120,7 @@
         </aside>
 
         <!-- KONTEN FORM EDIT -->
-        <main class="flex-1 overflow-y-auto p-8">
+        <main class="flex-1 overflow-y-auto p-4 md:p-8 w-full max-w-full">
             <div class="max-w-4xl mx-auto">
                 
                 <!-- Header Banner -->
@@ -176,5 +193,27 @@
             </div>
         </main>
     </div>
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('mobile-sidebar-overlay');
+        const toggleBtn = document.getElementById('mobile-sidebar-toggle');
+
+        function toggleSidebar() {
+            const isOpen = !sidebar.classList.contains('-translate-x-full');
+            if (isOpen) {
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            } else {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        toggleBtn?.addEventListener('click', toggleSidebar);
+        overlay?.addEventListener('click', toggleSidebar);
+    </script>
 </body>
 </html>

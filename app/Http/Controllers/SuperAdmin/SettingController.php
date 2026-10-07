@@ -22,10 +22,22 @@ class SettingController extends Controller
     {
         $data = $request->except('_token');
 
+        // Simpan input teks biasa
         foreach ($data as $key => $value) {
+            if (!$request->hasFile($key) && $value !== null) {
+                Setting::updateOrCreate(
+                    ['key' => $key],
+                    ['value' => $value]
+                );
+            }
+        }
+
+        // Simpan file gambar jika ada yang diupload
+        foreach ($request->allFiles() as $key => $file) {
+            $path = $file->store('settings', 'public');
             Setting::updateOrCreate(
                 ['key' => $key],
-                ['value' => $value]
+                ['value' => $path]
             );
         }
 

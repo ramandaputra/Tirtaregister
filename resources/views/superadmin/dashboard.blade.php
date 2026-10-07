@@ -37,16 +37,32 @@
 </head>
 <body class="bg-surface-ice text-on-surface antialiased min-h-screen">
 
-    <div class="flex min-h-screen">
+    <!-- Mobile Top Bar -->
+    <div class="lg:hidden flex items-center justify-between p-4 bg-white border-b border-surface-border sticky top-0 z-40">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+                <img src="{{ asset('img/icon.jpg') }}" alt="Logo" class="w-5 h-5 object-contain rounded">
+            </div>
+            <h2 class="font-bold text-sm text-primary uppercase leading-tight truncate">Tirta Kepri</h2>
+        </div>
+        <button id="mobile-sidebar-toggle" class="p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+    </div>
+
+    <!-- Overlay -->
+    <div id="mobile-sidebar-overlay" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden transition-opacity"></div>
+
+    <div class="flex min-h-screen relative">
         <!-- SIDEBAR NAVIGASI -->
-        <aside class="w-64 bg-white border-r border-surface-border flex flex-col justify-between shrink-0 h-screen sticky top-0 select-none">
+        <aside id="sidebar" class="w-64 bg-white border-r border-surface-border flex flex-col justify-between shrink-0 h-screen fixed lg:sticky top-0 left-0 z-50 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 select-none">
             <!-- Bagian Atas: Brand & Menu -->
             <div class="flex flex-col h-full overflow-y-auto">
                 
                 <!-- Header Brand -->
                 <div class="p-5 border-b border-surface-border flex items-center gap-3 shrink-0">
                     <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary shrink-0">
-                        <span class="material-symbols-outlined text-[24px]">water_drop</span>
+                        <img src="{{ asset('img/icon.jpg') }}" alt="Logo" class="w-6 h-6 object-contain rounded">
                     </div>
                     <div class="flex flex-col min-w-0">
                         <h2 class="font-bold text-base text-primary uppercase leading-tight truncate">Tirta Kepri</h2>
@@ -132,16 +148,16 @@
         </aside>
 
         <!-- KONTEN UTAMA -->
-        <main class="flex-1 p-8 overflow-y-auto">
-            <div class="max-w-6xl mx-auto space-y-8">
+        <main class="flex-1 p-4 lg:p-8 overflow-y-auto w-full max-w-full">
+            <div class="max-w-6xl mx-auto space-y-6 lg:space-y-8">
                 
                 <!-- Welcome Banner -->
                 <div class="bg-primary text-white rounded-2xl p-6 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                     <div>
-                        <h1 class="text-2xl font-bold">Selamat Datang, {{ auth()->user()->name ?? 'Super Admin' }}! 👋</h1>
+                        <h1 class="text-xl lg:text-2xl font-bold">Selamat Datang, {{ auth()->user()->name ?? 'Super Admin' }}! 👋</h1>
                         <p class="text-white/80 text-sm mt-1">Kelola informasi publik, berita, dan hak akses admin PERUMDA Air Minum Tirta Kepri dari panel ini.</p>
                     </div>
-                    <a href="/" target="_blank" class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-xl text-sm font-semibold transition flex items-center gap-2 shrink-0">
+                    <a href="/" target="_blank" class="w-full md:w-auto px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-xl text-sm font-semibold transition flex items-center justify-center gap-2 shrink-0">
                         <span class="material-symbols-outlined text-[18px]">open_in_new</span>
                         <span>Lihat Website Publik</span>
                     </a>
@@ -187,5 +203,26 @@
         </main>
     </div>
 
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('mobile-sidebar-overlay');
+        const toggleBtn = document.getElementById('mobile-sidebar-toggle');
+
+        function toggleSidebar() {
+            const isOpen = !sidebar.classList.contains('-translate-x-full');
+            if (isOpen) {
+                sidebar.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            } else {
+                sidebar.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        toggleBtn?.addEventListener('click', toggleSidebar);
+        overlay?.addEventListener('click', toggleSidebar);
+    </script>
 </body>
 </html>
