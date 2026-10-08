@@ -253,7 +253,7 @@
                                 <select name="ownership_id" required class="form-select">
                                     <option value="">Pilih...</option>
                                     @foreach($ownerships as $o)
-                                        <option value="{{ $o->id }}" {{ old('ownership_id') == $o->id ? 'selected' : '' }}>{{ $o->name }}</option>
+                                        <option value="{{ $o->kepemilikanbangunan }}" {{ old('ownership_id') == $o->kepemilikanbangunan ? 'selected' : '' }}>{{ $o->kepemilikanbangunan }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -290,7 +290,7 @@
                                 <select name="village_id" id="village_id" required class="form-select">
                                     <option value="">Pilih Kelurahan...</option>
                                     @foreach($villages as $v)
-                                        <option value="{{ $v->id }}" {{ old('village_id') == $v->id ? 'selected' : '' }}>{{ $v->name }}</option>
+                                        <option value="{{ $v->kodekelurahan }}" {{ old('village_id') == $v->kodekelurahan ? 'selected' : '' }}>{{ $v->kelurahan }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -298,7 +298,7 @@
                             <div>
                                 <label class="form-label">Rayon <span class="text-red-500">*</span></label>
                                 <select name="rayon_id" id="rayon_id" required class="form-select disabled:opacity-50" disabled>
-                                    <option value="">Pilih Rayon...</option>
+                                    <option value="">[ Pilih Kelurahan Terlebih Dahulu ]</option>
                                 </select>
                             </div>
                             
@@ -319,12 +319,17 @@
                     <div>
                         <h2 class="section-title"><span class="material-symbols-outlined">architecture</span> D. Data Bangunan/Fasilitas</h2>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="col-span-1 md:col-span-2">
+                                <label class="form-label">Upload Foto Fasilitas/Gedung (Tampak Depan) <span class="text-red-500">*</span></label>
+                                <input type="file" name="house_image_file" accept=".jpg,.jpeg,.png" required class="form-input bg-white p-2 text-sm">
+                            </div>
+                            
                             <div>
                                 <label class="form-label">Peruntukkan <span class="text-red-500">*</span></label>
                                 <select name="purpose_id" required class="form-select">
                                     <option value="">Pilih...</option>
                                     @foreach($purposes as $p)
-                                        <option value="{{ $p->id }}" {{ old('purpose_id') == $p->id ? 'selected' : '' }}>{{ $p->name }}</option>
+                                        <option value="{{ $p->peruntukan }}" {{ old('purpose_id') == $p->peruntukan ? 'selected' : '' }}>{{ $p->peruntukan }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -334,7 +339,7 @@
                                 <select name="building_type_id" required class="form-select">
                                     <option value="">Pilih...</option>
                                     @foreach($buildingTypes as $b)
-                                        <option value="{{ $b->id }}" {{ old('building_type_id') == $b->id ? 'selected' : '' }}>{{ $b->name }}</option>
+                                        <option value="{{ $b->jenis }}" {{ old('building_type_id') == $b->jenis ? 'selected' : '' }}>{{ $b->jenis }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -402,19 +407,24 @@
             const villageSelect = document.getElementById('village_id');
             const rayonSelect = document.getElementById('rayon_id');
             const oldRayonId = "{{ old('rayon_id') }}";
+            let pendingRoadSearch = null;
 
-            function loadRayons(villageId, selectedRayon = null) {
+            function loadRayons(villageId, selectedRayon = null, roadNameToSelect = null) {
                 rayonSelect.innerHTML = '<option value="">Memuat data...</option>';
                 rayonSelect.disabled = true;
 
                 if (!villageId) {
-                    rayonSelect.innerHTML = '<option value="">Pilih Rayon...</option>';
+                    rayonSelect.innerHTML = '<option value="">[ Pilih Kelurahan Terlebih Dahulu ]</option>';
                     return;
                 }
 
                 fetch(`/api/villages/${villageId}/rayons`)
                     .then(response => response.json())
                     .then(data => {
+                        if (data.length === 0) {
+                            rayonSelect.innerHTML = '<option value="">[ Tidak ada rayon tersedia ]</option>';
+                            return;
+                        }
                         rayonSelect.innerHTML = '<option value="">Pilih Rayon...</option>';
                         data.forEach(rayon => {
                             const option = document.createElement('option');
@@ -422,10 +432,17 @@
                             option.textContent = rayon.name;
                             if (selectedRayon && selectedRayon == rayon.id) {
                                 option.selected = true;
+                            } else if (roadNameToSelect) {
+                                let rName = rayon.name.toLowerCase().replace('jl.', '').replace('jl ', '').replace('perum.', '').replace('perum ', '').trim();
+                                let sName = roadNameToSelect.toLowerCase().replace('jalan ', '').replace('perumahan ', '').trim();
+                                if (rName.length > 3 && (sName.includes(rName) || rName.includes(sName))) {
+                                    option.selected = true;
+                                }
                             }
                             rayonSelect.appendChild(option);
                         });
                         rayonSelect.disabled = false;
+                        pendingRoadSearch = null;
                     })
                     .catch(err => {
                         console.error('Error fetching rayons:', err);
@@ -434,7 +451,7 @@
             }
 
             villageSelect.addEventListener('change', function() {
-                loadRayons(this.value);
+                loadRayons(this.value, null, pendingRoadSearch);
             });
 
             // Trigger on load for validation back
@@ -470,6 +487,36 @@
             function updateInputs(lat, lng) {
                 latInput.value = lat.toFixed(6);
                 lngInput.value = lng.toFixed(6);
+                reverseGeocode(lat, lng);
+            }
+
+            function reverseGeocode(lat, lng) {
+                fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=18&addressdetails=1`)
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data && data.address) {
+                            const addr = data.address;
+                            let kelurahanName = addr.village || addr.suburb || addr.neighbourhood || '';
+                            let roadName = addr.road || addr.residential || '';
+                            
+                            if (kelurahanName) {
+                                let options = villageSelect.options;
+                                for (let i = 0; i < options.length; i++) {
+                                    let optText = options[i].text.toLowerCase().trim();
+                                    let searchTxt = kelurahanName.toLowerCase().trim();
+                                    if (optText.includes(searchTxt) || searchTxt.includes(optText)) {
+                                        if (villageSelect.selectedIndex !== i) {
+                                            villageSelect.selectedIndex = i;
+                                            pendingRoadSearch = roadName; // Simpan nama jalan untuk disortir di rayon
+                                            villageSelect.dispatchEvent(new Event('change'));
+                                        }
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    })
+                    .catch(err => console.error('Geocoding error:', err));
             }
 
             marker.on('dragend', function(e) {
