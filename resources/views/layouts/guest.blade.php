@@ -11,18 +11,27 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <!-- Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-            <div>
+        <div class="min-h-screen flex flex-col sm:justify-center items-center sm:items-start pt-6 sm:pt-0 relative px-6 sm:px-16 md:px-24 lg:px-40">
+            
+            <!-- Background Image -->
+            <div class="absolute inset-0 z-[-1]">
+                <img src="{{ asset('img/background.jpg') }}" class="w-full h-full object-cover" alt="Background">
+                <div class="absolute inset-0 bg-black/40"></div>
+            </div>
+            
+            <!-- Logo Container -->
+            <div class="w-full sm:max-w-md flex justify-center sm:justify-start mb-4 z-10">
                 <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                    <x-application-logo class="w-20 h-20 fill-current text-white drop-shadow-md" />
                 </a>
             </div>
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+            <!-- Login Form Container -->
+            <div class="w-full sm:max-w-md px-6 py-8 bg-white/60 backdrop-blur-md shadow-2xl overflow-hidden rounded-2xl border border-white/30 z-10">
                 {{ $slot }}
             </div>
         </div>

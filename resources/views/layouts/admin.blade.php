@@ -57,7 +57,7 @@
                     </div>
                     <div class="flex flex-col min-w-0">
                         <h2 class="font-bold text-base text-primary uppercase leading-tight truncate">Tirta Kepri</h2>
-                        <span class="text-[11px] text-gray-500 font-semibold tracking-wide truncate">Panel Super Admin</span>
+                        <span class="text-[11px] text-gray-500 font-semibold tracking-wide truncate">Panel Admin</span>
                     </div>
                 </div>
 
@@ -68,12 +68,35 @@
                     </div>
 
                     <!-- Item Dashboard -->
-                    <a href="{{ route('superadmin.dashboard') }}" 
-                       class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 {{ request()->routeIs('superadmin.dashboard') ? 'bg-primary text-white shadow-sm' : 'text-gray-600 hover:bg-gray-100/80 hover:text-gray-900' }}">
+                    @php 
+                        $isSuper = auth()->user()->hasRole('superadmin');
+                        $dashboardRoute = $isSuper ? route('superadmin.dashboard') : route('admin.pelanggan.dashboard');
+                        $dashboardActive = $isSuper ? request()->routeIs('superadmin.dashboard') : request()->routeIs('admin.pelanggan.dashboard');
+                    @endphp
+                    <a href="{{ $dashboardRoute }}" 
+                       class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 {{ $dashboardActive ? 'bg-primary text-white shadow-sm' : 'text-gray-600 hover:bg-gray-100/80 hover:text-gray-900' }}">
                         <span class="material-symbols-outlined text-[20px] shrink-0">dashboard</span>
                         <span class="truncate">Dashboard Utama</span>
                     </a>
 
+                    <!-- Menus for Pelayanan (admin & superadmin) -->
+                    @hasanyrole('superadmin|admin')
+                    <!-- Item Daftar Pelanggan -->
+                    <a href="{{ route('admin.pelanggan.index') }}" 
+                       class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 {{ request()->routeIs('admin.pelanggan.index') ? 'bg-primary text-white shadow-sm' : 'text-gray-600 hover:bg-gray-100/80 hover:text-gray-900' }}">
+                        <span class="material-symbols-outlined text-[20px] shrink-0">groups</span>
+                        <span class="truncate">Daftar Pelanggan</span>
+                    </a>
+
+                    <!-- Item Prioritas -->
+                    <a href="{{ route('admin.pelanggan.prioritas') }}" 
+                       class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 {{ request()->routeIs('admin.pelanggan.prioritas') ? 'bg-primary text-white shadow-sm' : 'text-gray-600 hover:bg-gray-100/80 hover:text-gray-900' }}">
+                        <span class="material-symbols-outlined text-[20px] shrink-0">assignment_late</span>
+                        <span class="truncate">Prioritas</span>
+                    </a>
+                    @endhasanyrole
+
+                    @role('superadmin')
                     <!-- Item Kelola Berita -->
                     <a href="{{ route('superadmin.news.index') }}" 
                        class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 {{ request()->routeIs('superadmin.news.*') ? 'bg-primary text-white shadow-sm' : 'text-gray-600 hover:bg-gray-100/80 hover:text-gray-900' }}">
@@ -99,6 +122,7 @@
                         <span class="material-symbols-outlined text-[20px] shrink-0">manage_accounts</span>
                         <span class="truncate">Kelola Admin</span>
                     </a>
+                    @endrole
                 </nav>
             </div>
 

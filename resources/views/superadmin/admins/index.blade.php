@@ -51,7 +51,7 @@
 
     <!-- Tabel Data Admin -->
     <div class="bg-white rounded-2xl border border-surface-border shadow-sm overflow-hidden">
-        <div class="p-5 border-b border-surface-border flex items-center justify-between gap-4">
+        <div class="p-5 border-b border-surface-border flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <h3 class="font-bold text-lg text-on-surface">Daftar Akun Admin</h3>
             
             <!-- Filter Search -->

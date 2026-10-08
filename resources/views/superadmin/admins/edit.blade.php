@@ -50,9 +50,12 @@
                     <div>
                         <label class="block text-sm font-semibold text-on-surface mb-2">Peran (Role) <span class="text-red-500">*</span></label>
                         <select name="role" required class="w-full px-4 py-2.5 text-sm border @error('role') border-red-500 @else border-surface-border @enderror rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white">
-                            <option value="superadmin" {{ old('role', $admin->role) == 'superadmin' ? 'selected' : '' }}>Super Admin (Akses Penuh)</option>
-                            <option value="admin" {{ old('role', $admin->role) == 'admin' ? 'selected' : '' }}>Admin Berita (Kelola Konten)</option>
-                            <option value="operator" {{ old('role', $admin->role) == 'operator' ? 'selected' : '' }}>Operator (Kelola Pengaduan)</option>
+                            @php $currentRole = $admin->roles->first()?->name; @endphp
+                            @foreach($roles as $role)
+                                <option value="{{ $role->name }}" {{ old('role', $currentRole) == $role->name ? 'selected' : '' }}>
+                                    {{ ucfirst(str_replace('_', ' ', $role->name)) }}
+                                </option>
+                            @endforeach
                         </select>
                         @error('role')
                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>

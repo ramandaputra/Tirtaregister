@@ -19,7 +19,8 @@ class AdminManagementController extends Controller
     // 2. Tampilkan Form Tambah Admin
     public function create()
     {
-        return view('superadmin.admins.create');
+        $roles = \Spatie\Permission\Models\Role::all();
+        return view('superadmin.admins.create', compact('roles'));
     }
 
     // 3. Simpan Data Admin Baru
@@ -50,7 +51,8 @@ class AdminManagementController extends Controller
     public function edit($id)
     {
         $admin = User::findOrFail($id);
-        return view('superadmin.admins.edit', compact('admin'));
+        $roles = \Spatie\Permission\Models\Role::all();
+        return view('superadmin.admins.edit', compact('admin', 'roles'));
     }
 
     // 5. Simpan Perubahan Data Admin

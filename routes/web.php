@@ -13,6 +13,7 @@ use App\Http\Controllers\Public\ConnectionRequestController;
 
 // Admin
 use App\Http\Controllers\Admin\CustomerRequestController;
+use App\Http\Controllers\Admin\AdminPelangganController;
 
 // Super Admin
 use App\Http\Controllers\SuperAdmin\DashboardController;
@@ -71,7 +72,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     */
 
     Route::get('/dashboard', function () {
-        return redirect()->route('superadmin.dashboard');
+        if (auth()->user()->hasRole('superadmin')) {
+            return redirect()->route('superadmin.dashboard');
+        }
+        if (auth()->user()->hasRole('admin')) {
+            return redirect()->route('admin.pelanggan.dashboard');
+        }
+        return redirect('/');
     })->name('dashboard');
 
 
@@ -160,6 +167,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->prefix('admin')
         ->name('admin.')
         ->group(function () {
+
+            // Kelola Pelanggan (Admin Pelayanan)
+            Route::get('/pelanggan/dashboard', [AdminPelangganController::class, 'dashboard'])->name('pelanggan.dashboard');
+            Route::get('/pelanggan', [AdminPelangganController::class, 'index'])->name('pelanggan.index');
+            Route::get('/pelanggan/prioritas', [AdminPelangganController::class, 'prioritas'])->name('pelanggan.prioritas');
+            Route::get('/pelanggan/{id}', [AdminPelangganController::class, 'show'])->name('pelanggan.show');
 
             // Kelola Permintaan Pelanggan
             Route::resource(
