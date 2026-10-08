@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Resmi - PERUMDA Air Minum Tirta Kepri</title>
+    <title>{{ $news->title }} - PERUMDA Air Minum Tirta Kepri</title>
 
     <!-- Google Fonts & Material Symbols -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
@@ -123,20 +123,34 @@
         @layer base {
             html, body { margin: 0; padding: 0; }
             body { overscroll-behavior: none; }
-            main > :first-child { margin-top: 0 !important; }
-            main > :last-child { margin-bottom: 0 !important; }
         }
         ::-webkit-scrollbar { display: none; }
+        
+        /* Typography for Rich Text Content */
+        .prose-custom p { margin-bottom: 1.5em; line-height: 1.8; color: #3e484f; }
+        .prose-custom h2 { font-size: 1.75rem; font-weight: 700; margin-top: 2em; margin-bottom: 1em; color: #081e2a; font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: -0.025em; }
+        .prose-custom h3 { font-size: 1.35rem; font-weight: 600; margin-top: 1.5em; margin-bottom: 0.75em; color: #081e2a; font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: -0.015em; }
+        .prose-custom h4 { font-size: 1.15rem; font-weight: 600; margin-top: 1.25em; margin-bottom: 0.5em; color: #081e2a; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .prose-custom ul { list-style-type: disc; padding-left: 1.5em; margin-bottom: 1.5em; color: #3e484f; }
+        .prose-custom ol { list-style-type: decimal; padding-left: 1.5em; margin-bottom: 1.5em; color: #3e484f; }
+        .prose-custom li { margin-bottom: 0.5em; padding-left: 0.25em; }
+        .prose-custom a { color: #006689; text-decoration: none; font-weight: 600; border-bottom: 2px solid #c3e8ff; transition: all 0.2s; }
+        .prose-custom a:hover { color: #004c68; border-bottom-color: #006689; }
+        .prose-custom img { border-radius: 1rem; margin-top: 2.5em; margin-bottom: 2.5em; max-width: 100%; height: auto; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+        .prose-custom blockquote { border-left: 4px solid #00a4db; padding: 1.25rem 1.5rem; font-style: italic; color: #1f3340; margin-top: 2em; margin-bottom: 2em; background-color: #f6faff; border-radius: 0 0.75rem 0.75rem 0; font-size: 1.05rem; line-height: 1.8; }
+        .prose-custom strong { color: #081e2a; font-weight: 600; }
+        .prose-custom hr { border-color: #D5E2E8; margin-top: 3em; margin-bottom: 3em; }
     </style>
 </head>
 <body class="bg-surface-ice text-on-surface antialiased flex flex-col min-h-screen">
 
-  {{-- Panggil Navbar Partial yang Sudah Dibuat --}}
+    {{-- Panggil Navbar Partial yang Sudah Dibuat --}}
     @include('layouts.partials.navbar')
 
     <!-- Main Content Layout -->
     <main class="flex-grow w-full pt-28">
-        <div class="max-w-7xl mx-auto px-6 py-12 w-full space-y-10">
+        <div class="max-w-7xl mx-auto px-6 py-8 md:py-12 w-full space-y-10">
+            
             <!-- Header Section Modern & Elegan -->
             <header class="flex flex-col items-center text-center max-w-3xl mx-auto space-y-4 pt-2 pb-2">
                 <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary-container/15 text-primary border border-primary-container/30 text-xs font-bold tracking-wider uppercase">
@@ -144,79 +158,119 @@
                     Pusat Informasi &amp; Publikasi
                 </div>
                 <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-on-surface tracking-tight font-headline-xl leading-tight">
-    Berita &amp; Pengumuman Resmi
-</h1>
+                    Berita &amp; Pengumuman Resmi
+                </h1>
                 <p class="text-sm md:text-base text-on-surface-variant font-body-md leading-relaxed max-w-2xl">
                     Dapatkan pembaruan terkini seputar operasional distribusi air bersih, jadwal pemeliharaan jaringan, dan informasi layanan PERUMDA Air Minum Tirta Kepri.
                 </p>
             </header>
 
-            <!-- Integrated Search & Filter Controls -->
-            <div class="bg-surface-container-lowest rounded-2xl p-4 md:p-5 shadow-sm border border-surface-border flex flex-col md:flex-row items-center justify-between gap-4">
-                <!-- Search Bar -->
-                <div class="relative w-full md:w-80 shrink-0">
-                    <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-on-surface-variant material-symbols-outlined text-[20px] pointer-events-none">search</span>
-                    <input type="text" placeholder="Cari berita atau pengumuman..." class="w-full pl-10 pr-4 py-2.5 bg-surface-ice rounded-xl text-sm font-body-md text-on-surface border border-surface-border focus:outline-none focus:ring-2 focus:ring-primary-container transition-all">
-                </div>
+            <!-- Breadcrumb -->
+            <nav class="flex text-sm text-on-surface-variant font-medium" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-2">
+                    <li class="inline-flex items-center">
+                        <a href="{{ route('home') }}" class="hover:text-primary transition-colors flex items-center gap-1">
+                            <span class="material-symbols-outlined text-[18px]">home</span>
+                            Beranda
+                        </a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <span class="material-symbols-outlined text-[18px] text-outline-variant mx-1">chevron_right</span>
+                            <a href="{{ route('news.index') }}" class="hover:text-primary transition-colors">Berita & Pengumuman</a>
+                        </div>
+                    </li>
+                    <li aria-current="page">
+                        <div class="flex items-center">
+                            <span class="material-symbols-outlined text-[18px] text-outline-variant mx-1">chevron_right</span>
+                            <span class="text-outline line-clamp-1 max-w-[150px] md:max-w-xs">{{ $news->title }}</span>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
 
-                <!-- Category Filter Pills -->
-                <div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-1 md:pb-0 scrollbar-none">
-                    <button class="filter-pill whitespace-nowrap px-4 py-2 rounded-xl text-xs md:text-sm font-semibold bg-primary text-on-primary shadow-sm transition-all cursor-pointer" data-category="all">
-                        Semua ({{ $news->total() }})
-                    </button>
-                    <button class="filter-pill whitespace-nowrap px-4 py-2 rounded-xl text-xs md:text-sm font-medium bg-surface-ice text-on-surface-variant hover:bg-surface-container hover:text-on-surface border border-surface-border transition-all cursor-pointer" data-category="gangguan">
-                        Gangguan &amp; Pemeliharaan
-                    </button>
-                    <button class="filter-pill whitespace-nowrap px-4 py-2 rounded-xl text-xs md:text-sm font-medium bg-surface-ice text-on-surface-variant hover:bg-surface-container hover:text-on-surface border border-surface-border transition-all cursor-pointer" data-category="kegiatan">
-                        Berita Kegiatan
-                    </button>
-                    <button class="filter-pill whitespace-nowrap px-4 py-2 rounded-xl text-xs md:text-sm font-medium bg-surface-ice text-on-surface-variant hover:bg-surface-container hover:text-on-surface border border-surface-border transition-all cursor-pointer" data-category="layanan">
-                        Layanan &amp; Edukasi
-                    </button>
-                </div>
-            </div>
-
-            <!-- 3-Column Modern News Grid (Data Dinamis dari Database) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
-                @forelse($news as $item)
-                    <article class="news-card bg-surface-container-lowest rounded-2xl border border-surface-border shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col h-full group" data-cat="{{ $item->category ?? 'kegiatan' }}">
-                        <div class="relative aspect-[16/10] overflow-hidden bg-surface-ice">
-                            <img src="{{ $item->image ? asset('storage/' . $item->image) : 'https://via.placeholder.com/600x350' }}" alt="{{ $item->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out">
-                            <div class="absolute top-3.5 left-3.5 flex items-center gap-2">
-                                <span class="px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-semibold text-xs shadow-sm">
-                                    {{ $item->category_label ?? 'Informasi' }}
-                                </span>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                <!-- Main Article Content -->
+                <article class="lg:col-span-8 bg-surface-container-lowest rounded-3xl p-6 md:p-10 shadow-sm border border-surface-border">
+                    <!-- Article Header -->
+                    <header class="mb-8">
+                        <div class="flex flex-wrap items-center gap-3 mb-4">
+                            <span class="px-3.5 py-1.5 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-semibold text-xs shadow-sm uppercase tracking-wider">
+                                {{ $news->category_label ?? $news->category ?? 'Informasi' }}
+                            </span>
+                            <div class="flex items-center gap-1.5 text-sm text-on-surface-variant font-medium">
+                                <span class="material-symbols-outlined text-[18px] text-primary">calendar_today</span>
+                                <span>{{ $news->created_at ? $news->created_at->translatedFormat('l, d F Y') : '' }}</span>
                             </div>
                         </div>
-                        <div class="p-6 flex flex-col flex-1 justify-between">
-                            <div>
-                                <div class="flex items-center gap-2 text-xs text-on-surface-variant font-medium mb-2.5">
-                                    <span class="material-symbols-outlined text-[16px] text-primary">calendar_today</span>
-                                    <span>{{ $item->created_at ? $item->created_at->translatedFormat('d M Y') : '' }}</span>
+                        <h1 class="text-3xl md:text-4xl lg:text-4xl font-bold text-on-surface tracking-tight font-headline-xl leading-tight mb-6">
+                            {{ $news->title }}
+                        </h1>
+                        <div class="flex items-center justify-between py-4 border-y border-surface-border">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold text-lg">
+                                    <span class="material-symbols-outlined">domain</span>
                                 </div>
-                                <a href="{{ route('news.show', $item->slug) }}">
-                                    <h3 class="text-base md:text-lg font-bold text-on-surface group-hover:text-primary transition-colors line-clamp-2 leading-snug mb-2 cursor-pointer">
-                                        {{ $item->title }}
-                                    </h3>
-                                </a>
-                                <p class="text-sm text-on-surface-variant line-clamp-3 leading-relaxed mb-4">
-                                    {{ Str::limit(strip_tags($item->content ?? $item->excerpt ?? ''), 120) }}
-                                </p>
-                            </div>
-                            <div class="pt-4 border-t border-surface-border flex items-center justify-between mt-auto">
-                                <span class="text-xs text-on-surface-variant font-medium">PERUMDA Tirta Kepri</span>
-                                <a href="{{ route('news.show', $item->slug) }}" class="text-xs font-semibold text-primary group-hover:text-primary-container inline-flex items-center gap-1 transition-colors">
-                                    Baca Selengkapnya <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-                                </a>
                             </div>
                         </div>
-                    </article>
-                @empty
-                    <div class="col-span-full text-center py-12 bg-surface-container-lowest rounded-2xl border border-surface-border">
-                        <span class="material-symbols-outlined text-4xl text-on-surface-variant mb-2">newspaper</span>
-                        <p class="text-on-surface-variant font-medium">Belum ada berita yang dipublikasikan saat ini.</p>
+                    </header>
+
+                    <!-- Article Hero Image -->
+                    <div class="mb-10 rounded-2xl overflow-hidden bg-surface-ice border border-surface-border aspect-video">
+                        <img src="{{ $news->image ? asset('storage/' . $news->image) : 'https://via.placeholder.com/800x450' }}" alt="{{ $news->title }}" class="w-full h-full object-cover">
                     </div>
-                @endforelse
+
+                    <!-- Article Content -->
+                    <div class="prose-custom font-body-lg text-on-surface-variant max-w-none">
+                        {!! $news->content !!}
+                    </div>
+                </article>
+
+                <!-- Sidebar (Related News & Info) -->
+                <aside class="lg:col-span-4 space-y-8">
+                    
+                    <!-- Search Widget -->
+                    <div class="bg-surface-container-lowest rounded-3xl p-6 shadow-sm border border-surface-border">
+                        <h3 class="font-bold text-lg text-on-surface mb-4 font-headline-sm">Cari Berita</h3>
+                        <form action="{{ route('news.index') }}" method="GET" class="relative">
+                            <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-on-surface-variant material-symbols-outlined text-[20px] pointer-events-none">search</span>
+                            <input type="text" name="search" placeholder="Kata kunci..." class="w-full pl-10 pr-4 py-3 bg-surface-ice rounded-xl text-sm font-body-md text-on-surface border border-surface-border focus:outline-none focus:ring-2 focus:ring-primary-container transition-all">
+                        </form>
+                    </div>
+
+                    <!-- Related News -->
+                    @if($relatedNews->count() > 0)
+                    <div class="bg-surface-container-lowest rounded-3xl p-6 shadow-sm border border-surface-border">
+                        <h3 class="font-bold text-lg text-on-surface mb-5 font-headline-sm flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">feed</span>
+                            Berita Terbaru Lainnya
+                        </h3>
+                        <div class="space-y-5">
+                            @foreach($relatedNews as $related)
+                            <a href="{{ route('news.show', $related->slug) }}" class="group flex gap-4 items-start">
+                                <div class="w-24 h-20 shrink-0 rounded-xl overflow-hidden bg-surface-ice border border-surface-border">
+                                    <img src="{{ $related->image ? asset('storage/' . $related->image) : 'https://via.placeholder.com/150x150' }}" alt="{{ $related->title }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out">
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-bold text-on-surface group-hover:text-primary transition-colors line-clamp-2 leading-snug mb-1">
+                                        {{ $related->title }}
+                                    </h4>
+                                    <div class="flex items-center gap-1.5 text-xs text-on-surface-variant font-medium">
+                                        <span class="material-symbols-outlined text-[14px]">schedule</span>
+                                        <span>{{ $related->created_at ? $related->created_at->diffForHumans() : '' }}</span>
+                                    </div>
+                                </div>
+                            </a>
+                            @endforeach
+                        </div>
+                        <div class="mt-6 pt-5 border-t border-surface-border">
+                            <a href="{{ route('news.index') }}" class="text-sm font-semibold text-primary hover:text-primary-container inline-flex items-center justify-center w-full gap-1 transition-colors">
+                                Lihat Semua Berita <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                    @endif
+                </aside>
             </div>
 
             <!-- Section Pengaduan 24/7 -->
@@ -226,17 +280,17 @@
                     <div class="lg:col-span-7 space-y-4">
                         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-lowest/15 border border-white/20 text-xs font-semibold backdrop-blur-sm">
                             <span class="w-2 h-2 rounded-full bg-civic-amber animate-pulse"></span>
-                            <span>{{ $settings['news_247_badge'] ?? setting('news_247_badge', 'Layanan Siaga 24/7 • Tim Reaksi Cepat (TRC)') }}</span>
+                            <span>{{ setting('news_247_badge', 'Layanan Siaga 24/7 • Tim Reaksi Cepat (TRC)') }}</span>
                         </div>
-                        <h2 class="text-2xl md:text-3xl font-bold tracking-tight font-headline-xl text-white">{{ $settings['news_247_title'] ?? setting('news_247_title', 'Layanan Pengaduan & Bantuan Cepat 24 Jam') }}</h2>
-                        <p class="text-sm md:text-base text-surface-container-low/90 leading-relaxed font-body-md">{{ $settings['news_247_subtitle'] ?? setting('news_247_subtitle', 'Mengalami gangguan distribusi air, pipa bocor, atau kendala meteran? Laporkan segera ke posko pengaduan resmi PERUMDA Air Minum Tirta Kepri.') }}</p>
+                        <h2 class="text-2xl md:text-3xl font-bold tracking-tight font-headline-xl text-white">{{ setting('news_247_title', 'Layanan Pengaduan & Bantuan Cepat 24 Jam') }}</h2>
+                        <p class="text-sm md:text-base text-surface-container-low/90 leading-relaxed font-body-md">{{ setting('news_247_subtitle', 'Mengalami gangguan distribusi air, pipa bocor, atau kendala meteran? Laporkan segera ke posko pengaduan resmi PERUMDA Air Minum Tirta Kepri.') }}</p>
                         <div class="flex flex-wrap items-center gap-3 pt-2">
-                            @php
-                                $wa = $settings['news_247_wa'] ?? setting('news_247_wa', '0812-7000-8888');
+                            @php 
+                                $wa = setting('news_247_wa', '0812-7000-8888');
                                 $cleanWa = preg_replace('/[^0-9]/', '', $wa);
                                 if(str_starts_with($cleanWa, '0')) $cleanWa = '62' . substr($cleanWa, 1);
                                 
-                                $call = $settings['news_247_call'] ?? setting('news_247_call', '(0771) 21574');
+                                $call = setting('news_247_call', '(0771) 21574');
                                 $cleanCall = preg_replace('/[^0-9]/', '', $call);
                             @endphp
                             <a href="https://wa.me/{{ $cleanWa }}" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-status-success text-white font-semibold text-sm shadow hover:opacity-95 transition-all">
@@ -263,7 +317,7 @@
                                 <span class="material-symbols-outlined text-civic-amber text-[20px] shrink-0 mt-0.5">forum</span>
                                 <div>
                                     <div class="text-xs text-surface-container-low/80">WhatsApp Pengaduan Cepat</div>
-                                    <div class="text-sm font-bold text-white">0812-7000-8888</div>
+                                    <div class="text-sm font-bold text-white">{{ $wa }}</div>
                                     <div class="text-[11px] text-surface-container-low/80">(Format: ID Pelanggan, Nama, Alamat, Foto &amp; Kendala)</div>
                                 </div>
                             </div>
@@ -282,43 +336,11 @@
                     </div>
                 </div>
             </section>
-
-            <!-- Pagination Dinamis Laravel -->
-            <div class="mt-6">
-                {{ $news->links() }}
-            </div>
         </div>
     </main>
 
     {{-- Footer --}}
     @include('layouts.partials.footer')
 
-    <!-- Hanya Script Khusus Filter Kategori Berita -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const filterBtns = document.querySelectorAll('.filter-pill');
-            const newsCards = document.querySelectorAll('.news-card');
-
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    filterBtns.forEach(b => {
-                        b.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
-                        b.classList.add('bg-surface-ice', 'text-on-surface-variant', 'hover:bg-surface-container');
-                    });
-                    btn.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
-                    btn.classList.remove('bg-surface-ice', 'text-on-surface-variant', 'hover:bg-surface-container');
-
-                    const category = btn.getAttribute('data-category');
-                    newsCards.forEach(card => {
-                        if (category === 'all' || card.getAttribute('data-cat') === category) {
-                            card.style.display = 'flex';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                });
-            });
-        });
-    </script>
 </body>
 </html>

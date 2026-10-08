@@ -35,8 +35,14 @@ Route::get('/', function () {
 })->name('home');
 
 // Pendaftaran Pasang Baru
-Route::get('/pasang-baru', [ConnectionRequestController::class, 'create'])
-    ->name('public.register');
+Route::get('/pasang-baru/rumah-tangga', [ConnectionRequestController::class, 'createRumahTangga'])
+    ->name('public.register.rumah-tangga');
+
+Route::get('/pasang-baru/fasilitas-umum', [ConnectionRequestController::class, 'createFasilitasUmum'])
+    ->name('public.register.fasilitas-umum');
+
+Route::get('/api/villages/{village}/rayons', [ConnectionRequestController::class, 'getRayons'])
+    ->name('api.villages.rayons');
 
 Route::post('/pasang-baru', [ConnectionRequestController::class, 'store'])
     ->name('public.register.store');
@@ -44,6 +50,8 @@ Route::post('/pasang-baru', [ConnectionRequestController::class, 'store'])
 // Berita Publik
 Route::get('/berita', [NewsController::class, 'index'])
     ->name('news.index');
+Route::get('/berita/{slug}', [NewsController::class, 'show'])
+    ->name('news.show');
 
 
 /*

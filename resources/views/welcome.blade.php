@@ -302,17 +302,17 @@
                     </div>
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter-mobile md:gap-gutter items-stretch">
                         <!-- CARD 1: Sambungan Rumah Tangga -->
-                        <div class="flex flex-col justify-between items-center text-center bg-surface-container-lowest rounded-2xl p-space-xl shadow-md hover:shadow-xl transition-all duration-300 relative group cursor-pointer border border-transparent hover:border-primary/20">
+                        <div class="flex flex-col justify-between items-center text-center bg-surface-container-lowest rounded-2xl p-space-xl shadow-md hover:shadow-xl transition-all duration-300 relative border border-transparent">
                             <div class="flex flex-col items-center">
                                 <div class="mb-space-md">
                                     <span class="px-space-sm py-1 rounded-full bg-civic-amber/20 text-on-surface font-label-sm text-label-sm uppercase font-bold tracking-wider">
                                         Paling Populer • Residensial
                                     </span>
                                 </div>
-                                <div class="w-20 h-20 rounded-2xl bg-surface-container-low flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-all duration-300 shadow-sm mb-space-md">
+                                <div class="w-20 h-20 rounded-2xl bg-surface-container-low flex items-center justify-center text-primary transition-all duration-300 shadow-sm mb-space-md">
                                     <span class="material-symbols-outlined text-[48px]">home</span>
                                 </div>
-                                <h3 class="font-headline-md text-headline-md text-on-surface font-bold group-hover:text-primary transition-colors mb-space-xs">
+                                <h3 class="font-headline-md text-headline-md text-on-surface font-bold transition-colors mb-space-xs">
                                     Sambungan Rumah Tangga
                                 </h3>
                                 <p class="font-body-md text-body-md text-on-surface-variant max-w-md leading-relaxed">
@@ -320,7 +320,7 @@
                                 </p>
                             </div>
                             <div class="w-full pt-space-lg mt-space-md border-t border-surface-container">
-                                <a href="{{ Route::has('register.rumah-tangga') ? route('register.rumah-tangga') : '#' }}" class="w-full h-12 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-on-primary-fixed-variant transition-all flex items-center justify-center gap-space-xs shadow-md">
+                                <a href="{{ route('public.register.rumah-tangga') }}" class="w-full h-12 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-on-primary-fixed-variant transition-all flex items-center justify-center gap-space-xs shadow-md">
                                     <span>Pilih &amp; Daftar Sekarang</span>
                                     <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
                                 </a>
@@ -328,17 +328,17 @@
                         </div>
 
                         <!-- CARD 2: Sambungan Fasilitas Umum & Sosial -->
-                        <div class="flex flex-col justify-between items-center text-center bg-surface-container-lowest rounded-2xl p-space-xl shadow-md hover:shadow-xl transition-all duration-300 relative group cursor-pointer border border-transparent hover:border-tertiary/20">
+                        <div class="flex flex-col justify-between items-center text-center bg-surface-container-lowest rounded-2xl p-space-xl shadow-md hover:shadow-xl transition-all duration-300 relative border border-transparent">
                             <div class="flex flex-col items-center">
                                 <div class="mb-space-md">
                                     <span class="px-space-sm py-1 rounded-full bg-tertiary-container/30 text-on-tertiary-container font-label-sm text-label-sm uppercase font-bold tracking-wider">
                                         Sosial &amp; Fasum
                                     </span>
                                 </div>
-                                <div class="w-20 h-20 rounded-2xl bg-surface-container-low flex items-center justify-center text-tertiary group-hover:bg-tertiary group-hover:text-on-tertiary transition-all duration-300 shadow-sm mb-space-md">
+                                <div class="w-20 h-20 rounded-2xl bg-surface-container-low flex items-center justify-center text-tertiary transition-all duration-300 shadow-sm mb-space-md">
                                     <span class="material-symbols-outlined text-[48px]">domain</span>
                                 </div>
-                                <h3 class="font-headline-md text-headline-md text-on-surface font-bold group-hover:text-tertiary transition-colors mb-space-xs">
+                                <h3 class="font-headline-md text-headline-md text-on-surface font-bold transition-colors mb-space-xs">
                                     Sambungan Fasilitas Umum
                                 </h3>
                                 <p class="font-body-md text-body-md text-on-surface-variant max-w-md leading-relaxed">
@@ -346,7 +346,7 @@
                                 </p>
                             </div>
                             <div class="w-full pt-space-lg mt-space-md border-t border-surface-container">
-                                <a href="{{ Route::has('register.fasilitas-umum') ? route('register.fasilitas-umum') : '#' }}" class="w-full h-12 rounded-lg bg-tertiary text-on-tertiary font-label-md text-label-md font-semibold hover:bg-on-tertiary-fixed-variant transition-all flex items-center justify-center gap-space-xs shadow-md">
+                                <a href="{{ route('public.register.fasilitas-umum') }}" class="w-full h-12 rounded-lg bg-tertiary text-on-tertiary font-label-md text-label-md font-semibold hover:bg-on-tertiary-fixed-variant transition-all flex items-center justify-center gap-space-xs shadow-md">
                                     <span>Pilih &amp; Daftar Sekarang</span>
                                     <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
                                 </a>

@@ -20,6 +20,19 @@ class NewsController extends Controller
     }
 
     /**
+     * Menampilkan detail berita untuk PUBLIK (URL: /berita/{slug})
+     */
+    public function show($slug)
+    {
+        $news = News::where('slug', $slug)->firstOrFail();
+        
+        // Dapatkan berita terbaru lainnya untuk bagian "Berita Terkait"
+        $relatedNews = News::where('id', '!=', $news->id)->latest()->take(3)->get();
+
+        return view('pages.news-detail', compact('news', 'relatedNews'));
+    }
+
+    /**
      * Menampilkan daftar berita untuk SUPERADMIN (URL: /superadmin/news)
      */
     public function adminIndex()
