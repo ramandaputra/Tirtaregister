@@ -152,7 +152,7 @@
                 <p class="text-sm md:text-base text-gray-600 max-w-2xl">Lengkapi data penanggung jawab dan detail instansi dengan benar untuk keperluan administrasi.</p>
             </header>
 
-            <div class="bg-white rounded-3xl p-8 md:p-12 shadow-lg border border-surface-border relative overflow-hidden">
+            <div class="bg-white rounded-3xl p-5 sm:p-8 md:p-12 shadow-lg border border-surface-border relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-yellow-400 to-orange-400"></div>
                 
                 @if(session('success'))
@@ -290,7 +290,7 @@
                                 <select name="village_id" id="village_id" required class="form-select">
                                     <option value="">Pilih Kelurahan...</option>
                                     @foreach($villages as $v)
-                                        <option value="{{ $v->kodekelurahan }}" {{ old('village_id') == $v->kodekelurahan ? 'selected' : '' }}>{{ $v->kelurahan }}</option>
+                                        <option value="{{ $v->kodekelurahan }}" data-kecamatan="{{ $v->kodekecamatan }}" {{ old('village_id') == $v->kodekelurahan ? 'selected' : '' }}>{{ $v->kelurahan }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -407,9 +407,30 @@
             const villageSelect = document.getElementById('village_id');
             const rayonSelect = document.getElementById('rayon_id');
             const oldRayonId = "{{ old('rayon_id') }}";
-            let pendingRoadSearch = null;
+            let pendingGeoData = null;
 
-            function loadRayons(villageId, selectedRayon = null, roadNameToSelect = null) {
+            function normalizeForMatch(text) {
+                if (!text) return '';
+                return text.toLowerCase()
+                    .replace(/jalan\s+/g, '')
+                    .replace(/jl\.\s*/g, '')
+                    .replace(/jl\s+/g, '')
+                    .replace(/perumahan\s+/g, '')
+                    .replace(/perum\.\s*/g, '')
+                    .replace(/perum\s+/g, '')
+                    .replace(/komplek\s+/g, '')
+                    .replace(/komp\.\s*/g, '')
+                    .replace(/komp\s+/g, '')
+                    .replace(/kampung\s+/g, '')
+                    .replace(/kp\.\s*/g, '')
+                    .replace(/lorong\s+/g, '')
+                    .replace(/lr\.\s*/g, '')
+                    .replace(/pelantar\s+/g, '')
+                    .replace(/[^a-z0-9]/g, '')
+                    .trim();
+            }
+
+            function loadRayons(villageId, selectedRayon = null, geoDataToMatch = null) {
                 rayonSelect.innerHTML = '<option value="">Memuat data...</option>';
                 rayonSelect.disabled = true;
 
@@ -425,24 +446,41 @@
                             rayonSelect.innerHTML = '<option value="">[ Tidak ada rayon tersedia ]</option>';
                             return;
                         }
+                        
                         rayonSelect.innerHTML = '<option value="">Pilih Rayon...</option>';
+                        let bestMatchOption = null;
+                        
                         data.forEach(rayon => {
                             const option = document.createElement('option');
                             option.value = rayon.id;
                             option.textContent = rayon.name;
+                            
+                            // Logika auto-select
                             if (selectedRayon && selectedRayon == rayon.id) {
                                 option.selected = true;
-                            } else if (roadNameToSelect) {
-                                let rName = rayon.name.toLowerCase().replace('jl.', '').replace('jl ', '').replace('perum.', '').replace('perum ', '').trim();
-                                let sName = roadNameToSelect.toLowerCase().replace('jalan ', '').replace('perumahan ', '').trim();
-                                if (rName.length > 3 && (sName.includes(rName) || rName.includes(sName))) {
-                                    option.selected = true;
+                            } else if (geoDataToMatch) {
+                                let normRayon = normalizeForMatch(rayon.name);
+                                if (normRayon.length > 3) {
+                                    for (let key in geoDataToMatch) {
+                                        let val = geoDataToMatch[key];
+                                        if (val && typeof val === 'string') {
+                                            let normGeo = normalizeForMatch(val);
+                                            if (normGeo.length > 3 && (normGeo.includes(normRayon) || normRayon.includes(normGeo))) {
+                                                bestMatchOption = option;
+                                            }
+                                        }
+                                    }
                                 }
                             }
                             rayonSelect.appendChild(option);
                         });
+                        
+                        if (bestMatchOption && !selectedRayon) {
+                            bestMatchOption.selected = true;
+                        }
+                        
                         rayonSelect.disabled = false;
-                        pendingRoadSearch = null;
+                        pendingGeoData = null;
                     })
                     .catch(err => {
                         console.error('Error fetching rayons:', err);
@@ -451,7 +489,7 @@
             }
 
             villageSelect.addEventListener('change', function() {
-                loadRayons(this.value, null, pendingRoadSearch);
+                loadRayons(this.value, null, pendingGeoData);
             });
 
             // Trigger on load for validation back
@@ -496,24 +534,55 @@
                     .then(data => {
                         if (data && data.address) {
                             const addr = data.address;
-                            let kelurahanName = addr.village || addr.suburb || addr.neighbourhood || '';
-                            let roadName = addr.road || addr.residential || '';
                             
-                            if (kelurahanName) {
-                                let options = villageSelect.options;
-                                for (let i = 0; i < options.length; i++) {
-                                    let optText = options[i].text.toLowerCase().trim();
-                                    let searchTxt = kelurahanName.toLowerCase().trim();
-                                    if (optText.includes(searchTxt) || searchTxt.includes(optText)) {
-                                        if (villageSelect.selectedIndex !== i) {
-                                            villageSelect.selectedIndex = i;
-                                            pendingRoadSearch = roadName; // Simpan nama jalan untuk disortir di rayon
-                                            villageSelect.dispatchEvent(new Event('change'));
-                                        }
+                            // Map kecamatan ke kode area (database rayon.sql) secara dinamis
+                            const kecamatanMap = @json(\App\Models\Rayon::select('kodearea', 'area')->distinct()->get()->mapWithKeys(function($item) {
+                                return [strtolower(trim($item->area)) => $item->kodearea];
+                            }));
+
+                            let kecamatanName = addr.city_district || addr.municipality || addr.county || addr.town || addr.suburb || '';
+                            let matchedKodeArea = null;
+
+                            if (kecamatanName) {
+                                let searchKec = kecamatanName.toLowerCase();
+                                for (const [key, code] of Object.entries(kecamatanMap)) {
+                                    if (searchKec.includes(key) || key.includes(searchKec)) {
+                                        matchedKodeArea = code;
                                         break;
                                     }
                                 }
                             }
+
+                            // 1. Pilih Kelurahan yang cocok berdasarkan data Geolocation
+                            let options = villageSelect.options;
+                            let kelurahanName = addr.village || addr.suburb || addr.neighbourhood || '';
+                            let found = false;
+                            
+                            if (kelurahanName) {
+                                let searchTxt = kelurahanName.toLowerCase().replace(/kelurahan\s+/g, '').trim();
+                                for (let i = 1; i < options.length; i++) {
+                                    let optText = options[i].text.toLowerCase().trim();
+                                    if (optText.includes(searchTxt) || searchTxt.includes(optText)) {
+                                        villageSelect.selectedIndex = i;
+                                        found = true;
+                                        break;
+                                    }
+                                }
+                            }
+
+                            // Jika tidak ketemu berdasarkan nama kelurahan, tapi kecamatannya ketemu, pilih kelurahan pertama di kecamatan itu
+                            if (!found && matchedKodeArea) {
+                                for (let i = 1; i < options.length; i++) {
+                                    if (options[i].getAttribute('data-kecamatan') === matchedKodeArea) {
+                                        villageSelect.selectedIndex = i;
+                                        break;
+                                    }
+                                }
+                            }
+
+                            // 2. Trigger penentuan Rayon berdasarkan kelurahan yang dipilih
+                            pendingGeoData = addr;
+                            villageSelect.dispatchEvent(new Event('change'));
                         }
                     })
                     .catch(err => console.error('Geocoding error:', err));

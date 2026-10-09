@@ -1,0 +1,1128 @@
+{
+    "01": [
+        {
+            "kode": "0101",
+            "nama": "JL. SAMUDERA"
+        },
+        {
+            "kode": "0102",
+            "nama": "JL. MERDEKA"
+        },
+        {
+            "kode": "0103",
+            "nama": "JL. LORONG MERDEKA"
+        },
+        {
+            "kode": "0104",
+            "nama": "JL. POS BARU"
+        },
+        {
+            "kode": "0105",
+            "nama": "PELANTAR I"
+        },
+        {
+            "kode": "0106",
+            "nama": "PELANTAR II"
+        },
+        {
+            "kode": "0107",
+            "nama": "PELANTAR III"
+        },
+        {
+            "kode": "0108",
+            "nama": "PELANTAR IV"
+        },
+        {
+            "kode": "0109",
+            "nama": "PELANTAR ALI BABA"
+        },
+        {
+            "kode": "0110",
+            "nama": "LORONG BINTAN"
+        },
+        {
+            "kode": "0111",
+            "nama": "JL. BINTAN"
+        },
+        {
+            "kode": "0112",
+            "nama": "JL. TEUKU UMAR"
+        },
+        {
+            "kode": "0113",
+            "nama": "KOMP. GEMBIRA"
+        },
+        {
+            "kode": "0114",
+            "nama": "JL. PASAR"
+        },
+        {
+            "kode": "0115",
+            "nama": "JL. PASAR IKAN"
+        },
+        {
+            "kode": "0116",
+            "nama": "JL. GAMBIR"
+        },
+        {
+            "kode": "0117",
+            "nama": "LORONG GAMBIR"
+        },
+        {
+            "kode": "0118",
+            "nama": "LORONG PISANG"
+        },
+        {
+            "kode": "0119",
+            "nama": "JL. TEMIANG"
+        },
+        {
+            "kode": "0120",
+            "nama": "JL. KETAPANG"
+        },
+        {
+            "kode": "0121",
+            "nama": "JL. TABIB"
+        },
+        {
+            "kode": "0122",
+            "nama": "JL. MESJID"
+        },
+        {
+            "kode": "0123",
+            "nama": "JL. MEMET"
+        },
+        {
+            "kode": "0124",
+            "nama": "JL. YUSUF KAHAR"
+        },
+        {
+            "kode": "0125",
+            "nama": "JL. HASANUDDIN"
+        },
+        {
+            "kode": "0126",
+            "nama": "JL. ST. ABD. RAHMAN"
+        },
+        {
+            "kode": "0127",
+            "nama": "JL. DIPONEGORO"
+        },
+        {
+            "kode": "0128",
+            "nama": "KOMP. KEUANGAN"
+        },
+        {
+            "kode": "0129",
+            "nama": "JL. GEREJA"
+        },
+        {
+            "kode": "0130",
+            "nama": "JL. MAWAR"
+        },
+        {
+            "kode": "0131",
+            "nama": "JL. KEMBOJA"
+        },
+        {
+            "kode": "0132",
+            "nama": "LORONG BAKAR BATU"
+        },
+        {
+            "kode": "0133",
+            "nama": "JL. TAMBAK"
+        },
+        {
+            "kode": "0134",
+            "nama": "JL. BAKAR BATU"
+        },
+        {
+            "kode": "0135",
+            "nama": "JL. POTONG LEMBU"
+        },
+        {
+            "kode": "0136",
+            "nama": "JL. SEDERHANA"
+        },
+        {
+            "kode": "0137",
+            "nama": "JL. TELADAN"
+        },
+        {
+            "kode": "0138",
+            "nama": "PELANTAR KUD"
+        },
+        {
+            "kode": "0139",
+            "nama": "PELANTAR NUSANTARA"
+        },
+        {
+            "kode": "0140",
+            "nama": "PELANTAR SULAWESI"
+        },
+        {
+            "kode": "0141",
+            "nama": "PELANTAR MUTIARA"
+        },
+        {
+            "kode": "0142",
+            "nama": "PELANTAR DATUK"
+        }
+    ],
+    "02": [
+        {
+            "kode": "0201",
+            "nama": "JL. SULTAN MACHMUD"
+        },
+        {
+            "kode": "0202",
+            "nama": "JL. SUDIRMAN"
+        },
+        {
+            "kode": "0203",
+            "nama": "JL. SUNARYO"
+        },
+        {
+            "kode": "0204",
+            "nama": "JL. RUMAH SAKIT"
+        },
+        {
+            "kode": "0205",
+            "nama": "JL. TAMAN BAHAGIA"
+        },
+        {
+            "kode": "0206",
+            "nama": "JL. YOS SUDARSO"
+        },
+        {
+            "kode": "0207",
+            "nama": "JL. USMAN HARUN"
+        },
+        {
+            "kode": "0208",
+            "nama": "JL. BUKIT SEMPRONG"
+        },
+        {
+            "kode": "0209",
+            "nama": "JL. JAWA"
+        },
+        {
+            "kode": "0210",
+            "nama": "JL. SUMATERA"
+        },
+        {
+            "kode": "0211",
+            "nama": "JL. RIAU"
+        },
+        {
+            "kode": "0212",
+            "nama": "JL. BALI"
+        },
+        {
+            "kode": "0213",
+            "nama": "JL. WIRATNO"
+        },
+        {
+            "kode": "0214",
+            "nama": "JL. KASIYANTO"
+        },
+        {
+            "kode": "0215",
+            "nama": "JL. TUGU PAHLAWAN"
+        },
+        {
+            "kode": "0216",
+            "nama": "JL. DR. SOETOMO"
+        },
+        {
+            "kode": "0217",
+            "nama": "JL. GUDANG MINYAK"
+        },
+        {
+            "kode": "0218",
+            "nama": "ABRI"
+        },
+        {
+            "kode": "0219",
+            "nama": "PECAHAN KODIM"
+        },
+        {
+            "kode": "0220",
+            "nama": "JL. IR. H.JUANDA"
+        },
+        {
+            "kode": "0221",
+            "nama": "JL. IR. SUTAMI"
+        },
+        {
+            "kode": "0222",
+            "nama": "JL. H. AGUS SALIM"
+        },
+        {
+            "kode": "0223",
+            "nama": "JL. KATAMSO"
+        },
+        {
+            "kode": "0224",
+            "nama": "JL. SOEKARNO HATTA"
+        },
+        {
+            "kode": "0225",
+            "nama": "JL. SULAIMAN ABDULAH"
+        },
+        {
+            "kode": "0226",
+            "nama": "KOMP. POLRI SUNARYO"
+        },
+        {
+            "kode": "0227",
+            "nama": "KOMP. POLRI RUMAH SAKIT"
+        },
+        {
+            "kode": "0228",
+            "nama": "KOMP. POLRI MT. HARYONO"
+        },
+        {
+            "kode": "0229",
+            "nama": "KOMP. KODIM IR. JUANDA"
+        },
+        {
+            "kode": "0230",
+            "nama": "KOMP. KODIM A. YANI"
+        },
+        {
+            "kode": "0231",
+            "nama": "KOMP. LANUD KATAMSO"
+        },
+        {
+            "kode": "0232",
+            "nama": "KOMP. LANUD MT. HARYONO"
+        },
+        {
+            "kode": "0233",
+            "nama": "KOMP. RAMAYANA"
+        },
+        {
+            "kode": "0234",
+            "nama": "JL. CEMPEDAK"
+        },
+        {
+            "kode": "0235",
+            "nama": "JL. RAMBUTAN"
+        },
+        {
+            "kode": "0236",
+            "nama": "JL. DARUS SALAM"
+        },
+        {
+            "kode": "0237",
+            "nama": "JL. MATADOR"
+        },
+        {
+            "kode": "0238",
+            "nama": "JL. PANTAI IMPIAN"
+        },
+        {
+            "kode": "0239",
+            "nama": "JL. BHAYANGKARA"
+        },
+        {
+            "kode": "0240",
+            "nama": "JL. SULTAN MACHMUD 2"
+        }
+    ],
+    "03": [
+        {
+            "kode": "0301",
+            "nama": "PERUM. JATI MAS"
+        },
+        {
+            "kode": "0302",
+            "nama": "PERUM. BUKIT RAYA"
+        },
+        {
+            "kode": "0303",
+            "nama": "PERUM. ALAM TIRTA LESTARI"
+        },
+        {
+            "kode": "0304",
+            "nama": "JL. ANGGREK MERAH"
+        },
+        {
+            "kode": "0305",
+            "nama": "PERUM. RAWASARI CLUB HOUSE"
+        },
+        {
+            "kode": "0306",
+            "nama": "PERUM. BUMI INTAN SARI"
+        },
+        {
+            "kode": "0307",
+            "nama": "JL. GATOT SUBROTO"
+        },
+        {
+            "kode": "0308",
+            "nama": "PERUM. TAMAN SURYA"
+        },
+        {
+            "kode": "0309",
+            "nama": "JL. RAWASARI"
+        },
+        {
+            "kode": "0310",
+            "nama": "JL. SULTAN SULAIMAN"
+        },
+        {
+            "kode": "0311",
+            "nama": "JL. NUSANTARA"
+        },
+        {
+            "kode": "0312",
+            "nama": "JL. DI.PANJAITAN"
+        },
+        {
+            "kode": "0313",
+            "nama": "PERUM. GRIYA BESTARI PERMAI"
+        },
+        {
+            "kode": "0314",
+            "nama": "PERUM. TAMAN MEKARSARI 1"
+        },
+        {
+            "kode": "0315",
+            "nama": "JL. TRANSITO"
+        },
+        {
+            "kode": "0316",
+            "nama": "PERUM. BINTAN BAHAGIA"
+        },
+        {
+            "kode": "0317",
+            "nama": "PERUM. GRIYA HANGTUAH PERMAI"
+        },
+        {
+            "kode": "0318",
+            "nama": "PERUM. MAHKOTA ALAM RAYA"
+        },
+        {
+            "kode": "0319",
+            "nama": "PERUM. TAMAN MEKARSARI"
+        },
+        {
+            "kode": "0320",
+            "nama": "KOMP. POLRI KM.8"
+        },
+        {
+            "kode": "0321",
+            "nama": "PERUM. KIJANG KENCANA 1"
+        },
+        {
+            "kode": "0322",
+            "nama": "PERUM. KIJANG KENCANA 2"
+        },
+        {
+            "kode": "0323",
+            "nama": "PERUM. KIJANG KENCANA 3"
+        },
+        {
+            "kode": "0324",
+            "nama": "PERUM. KIJANG KENCANA 4"
+        },
+        {
+            "kode": "0325",
+            "nama": "KOMP. LANUD\/RAJAWALI"
+        },
+        {
+            "kode": "0326",
+            "nama": "PERUM. SAPPHIRE HILLS"
+        },
+        {
+            "kode": "0327",
+            "nama": "PERUM. NATURE WONDERLAND"
+        },
+        {
+            "kode": "0328",
+            "nama": "PERUM. NIMAS INDAH"
+        },
+        {
+            "kode": "0329",
+            "nama": "PERUM. PERMATA SUNGAI CARANG"
+        },
+        {
+            "kode": "0330",
+            "nama": "PERUM. MUTIARA BINTAN"
+        },
+        {
+            "kode": "0331",
+            "nama": "PERUM. GRAHA BINTAN PERMAI"
+        },
+        {
+            "kode": "0332",
+            "nama": "PERUM. CRYSTAL VILLAGE 2"
+        },
+        {
+            "kode": "0333",
+            "nama": "PERUM. NAM HILL RESIDENCE"
+        },
+        {
+            "kode": "0334",
+            "nama": "PERUM. CEMARA INDAH"
+        },
+        {
+            "kode": "0335",
+            "nama": "PERUM. GRIYA PERMATA ASRI"
+        },
+        {
+            "kode": "0336",
+            "nama": "PERUM. THE HILL RESIDENCE"
+        },
+        {
+            "kode": "0337",
+            "nama": "PERUM. GRIYA BUKIT ASRI"
+        },
+        {
+            "kode": "0338",
+            "nama": "PERUM. CITRA PELITA 5"
+        },
+        {
+            "kode": "0339",
+            "nama": "PERUM. CITRA PELITA 10"
+        },
+        {
+            "kode": "0340",
+            "nama": "PERUM. CITRA PELITA 9"
+        },
+        {
+            "kode": "0341",
+            "nama": "PERUM. PONDOK GURINDAM"
+        },
+        {
+            "kode": "0342",
+            "nama": "PERUM. PESONA RAWABANGUN"
+        },
+        {
+            "kode": "0343",
+            "nama": "PERUM. RAJAWALI"
+        },
+        {
+            "kode": "0344",
+            "nama": "PERUM. BAMBU KUNING GARDEN"
+        },
+        {
+            "kode": "0345",
+            "nama": "PERUM. PINANG RESIDENCE"
+        },
+        {
+            "kode": "0346",
+            "nama": "JL. GANET"
+        },
+        {
+            "kode": "0357",
+            "nama": "JL. ADI SUCIPTO"
+        },
+        {
+            "kode": "0358",
+            "nama": "KOMP. VILLA PINLANG MAS"
+        },
+        {
+            "kode": "0359",
+            "nama": "PERUM. TAMAN GURINDAM PERMAI"
+        },
+        {
+            "kode": "0360",
+            "nama": "PERUM. TAMAN PESONA ASRI"
+        },
+        {
+            "kode": "0361",
+            "nama": "JL. KUANTAN"
+        },
+        {
+            "kode": "0362",
+            "nama": "JL. RE. MARTADINATA"
+        },
+        {
+            "kode": "0363",
+            "nama": "PERUM. KUANTAN INDAH"
+        },
+        {
+            "kode": "0367",
+            "nama": "PERUM. BUMI INDAH"
+        },
+        {
+            "kode": "0368",
+            "nama": "PERUM. TAMAN SERAYA"
+        },
+        {
+            "kode": "0369",
+            "nama": "JL. BINTAN CENTRE"
+        },
+        {
+            "kode": "0370",
+            "nama": "PERUM. TAMAN HARAPAN INDAH"
+        },
+        {
+            "kode": "0371",
+            "nama": "KOMP. PERTAMINA KM.8"
+        },
+        {
+            "kode": "0372",
+            "nama": "JL. HANDJOYO PUTRO"
+        },
+        {
+            "kode": "0375",
+            "nama": "JL. KOTA PIRING"
+        },
+        {
+            "kode": "0376",
+            "nama": "PERUM. PERMATA KHARISMA"
+        },
+        {
+            "kode": "0377",
+            "nama": "PERUM. MAHKOTA ALAM PERMAI"
+        },
+        {
+            "kode": "0378",
+            "nama": "JL. HANG LEKIR"
+        },
+        {
+            "kode": "0379",
+            "nama": "JL. PERALATAN"
+        },
+        {
+            "kode": "0380",
+            "nama": "JL. DI. PANJAITAN TIMUR"
+        },
+        {
+            "kode": "0381",
+            "nama": "KOMP. LANUDAL NUSANTARA"
+        },
+        {
+            "kode": "0382",
+            "nama": "PERUM. AIR RAJA"
+        },
+        {
+            "kode": "0383",
+            "nama": "JL. WR. SUPRATMAN"
+        },
+        {
+            "kode": "0384",
+            "nama": "JL. WONOSARI"
+        },
+        {
+            "kode": "0385",
+            "nama": "PERUM. GRIYA SURYA INDAH"
+        },
+        {
+            "kode": "0386",
+            "nama": "PERUM. BINTAN PERMATA INDAH"
+        },
+        {
+            "kode": "0387",
+            "nama": "JL. GESEK"
+        },
+        {
+            "kode": "0388",
+            "nama": "PERUM. GRIYA HANGTUAH 4"
+        },
+        {
+            "kode": "0389",
+            "nama": "PERUM. LEMBAH HIJAU"
+        },
+        {
+            "kode": "0390",
+            "nama": "PERUM. NUSA INDAH"
+        },
+        {
+            "kode": "0392",
+            "nama": "PERUM. PERMATA GALAXY"
+        },
+        {
+            "kode": "0393",
+            "nama": "JL. DAENG KAMBOJA"
+        },
+        {
+            "kode": "0394",
+            "nama": "JL. TRIWIJAYA KM.16"
+        },
+        {
+            "kode": "0395",
+            "nama": "PERUM. CLUSTER HANG LEKIR"
+        },
+        {
+            "kode": "0396",
+            "nama": "JL. BANDARA"
+        },
+        {
+            "kode": "0397",
+            "nama": "JL. CINTA DAMAI"
+        },
+        {
+            "kode": "0398",
+            "nama": "PERUM. GRIYA HANG LEKIR INDAH"
+        },
+        {
+            "kode": "0399",
+            "nama": "PERUM. VILLA MAS RESIDENCE"
+        }
+    ],
+    "04": [
+        {
+            "kode": "0401",
+            "nama": "JL. A.R. HAKIM"
+        },
+        {
+            "kode": "0402",
+            "nama": "KOMP. PERLA"
+        },
+        {
+            "kode": "0403",
+            "nama": "JL. MT. HARYONO"
+        },
+        {
+            "kode": "0404",
+            "nama": "KOMP. BINTAN PLAZA"
+        },
+        {
+            "kode": "0405",
+            "nama": "JL. CITRA"
+        },
+        {
+            "kode": "0406",
+            "nama": "JL. PRAMUKA"
+        },
+        {
+            "kode": "0408",
+            "nama": "JL. RAJA ALI HAJI"
+        },
+        {
+            "kode": "0409",
+            "nama": "PERUM. MUTIARA VILLA"
+        },
+        {
+            "kode": "0410",
+            "nama": "JL. AHMAD YANI"
+        },
+        {
+            "kode": "0411",
+            "nama": "JL. BASUKI RAHMAD"
+        },
+        {
+            "kode": "0412",
+            "nama": "JL. R.H. FISABILILLAH"
+        },
+        {
+            "kode": "0413",
+            "nama": "KOMP. PAJAK"
+        },
+        {
+            "kode": "0414",
+            "nama": "JL. PEMUDA"
+        },
+        {
+            "kode": "0415",
+            "nama": "JL. MANTANG PERUMNAS"
+        },
+        {
+            "kode": "0416",
+            "nama": "JL. NUMBING PERUMNAS"
+        },
+        {
+            "kode": "0417",
+            "nama": "JL. SINGKEP PERUMNAS"
+        },
+        {
+            "kode": "0418",
+            "nama": "JL. GALANG PERUMNAS"
+        },
+        {
+            "kode": "0419",
+            "nama": "JL. DENDANG PERUMNAS"
+        },
+        {
+            "kode": "0420",
+            "nama": "JL. SENGGARANG PERUMNAS"
+        },
+        {
+            "kode": "0421",
+            "nama": "JL. BERANTAS PERUMNAS"
+        },
+        {
+            "kode": "0422",
+            "nama": "JL. MERAPAS PERUMNAS"
+        },
+        {
+            "kode": "0423",
+            "nama": "JL. MAPUR PERUMNAS"
+        },
+        {
+            "kode": "0424",
+            "nama": "JL. BUNGURAN PERUMNAS"
+        },
+        {
+            "kode": "0425",
+            "nama": "JL. SIANTAN PERUMNAS"
+        },
+        {
+            "kode": "0426",
+            "nama": "JL. KARIMUN PERUMNAS"
+        },
+        {
+            "kode": "0427",
+            "nama": "JL. JEMAJA PERUMNAS"
+        },
+        {
+            "kode": "0428",
+            "nama": "JL. LINGGA PERUMNAS"
+        },
+        {
+            "kode": "0429",
+            "nama": "JL. REMPANG PERUMNAS"
+        },
+        {
+            "kode": "0430",
+            "nama": "JL. BULAN PERUMNAS"
+        },
+        {
+            "kode": "0431",
+            "nama": "JL. BATAM PERUMNAS"
+        },
+        {
+            "kode": "0432",
+            "nama": "JL. DOMPAK PERUMNAS"
+        },
+        {
+            "kode": "0433",
+            "nama": "JL. NATUNA PERUMNAS"
+        },
+        {
+            "kode": "0434",
+            "nama": "JL. SAMBU PERUMNAS"
+        },
+        {
+            "kode": "0435",
+            "nama": "JL. SENAYANG PERUMNAS"
+        },
+        {
+            "kode": "0436",
+            "nama": "JL. TELAGA PERUMNAS"
+        },
+        {
+            "kode": "0437",
+            "nama": "JL. SUBI PERUMNAS"
+        },
+        {
+            "kode": "0438",
+            "nama": "JL. PEKAJANG PERUMNAS"
+        },
+        {
+            "kode": "0439",
+            "nama": "JL. BERAKIT PERUMNAS"
+        },
+        {
+            "kode": "0440",
+            "nama": "JL. MIDAI PERUMNAS"
+        },
+        {
+            "kode": "0441",
+            "nama": "JL. SERASAN PERUMNAS"
+        },
+        {
+            "kode": "0442",
+            "nama": "JL. CEMPA PERUMNAS"
+        },
+        {
+            "kode": "0443",
+            "nama": "JL. PENGIBU PERUMNAS"
+        },
+        {
+            "kode": "0444",
+            "nama": "JL. SELUAN PERUMNAS"
+        },
+        {
+            "kode": "0445",
+            "nama": "JL. CIBIA I PERUMNAS"
+        },
+        {
+            "kode": "0446",
+            "nama": "JL. CIBIA II PERUMNAS"
+        },
+        {
+            "kode": "0447",
+            "nama": "JL. MEDANG PERUMNAS"
+        },
+        {
+            "kode": "0448",
+            "nama": "JL. SEMBUR PERUMNAS"
+        },
+        {
+            "kode": "0449",
+            "nama": "JL. TERKULAI PERUMNAS"
+        },
+        {
+            "kode": "0450",
+            "nama": "JL. LOBAM PERUMNAS"
+        },
+        {
+            "kode": "0451",
+            "nama": "JL. PENAGA PERUMNAS"
+        },
+        {
+            "kode": "0452",
+            "nama": "JL. PENYENGAT I PERUMNAS"
+        },
+        {
+            "kode": "0453",
+            "nama": "JL. PENYENGAT II PERUMNAS"
+        },
+        {
+            "kode": "0454",
+            "nama": "JL. DURAI I PERUMNAS"
+        },
+        {
+            "kode": "0455",
+            "nama": "JL. DURAI II PERUMNAS"
+        },
+        {
+            "kode": "0456",
+            "nama": "JL. BINTAN PERUMNAS"
+        },
+        {
+            "kode": "0457",
+            "nama": "JL. BULUH PERUMNAS"
+        },
+        {
+            "kode": "0458",
+            "nama": "JL. BAYAN PERUMNAS"
+        },
+        {
+            "kode": "0459",
+            "nama": "JL. SEI. JANG"
+        },
+        {
+            "kode": "0463",
+            "nama": "JL. LEMBAH PURNAMA I"
+        },
+        {
+            "kode": "0464",
+            "nama": "JL. H.UNGAR"
+        },
+        {
+            "kode": "0465",
+            "nama": "JL. LEMBAH PURNAMA II"
+        }
+    ],
+    "05": [
+        {
+            "kode": "0501",
+            "nama": "SEI DATUK"
+        },
+        {
+            "kode": "0502",
+            "nama": "BAREK MOTOR"
+        },
+        {
+            "kode": "0503",
+            "nama": "KAMPUNG PISANG"
+        },
+        {
+            "kode": "0504",
+            "nama": "TRIKORA"
+        },
+        {
+            "kode": "0505",
+            "nama": "KAMPUNG BARU KEKE"
+        },
+        {
+            "kode": "0506",
+            "nama": "KAMPUNG LOSARI"
+        },
+        {
+            "kode": "0507",
+            "nama": "SEI ENAM"
+        },
+        {
+            "kode": "0508",
+            "nama": "KAMPUNG JATI"
+        },
+        {
+            "kode": "0509",
+            "nama": "RAJA ALI HAJI"
+        },
+        {
+            "kode": "0510",
+            "nama": "SIDODADI"
+        },
+        {
+            "kode": "0511",
+            "nama": "TANAH KUNING"
+        },
+        {
+            "kode": "0512",
+            "nama": "SEI WALANG"
+        },
+        {
+            "kode": "0513",
+            "nama": "SRI BAYINTAN"
+        },
+        {
+            "kode": "0514",
+            "nama": "KOLONG ENAM"
+        },
+        {
+            "kode": "0515",
+            "nama": "TOKOJO"
+        },
+        {
+            "kode": "0516",
+            "nama": "KESEHATAN"
+        },
+        {
+            "kode": "0517",
+            "nama": "KAMPUNG LENGKUAS"
+        },
+        {
+            "kode": "0518",
+            "nama": "PERUM. VILLA DELIMA INDAH"
+        },
+        {
+            "kode": "0519",
+            "nama": "KAMPUNG KOLAM RENANG"
+        }
+    ],
+    "06": [
+        {
+            "kode": "0601",
+            "nama": "RE. MARTADINATA"
+        },
+        {
+            "kode": "0602",
+            "nama": "YOS SUDARSO"
+        },
+        {
+            "kode": "0603",
+            "nama": "MERDEKA"
+        },
+        {
+            "kode": "0604",
+            "nama": "CENDRAWASIH"
+        }
+    ],
+    "07": [
+        {
+            "kode": "0701",
+            "nama": "JEN. SUDIRMAN"
+        },
+        {
+            "kode": "0702",
+            "nama": "IMAN BONJOL"
+        },
+        {
+            "kode": "0703",
+            "nama": "PERMAISURI"
+        },
+        {
+            "kode": "0704",
+            "nama": "DT. SYAHBANDAR"
+        },
+        {
+            "kode": "0705",
+            "nama": "RA. KARTINI"
+        },
+        {
+            "kode": "0706",
+            "nama": "MARTOSARI"
+        },
+        {
+            "kode": "0707",
+            "nama": "HULU RIAU"
+        }
+    ],
+    "08": [
+        {
+            "kode": "0801",
+            "nama": "HANG TUAH"
+        },
+        {
+            "kode": "0802",
+            "nama": "KOMPLEK KPLP"
+        },
+        {
+            "kode": "0803",
+            "nama": "ASRAMA POLISI"
+        },
+        {
+            "kode": "0804",
+            "nama": "NACHODA LANCANG"
+        },
+        {
+            "kode": "0805",
+            "nama": "TAMAN SARI"
+        },
+        {
+            "kode": "0806",
+            "nama": "CIPTADI"
+        },
+        {
+            "kode": "0807",
+            "nama": "KESATRIA"
+        },
+        {
+            "kode": "0808",
+            "nama": "NYIUR"
+        }
+    ],
+    "09": [
+        {
+            "kode": "0901",
+            "nama": "PERUM VILLA ANGGREK"
+        },
+        {
+            "kode": "0902",
+            "nama": "PURI ALAMANDA"
+        },
+        {
+            "kode": "0903",
+            "nama": "T.MANTANG\/KP BARU"
+        },
+        {
+            "kode": "0904",
+            "nama": "INDOTEKKON"
+        },
+        {
+            "kode": "0905",
+            "nama": "BINTAN MAS"
+        },
+        {
+            "kode": "0906",
+            "nama": "BINTANG LIMA"
+        },
+        {
+            "kode": "0907",
+            "nama": "T.MANTANG2\/T.SARI"
+        },
+        {
+            "kode": "0908",
+            "nama": "PERUM. TELAGA SURYA"
+        },
+        {
+            "kode": "0909",
+            "nama": "PERUM. PBI II"
+        },
+        {
+            "kode": "0910",
+            "nama": "PERUM. OEBAN VILLAGE"
+        },
+        {
+            "kode": "0911",
+            "nama": "KOMPLEK BUMI MORO"
+        },
+        {
+            "kode": "0912",
+            "nama": "INDUN SURI"
+        },
+        {
+            "kode": "0913",
+            "nama": "NOBLE HOUSE"
+        }
+    ]
+}

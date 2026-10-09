@@ -1,0 +1,2643 @@
+{
+    "r": [
+        {
+            "koderayon": "0101",
+            "namarayon": "JL. SAMUDERA",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0102",
+            "namarayon": "JL. MERDEKA",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0103",
+            "namarayon": "JL. LORONG MERDEKA",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0104",
+            "namarayon": "JL. POS BARU",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0105",
+            "namarayon": "PELANTAR I",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0106",
+            "namarayon": "PELANTAR II",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0107",
+            "namarayon": "PELANTAR III",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0108",
+            "namarayon": "PELANTAR IV",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0109",
+            "namarayon": "PELANTAR ALI BABA",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0110",
+            "namarayon": "LORONG BINTAN",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0111",
+            "namarayon": "JL. BINTAN",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0112",
+            "namarayon": "JL. TEUKU UMAR",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0113",
+            "namarayon": "KOMP. GEMBIRA",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0114",
+            "namarayon": "JL. PASAR",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0115",
+            "namarayon": "JL. PASAR IKAN",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0116",
+            "namarayon": "JL. GAMBIR",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0117",
+            "namarayon": "LORONG GAMBIR",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0118",
+            "namarayon": "LORONG PISANG",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0119",
+            "namarayon": "JL. TEMIANG",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0120",
+            "namarayon": "JL. KETAPANG",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0121",
+            "namarayon": "JL. TABIB",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0122",
+            "namarayon": "JL. MESJID",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0123",
+            "namarayon": "JL. MEMET",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0124",
+            "namarayon": "JL. YUSUF KAHAR",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0125",
+            "namarayon": "JL. HASANUDDIN",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0126",
+            "namarayon": "JL. ST. ABD. RAHMAN",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0127",
+            "namarayon": "JL. DIPONEGORO",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0128",
+            "namarayon": "KOMP. KEUANGAN",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0129",
+            "namarayon": "JL. GEREJA",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0130",
+            "namarayon": "JL. MAWAR",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0131",
+            "namarayon": "JL. KEMBOJA",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0132",
+            "namarayon": "LORONG BAKAR BATU",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0133",
+            "namarayon": "JL. TAMBAK",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0134",
+            "namarayon": "JL. BAKAR BATU",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0135",
+            "namarayon": "JL. POTONG LEMBU",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0136",
+            "namarayon": "JL. SEDERHANA",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0137",
+            "namarayon": "JL. TELADAN",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0138",
+            "namarayon": "PELANTAR KUD",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0139",
+            "namarayon": "PELANTAR NUSANTARA",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "-"
+        },
+        {
+            "koderayon": "0140",
+            "namarayon": "PELANTAR SULAWESI",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "-"
+        },
+        {
+            "koderayon": "0141",
+            "namarayon": "PELANTAR MUTIARA",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "-"
+        },
+        {
+            "koderayon": "0142",
+            "namarayon": "PELANTAR DATUK",
+            "kodearea": "01",
+            "area": "TANJUNGPINANG KOTA",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "-"
+        },
+        {
+            "koderayon": "0201",
+            "namarayon": "JL. SULTAN MACHMUD",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0202",
+            "namarayon": "JL. SUDIRMAN",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0203",
+            "namarayon": "JL. SUNARYO",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0204",
+            "namarayon": "JL. RUMAH SAKIT",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0205",
+            "namarayon": "JL. TAMAN BAHAGIA",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0206",
+            "namarayon": "JL. YOS SUDARSO",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0207",
+            "namarayon": "JL. USMAN HARUN",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0208",
+            "namarayon": "JL. BUKIT SEMPRONG",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0209",
+            "namarayon": "JL. JAWA",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0210",
+            "namarayon": "JL. SUMATERA",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0211",
+            "namarayon": "JL. RIAU",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0212",
+            "namarayon": "JL. BALI",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0213",
+            "namarayon": "JL. WIRATNO",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0214",
+            "namarayon": "JL. KASIYANTO",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0215",
+            "namarayon": "JL. TUGU PAHLAWAN",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0216",
+            "namarayon": "JL. DR. SOETOMO",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0217",
+            "namarayon": "JL. GUDANG MINYAK",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0218",
+            "namarayon": "ABRI",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0219",
+            "namarayon": "PECAHAN KODIM",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0220",
+            "namarayon": "JL. IR. H.JUANDA",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0221",
+            "namarayon": "JL. IR. SUTAMI",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0222",
+            "namarayon": "JL. H. AGUS SALIM",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0223",
+            "namarayon": "JL. KATAMSO",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0224",
+            "namarayon": "JL. SOEKARNO HATTA",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0225",
+            "namarayon": "JL. SULAIMAN ABDULAH",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0226",
+            "namarayon": "KOMP. POLRI SUNARYO",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0227",
+            "namarayon": "KOMP. POLRI RUMAH SAKIT",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0228",
+            "namarayon": "KOMP. POLRI MT. HARYONO",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0229",
+            "namarayon": "KOMP. KODIM IR. JUANDA",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0230",
+            "namarayon": "KOMP. KODIM A. YANI",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0231",
+            "namarayon": "KOMP. LANUD KATAMSO",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0232",
+            "namarayon": "KOMP. LANUD MT. HARYONO",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0233",
+            "namarayon": "KOMP. RAMAYANA",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "03"
+        },
+        {
+            "koderayon": "0234",
+            "namarayon": "JL. CEMPEDAK",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0235",
+            "namarayon": "JL. RAMBUTAN",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0236",
+            "namarayon": "JL. DARUS SALAM",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0237",
+            "namarayon": "JL. MATADOR",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0238",
+            "namarayon": "JL. PANTAI IMPIAN",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0239",
+            "namarayon": "JL. BHAYANGKARA",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0240",
+            "namarayon": "JL. SULTAN MACHMUD 2",
+            "kodearea": "02",
+            "area": "TANJUNGPINANG BARAT",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": ""
+        },
+        {
+            "koderayon": "0301",
+            "namarayon": "PERUM. JATI MAS",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": ""
+        },
+        {
+            "koderayon": "0302",
+            "namarayon": "PERUM. BUKIT RAYA",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": ""
+        },
+        {
+            "koderayon": "0303",
+            "namarayon": "PERUM. ALAM TIRTA LESTARI",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": ""
+        },
+        {
+            "koderayon": "0304",
+            "namarayon": "JL. ANGGREK MERAH",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": ""
+        },
+        {
+            "koderayon": "0305",
+            "namarayon": "PERUM. RAWASARI CLUB HOUSE",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "-"
+        },
+        {
+            "koderayon": "0306",
+            "namarayon": "PERUM. BUMI INTAN SARI",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "-"
+        },
+        {
+            "koderayon": "0307",
+            "namarayon": "JL. GATOT SUBROTO",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0308",
+            "namarayon": "PERUM. TAMAN SURYA",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "-"
+        },
+        {
+            "koderayon": "0309",
+            "namarayon": "JL. RAWASARI",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0310",
+            "namarayon": "JL. SULTAN SULAIMAN",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0311",
+            "namarayon": "JL. NUSANTARA",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "03"
+        },
+        {
+            "koderayon": "0312",
+            "namarayon": "JL. DI.PANJAITAN",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "03"
+        },
+        {
+            "koderayon": "0313",
+            "namarayon": "PERUM. GRIYA BESTARI PERMAI",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "-"
+        },
+        {
+            "koderayon": "0314",
+            "namarayon": "PERUM. TAMAN MEKARSARI 1",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "-"
+        },
+        {
+            "koderayon": "0315",
+            "namarayon": "JL. TRANSITO",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "03"
+        },
+        {
+            "koderayon": "0316",
+            "namarayon": "PERUM. BINTAN BAHAGIA",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "-"
+        },
+        {
+            "koderayon": "0317",
+            "namarayon": "PERUM. GRIYA HANGTUAH PERMAI",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "-"
+        },
+        {
+            "koderayon": "0318",
+            "namarayon": "PERUM. MAHKOTA ALAM RAYA",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "-"
+        },
+        {
+            "koderayon": "0319",
+            "namarayon": "PERUM. TAMAN MEKARSARI",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "-"
+        },
+        {
+            "koderayon": "0320",
+            "namarayon": "KOMP. POLRI KM.8",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "-"
+        },
+        {
+            "koderayon": "0321",
+            "namarayon": "PERUM. KIJANG KENCANA 1",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "-"
+        },
+        {
+            "koderayon": "0322",
+            "namarayon": "PERUM. KIJANG KENCANA 2",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "-"
+        },
+        {
+            "koderayon": "0323",
+            "namarayon": "PERUM. KIJANG KENCANA 3",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "-"
+        },
+        {
+            "koderayon": "0324",
+            "namarayon": "PERUM. KIJANG KENCANA 4",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "-"
+        },
+        {
+            "koderayon": "0325",
+            "namarayon": "KOMP. LANUD\/RAJAWALI",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "-"
+        },
+        {
+            "koderayon": "0326",
+            "namarayon": "PERUM. SAPPHIRE HILLS",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": ""
+        },
+        {
+            "koderayon": "0327",
+            "namarayon": "PERUM. NATURE WONDERLAND",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "PST1"
+        },
+        {
+            "koderayon": "0328",
+            "namarayon": "PERUM. NIMAS INDAH",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": ""
+        },
+        {
+            "koderayon": "0329",
+            "namarayon": "PERUM. PERMATA SUNGAI CARANG",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "PST1"
+        },
+        {
+            "koderayon": "0330",
+            "namarayon": "PERUM. MUTIARA BINTAN",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "PST1"
+        },
+        {
+            "koderayon": "0331",
+            "namarayon": "PERUM. GRAHA BINTAN PERMAI",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "PST1"
+        },
+        {
+            "koderayon": "0332",
+            "namarayon": "PERUM. CRYSTAL VILLAGE 2",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": ""
+        },
+        {
+            "koderayon": "0333",
+            "namarayon": "PERUM. NAM HILL RESIDENCE",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "PST1"
+        },
+        {
+            "koderayon": "0334",
+            "namarayon": "PERUM. CEMARA INDAH",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": ""
+        },
+        {
+            "koderayon": "0335",
+            "namarayon": "PERUM. GRIYA PERMATA ASRI",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "L_PST"
+        },
+        {
+            "koderayon": "0336",
+            "namarayon": "PERUM. THE HILL RESIDENCE",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "L_PST"
+        },
+        {
+            "koderayon": "0337",
+            "namarayon": "PERUM. GRIYA BUKIT ASRI",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "L_PST"
+        },
+        {
+            "koderayon": "0338",
+            "namarayon": "PERUM. CITRA PELITA 5",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "L_PST"
+        },
+        {
+            "koderayon": "0339",
+            "namarayon": "PERUM. CITRA PELITA 10",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": ""
+        },
+        {
+            "koderayon": "0340",
+            "namarayon": "PERUM. CITRA PELITA 9",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": ""
+        },
+        {
+            "koderayon": "0341",
+            "namarayon": "PERUM. PONDOK GURINDAM",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": ""
+        },
+        {
+            "koderayon": "0342",
+            "namarayon": "PERUM. PESONA RAWABANGUN",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "PST1"
+        },
+        {
+            "koderayon": "0343",
+            "namarayon": "PERUM. RAJAWALI",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "PST1"
+        },
+        {
+            "koderayon": "0344",
+            "namarayon": "PERUM. BAMBU KUNING GARDEN",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "PST1"
+        },
+        {
+            "koderayon": "0345",
+            "namarayon": "PERUM. PINANG RESIDENCE",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": ""
+        },
+        {
+            "koderayon": "0346",
+            "namarayon": "JL. GANET",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "PST1"
+        },
+        {
+            "koderayon": "0357",
+            "namarayon": "JL. ADI SUCIPTO",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "03"
+        },
+        {
+            "koderayon": "0358",
+            "namarayon": "KOMP. VILLA PINLANG MAS",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "-"
+        },
+        {
+            "koderayon": "0359",
+            "namarayon": "PERUM. TAMAN GURINDAM PERMAI",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "-"
+        },
+        {
+            "koderayon": "0360",
+            "namarayon": "PERUM. TAMAN PESONA ASRI",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "03"
+        },
+        {
+            "koderayon": "0361",
+            "namarayon": "JL. KUANTAN",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0362",
+            "namarayon": "JL. RE. MARTADINATA",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "03"
+        },
+        {
+            "koderayon": "0363",
+            "namarayon": "PERUM. KUANTAN INDAH",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "-"
+        },
+        {
+            "koderayon": "0367",
+            "namarayon": "PERUM. BUMI INDAH",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "03"
+        },
+        {
+            "koderayon": "0368",
+            "namarayon": "PERUM. TAMAN SERAYA",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "03"
+        },
+        {
+            "koderayon": "0369",
+            "namarayon": "JL. BINTAN CENTRE",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "03"
+        },
+        {
+            "koderayon": "0370",
+            "namarayon": "PERUM. TAMAN HARAPAN INDAH",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "03"
+        },
+        {
+            "koderayon": "0371",
+            "namarayon": "KOMP. PERTAMINA KM.8",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "03"
+        },
+        {
+            "koderayon": "0372",
+            "namarayon": "JL. HANDJOYO PUTRO",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "03"
+        },
+        {
+            "koderayon": "0375",
+            "namarayon": "JL. KOTA PIRING",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "03"
+        },
+        {
+            "koderayon": "0376",
+            "namarayon": "PERUM. PERMATA KHARISMA",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "03"
+        },
+        {
+            "koderayon": "0377",
+            "namarayon": "PERUM. MAHKOTA ALAM PERMAI",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "03"
+        },
+        {
+            "koderayon": "0378",
+            "namarayon": "JL. HANG LEKIR",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "03"
+        },
+        {
+            "koderayon": "0379",
+            "namarayon": "JL. PERALATAN",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "03"
+        },
+        {
+            "koderayon": "0380",
+            "namarayon": "JL. DI. PANJAITAN TIMUR",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "03"
+        },
+        {
+            "koderayon": "0381",
+            "namarayon": "KOMP. LANUDAL NUSANTARA",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "03"
+        },
+        {
+            "koderayon": "0382",
+            "namarayon": "PERUM. AIR RAJA",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "-"
+        },
+        {
+            "koderayon": "0383",
+            "namarayon": "JL. WR. SUPRATMAN",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": ""
+        },
+        {
+            "koderayon": "0384",
+            "namarayon": "JL. WONOSARI",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": ""
+        },
+        {
+            "koderayon": "0385",
+            "namarayon": "PERUM. GRIYA SURYA INDAH",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": ""
+        },
+        {
+            "koderayon": "0386",
+            "namarayon": "PERUM. BINTAN PERMATA INDAH",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": ""
+        },
+        {
+            "koderayon": "0387",
+            "namarayon": "JL. GESEK",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "PST1"
+        },
+        {
+            "koderayon": "0388",
+            "namarayon": "PERUM. GRIYA HANGTUAH 4",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": ""
+        },
+        {
+            "koderayon": "0389",
+            "namarayon": "PERUM. LEMBAH HIJAU",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": ""
+        },
+        {
+            "koderayon": "0390",
+            "namarayon": "PERUM. NUSA INDAH",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": ""
+        },
+        {
+            "koderayon": "0392",
+            "namarayon": "PERUM. PERMATA GALAXY",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "PST1"
+        },
+        {
+            "koderayon": "0393",
+            "namarayon": "JL. DAENG KAMBOJA",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "PST1"
+        },
+        {
+            "koderayon": "0394",
+            "namarayon": "JL. TRIWIJAYA KM.16",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": ""
+        },
+        {
+            "koderayon": "0395",
+            "namarayon": "PERUM. CLUSTER HANG LEKIR",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "PST1"
+        },
+        {
+            "koderayon": "0396",
+            "namarayon": "JL. BANDARA",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": ""
+        },
+        {
+            "koderayon": "0397",
+            "namarayon": "JL. CINTA DAMAI",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "PST1"
+        },
+        {
+            "koderayon": "0398",
+            "namarayon": "PERUM. GRIYA HANG LEKIR INDAH",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "PST1"
+        },
+        {
+            "koderayon": "0399",
+            "namarayon": "PERUM. VILLA MAS RESIDENCE",
+            "kodearea": "03",
+            "area": "TANJUNGPINANG TIMUR",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": ""
+        },
+        {
+            "koderayon": "0401",
+            "namarayon": "JL. A.R. HAKIM",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0402",
+            "namarayon": "KOMP. PERLA",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0403",
+            "namarayon": "JL. MT. HARYONO",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0404",
+            "namarayon": "KOMP. BINTAN PLAZA",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "-"
+        },
+        {
+            "koderayon": "0405",
+            "namarayon": "JL. CITRA",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0406",
+            "namarayon": "JL. PRAMUKA",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0408",
+            "namarayon": "JL. RAJA ALI HAJI",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0409",
+            "namarayon": "PERUM. MUTIARA VILLA",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "-"
+        },
+        {
+            "koderayon": "0410",
+            "namarayon": "JL. AHMAD YANI",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0411",
+            "namarayon": "JL. BASUKI RAHMAD",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0412",
+            "namarayon": "JL. R.H. FISABILILLAH",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "03"
+        },
+        {
+            "koderayon": "0413",
+            "namarayon": "KOMP. PAJAK",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0414",
+            "namarayon": "JL. PEMUDA",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0415",
+            "namarayon": "JL. MANTANG PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0416",
+            "namarayon": "JL. NUMBING PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0417",
+            "namarayon": "JL. SINGKEP PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0418",
+            "namarayon": "JL. GALANG PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0419",
+            "namarayon": "JL. DENDANG PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0420",
+            "namarayon": "JL. SENGGARANG PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0421",
+            "namarayon": "JL. BERANTAS PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0422",
+            "namarayon": "JL. MERAPAS PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0423",
+            "namarayon": "JL. MAPUR PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0424",
+            "namarayon": "JL. BUNGURAN PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0425",
+            "namarayon": "JL. SIANTAN PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0426",
+            "namarayon": "JL. KARIMUN PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0427",
+            "namarayon": "JL. JEMAJA PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0428",
+            "namarayon": "JL. LINGGA PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0429",
+            "namarayon": "JL. REMPANG PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0430",
+            "namarayon": "JL. BULAN PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0431",
+            "namarayon": "JL. BATAM PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0432",
+            "namarayon": "JL. DOMPAK PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0433",
+            "namarayon": "JL. NATUNA PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0434",
+            "namarayon": "JL. SAMBU PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0435",
+            "namarayon": "JL. SENAYANG PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0436",
+            "namarayon": "JL. TELAGA PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0437",
+            "namarayon": "JL. SUBI PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0438",
+            "namarayon": "JL. PEKAJANG PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0439",
+            "namarayon": "JL. BERAKIT PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0440",
+            "namarayon": "JL. MIDAI PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0441",
+            "namarayon": "JL. SERASAN PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0442",
+            "namarayon": "JL. CEMPA PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0443",
+            "namarayon": "JL. PENGIBU PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0444",
+            "namarayon": "JL. SELUAN PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0445",
+            "namarayon": "JL. CIBIA I PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0446",
+            "namarayon": "JL. CIBIA II PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0447",
+            "namarayon": "JL. MEDANG PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0448",
+            "namarayon": "JL. SEMBUR PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0449",
+            "namarayon": "JL. TERKULAI PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0450",
+            "namarayon": "JL. LOBAM PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0451",
+            "namarayon": "JL. PENAGA PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0452",
+            "namarayon": "JL. PENYENGAT I PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0453",
+            "namarayon": "JL. PENYENGAT II PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0454",
+            "namarayon": "JL. DURAI I PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0455",
+            "namarayon": "JL. DURAI II PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0456",
+            "namarayon": "JL. BINTAN PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0457",
+            "namarayon": "JL. BULUH PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0458",
+            "namarayon": "JL. BAYAN PERUMNAS",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0459",
+            "namarayon": "JL. SEI. JANG",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0463",
+            "namarayon": "JL. LEMBAH PURNAMA I",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": ""
+        },
+        {
+            "koderayon": "0464",
+            "namarayon": "JL. H.UNGAR",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0465",
+            "namarayon": "JL. LEMBAH PURNAMA II",
+            "kodearea": "04",
+            "area": "BUKIT BESTARI",
+            "kodewil": "1",
+            "wilayah": "TANJUNG PINANG",
+            "kodeloket": ""
+        },
+        {
+            "koderayon": "0501",
+            "namarayon": "SEI DATUK",
+            "kodearea": "05",
+            "area": "KIJANG",
+            "kodewil": "2",
+            "wilayah": "KIJANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0502",
+            "namarayon": "BAREK MOTOR",
+            "kodearea": "05",
+            "area": "KIJANG",
+            "kodewil": "2",
+            "wilayah": "KIJANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0503",
+            "namarayon": "KAMPUNG PISANG",
+            "kodearea": "05",
+            "area": "KIJANG",
+            "kodewil": "2",
+            "wilayah": "KIJANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0504",
+            "namarayon": "TRIKORA",
+            "kodearea": "05",
+            "area": "KIJANG",
+            "kodewil": "2",
+            "wilayah": "KIJANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0505",
+            "namarayon": "KAMPUNG BARU KEKE",
+            "kodearea": "05",
+            "area": "KIJANG",
+            "kodewil": "2",
+            "wilayah": "KIJANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0506",
+            "namarayon": "KAMPUNG LOSARI",
+            "kodearea": "05",
+            "area": "KIJANG",
+            "kodewil": "2",
+            "wilayah": "KIJANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0507",
+            "namarayon": "SEI ENAM",
+            "kodearea": "05",
+            "area": "KIJANG",
+            "kodewil": "2",
+            "wilayah": "KIJANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0508",
+            "namarayon": "KAMPUNG JATI",
+            "kodearea": "05",
+            "area": "KIJANG",
+            "kodewil": "2",
+            "wilayah": "KIJANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0509",
+            "namarayon": "RAJA ALI HAJI",
+            "kodearea": "05",
+            "area": "KIJANG",
+            "kodewil": "2",
+            "wilayah": "KIJANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0510",
+            "namarayon": "SIDODADI",
+            "kodearea": "05",
+            "area": "KIJANG",
+            "kodewil": "2",
+            "wilayah": "KIJANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0511",
+            "namarayon": "TANAH KUNING",
+            "kodearea": "05",
+            "area": "KIJANG",
+            "kodewil": "2",
+            "wilayah": "KIJANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0512",
+            "namarayon": "SEI WALANG",
+            "kodearea": "05",
+            "area": "KIJANG",
+            "kodewil": "2",
+            "wilayah": "KIJANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0513",
+            "namarayon": "SRI BAYINTAN",
+            "kodearea": "05",
+            "area": "KIJANG",
+            "kodewil": "2",
+            "wilayah": "KIJANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0514",
+            "namarayon": "KOLONG ENAM",
+            "kodearea": "05",
+            "area": "KIJANG",
+            "kodewil": "2",
+            "wilayah": "KIJANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0515",
+            "namarayon": "TOKOJO",
+            "kodearea": "05",
+            "area": "KIJANG",
+            "kodewil": "2",
+            "wilayah": "KIJANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0516",
+            "namarayon": "KESEHATAN",
+            "kodearea": "05",
+            "area": "KIJANG",
+            "kodewil": "2",
+            "wilayah": "KIJANG",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0517",
+            "namarayon": "KAMPUNG LENGKUAS",
+            "kodearea": "05",
+            "area": "KIJANG",
+            "kodewil": "2",
+            "wilayah": "KIJANG",
+            "kodeloket": "-"
+        },
+        {
+            "koderayon": "0518",
+            "namarayon": "PERUM. VILLA DELIMA INDAH",
+            "kodearea": "05",
+            "area": "KIJANG",
+            "kodewil": "2",
+            "wilayah": "KIJANG",
+            "kodeloket": "-"
+        },
+        {
+            "koderayon": "0519",
+            "namarayon": "KAMPUNG KOLAM RENANG",
+            "kodearea": "05",
+            "area": "KIJANG",
+            "kodewil": "2",
+            "wilayah": "KIJANG",
+            "kodeloket": ""
+        },
+        {
+            "koderayon": "0601",
+            "namarayon": "RE. MARTADINATA",
+            "kodearea": "06",
+            "area": "UBAN KOTA",
+            "kodewil": "3",
+            "wilayah": "UBAN",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0602",
+            "namarayon": "YOS SUDARSO",
+            "kodearea": "06",
+            "area": "UBAN KOTA",
+            "kodewil": "3",
+            "wilayah": "UBAN",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0603",
+            "namarayon": "MERDEKA",
+            "kodearea": "06",
+            "area": "UBAN KOTA",
+            "kodewil": "3",
+            "wilayah": "UBAN",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0604",
+            "namarayon": "CENDRAWASIH",
+            "kodearea": "06",
+            "area": "UBAN KOTA",
+            "kodewil": "3",
+            "wilayah": "UBAN",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0701",
+            "namarayon": "JEN. SUDIRMAN",
+            "kodearea": "07",
+            "area": "SELATAN",
+            "kodewil": "3",
+            "wilayah": "UBAN",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0702",
+            "namarayon": "IMAN BONJOL",
+            "kodearea": "07",
+            "area": "SELATAN",
+            "kodewil": "3",
+            "wilayah": "UBAN",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0703",
+            "namarayon": "PERMAISURI",
+            "kodearea": "07",
+            "area": "SELATAN",
+            "kodewil": "3",
+            "wilayah": "UBAN",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0704",
+            "namarayon": "DT. SYAHBANDAR",
+            "kodearea": "07",
+            "area": "SELATAN",
+            "kodewil": "3",
+            "wilayah": "UBAN",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0705",
+            "namarayon": "RA. KARTINI",
+            "kodearea": "07",
+            "area": "SELATAN",
+            "kodewil": "3",
+            "wilayah": "UBAN",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0706",
+            "namarayon": "MARTOSARI",
+            "kodearea": "07",
+            "area": "SELATAN",
+            "kodewil": "3",
+            "wilayah": "UBAN",
+            "kodeloket": "-"
+        },
+        {
+            "koderayon": "0707",
+            "namarayon": "HULU RIAU",
+            "kodearea": "07",
+            "area": "SELATAN",
+            "kodewil": "3",
+            "wilayah": "UBAN",
+            "kodeloket": ""
+        },
+        {
+            "koderayon": "0801",
+            "namarayon": "HANG TUAH",
+            "kodearea": "08",
+            "area": "UTARA",
+            "kodewil": "3",
+            "wilayah": "UBAN",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0802",
+            "namarayon": "KOMPLEK KPLP",
+            "kodearea": "08",
+            "area": "UTARA",
+            "kodewil": "3",
+            "wilayah": "UBAN",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0803",
+            "namarayon": "ASRAMA POLISI",
+            "kodearea": "08",
+            "area": "UTARA",
+            "kodewil": "3",
+            "wilayah": "UBAN",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0804",
+            "namarayon": "NACHODA LANCANG",
+            "kodearea": "08",
+            "area": "UTARA",
+            "kodewil": "3",
+            "wilayah": "UBAN",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0805",
+            "namarayon": "TAMAN SARI",
+            "kodearea": "08",
+            "area": "UTARA",
+            "kodewil": "3",
+            "wilayah": "UBAN",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0806",
+            "namarayon": "CIPTADI",
+            "kodearea": "08",
+            "area": "UTARA",
+            "kodewil": "3",
+            "wilayah": "UBAN",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0807",
+            "namarayon": "KESATRIA",
+            "kodearea": "08",
+            "area": "UTARA",
+            "kodewil": "3",
+            "wilayah": "UBAN",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0808",
+            "namarayon": "NYIUR",
+            "kodearea": "08",
+            "area": "UTARA",
+            "kodewil": "3",
+            "wilayah": "UBAN",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0901",
+            "namarayon": "PERUM VILLA ANGGREK",
+            "kodearea": "09",
+            "area": "KOMPLEK PERUMAHAN",
+            "kodewil": "3",
+            "wilayah": "UBAN",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0902",
+            "namarayon": "PURI ALAMANDA",
+            "kodearea": "09",
+            "area": "KOMPLEK PERUMAHAN",
+            "kodewil": "3",
+            "wilayah": "UBAN",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0903",
+            "namarayon": "T.MANTANG\/KP BARU",
+            "kodearea": "09",
+            "area": "KOMPLEK PERUMAHAN",
+            "kodewil": "3",
+            "wilayah": "UBAN",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0904",
+            "namarayon": "INDOTEKKON",
+            "kodearea": "09",
+            "area": "KOMPLEK PERUMAHAN",
+            "kodewil": "3",
+            "wilayah": "UBAN",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0905",
+            "namarayon": "BINTAN MAS",
+            "kodearea": "09",
+            "area": "KOMPLEK PERUMAHAN",
+            "kodewil": "3",
+            "wilayah": "UBAN",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0906",
+            "namarayon": "BINTANG LIMA",
+            "kodearea": "09",
+            "area": "KOMPLEK PERUMAHAN",
+            "kodewil": "3",
+            "wilayah": "UBAN",
+            "kodeloket": "-"
+        },
+        {
+            "koderayon": "0907",
+            "namarayon": "T.MANTANG2\/T.SARI",
+            "kodearea": "09",
+            "area": "KOMPLEK PERUMAHAN",
+            "kodewil": "3",
+            "wilayah": "UBAN",
+            "kodeloket": "01"
+        },
+        {
+            "koderayon": "0908",
+            "namarayon": "PERUM. TELAGA SURYA",
+            "kodearea": "09",
+            "area": "KOMPLEK PERUMAHAN",
+            "kodewil": "3",
+            "wilayah": "UBAN",
+            "kodeloket": "-"
+        },
+        {
+            "koderayon": "0909",
+            "namarayon": "PERUM. PBI II",
+            "kodearea": "09",
+            "area": "KOMPLEK PERUMAHAN",
+            "kodewil": "3",
+            "wilayah": "UBAN",
+            "kodeloket": "-"
+        },
+        {
+            "koderayon": "0910",
+            "namarayon": "PERUM. OEBAN VILLAGE",
+            "kodearea": "09",
+            "area": "KOMPLEK PERUMAHAN",
+            "kodewil": "3",
+            "wilayah": "UBAN",
+            "kodeloket": "12"
+        },
+        {
+            "koderayon": "0911",
+            "namarayon": "KOMPLEK BUMI MORO",
+            "kodearea": "09",
+            "area": "KOMPLEK PERUMAHAN",
+            "kodewil": "3",
+            "wilayah": "UBAN",
+            "kodeloket": "12"
+        },
+        {
+            "koderayon": "0912",
+            "namarayon": "INDUN SURI",
+            "kodearea": "09",
+            "area": "KOMPLEK PERUMAHAN",
+            "kodewil": "3",
+            "wilayah": "UBAN",
+            "kodeloket": ""
+        },
+        {
+            "koderayon": "0913",
+            "namarayon": "NOBLE HOUSE",
+            "kodearea": "09",
+            "area": "KOMPLEK PERUMAHAN",
+            "kodewil": "3",
+            "wilayah": "UBAN",
+            "kodeloket": "12"
+        }
+    ],
+    "v": [
+        {
+            "kodekelurahan": "01",
+            "kodekelurahan2": null,
+            "kelurahan": "AIR RAJA",
+            "kodekecamatan": "03",
+            "kecamatan": "-",
+            "kodecabang": "-",
+            "cabang": "-"
+        },
+        {
+            "kodekelurahan": "02",
+            "kodekelurahan2": null,
+            "kelurahan": "BATU 9\r\n",
+            "kodekecamatan": "03",
+            "kecamatan": "-",
+            "kodecabang": "-",
+            "cabang": "-"
+        },
+        {
+            "kodekelurahan": "03",
+            "kodekelurahan2": null,
+            "kelurahan": "BINTAN\r\n",
+            "kodekecamatan": "01",
+            "kecamatan": "-",
+            "kodecabang": "-",
+            "cabang": "-"
+        },
+        {
+            "kodekelurahan": "04",
+            "kodekelurahan2": null,
+            "kelurahan": "BUKIT CERMIN\r\n",
+            "kodekecamatan": "02",
+            "kecamatan": "-",
+            "kodecabang": "-",
+            "cabang": "-"
+        },
+        {
+            "kodekelurahan": "05",
+            "kodekelurahan2": null,
+            "kelurahan": "KAMPUNG BARU\r\n",
+            "kodekecamatan": "02",
+            "kecamatan": "-",
+            "kodecabang": "-",
+            "cabang": "-"
+        },
+        {
+            "kodekelurahan": "06",
+            "kodekelurahan2": null,
+            "kelurahan": "KAMPUNG BULANG\r\n",
+            "kodekecamatan": "03",
+            "kecamatan": "-",
+            "kodecabang": "-",
+            "cabang": "-"
+        },
+        {
+            "kodekelurahan": "07",
+            "kodekelurahan2": null,
+            "kelurahan": "KEMBOJA\r\n",
+            "kodekecamatan": "02",
+            "kecamatan": "-",
+            "kodecabang": "-",
+            "cabang": "-"
+        },
+        {
+            "kodekelurahan": "08",
+            "kodekelurahan2": null,
+            "kelurahan": "KOTA PIRING\r\n",
+            "kodekecamatan": "03",
+            "kecamatan": "-",
+            "kodecabang": "-",
+            "cabang": "-"
+        },
+        {
+            "kodekelurahan": "09",
+            "kodekelurahan2": null,
+            "kelurahan": "PINANG KENCANA\r\n",
+            "kodekecamatan": "03",
+            "kecamatan": "-",
+            "kodecabang": "-",
+            "cabang": "-"
+        },
+        {
+            "kodekelurahan": "10",
+            "kodekelurahan2": null,
+            "kelurahan": "SEI JANG\r\n",
+            "kodekecamatan": "04",
+            "kecamatan": "-",
+            "kodecabang": "-",
+            "cabang": "-"
+        },
+        {
+            "kodekelurahan": "11",
+            "kodekelurahan2": null,
+            "kelurahan": "TANJUNG AYUN SAKTI\r\n",
+            "kodekecamatan": "04",
+            "kecamatan": "-",
+            "kodecabang": "-",
+            "cabang": "-"
+        },
+        {
+            "kodekelurahan": "12",
+            "kodekelurahan2": null,
+            "kelurahan": "TANJUNGPINANG KOTA\r\n",
+            "kodekecamatan": "01",
+            "kecamatan": "-",
+            "kodecabang": "-",
+            "cabang": "-"
+        },
+        {
+            "kodekelurahan": "13",
+            "kodekelurahan2": null,
+            "kelurahan": "TANJUNGPINANG TIMUR\r\n",
+            "kodekecamatan": "04",
+            "kecamatan": "-",
+            "kodecabang": "-",
+            "cabang": "-"
+        },
+        {
+            "kodekelurahan": "14",
+            "kodekelurahan2": null,
+            "kelurahan": "TANJUNG UNGGAT\r\n",
+            "kodekecamatan": "04",
+            "kecamatan": "-",
+            "kodecabang": "-",
+            "cabang": "-"
+        },
+        {
+            "kodekelurahan": "15",
+            "kodekelurahan2": null,
+            "kelurahan": "TANJUNGPINANG BARAT",
+            "kodekecamatan": "02",
+            "kecamatan": "-",
+            "kodecabang": "-",
+            "cabang": "-"
+        },
+        {
+            "kodekelurahan": "xx",
+            "kodekelurahan2": null,
+            "kelurahan": "-",
+            "kodekecamatan": "-",
+            "kecamatan": "-",
+            "kodecabang": "-",
+            "cabang": "-"
+        }
+    ]
+}
