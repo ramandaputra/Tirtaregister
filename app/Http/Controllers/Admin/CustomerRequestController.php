@@ -11,7 +11,7 @@ class CustomerRequestController extends Controller
     // Tampilkan daftar pengajuan di Dashboard Admin
     public function index()
     {
-        $requests = ConnectionRequest::latest()->paginate(10);
+        $requests = ConnectionRequest::latest()->paginate(15);
         return view('admin.requests.index', compact('requests'));
     }
 

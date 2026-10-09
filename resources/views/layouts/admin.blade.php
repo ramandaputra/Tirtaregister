@@ -122,6 +122,12 @@
                         <span class="material-symbols-outlined text-[20px] shrink-0">manage_accounts</span>
                         <span class="truncate">Kelola Admin</span>
                     </a>
+
+                    <a href="{{ route('superadmin.logs.index') }}" 
+                       class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 {{ request()->routeIs('superadmin.logs.index') ? 'bg-primary text-white shadow-sm' : 'text-gray-600 hover:bg-gray-100/80 hover:text-gray-900' }}">
+                        <span class="material-symbols-outlined text-[20px] shrink-0">history</span>
+                        <span class="truncate">Log Aktivitas</span>
+                    </a>
                     @endrole
                 </nav>
             </div>

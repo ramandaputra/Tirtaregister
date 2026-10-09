@@ -1,13 +1,13 @@
 @php
     // Mendukung data dari tabel pendaftaran maupun pelanggan
-    $data = $pendaftaran ?? $pelanggan ?? null;
+    $data = $data ?? $pendaftaran ?? $pelanggan ?? null;
 @endphp
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bukti Pendaftaran - {{ optional($data)->nomor_registrasi ?? optional($data)->nomorreg ?? 'Pendaftaran Baru' }}</title>
+    <title>Bukti Pendaftaran - {{ optional($data)->registration_number ?? optional($data)->nomor_registrasi ?? optional($data)->nomorreg ?? 'Pendaftaran Baru' }}</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -105,7 +105,7 @@
                 BUKTI PENDAFTARAN &amp; DAFTAR TUNGGU LANGGANAN BARU
             </h3>
             <p class="text-sm font-bold mt-1">
-                No. {{ $data->nomor_registrasi ?? $data->nomorreg ?? '0001/REG/1/' . Carbon\Carbon::parse($data->created_at ?? $data->tgldaftar ?? now())->format('m/Y') }}
+                No. {{ $data->registration_number ?? $data->nomor_registrasi ?? $data->nomorreg ?? '0001/REG/1/' . Carbon\Carbon::parse($data->created_at ?? $data->tgldaftar ?? now())->format('m/Y') }}
             </p>
         </div>
 
@@ -116,13 +116,13 @@
                     <tr class="align-top">
                         <td class="w-64 py-2 font-normal">Nama Sesuai KTP</td>
                         <td class="w-6 py-2 text-center">:</td>
-                        <td class="py-2 font-bold uppercase">{{ $data->nama_lengkap ?? $data->nama ?? '-' }}</td>
+                        <td class="py-2 font-bold uppercase">{{ $data->full_name ?? $data->nama_lengkap ?? $data->nama ?? '-' }}</td>
                     </tr>
                     <tr class="align-top">
                         <td class="py-2 font-normal">Alamat Lokasi yang akan dipasang</td>
                         <td class="py-2 text-center">:</td>
                         <td class="py-2 uppercase">
-                            {{ $data->alamat_pasang ?? $data->alamat ?? '-' }}
+                            {{ $data->installation_address ?? $data->alamat_pasang ?? $data->alamat ?? '-' }}
                             @if(!empty($data->rt) || !empty($data->rw))
                                 , RT: {{ $data->rt ?? '-' }}, RW: {{ $data->rw ?? '-' }}
                             @endif
@@ -139,7 +139,7 @@
                         <td class="py-2 font-normal">Nomor HP / Telp</td>
                         <td class="py-2 text-center">:</td>
                         <td class="py-2">
-                            {{ !empty($data->telepon) ? $data->telepon : (!empty($data->telp) ? $data->telp : '-') }} / {{ $data->no_hp ?? $data->nomor_telepon ?? $data->hp ?? '-' }}
+                            {{ $data->phone_number ?? $data->telepon ?? $data->telp ?? $data->no_hp ?? $data->nomor_telepon ?? $data->hp ?? '-' }}
                         </td>
                     </tr>
                 </tbody>

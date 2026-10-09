@@ -12,7 +12,7 @@ class NewsController extends Controller
 {
     public function index()
     {
-        $news = News::latest()->paginate(10);
+        $news = News::latest()->paginate(15);
         return view('superadmin.news.index', compact('news'));
     }
 

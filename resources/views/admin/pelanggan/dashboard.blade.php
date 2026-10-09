@@ -60,7 +60,7 @@
             <a href="{{ route('admin.pelanggan.index') }}" class="text-sm font-semibold text-primary hover:underline">Lihat Semua</a>
         </div>
         <div class="p-0 overflow-x-auto">
-            <table class="w-full text-left border-collapse">
+            <table class="w-full text-center border-collapse">
                 <thead>
                     <tr class="bg-gray-50 text-xs text-gray-500 uppercase tracking-wider">
                         <th class="p-4 font-semibold border-b border-surface-border">No. Registrasi</th>
@@ -72,17 +72,17 @@
                 <tbody class="divide-y divide-surface-border">
                     @forelse($recentRequests as $req)
                     <tr class="hover:bg-gray-50 transition">
-                        <td class="p-4 text-sm font-medium">{{ $req->registration_number }}</td>
-                        <td class="p-4 text-sm">{{ $req->full_name }}</td>
+                        <td class="p-4 text-sm font-medium">{{ $req->nomorreg }}</td>
+                        <td class="p-4 text-sm">{{ $req->nama }}</td>
                         <td class="p-4 text-sm">
-                            @if($req->connection_type == 'fasilitas_umum')
-                                <span class="bg-red-100 text-red-700 px-2.5 py-1 rounded-full text-xs font-bold">Fasilitas Umum</span>
+                            @if($req->tipe == 'MBR')
+                                <span class="bg-red-100 text-red-700 px-2.5 py-1 rounded-full text-xs font-bold">MBR</span>
                             @else
-                                <span class="bg-blue-100 text-blue-700 px-2.5 py-1 rounded-full text-xs font-bold">Pribadi</span>
+                                <span class="bg-blue-100 text-blue-700 px-2.5 py-1 rounded-full text-xs font-bold">{{ $req->tipe ?? 'REGULER' }}</span>
                             @endif
                         </td>
                         <td class="p-4 text-sm text-right">
-                            <a href="{{ route('admin.pelanggan.show', $req->id) }}" class="text-primary font-semibold hover:underline">Detail</a>
+                            <a href="{{ route('admin.pelanggan.show', $req->nomorreg) }}" class="text-primary font-semibold hover:underline">Detail</a>
                         </td>
                     </tr>
                     @empty

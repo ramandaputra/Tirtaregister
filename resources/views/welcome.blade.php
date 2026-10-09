@@ -206,7 +206,7 @@
                         <div class="lg:col-span-5 relative">
                             <div class="relative rounded-2xl bg-surface-container p-space-md overflow-hidden shadow-sm">
                                 <div class="relative h-64 rounded-xl overflow-hidden mb-space-md" id="hero-slideshow">
-                                    @for($i = 1; $i <= 4; $i++)
+                                    @for($i = 1; $i <= 5; $i++)
                                         @php
                                             $isFirst = $i == 1;
                                             $tag = $settings['hero_card_tag_'.$i] ?? setting('hero_card_tag_'.$i, $isFirst ? 'Infrastruktur Terintegrasi' : '');

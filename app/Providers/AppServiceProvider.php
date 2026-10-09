@@ -24,5 +24,9 @@ class AppServiceProvider extends ServiceProvider
         Gate::before(function ($user, $ability) {
             return $user->hasRole('superadmin') ? true : null;
         });
+
+        \Illuminate\Support\Facades\Event::listen(function (\Illuminate\Auth\Events\Login $event) {
+            logActivity('Login', 'Pengguna ' . $event->user->name . ' telah berhasil login.', 'User', $event->user->id);
+        });
     }
 }

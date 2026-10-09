@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ConnectionRequest extends Model
 {
+    use \App\Traits\LogsActivity;
+
     protected $fillable = [
         'connection_type',
         'registration_number',

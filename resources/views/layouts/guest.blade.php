@@ -18,20 +18,20 @@
         <div class="min-h-screen flex flex-col sm:justify-center items-center sm:items-start pt-6 sm:pt-0 relative px-6 sm:px-16 md:px-24 lg:px-40">
             
             <!-- Background Image -->
-            <div class="absolute inset-0 z-[-1]">
+            <div class="fixed inset-0 z-0">
                 <img src="{{ asset('img/background.jpg') }}" class="w-full h-full object-cover" alt="Background">
-                <div class="absolute inset-0 bg-black/40"></div>
+                <div class="absolute inset-0 bg-black/50"></div>
             </div>
             
             <!-- Logo Container -->
-            <div class="w-full sm:max-w-md flex justify-center sm:justify-start mb-4 z-10">
+            <div class="w-full sm:max-w-md flex justify-center sm:justify-start mb-4 relative z-10">
                 <a href="/">
                     <x-application-logo class="w-20 h-20 fill-current text-white drop-shadow-md" />
                 </a>
             </div>
 
             <!-- Login Form Container -->
-            <div class="w-full sm:max-w-md px-6 py-8 bg-white/60 backdrop-blur-md shadow-2xl overflow-hidden rounded-2xl border border-white/30 z-10">
+            <div class="w-full sm:max-w-md px-6 py-8 bg-white/60 backdrop-blur-md shadow-2xl overflow-hidden rounded-2xl border border-white/30 relative z-10">
                 {{ $slot }}
             </div>
         </div>

@@ -62,7 +62,7 @@
         </div>
 
         <div class="overflow-x-auto">
-            <table class="w-full text-left border-collapse">
+            <table class="w-full text-center border-collapse">
                 <thead>
                     <tr class="bg-gray-50/80 border-b border-surface-border text-xs font-semibold text-gray-500 uppercase tracking-wider">
                         <th class="py-3.5 px-6">Nama Admin</th>
@@ -76,7 +76,7 @@
                     @forelse($admins as $admin)
                         <tr class="hover:bg-gray-50/50 transition duration-150">
                             <td class="py-4 px-6 font-semibold text-gray-900">
-                                <div class="flex items-center gap-3">
+                                <div class="flex items-center justify-center gap-3">
                                     <div class="w-8 h-8 rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center text-xs shrink-0">
                                         {{ strtoupper(substr($admin->name, 0, 2)) }}
                                     </div>

@@ -12,7 +12,7 @@ class AdminManagementController extends Controller
     public function index()
     {
         // Menggunakan eager loading 'roles' agar query ringan
-        $admins = User::with('roles')->get(); 
+        $admins = User::with('roles')->paginate(15);
         return view('superadmin.admins.index', compact('admins'));
     }
 

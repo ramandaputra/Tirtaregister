@@ -8,7 +8,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use Notifiable, HasRoles;
+    use Notifiable, HasRoles, \App\Traits\LogsActivity;
 
     protected $fillable = [
         'name',
