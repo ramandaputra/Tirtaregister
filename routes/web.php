@@ -45,8 +45,15 @@ Route::get('/pasang-baru/fasilitas-umum', [ConnectionRequestController::class, '
 Route::get('/api/villages/{village}/rayons', [ConnectionRequestController::class, 'getRayons'])
     ->name('api.villages.rayons');
 
+Route::get('/api/track', [ConnectionRequestController::class, 'trackStatus'])
+    ->name('public.track');
+
 Route::post('/pasang-baru', [ConnectionRequestController::class, 'store'])
     ->name('public.register.store');
+
+Route::get('/pasang-baru/success/{regNumber}', [ConnectionRequestController::class, 'success'])
+    ->name('public.register.success')
+    ->where('regNumber', '.*');
 
 // Berita Publik
 Route::get('/berita', [NewsController::class, 'index'])
@@ -184,8 +191,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::get('/pelanggan/{id}/edit', [AdminPelangganController::class, 'edit'])->name('pelanggan.edit')->where('id', '.*');
             Route::put('/pelanggan/{id}', [AdminPelangganController::class, 'update'])->name('pelanggan.update')->where('id', '.*');
             Route::delete('/pelanggan/{id}', [AdminPelangganController::class, 'destroy'])->name('pelanggan.destroy')->where('id', '.*');
-            Route::get('/pelanggan/{id}', [AdminPelangganController::class, 'show'])->name('pelanggan.show')->where('id', '.*');
             Route::get('/pelanggan/{id}/print', [AdminPelangganController::class, 'print'])->name('pelanggan.print')->where('id', '.*');
+            Route::get('/pelanggan/{id}', [AdminPelangganController::class, 'show'])->name('pelanggan.show')->where('id', '.*');
 
             // Kelola Permintaan Pelanggan
             Route::resource(

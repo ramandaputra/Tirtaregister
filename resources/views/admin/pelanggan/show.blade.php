@@ -16,7 +16,7 @@
                 <span class="material-symbols-outlined text-[18px]">arrow_back</span>
                 Kembali
             </a>
-            <a href="{{ route('admin.pelanggan.print', $pelanggan->nomorreg) }}" target="_blank" class="px-4 py-2 bg-white text-primary hover:bg-gray-100 rounded-xl text-sm font-bold shadow-sm transition flex items-center gap-2">
+            <a href="{{ route('admin.pelanggan.print', $pelanggan->nomorreg) }}" class="px-4 py-2 bg-white text-primary hover:bg-gray-100 rounded-xl text-sm font-bold shadow-sm transition flex items-center gap-2">
                 <span class="material-symbols-outlined text-[18px]">print</span>
                 Cetak Bukti
             </a>

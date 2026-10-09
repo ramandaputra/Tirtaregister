@@ -194,7 +194,7 @@
                             
                             <div>
                                 <label class="form-label">Upload KTP <span class="text-red-500">*</span></label>
-                                <input type="file" name="ktp_file" accept=".jpg,.jpeg,.png,.pdf" required class="form-input bg-white p-2 text-sm">
+                                <input type="file" name="ktp_file" accept=".jpg,.jpeg,.png" required class="form-input bg-white p-2 text-sm">
                             </div>
                             
                             <div>
@@ -204,7 +204,7 @@
                             
                             <div>
                                 <label class="form-label">Upload KK <span class="text-red-500">*</span></label>
-                                <input type="file" name="kk_file" accept=".jpg,.jpeg,.png,.pdf" required class="form-input bg-white p-2 text-sm">
+                                <input type="file" name="kk_file" accept=".jpg,.jpeg,.png" required class="form-input bg-white p-2 text-sm">
                             </div>
                             
                             <div>

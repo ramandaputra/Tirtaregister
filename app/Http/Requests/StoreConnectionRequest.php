@@ -21,8 +21,8 @@ class StoreConnectionRequest extends FormRequest
             'email' => 'nullable|email|max:255',
             'kk_number' => 'required|numeric|digits:16',
             'occupation_id' => 'required|exists:occupations,id',
-            'ktp_file' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048', // Max 2MB
-            'kk_file' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048', // Max 2MB
+            'ktp_file' => 'required|file|mimes:jpg,jpeg,png|max:2048', // Max 2MB
+            'kk_file' => 'required|file|mimes:jpg,jpeg,png|max:2048', // Max 2MB
             'house_image_file' => 'required|file|mimes:jpg,jpeg,png|max:5120', // Foto Rumah (Max 5MB)
             
             'installation_address' => 'required|string',

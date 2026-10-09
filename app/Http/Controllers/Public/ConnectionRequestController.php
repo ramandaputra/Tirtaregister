@@ -70,8 +70,8 @@ class ConnectionRequestController extends Controller
         $kkPath = $request->file('kk_file') ? $request->file('kk_file')->store('kk_files', 'public') : null;
         $houseImagePath = $request->file('house_image_file') ? $request->file('house_image_file')->store('house_images', 'public') : null;
 
-        // 2. Generate Nomor Pendaftaran Unik
-        $regNumber = 'REG-'.date('Ym').'-'.strtoupper(Str::random(4));
+        // 2. Generate Nomor Pendaftaran Unik (Melanjutkan urutan Pendaftaran)
+        $regNumber = $this->generateRegistrationNumber();
 
         // 3. Simpan ke Database
         $connection = ConnectionRequest::create([
@@ -110,6 +110,96 @@ class ConnectionRequestController extends Controller
             'status' => 'pending',
         ]);
 
-        return redirect()->back()->with('success', "Pendaftaran berhasil! Nomor Registrasi Anda: {$regNumber}");
+        return redirect()->route('public.register.success', ['regNumber' => $regNumber])
+            ->with('success', "Pendaftaran berhasil! Nomor Registrasi Anda: {$regNumber}");
+    }
+
+    private function generateRegistrationNumber()
+    {
+        $currentYear = date('Y');
+        $romanMonths = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
+        $currentMonthRoman = $romanMonths[date('n')];
+
+        $maxNumber = 0;
+
+        // Ambil nomor tertinggi dari ConnectionRequest tahun ini
+        $latestCR = \App\Models\ConnectionRequest::where('registration_number', 'like', "%/REG/%/{$currentYear}")
+            ->get();
+        
+        foreach ($latestCR as $cr) {
+            $parts = explode('/', str_replace(' ', '', $cr->registration_number));
+            if (isset($parts[0]) && is_numeric($parts[0])) {
+                $num = (int)$parts[0];
+                if ($num > $maxNumber) $maxNumber = $num;
+            }
+        }
+
+        // Ambil nomor tertinggi dari Pendaftaran (legacy) tahun ini
+        $latestPendaftaran = \App\Models\Pendaftaran::where('nomorreg', 'like', "%/REG/%/{$currentYear}")
+            ->get();
+            
+        foreach ($latestPendaftaran as $p) {
+            $parts = explode('/', str_replace(' ', '', $p->nomorreg));
+            if (isset($parts[0]) && is_numeric($parts[0])) {
+                $num = (int)$parts[0];
+                if ($num > $maxNumber) $maxNumber = $num;
+            }
+        }
+
+        $nextNumber = str_pad($maxNumber + 1, 4, '0', STR_PAD_LEFT);
+        
+        // Format standar: 0172/REG/1/X/2026
+        return "{$nextNumber}/REG/1/{$currentMonthRoman}/{$currentYear}";
+    }
+
+    // Menampilkan halaman resi sukses
+    public function success($regNumber)
+    {
+        $connectionRequest = ConnectionRequest::where('registration_number', $regNumber)->firstOrFail();
+        return view('pendaftaran.receipt', [
+            'data' => $connectionRequest,
+            'auto_print' => true
+        ]);
+    }
+
+    public function trackStatus(\Illuminate\Http\Request $request)
+    {
+        $query = $request->input('query');
+        if (!$query) {
+            return response()->json(['success' => false, 'message' => 'Query tidak boleh kosong.'], 400);
+        }
+
+        // Cek di ConnectionRequest (Pendaftaran Baru)
+        $cr = ConnectionRequest::where('registration_number', $query)
+            ->orWhere('nik', $query)
+            ->first();
+
+        if ($cr) {
+            $status = $cr->status ?? 'pending';
+            $msg = 'Pengajuan sedang diproses (Status: ' . ucfirst($status) . ')';
+            return response()->json([
+                'success' => true,
+                'message' => 'Data ditemukan: ' . $cr->full_name,
+                'status' => $msg
+            ]);
+        }
+
+        // Cek di Pendaftaran (Legacy)
+        $legacy = \App\Models\Pendaftaran::where('nomorreg', $query)
+            ->orWhere('nik', $query)
+            ->first();
+            
+        if ($legacy) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Data ditemukan: ' . $legacy->nama,
+                'status' => 'Terdaftar (Legacy)'
+            ]);
+        }
+
+        return response()->json([
+            'success' => false,
+            'message' => 'Data tidak ditemukan.'
+        ], 404);
     }
 }

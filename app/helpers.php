@@ -32,13 +32,19 @@ if (!function_exists('logActivity')) {
      */
     function logActivity($action, $description, $modelType = null, $modelId = null)
     {
+        $ipAddress = request()->header('X-Forwarded-For') 
+                        ? trim(explode(',', request()->header('X-Forwarded-For'))[0]) 
+                        : (request()->header('Client-Ip') 
+                            ? request()->header('Client-Ip') 
+                            : request()->ip());
+
         \App\Models\ActivityLog::create([
             'user_id' => auth()->check() ? auth()->id() : null,
             'action' => $action,
             'model_type' => $modelType,
             'model_id' => $modelId,
             'description' => $description,
-            'ip_address' => request()->ip(),
+            'ip_address' => $ipAddress,
         ]);
     }
 }

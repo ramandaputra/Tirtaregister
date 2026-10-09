@@ -157,9 +157,12 @@
                                 {{ $settings['home_hero_subtitle'] ?? setting('home_hero_subtitle', 'Kemudahan pengajuan pemasangan instalasi meter air bersih secara online untuk masyarakat dan instansi di wilayah Provinsi Kepulauan Riau (Tanjungpinang, Bintan, dan sekitarnya). Aman, transparan, dan dapat dipantau langsung.') }}
                             </p>
                             <!-- CTA Button -->
-                            <div class="pt-space-xs mb-space-sm">
+                            <div class="pt-space-xs mb-space-sm flex flex-wrap gap-3">
                                 <a href="{{ $settings['home_hero_cta_url'] ?? setting('home_hero_cta_url', '/pasang-baru') }}" class="inline-flex items-center justify-center h-12 px-space-lg rounded-xl bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-on-primary-fixed-variant transition-colors shadow-sm">
                                     {{ $settings['home_hero_cta_text'] ?? setting('home_hero_cta_text', 'Daftar Pasang Baru') }}
+                                </a>
+                                <a href="https://pusimpel.com/tarif/tabel.jpeg" target="_blank" class="inline-flex items-center justify-center h-12 px-space-lg rounded-xl bg-surface-container-high text-on-surface font-label-md text-label-md font-semibold hover:bg-surface-dim transition-colors shadow-sm border border-outline-variant">
+                                    Cek Tagihan Air
                                 </a>
                             </div>
                             <!-- Quick Tracking Search Bar -->
@@ -168,22 +171,18 @@
                                     <label class="block font-label-md text-label-md text-on-surface mb-space-xs">
                                         Sudah pernah mendaftar? Lacak Progres Pengajuan Anda
                                     </label>
-                                    <form class="flex flex-col sm:flex-row items-stretch gap-space-xs" id="trackForm" onsubmit="event.preventDefault(); window.handleTracking();">
+                                    <form class="flex flex-col sm:flex-row items-stretch gap-space-xs" id="trackForm" onsubmit="event.preventDefault(); window.handleTracking(event); return false;">
                                         <div class="relative flex-1">
                                             <span class="absolute inset-y-0 left-0 pl-space-sm flex items-center pointer-events-none text-on-surface-variant">
                                                 <span class="material-symbols-outlined text-[20px]">search</span>
                                             </span>
-                                            <input class="w-full h-11 pl-10 pr-space-md rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md placeholder:text-outline focus:outline-none shadow-sm" id="trackInput" placeholder="Masukkan Nomor Registrasi (REG-XXXX) atau NIK KTP..." required="" type="text">
+                                            <input class="w-full h-11 pl-10 pr-space-md rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md placeholder:text-outline focus:outline-none shadow-sm" id="trackInput" placeholder="Masukkan Nomor Registrasi 000/REG/0/0/0000 atau NIK" required="" type="text">
                                         </div>
-                                        <button class="h-11 px-space-lg rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-on-primary-fixed-variant transition-colors flex items-center justify-center gap-space-xs shrink-0 shadow-sm" type="submit">
+                                        <button class="h-11 px-space-lg rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-on-primary-fixed-variant transition-colors flex items-center justify-center gap-space-xs shrink-0 shadow-sm" type="submit" onclick="event.preventDefault(); window.handleTracking(event); return false;">
                                             <span class="material-symbols-outlined text-[18px]">travel_explore</span>
                                             <span>Cek Status</span>
                                         </button>
                                     </form>
-                                    <div class="hidden mt-space-xs font-body-sm text-body-sm text-primary flex items-center gap-space-xs" id="trackingFeedback">
-                                        <span class="material-symbols-outlined text-[16px] text-status-success">check_circle</span>
-                                        <span id="feedbackText">Nomor registrasi terverifikasi di pangkalan data BUMD.</span>
-                                    </div>
                                 </div>
                             </div>
                             <!-- Trust Badges -->
@@ -196,10 +195,10 @@
                                     <span class="material-symbols-outlined text-primary text-[18px]">lock</span>
                                     <span>{{ $settings['badge_2'] ?? setting('badge_2', 'Data Terenkripsi') }}</span>
                                 </div>
-                                <div class="flex items-center gap-space-xs">
+                                <!-- <div class="flex items-center gap-space-xs">
                                     <span class="material-symbols-outlined text-primary text-[18px]">schedule</span>
                                     <span>{{ $settings['badge_3'] ?? setting('badge_3', 'Survei Maks. 3 Hari') }}</span>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <!-- Hero Visual / Stat Panel -->
@@ -507,17 +506,83 @@
 
             <!-- Interactive Client-side Script -->
             <script>
-                window.handleTracking = function() {
+                window.closeTrackingModal = function() {
+                    const modal = document.getElementById('trackingModal');
+                    const content = document.getElementById('trackingModalContent');
+                    content.classList.remove('scale-100', 'opacity-100');
+                    content.classList.add('scale-95', 'opacity-0');
+                    setTimeout(() => {
+                        modal.classList.remove('flex');
+                        modal.classList.add('hidden');
+                    }, 300);
+                }
+
+                window.showTrackingModal = function() {
+                    const modal = document.getElementById('trackingModal');
+                    const content = document.getElementById('trackingModalContent');
+                    modal.classList.remove('hidden');
+                    modal.classList.add('flex');
+                    setTimeout(() => {
+                        content.classList.remove('scale-95', 'opacity-0');
+                        content.classList.add('scale-100', 'opacity-100');
+                    }, 10);
+                }
+
+                window.handleTracking = function(e) {
+                    if (e) e.preventDefault();
                     const val = document.getElementById('trackInput').value.trim();
-                    const feedback = document.getElementById('trackingFeedback');
-                    const feedbackText = document.getElementById('feedbackText');
-                    if (val) {
-                        feedback.classList.remove('hidden');
-                        feedbackText.textContent = 'Mencari data permohonan ' + val + '... Mohon tunggu pengalihan.';
-                        setTimeout(() => {
-                            alert('Status Registrasi [' + val + ']: Berkas Anda sedang dalam tahap verifikasi teknis wilayah. Hubungi {{ $settings["navbar_wa_center"] ?? "0811-778-2155" }} untuk info lanjut.');
-                        }, 600);
-                    }
+                    if (!val) return;
+
+                    // Reset UI Modal ke Loading
+                    const iconWrapper = document.getElementById('trackingModalIconWrapper');
+                    const icon = document.getElementById('trackingModalIcon');
+                    const statusText = document.getElementById('trackingModalStatus');
+                    const messageText = document.getElementById('trackingModalMessage');
+
+                    iconWrapper.className = 'w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center mb-4';
+                    icon.className = 'material-symbols-outlined text-3xl text-blue-500 animate-spin';
+                    icon.textContent = 'sync';
+                    
+                    statusText.className = 'text-xl font-bold text-gray-800 mb-2';
+                    statusText.textContent = 'Mencari Data...';
+                    messageText.innerHTML = 'Mencari data permohonan untuk <b>' + val + '</b>...';
+
+                    showTrackingModal();
+
+                    fetch('{{ route("public.track") }}?query=' + encodeURIComponent(val), {
+                        method: 'GET',
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        icon.classList.remove('animate-spin');
+                        if (data.success) {
+                            iconWrapper.className = 'w-16 h-16 rounded-full bg-green-50 flex items-center justify-center mb-4';
+                            icon.className = 'material-symbols-outlined text-4xl text-green-500';
+                            icon.textContent = 'check_circle';
+                            statusText.textContent = 'Data Ditemukan!';
+                            statusText.classList.replace('text-gray-800', 'text-green-600');
+                            messageText.innerHTML = 'Pendaftar: <b>' + data.message.replace('Data ditemukan: ', '') + '</b><br><span class="inline-block mt-3 px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">' + data.status + '</span>';
+                        } else {
+                            iconWrapper.className = 'w-16 h-16 rounded-full bg-red-50 flex items-center justify-center mb-4';
+                            icon.className = 'material-symbols-outlined text-4xl text-red-500';
+                            icon.textContent = 'error';
+                            statusText.textContent = 'Tidak Ditemukan';
+                            statusText.classList.replace('text-gray-800', 'text-red-600');
+                            messageText.innerHTML = 'Data registrasi tidak ditemukan di sistem. Periksa kembali NIK atau Nomor Registrasi Anda.';
+                        }
+                    })
+                    .catch(err => {
+                        icon.classList.remove('animate-spin');
+                        iconWrapper.className = 'w-16 h-16 rounded-full bg-red-50 flex items-center justify-center mb-4';
+                        icon.className = 'material-symbols-outlined text-4xl text-red-500';
+                        icon.textContent = 'warning';
+                        statusText.textContent = 'Kesalahan Jaringan';
+                        statusText.classList.replace('text-gray-800', 'text-red-600');
+                        messageText.innerHTML = 'Gagal menghubungi server. Pastikan koneksi internet Anda stabil.';
+                    });
                 };
 
                 window.toggleFaq = function(id) {
@@ -567,5 +632,37 @@
     {{-- Footer --}}
     @include('layouts.partials.footer')
     
+    <!-- Tracking Modal Pop-up -->
+    <div id="trackingModal" class="fixed inset-0 z-[9999] hidden items-center justify-center">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onclick="closeTrackingModal()"></div>
+        
+        <!-- Modal Content -->
+        <div class="relative bg-white rounded-3xl shadow-2xl w-full max-w-sm mx-4 overflow-hidden transform scale-95 opacity-0 transition-all duration-300" id="trackingModalContent">
+            <!-- Header -->
+            <div class="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+                <h3 class="text-base font-bold text-gray-800 font-label-md">Status Pendaftaran</h3>
+                <button onclick="closeTrackingModal()" class="text-gray-400 hover:text-gray-600 transition bg-gray-100 hover:bg-gray-200 rounded-full p-1">
+                    <span class="material-symbols-outlined text-[18px] block">close</span>
+                </button>
+            </div>
+            
+            <!-- Body -->
+            <div class="p-6 flex flex-col items-center text-center">
+                <div id="trackingModalIconWrapper" class="w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center mb-4">
+                    <span id="trackingModalIcon" class="material-symbols-outlined text-3xl text-blue-500">sync</span>
+                </div>
+                <h4 id="trackingModalStatus" class="text-xl font-bold text-gray-800 mb-2">Mencari Data...</h4>
+                <p id="trackingModalMessage" class="text-gray-500 text-sm leading-relaxed">Mohon tunggu sebentar.</p>
+            </div>
+            
+            <!-- Footer -->
+            <div class="px-6 py-4 bg-gray-50 border-t border-gray-100 flex justify-center">
+                <button onclick="closeTrackingModal()" class="w-full py-3 bg-primary hover:bg-[#004e69] text-white rounded-xl text-sm font-bold shadow-md transition-colors">
+                    Kembali
+                </button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
