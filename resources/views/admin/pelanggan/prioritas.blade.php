@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Prioritas Pelanggan (Fasilitas Umum)')
+@section('title', 'Tabel Prioritas')
 
 @section('content')
 <div class="max-w-6xl mx-auto">
@@ -9,9 +9,9 @@
         <div>
             <h1 class="text-2xl font-bold tracking-tight flex items-center gap-2">
                 <span class="material-symbols-outlined text-[28px]">assignment_late</span>
-                Prioritas (Fasilitas Umum)
+                Tabel Pelanggan Prioritas
             </h1>
-            <p class="text-white/80 text-sm mt-1">Daftar pendaftaran pelanggan khusus untuk sambungan Fasilitas Umum.</p>
+            <p class="text-white/80 text-sm mt-1">Daftar pendaftaran pelanggan khusus untuk tipe Prioritas / Fasilitas Umum.</p>
         </div>
         
         <div class="flex items-center gap-3 shrink-0">
@@ -48,10 +48,10 @@
                                 <a href="{{ route('admin.pelanggan.edit', $req->nomorreg) }}" class="text-amber-600 font-semibold bg-amber-100 px-3 py-1.5 rounded-lg transition hover:bg-amber-500 hover:text-white flex items-center" title="Edit">
                                     <span class="material-symbols-outlined text-[18px]">edit</span>
                                 </a>
-                                <form action="{{ route('admin.pelanggan.destroy', $req->nomorreg) }}" method="POST" class="inline" onsubmit="return confirm('Yakin hapus pelanggan ini?');">
+                                <form action="{{ route('admin.pelanggan.destroy', $req->nomorreg) }}" method="POST" class="inline delete-form">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="text-red-600 font-semibold bg-red-100 px-3 py-1.5 rounded-lg transition hover:bg-red-600 hover:text-white flex items-center" title="Hapus">
+                                    <button type="button" onclick="confirmDelete(this)" class="text-red-600 font-semibold bg-red-100 px-3 py-1.5 rounded-lg transition hover:bg-red-600 hover:text-white flex items-center" title="Hapus">
                                         <span class="material-symbols-outlined text-[18px]">delete</span>
                                     </button>
                                 </form>
@@ -74,4 +74,23 @@
         </div>
     </div>
 </div>
+
+<script>
+    function confirmDelete(button) {
+        Swal.fire({
+            title: 'Hapus Data?',
+            text: "Data pelanggan ini beserta berkasnya akan dihapus permanen!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Ya, Hapus!',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                button.closest('form').submit();
+            }
+        });
+    }
+</script>
 @endsection

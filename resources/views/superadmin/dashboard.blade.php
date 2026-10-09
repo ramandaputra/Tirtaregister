@@ -132,13 +132,13 @@
                                             <a href="{{ route('admin.pelanggan.show', $req->nomorreg) }}" class="p-1.5 text-blue-600 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors" title="Lihat Detail">
                                                 <span class="material-symbols-outlined text-[18px]">visibility</span>
                                             </a>
-                                            <a href="{{ route('admin.requests.edit', $req->nomorreg) }}" class="p-1.5 text-amber-600 bg-amber-50 hover:bg-amber-100 rounded-lg transition-colors" title="Edit">
+                                            <a href="{{ route('admin.pelanggan.edit', $req->nomorreg) }}" class="p-1.5 text-amber-600 bg-amber-50 hover:bg-amber-100 rounded-lg transition-colors" title="Edit">
                                                 <span class="material-symbols-outlined text-[18px]">edit</span>
                                             </a>
-                                            <form action="{{ route('admin.requests.destroy', $req->nomorreg) }}" method="POST" class="inline-block" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
+                                            <form action="{{ route('admin.pelanggan.destroy', $req->nomorreg) }}" method="POST" class="inline-block delete-form">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="p-1.5 text-red-600 bg-red-50 hover:bg-red-100 rounded-lg transition-colors" title="Hapus">
+                                                <button type="button" onclick="confirmDelete(this)" class="p-1.5 text-red-600 bg-red-50 hover:bg-red-100 rounded-lg transition-colors" title="Hapus">
                                                     <span class="material-symbols-outlined text-[18px]">delete</span>
                                                 </button>
                                             </form>
@@ -226,4 +226,22 @@
                 </div>
 
             </div>
+<script>
+    function confirmDelete(button) {
+        Swal.fire({
+            title: 'Hapus Data?',
+            text: "Data pendaftaran ini beserta berkasnya akan dihapus permanen!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Ya, Hapus!',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                button.closest('form').submit();
+            }
+        });
+    }
+</script>
 @endsection

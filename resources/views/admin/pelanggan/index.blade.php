@@ -1,14 +1,14 @@
 @extends('layouts.admin')
 
-@section('title', 'Daftar Pelanggan')
+@section('title', 'Pelanggan Reguler')
 
 @section('content')
 <div class="max-w-6xl mx-auto">
     <!-- Header Banner -->
     <div class="bg-primary text-white rounded-2xl p-6 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6">
         <div>
-            <h1 class="text-2xl font-bold tracking-tight">Daftar Pendaftaran Pelanggan</h1>
-            <p class="text-white/80 text-sm mt-1">Semua data pendaftaran pelanggan masuk (Pribadi & Fasilitas Umum).</p>
+            <h1 class="text-2xl font-bold tracking-tight">Daftar Pelanggan Reguler</h1>
+            <p class="text-white/80 text-sm mt-1">Semua data pendaftaran pelanggan masuk untuk kategori Pribadi (Rumah Tangga).</p>
         </div>
         
         <div class="flex items-center gap-3 shrink-0">
@@ -34,7 +34,8 @@
                         <th class="p-4 font-semibold border-b border-surface-border">No. Registrasi</th>
                         <th class="p-4 font-semibold border-b border-surface-border">Tanggal</th>
                         <th class="p-4 font-semibold border-b border-surface-border">Nama Lengkap</th>
-                        <th class="p-4 font-semibold border-b border-surface-border">Jenis</th>
+                        <!-- Disembunyikan sesuai permintaan: class="hidden" -->
+                        <th class="hidden p-4 font-semibold border-b border-surface-border">Jenis</th>
                         <th class="p-4 font-semibold border-b border-surface-border text-center">Aksi</th>
                     </tr>
                 </thead>
@@ -44,7 +45,8 @@
                         <td class="p-4 text-sm font-medium">{{ $req->nomorreg }}</td>
                         <td class="p-4 text-sm text-gray-600">{{ \Carbon\Carbon::parse($req->tgldaftar)->format('d/m/Y') }}</td>
                         <td class="p-4 text-sm">{{ $req->nama }}</td>
-                        <td class="p-4 text-sm">
+                        <!-- Disembunyikan sesuai permintaan: class="hidden" -->
+                        <td class="hidden p-4 text-sm">
                             @if($req->tipe == 'MBR')
                                 <span class="bg-red-100 text-red-700 px-2.5 py-1 rounded-full text-xs font-bold">MBR</span>
                             @else
@@ -59,10 +61,10 @@
                                 <a href="{{ route('admin.pelanggan.edit', $req->nomorreg) }}" class="text-amber-600 font-semibold bg-amber-100 px-3 py-1.5 rounded-lg transition hover:bg-amber-500 hover:text-white flex items-center" title="Edit">
                                     <span class="material-symbols-outlined text-[18px]">edit</span>
                                 </a>
-                                <form action="{{ route('admin.pelanggan.destroy', $req->nomorreg) }}" method="POST" class="inline" onsubmit="return confirm('Yakin hapus pelanggan ini?');">
+                                <form action="{{ route('admin.pelanggan.destroy', $req->nomorreg) }}" method="POST" class="inline delete-form">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="text-red-600 font-semibold bg-red-100 px-3 py-1.5 rounded-lg transition hover:bg-red-600 hover:text-white flex items-center" title="Hapus">
+                                    <button type="button" onclick="confirmDelete(this)" class="text-red-600 font-semibold bg-red-100 px-3 py-1.5 rounded-lg transition hover:bg-red-600 hover:text-white flex items-center" title="Hapus">
                                         <span class="material-symbols-outlined text-[18px]">delete</span>
                                     </button>
                                 </form>
@@ -71,7 +73,7 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="5" class="p-8 text-center text-gray-500">Tidak ada data pendaftaran ditemukan.</td>
+                        <td colspan="4" class="p-8 text-center text-gray-500">Tidak ada data pendaftaran ditemukan.</td>
                     </tr>
                     @endforelse
                 </tbody>
@@ -85,4 +87,23 @@
         </div>
     </div>
 </div>
+
+<script>
+    function confirmDelete(button) {
+        Swal.fire({
+            title: 'Hapus Data?',
+            text: "Data pelanggan ini beserta berkasnya akan dihapus permanen!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Ya, Hapus!',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                button.closest('form').submit();
+            }
+        });
+    }
+</script>
 @endsection

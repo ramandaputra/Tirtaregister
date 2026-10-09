@@ -110,6 +110,28 @@ class ConnectionRequestController extends Controller
             'status' => 'pending',
         ]);
 
+        // 4. Sinkronisasi ke tabel Pendaftaran (Legacy) agar muncul di "Daftar Pelanggan"
+        \App\Models\Pendaftaran::create([
+            'nomorreg' => $regNumber,
+            'nama' => $request->full_name,
+            'no_ktp' => $request->nik,
+            'alamat' => $request->installation_address,
+            'hp' => $request->phone_number,
+            'email' => $request->email,
+            'no_kk' => $request->kk_number,
+            'norumah' => $request->house_number,
+            'rt' => $request->rt,
+            'rw' => $request->rw,
+            'koderayon' => $request->rayon_id,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+            'luas_tanah' => $request->land_area,
+            'luas_rumah' => $request->building_area,
+            'penghuni' => $request->occupants_count,
+            'tipe' => ($request->connection_type == 'Rumah Tangga' || $request->connection_type == 'rumah-tangga') ? 'REGULER' : 'MBR',
+            'tgldaftar' => now()->format('Y-m-d H:i:s'),
+        ]);
+
         return redirect()->route('public.register.success', ['regNumber' => $regNumber])
             ->with('success', "Pendaftaran berhasil! Nomor Registrasi Anda: {$regNumber}");
     }
@@ -122,25 +144,26 @@ class ConnectionRequestController extends Controller
 
         $maxNumber = 0;
 
-        // Ambil nomor tertinggi dari ConnectionRequest tahun ini
+        // Ambil nomor tertinggi dari ConnectionRequest bulan dan tahun ini
         $latestCR = \App\Models\ConnectionRequest::where('registration_number', 'like', "%/REG/%/{$currentYear}")
             ->get();
         
         foreach ($latestCR as $cr) {
             $parts = explode('/', str_replace(' ', '', $cr->registration_number));
-            if (isset($parts[0]) && is_numeric($parts[0])) {
+            // parts[0] = XXXX, parts[1] = REG, parts[2] = Rayon, parts[3] = Bulan, parts[4] = Tahun
+            if (isset($parts[3]) && $parts[3] === $currentMonthRoman && isset($parts[0]) && is_numeric($parts[0])) {
                 $num = (int)$parts[0];
                 if ($num > $maxNumber) $maxNumber = $num;
             }
         }
 
-        // Ambil nomor tertinggi dari Pendaftaran (legacy) tahun ini
+        // Ambil nomor tertinggi dari Pendaftaran (legacy) bulan dan tahun ini
         $latestPendaftaran = \App\Models\Pendaftaran::where('nomorreg', 'like', "%/REG/%/{$currentYear}")
             ->get();
             
         foreach ($latestPendaftaran as $p) {
             $parts = explode('/', str_replace(' ', '', $p->nomorreg));
-            if (isset($parts[0]) && is_numeric($parts[0])) {
+            if (isset($parts[3]) && $parts[3] === $currentMonthRoman && isset($parts[0]) && is_numeric($parts[0])) {
                 $num = (int)$parts[0];
                 if ($num > $maxNumber) $maxNumber = $num;
             }

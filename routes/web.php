@@ -188,11 +188,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::get('/pelanggan/prioritas', [AdminPelangganController::class, 'prioritas'])->name('pelanggan.prioritas');
             Route::get('/pelanggan/create', [AdminPelangganController::class, 'create'])->name('pelanggan.create');
             Route::post('/pelanggan', [AdminPelangganController::class, 'store'])->name('pelanggan.store');
-            Route::get('/pelanggan/{id}/edit', [AdminPelangganController::class, 'edit'])->name('pelanggan.edit')->where('id', '.*');
-            Route::put('/pelanggan/{id}', [AdminPelangganController::class, 'update'])->name('pelanggan.update')->where('id', '.*');
-            Route::delete('/pelanggan/{id}', [AdminPelangganController::class, 'destroy'])->name('pelanggan.destroy')->where('id', '.*');
-            Route::get('/pelanggan/{id}/print', [AdminPelangganController::class, 'print'])->name('pelanggan.print')->where('id', '.*');
-            Route::get('/pelanggan/{id}', [AdminPelangganController::class, 'show'])->name('pelanggan.show')->where('id', '.*');
+            Route::get('/pelanggan/edit/{id}', [AdminPelangganController::class, 'edit'])->name('pelanggan.edit')->where('id', '.*');
+            Route::put('/pelanggan/update/{id}', [AdminPelangganController::class, 'update'])->name('pelanggan.update')->where('id', '.*');
+            Route::delete('/pelanggan/destroy/{id}', [AdminPelangganController::class, 'destroy'])->name('pelanggan.destroy')->where('id', '.*');
+            Route::get('/pelanggan/print/{id}', [AdminPelangganController::class, 'print'])->name('pelanggan.print')->where('id', '.*');
+            Route::get('/pelanggan/show/{id}', [AdminPelangganController::class, 'show'])->name('pelanggan.show')->where('id', '.*');
 
             // Kelola Permintaan Pelanggan
             Route::resource(

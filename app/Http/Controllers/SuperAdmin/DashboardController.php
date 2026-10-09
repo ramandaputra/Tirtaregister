@@ -21,8 +21,8 @@ class DashboardController extends Controller
         $totalPribadi = \App\Models\Pendaftaran::where('tipe', 'REGULER')->count();
         $totalFasilitasUmum = \App\Models\Pendaftaran::where('tipe', '!=', 'REGULER')->orWhereNull('tipe')->count();
 
-        // Mengambil pendaftaran terbaru untuk preview
-        $recentPendaftaran = \App\Models\Pendaftaran::orderBy('tgldaftar', 'desc')->take(10)->get();
+        // Mengambil pendaftaran terbaru untuk preview (urutkan tanggal dan nomor registrasi untuk hari yang sama)
+        $recentPendaftaran = \App\Models\Pendaftaran::orderBy('tgldaftar', 'desc')->orderBy('nomorreg', 'desc')->take(10)->get();
 
         // Mengambil berita terbaru untuk preview
         $latestNews = News::latest()->take(5)->get();

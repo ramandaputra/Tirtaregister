@@ -158,11 +158,8 @@
                             </p>
                             <!-- CTA Button -->
                             <div class="pt-space-xs mb-space-sm flex flex-wrap gap-3">
-                                <a href="{{ $settings['home_hero_cta_url'] ?? setting('home_hero_cta_url', '/pasang-baru') }}" class="inline-flex items-center justify-center h-12 px-space-lg rounded-xl bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-on-primary-fixed-variant transition-colors shadow-sm">
-                                    {{ $settings['home_hero_cta_text'] ?? setting('home_hero_cta_text', 'Daftar Pasang Baru') }}
-                                </a>
-                                <a href="https://pusimpel.com/tarif/tabel.jpeg" target="_blank" class="inline-flex items-center justify-center h-12 px-space-lg rounded-xl bg-surface-container-high text-on-surface font-label-md text-label-md font-semibold hover:bg-surface-dim transition-colors shadow-sm border border-outline-variant">
-                                    Cek Tagihan Air
+                                <a href="{{ $settings['home_hero_cta_url'] ?? setting('home_hero_cta_url', 'https://tirtakepri.co.id/tarif/') }}" target="_blank" class="inline-flex items-center justify-center h-12 px-space-lg rounded-xl bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-on-primary-fixed-variant transition-colors shadow-sm">
+                                    {{ $settings['home_hero_cta_text'] ?? setting('home_hero_cta_text', 'Cek Tagihan Air') }}
                                 </a>
                             </div>
                             <!-- Quick Tracking Search Bar -->
@@ -286,7 +283,7 @@
             </section>
 
             <!-- Main Selection Section: 2 Large Prominent Cards -->
-            <section class="w-full py-space-md md:py-space-xl px-margin-mobile md:px-margin">
+            <section id="pilihan-pendaftaran" class="w-full py-space-md md:py-space-xl px-margin-mobile md:px-margin">
                 <div class="max-w-[1280px] mx-auto">
                     <div class="text-center max-w-3xl mx-auto mb-space-lg md:mb-space-xl">
                         <span class="inline-flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-primary/10 text-primary font-label-sm text-label-sm uppercase tracking-wide">

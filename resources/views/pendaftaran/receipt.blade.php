@@ -233,7 +233,7 @@
       </p>
     </div>
     <div class="flex items-center gap-3 shrink-0">
-        <a href="{{ url()->previous() }}" class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-xl text-sm font-semibold transition flex items-center gap-2">
+        <a href="javascript:history.back()" class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-xl text-sm font-semibold transition flex items-center gap-2">
           <span class="material-symbols-outlined text-[18px]">arrow_back</span>
           Kembali
         </a>

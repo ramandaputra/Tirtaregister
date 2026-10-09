@@ -19,7 +19,7 @@ class AdminPelangganController extends Controller
         $totalFasilitasUmum = \App\Models\Pendaftaran::where('tipe', '!=', 'REGULER')->orWhereNull('tipe')->count();
         
         // Pendaftaran terbaru
-        $recentRequests = \App\Models\Pendaftaran::orderBy('tgldaftar', 'desc')->take(5)->get();
+        $recentRequests = \App\Models\Pendaftaran::orderBy('tgldaftar', 'desc')->orderBy('nomorreg', 'desc')->take(5)->get();
 
         return view('admin.pelanggan.dashboard', compact(
             'totalPendaftaran',
@@ -34,14 +34,16 @@ class AdminPelangganController extends Controller
      */
     public function index(Request $request)
     {
-        $query = \App\Models\Pendaftaran::query();
+        $query = \App\Models\Pendaftaran::where('tipe', 'REGULER');
         
         if ($request->has('search')) {
-            $query->where('nama', 'like', '%' . $request->search . '%')
+            $query->where(function($q) use ($request) {
+                $q->where('nama', 'like', '%' . $request->search . '%')
                   ->orWhere('nomorreg', 'like', '%' . $request->search . '%');
+            });
         }
 
-        $pelanggan = $query->orderBy('tgldaftar', 'desc')->paginate(15);
+        $pelanggan = $query->orderBy('tgldaftar', 'desc')->orderBy('nomorreg', 'desc')->paginate(15);
         return view('admin.pelanggan.index', compact('pelanggan'));
     }
 
@@ -50,7 +52,9 @@ class AdminPelangganController extends Controller
      */
     public function prioritas(Request $request)
     {
-        $query = \App\Models\Pendaftaran::where('tipe', '!=', 'REGULER')->orWhereNull('tipe');
+        $query = \App\Models\Pendaftaran::where(function($q) {
+            $q->where('tipe', '!=', 'REGULER')->orWhereNull('tipe');
+        });
 
         if ($request->has('search')) {
             $query->where(function($q) use ($request) {
@@ -59,7 +63,7 @@ class AdminPelangganController extends Controller
             });
         }
 
-        $pelanggan = $query->orderBy('tgldaftar', 'desc')->paginate(15);
+        $pelanggan = $query->orderBy('tgldaftar', 'desc')->orderBy('nomorreg', 'desc')->paginate(15);
         return view('admin.pelanggan.prioritas', compact('pelanggan'));
     }
     /**
@@ -134,6 +138,12 @@ class AdminPelangganController extends Controller
     {
         $pelanggan = \App\Models\Pendaftaran::findOrFail($id);
         $pelanggan->delete();
+
+        // Hapus juga dari ConnectionRequest jika ada
+        $cr = \App\Models\ConnectionRequest::where('registration_number', $id)->first();
+        if ($cr) {
+            $cr->delete();
+        }
 
         return redirect()->back()->with('success', 'Data Pendaftaran berhasil dihapus!');
     }

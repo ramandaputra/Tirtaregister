@@ -9,7 +9,7 @@
                         <h1 class="text-2xl font-bold tracking-tight">Edit Artikel Berita</h1>
                         <p class="text-white/80 text-sm mt-1">Perbarui data artikel berita publik PERUMDA Air Minum Tirta Kepri.</p>
                     </div>
-                    <a href="{{ route('superadmin.news.index') }}" class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-xl text-sm font-semibold transition flex items-center gap-2 border border-white/20">
+                    <a href="javascript:history.back()" class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-xl text-sm font-semibold transition flex items-center gap-2 border border-white/20">
                         <span class="material-symbols-outlined text-[18px]">arrow_back</span>
                         <span>Kembali</span>
                     </a>

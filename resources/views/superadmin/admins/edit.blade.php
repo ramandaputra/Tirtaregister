@@ -12,7 +12,7 @@
                 <p class="text-white/80 text-sm mt-1">Perbarui informasi profil, peran akses, atau kata sandi pengelola.</p>
             </div>
             
-            <a href="{{ route('superadmin.admins.index') }}" 
+            <a href="javascript:history.back()" 
                class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-xl text-sm font-semibold transition flex items-center gap-2 shrink-0">
                 <span class="material-symbols-outlined text-[18px]">arrow_back</span>
                 <span>Kembali ke Daftar Admin</span>

@@ -10,6 +10,7 @@
 
     <!-- Tailwind CSS Play CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -85,14 +86,14 @@
                     <a href="{{ route('admin.pelanggan.index') }}" 
                        class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 {{ request()->routeIs('admin.pelanggan.index') ? 'bg-primary text-white shadow-sm' : 'text-gray-600 hover:bg-gray-100/80 hover:text-gray-900' }}">
                         <span class="material-symbols-outlined text-[20px] shrink-0">groups</span>
-                        <span class="truncate">Daftar Pelanggan</span>
+                        <span class="truncate">Pelanggan Reguler</span>
                     </a>
 
                     <!-- Item Prioritas -->
                     <a href="{{ route('admin.pelanggan.prioritas') }}" 
                        class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 {{ request()->routeIs('admin.pelanggan.prioritas') ? 'bg-primary text-white shadow-sm' : 'text-gray-600 hover:bg-gray-100/80 hover:text-gray-900' }}">
                         <span class="material-symbols-outlined text-[20px] shrink-0">assignment_late</span>
-                        <span class="truncate">Prioritas</span>
+                        <span class="truncate">Pelanggan Prioritas</span>
                     </a>
                     @endhasanyrole
 
