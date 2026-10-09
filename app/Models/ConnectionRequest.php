@@ -36,6 +36,7 @@ class ConnectionRequest extends Model
         'company_name',
         'facility_type_id',
         'ktp_file_path',
+        'house_image_path',
         'status',
         'notes',
     ];

@@ -110,6 +110,11 @@ class ConnectionRequestController extends Controller
             'status' => 'pending',
         ]);
 
+        // Ambil nama dari relasi jika ada
+        $occupationName = \App\Models\Occupation::find($request->occupation_id)->name ?? null;
+        $waterSourceName = \App\Models\WaterSource::find($request->water_source_id)->name ?? null;
+        $namaRayon = \App\Models\Rayon::where('koderayon', $request->rayon_id)->first()->namarayon ?? null;
+
         // 4. Sinkronisasi ke tabel Pendaftaran (Legacy) agar muncul di "Daftar Pelanggan"
         \App\Models\Pendaftaran::create([
             'nomorreg' => $regNumber,
@@ -123,11 +128,18 @@ class ConnectionRequestController extends Controller
             'rt' => $request->rt,
             'rw' => $request->rw,
             'koderayon' => $request->rayon_id,
+            'namarayon' => $namaRayon,
+            'kodekelurahan' => $request->village_id,
             'latitude' => $request->latitude,
             'longitude' => $request->longitude,
             'luas_tanah' => $request->land_area,
             'luas_rumah' => $request->building_area,
             'penghuni' => $request->occupants_count,
+            'pekerjaan' => $occupationName,
+            'jenisbangunan' => $request->building_type_id,
+            'peruntukan' => $request->purpose_id,
+            'kepemilikan' => $request->ownership_id,
+            'airyangdigunakansaatini' => $waterSourceName,
             'tipe' => ($request->connection_type == 'Rumah Tangga' || $request->connection_type == 'rumah-tangga') ? 'REGULER' : 'MBR',
             'tgldaftar' => now()->format('Y-m-d H:i:s'),
         ]);
