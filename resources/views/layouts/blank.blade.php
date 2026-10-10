@@ -18,6 +18,7 @@
             }
         }
     </script>
+    <link rel="icon" type="image/png" href="{{ asset('img/favicon.png') }}">
 </head>
 <body class="bg-gray-100 min-h-screen p-4 md:p-8 flex flex-col items-center">
     @yield('content')

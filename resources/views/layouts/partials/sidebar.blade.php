@@ -55,6 +55,7 @@ Buat file layout utama admin agar semua halaman dashboard memiliki sidebar yang 
             }
         };
     </script>
+    <link rel="icon" type="image/png" href="{{ asset('img/favicon.png') }}">
 </head>
 <body class="bg-surface-ice text-on-surface antialiased flex min-h-screen">
 

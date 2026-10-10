@@ -13,7 +13,8 @@
 
         <!-- Tailwind CSS -->
         <script src="https://cdn.tailwindcss.com"></script>
-    </head>
+        <link rel="icon" type="image/png" href="{{ asset('img/favicon.png') }}">
+</head>
     <body class="font-sans text-gray-900 antialiased">
         <div class="min-h-screen flex flex-col sm:justify-center items-center sm:items-start pt-6 sm:pt-0 relative px-6 sm:px-16 md:px-24 lg:px-40">
             

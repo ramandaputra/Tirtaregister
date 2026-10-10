@@ -112,7 +112,7 @@
                             </div>
 
                             <div>
-                                <label class="block text-sm font-semibold text-on-surface mb-2">Nomor Call Center</label>
+                                <label class="block text-sm font-semibold text-on-surface mb-2">Nomor Call Center Resmi (Hanya 1)</label>
                                 <div class="relative flex items-center">
                                     <span class="material-symbols-outlined absolute left-3 text-on-surface-variant text-[20px]">call</span>
                                     <input type="text" name="navbar_call_center" 
@@ -121,13 +121,43 @@
                                 </div>
                             </div>
 
-                            <div>
-                                <label class="block text-sm font-semibold text-on-surface mb-2">Nomor WhatsApp Pengaduan</label>
-                                <div class="relative flex items-center">
-                                    <span class="material-symbols-outlined absolute left-3 text-status-success text-[20px]">chat</span>
-                                    <input type="text" name="navbar_wa_center" 
-                                           value="{{ $settings['navbar_wa_center'] ?? '0811-778-2155' }}" 
-                                           class="w-full pl-10 pr-4 py-2.5 rounded-lg border border-surface-border focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm">
+                            <div class="md:col-span-2 mt-2">
+                                <h3 class="font-bold text-sm text-primary mb-3">Kontak WhatsApp 3 Cabang</h3>
+                            </div>
+                            
+                            <!-- Cabang 1 -->
+                            <div class="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-3 p-4 border border-surface-border rounded-lg bg-surface-container-lowest">
+                                <div>
+                                    <label class="block text-xs font-semibold text-on-surface mb-1">Nama Cabang 1</label>
+                                    <input type="text" name="branch_1_name" value="{{ $settings['branch_1_name'] ?? 'Tanjungpinang' }}" class="w-full px-3 py-2.5 rounded-lg border border-surface-border text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-on-surface mb-1">WhatsApp Cabang 1</label>
+                                    <input type="text" name="branch_1_wa" value="{{ $settings['branch_1_wa'] ?? '0811-778-2155' }}" class="w-full px-3 py-2.5 rounded-lg border border-surface-border text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
+                                </div>
+                            </div>
+
+                            <!-- Cabang 2 -->
+                            <div class="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-3 p-4 border border-surface-border rounded-lg bg-surface-container-lowest">
+                                <div>
+                                    <label class="block text-xs font-semibold text-on-surface mb-1">Nama Cabang 2</label>
+                                    <input type="text" name="branch_2_name" value="{{ $settings['branch_2_name'] ?? 'Kijang' }}" class="w-full px-3 py-2.5 rounded-lg border border-surface-border text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-on-surface mb-1">WhatsApp Cabang 2</label>
+                                    <input type="text" name="branch_2_wa" value="{{ $settings['branch_2_wa'] ?? '0812-345-6789' }}" class="w-full px-3 py-2.5 rounded-lg border border-surface-border text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
+                                </div>
+                            </div>
+
+                            <!-- Cabang 3 -->
+                            <div class="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-3 p-4 border border-surface-border rounded-lg bg-surface-container-lowest">
+                                <div>
+                                    <label class="block text-xs font-semibold text-on-surface mb-1">Nama Cabang 3</label>
+                                    <input type="text" name="branch_3_name" value="{{ $settings['branch_3_name'] ?? 'Tanjung Uban' }}" class="w-full px-3 py-2.5 rounded-lg border border-surface-border text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-on-surface mb-1">WhatsApp Cabang 3</label>
+                                    <input type="text" name="branch_3_wa" value="{{ $settings['branch_3_wa'] ?? '0813-456-7890' }}" class="w-full px-3 py-2.5 rounded-lg border border-surface-border text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
                                 </div>
                             </div>
                         </div>
@@ -346,16 +376,7 @@
                                           class="w-full px-4 py-2.5 rounded-lg border border-surface-border focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm">{{ $settings['news_247_subtitle'] ?? 'Mengalami gangguan distribusi air, pipa bocor, atau kendala meteran? Laporkan segera ke posko pengaduan resmi PERUMDA Air Minum Tirta Kepri.' }}</textarea>
                             </div>
 
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                                <div>
-                                    <label class="block text-sm font-semibold text-on-surface mb-2">Nomor WhatsApp Pengaduan 24/7</label>
-                                    <div class="relative flex items-center">
-                                        <span class="material-symbols-outlined absolute left-3 text-status-success text-[20px]">chat</span>
-                                        <input type="text" name="news_247_wa" 
-                                               value="{{ $settings['news_247_wa'] ?? '0812-7000-8888' }}" 
-                                               class="w-full pl-10 pr-4 py-2.5 rounded-lg border border-surface-border focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm">
-                                    </div>
-                                </div>
+                            <div class="grid grid-cols-1 gap-5">
                                 <div>
                                     <label class="block text-sm font-semibold text-on-surface mb-2">Nomor Telepon Hotline 24/7</label>
                                     <div class="relative flex items-center">
@@ -364,6 +385,7 @@
                                                value="{{ $settings['news_247_call'] ?? '(0771) 21574' }}" 
                                                class="w-full pl-10 pr-4 py-2.5 rounded-lg border border-surface-border focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm">
                                     </div>
+                                    <p class="text-[11px] text-on-surface-variant mt-2">* Nomor WhatsApp pengaduan menggunakan 3 nomor cabang yang telah diatur pada bagian "Top Bar & Header Navbar".</p>
                                 </div>
                             </div>
                         </div>

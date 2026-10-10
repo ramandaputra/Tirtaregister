@@ -141,6 +141,7 @@
         .prose-custom strong { color: #081e2a; font-weight: 600; }
         .prose-custom hr { border-color: #D5E2E8; margin-top: 3em; margin-bottom: 3em; }
     </style>
+    <link rel="icon" type="image/png" href="{{ asset('img/favicon.png') }}">
 </head>
 <body class="bg-surface-ice text-on-surface antialiased flex flex-col min-h-screen">
 
@@ -274,64 +275,46 @@
             </div>
 
             <!-- Section Pengaduan 24/7 -->
+            @php
+                $settings = \App\Models\Setting::pluck('value', 'key')->toArray();
+            @endphp
             <section class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary to-on-primary-container text-on-primary shadow-lg border border-primary-container/30 p-6 md:p-8">
                 <div class="absolute -right-16 -bottom-16 w-64 h-64 bg-primary-container/20 rounded-full blur-3xl pointer-events-none"></div>
-                <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                    <div class="lg:col-span-7 space-y-4">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-lowest/15 border border-white/20 text-xs font-semibold backdrop-blur-sm">
+                <div class="relative z-10 max-w-4xl mx-auto text-center space-y-4">
+                    <div class="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-surface-container-lowest/15 border border-white/20 text-xs font-semibold backdrop-blur-sm mx-auto">
                             <span class="w-2 h-2 rounded-full bg-civic-amber animate-pulse"></span>
                             <span>{{ setting('news_247_badge', 'Layanan Siaga 24/7 • Tim Reaksi Cepat (TRC)') }}</span>
                         </div>
                         <h2 class="text-2xl md:text-3xl font-bold tracking-tight font-headline-xl text-white">{{ setting('news_247_title', 'Layanan Pengaduan & Bantuan Cepat 24 Jam') }}</h2>
                         <p class="text-sm md:text-base text-surface-container-low/90 leading-relaxed font-body-md">{{ setting('news_247_subtitle', 'Mengalami gangguan distribusi air, pipa bocor, atau kendala meteran? Laporkan segera ke posko pengaduan resmi PERUMDA Air Minum Tirta Kepri.') }}</p>
-                        <div class="flex flex-wrap items-center gap-3 pt-2">
-                            @php 
-                                $wa = setting('news_247_wa', '0812-7000-8888');
-                                $cleanWa = preg_replace('/[^0-9]/', '', $wa);
-                                if(str_starts_with($cleanWa, '0')) $cleanWa = '62' . substr($cleanWa, 1);
-                                
-                                $call = setting('news_247_call', '(0771) 21574');
+                        <div class="flex flex-col gap-4 mt-4">
+                            @php
+                                $call = $settings['news_247_call'] ?? setting('news_247_call', '(0771) 21574');
                                 $cleanCall = preg_replace('/[^0-9]/', '', $call);
                             @endphp
-                            <a href="https://wa.me/{{ $cleanWa }}" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-status-success text-white font-semibold text-sm shadow hover:opacity-95 transition-all">
-                                <span class="material-symbols-outlined text-[18px]">chat</span>
-                                <span>Kirim Laporan via WhatsApp</span>
-                            </a>
-                            <a href="tel:{{ $cleanCall }}" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/25 font-semibold text-sm transition-all">
-                                <span class="material-symbols-outlined text-[18px]">call</span>
-                                <span>Hotline: {{ $call }}</span>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                                <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $settings['branch_1_wa'] ?? '08117782155') }}" target="_blank" class="flex flex-col items-center justify-center gap-2 px-3 py-3 rounded-xl bg-gradient-to-br from-status-success to-emerald-600 text-white font-semibold text-xs md:text-sm shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M12.031 0C5.394 0 0 5.394 0 12.031a11.97 11.97 0 001.6 5.96L0 24l6.17-1.6a11.97 11.97 0 005.861 1.53h.005c6.634 0 12.028-5.394 12.028-12.031S18.665 0 12.031 0zM12.036 21.905h-.003a9.944 9.944 0 01-5.068-1.378l-.363-.215-3.774.989.998-3.68-.236-.375a9.957 9.957 0 01-1.524-5.215c0-5.512 4.484-9.997 10.002-9.997 2.671 0 5.18 1.04 7.067 2.93a9.972 9.972 0 012.923 7.07c-.001 5.511-4.485 9.996-9.998 9.996zm5.485-7.493c-.301-.151-1.782-.879-2.059-.979-.277-.1-.478-.151-.678.151-.2.301-.777.979-.953 1.18-.175.201-.352.226-.653.076a8.212 8.212 0 01-2.417-1.492 9.074 9.074 0 01-1.684-2.096c-.176-.301-.019-.464.132-.614.136-.135.301-.352.452-.527.151-.176.201-.301.301-.502.1-.2.05-.376-.025-.527-.075-.151-.678-1.631-.928-2.234-.244-.588-.493-.508-.678-.517-.175-.008-.376-.008-.577-.008a1.1 1.1 0 00-.791.368c-.277.301-1.055 1.029-1.055 2.51s1.08 2.912 1.23 3.113c.151.2 2.122 3.238 5.139 4.54.718.311 1.278.497 1.714.636.72.189 1.376.162 1.895.098.58-.073 1.782-.728 2.033-1.431.251-.703.251-1.306.175-1.431-.075-.126-.276-.201-.577-.352z"></path></svg>
+                                    <span class="tracking-wide">{{ $settings['branch_1_name'] ?? 'Tanjungpinang' }}</span>
+                                </a>
+                                <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $settings['branch_2_wa'] ?? '08123456789') }}" target="_blank" class="flex flex-col items-center justify-center gap-2 px-3 py-3 rounded-xl bg-gradient-to-br from-status-success to-emerald-600 text-white font-semibold text-xs md:text-sm shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M12.031 0C5.394 0 0 5.394 0 12.031a11.97 11.97 0 001.6 5.96L0 24l6.17-1.6a11.97 11.97 0 005.861 1.53h.005c6.634 0 12.028-5.394 12.028-12.031S18.665 0 12.031 0zM12.036 21.905h-.003a9.944 9.944 0 01-5.068-1.378l-.363-.215-3.774.989.998-3.68-.236-.375a9.957 9.957 0 01-1.524-5.215c0-5.512 4.484-9.997 10.002-9.997 2.671 0 5.18 1.04 7.067 2.93a9.972 9.972 0 012.923 7.07c-.001 5.511-4.485 9.996-9.998 9.996zm5.485-7.493c-.301-.151-1.782-.879-2.059-.979-.277-.1-.478-.151-.678.151-.2.301-.777.979-.953 1.18-.175.201-.352.226-.653.076a8.212 8.212 0 01-2.417-1.492 9.074 9.074 0 01-1.684-2.096c-.176-.301-.019-.464.132-.614.136-.135.301-.352.452-.527.151-.176.201-.301.301-.502.1-.2.05-.376-.025-.527-.075-.151-.678-1.631-.928-2.234-.244-.588-.493-.508-.678-.517-.175-.008-.376-.008-.577-.008a1.1 1.1 0 00-.791.368c-.277.301-1.055 1.029-1.055 2.51s1.08 2.912 1.23 3.113c.151.2 2.122 3.238 5.139 4.54.718.311 1.278.497 1.714.636.72.189 1.376.162 1.895.098.58-.073 1.782-.728 2.033-1.431.251-.703.251-1.306.175-1.431-.075-.126-.276-.201-.577-.352z"></path></svg>
+                                    <span class="tracking-wide">{{ $settings['branch_2_name'] ?? 'Kijang' }}</span>
+                                </a>
+                                <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $settings['branch_3_wa'] ?? '08134567890') }}" target="_blank" class="flex flex-col items-center justify-center gap-2 px-3 py-3 rounded-xl bg-gradient-to-br from-status-success to-emerald-600 text-white font-semibold text-xs md:text-sm shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M12.031 0C5.394 0 0 5.394 0 12.031a11.97 11.97 0 001.6 5.96L0 24l6.17-1.6a11.97 11.97 0 005.861 1.53h.005c6.634 0 12.028-5.394 12.028-12.031S18.665 0 12.031 0zM12.036 21.905h-.003a9.944 9.944 0 01-5.068-1.378l-.363-.215-3.774.989.998-3.68-.236-.375a9.957 9.957 0 01-1.524-5.215c0-5.512 4.484-9.997 10.002-9.997 2.671 0 5.18 1.04 7.067 2.93a9.972 9.972 0 012.923 7.07c-.001 5.511-4.485 9.996-9.998 9.996zm5.485-7.493c-.301-.151-1.782-.879-2.059-.979-.277-.1-.478-.151-.678.151-.2.301-.777.979-.953 1.18-.175.201-.352.226-.653.076a8.212 8.212 0 01-2.417-1.492 9.074 9.074 0 01-1.684-2.096c-.176-.301-.019-.464.132-.614.136-.135.301-.352.452-.527.151-.176.201-.301.301-.502.1-.2.05-.376-.025-.527-.075-.151-.678-1.631-.928-2.234-.244-.588-.493-.508-.678-.517-.175-.008-.376-.008-.577-.008a1.1 1.1 0 00-.791.368c-.277.301-1.055 1.029-1.055 2.51s1.08 2.912 1.23 3.113c.151.2 2.122 3.238 5.139 4.54.718.311 1.278.497 1.714.636.72.189 1.376.162 1.895.098.58-.073 1.782-.728 2.033-1.431.251-.703.251-1.306.175-1.431-.075-.126-.276-.201-.577-.352z"></path></svg>
+                                    <span class="tracking-wide">{{ $settings['branch_3_name'] ?? 'Tj. Uban' }}</span>
+                                </a>
+                            </div>
+                            <a href="tel:{{ $cleanCall }}" class="flex justify-center items-center gap-2 px-4 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/25 font-semibold text-sm shadow hover:shadow-md transition-all group">
+                                <span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">call</span>
+                                <span>Hubungi Call Center: {{ $call }}</span>
                             </a>
                         </div>
-                    </div>
-                    <div class="lg:col-span-5 bg-white/10 backdrop-blur-md rounded-xl p-5 border border-white/15 space-y-3.5">
-                        <div class="text-xs font-bold uppercase tracking-wider text-surface-container-high">Kanal Kontak Resmi Pengaduan</div>
-                        <div class="space-y-3">
-                            <div class="flex items-start gap-3">
-                                <span class="material-symbols-outlined text-civic-amber text-[20px] shrink-0 mt-0.5">headset_mic</span>
-                                <div>
-                                    <div class="text-xs text-surface-container-low/80">Call Center / Hotline</div>
-                                    <div class="text-sm font-bold text-white">{{ $call }} / {{ $wa }}</div>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <span class="material-symbols-outlined text-civic-amber text-[20px] shrink-0 mt-0.5">forum</span>
-                                <div>
-                                    <div class="text-xs text-surface-container-low/80">WhatsApp Pengaduan Cepat</div>
-                                    <div class="text-sm font-bold text-white">{{ $wa }}</div>
-                                    <div class="text-[11px] text-surface-container-low/80">(Format: ID Pelanggan, Nama, Alamat, Foto &amp; Kendala)</div>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <span class="material-symbols-outlined text-civic-amber text-[20px] shrink-0 mt-0.5">mail</span>
-                                <div>
-                                    <div class="text-xs text-surface-container-low/80">Email Laporan &amp; Pengaduan</div>
-                                    <div class="text-sm font-bold text-white">pengaduan@tirtakepri.co.id</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pt-2 border-t border-white/15 flex items-center justify-between text-xs text-surface-container-low/90">
+                        <div class="pt-6 mt-2 border-t border-white/15 flex items-center justify-center gap-2 text-xs text-surface-container-low/90">
                             <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-status-success">verified</span> Posko Siaga 24 Jam</span>
-                            <span class="text-[11px]">Wilayah Bintan &amp; Tanjungpinang</span>
+                            <span class="opacity-50">&bull;</span>
+                            <span>Wilayah Bintan &amp; Tanjungpinang</span>
                         </div>
                     </div>
                 </div>

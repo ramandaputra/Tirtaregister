@@ -136,6 +136,7 @@
         .section-title { font-size: 1.25rem; font-weight: 700; color: #b48500; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 2px solid #fef3c7; padding-bottom: 0.75rem; }
         #map { height: 300px; border-radius: 0.75rem; border: 1px solid #D5E2E8; z-index: 10; }
     </style>
+    <link rel="icon" type="image/png" href="{{ asset('img/favicon.png') }}">
 </head>
 <body class="bg-surface-ice text-on-surface antialiased flex flex-col min-h-screen">
 

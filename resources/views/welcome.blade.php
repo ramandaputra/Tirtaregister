@@ -1,3 +1,6 @@
+@php
+    $settings = \App\Models\Setting::pluck('value', 'key')->toArray();
+@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -128,6 +131,7 @@
         }
         ::-webkit-scrollbar { display: none; }
     </style>
+    <link rel="icon" type="image/png" href="{{ asset('img/favicon.png') }}">
 </head>
 <body class="bg-surface-ice text-on-surface antialiased">
 
@@ -431,7 +435,7 @@
             <section class="w-full py-space-md md:py-space-xl px-margin-mobile md:px-margin">
                 <div class="max-w-[1280px] mx-auto">
                     <div class="w-full">
-                        <div class="max-w-3xl mx-auto w-full bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm space-y-space-md">
+                        <div class="w-full bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm space-y-space-md">
                             <div>
                                 <span class="px-space-sm py-1 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm uppercase font-bold">
                                     Bantuan &amp; Konsultasi
@@ -443,46 +447,82 @@
                                     Petugas Customer Care siap memandu proses pengisian formulir dan verifikasi berkas permohonan Anda.
                                 </p>
                             </div>
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm">
-                                @php
-                                    $whatsapp = $settings['navbar_wa_center'] ?? setting('navbar_wa_center', '0811-778-2155');
-                                    $whatsappClean = preg_replace('/[^0-9]/', '', $whatsapp);
-                                @endphp
-                                <a class="flex flex-col p-space-sm rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors" href="https://wa.me/{{ $whatsappClean }}" target="_blank">
-                                    <div class="w-10 h-10 rounded-lg bg-status-success text-on-primary flex items-center justify-center shrink-0 mb-space-xs">
-                                        <span class="material-symbols-outlined text-[20px]">chat</span>
+                            <div class="flex flex-col gap-space-md">
+                                <!-- Baris Atas: WhatsApp 3 Cabang -->
+                                <div class="p-space-md rounded-2xl bg-gradient-to-br from-status-success/10 to-status-success/5 border border-status-success/20 shadow-sm">
+                                    <div class="flex items-center gap-4 mb-5">
+                                        <div class="w-12 h-12 rounded-xl bg-status-success text-white flex items-center justify-center shrink-0 shadow-md shadow-status-success/30">
+                                            <svg viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7"><path d="M12.031 0C5.394 0 0 5.394 0 12.031a11.97 11.97 0 001.6 5.96L0 24l6.17-1.6a11.97 11.97 0 005.861 1.53h.005c6.634 0 12.028-5.394 12.028-12.031S18.665 0 12.031 0zM12.036 21.905h-.003a9.944 9.944 0 01-5.068-1.378l-.363-.215-3.774.989.998-3.68-.236-.375a9.957 9.957 0 01-1.524-5.215c0-5.512 4.484-9.997 10.002-9.997 2.671 0 5.18 1.04 7.067 2.93a9.972 9.972 0 012.923 7.07c-.001 5.511-4.485 9.996-9.998 9.996zm5.485-7.493c-.301-.151-1.782-.879-2.059-.979-.277-.1-.478-.151-.678.151-.2.301-.777.979-.953 1.18-.175.201-.352.226-.653.076a8.212 8.212 0 01-2.417-1.492 9.074 9.074 0 01-1.684-2.096c-.176-.301-.019-.464.132-.614.136-.135.301-.352.452-.527.151-.176.201-.301.301-.502.1-.2.05-.376-.025-.527-.075-.151-.678-1.631-.928-2.234-.244-.588-.493-.508-.678-.517-.175-.008-.376-.008-.577-.008a1.1 1.1 0 00-.791.368c-.277.301-1.055 1.029-1.055 2.51s1.08 2.912 1.23 3.113c.151.2 2.122 3.238 5.139 4.54.718.311 1.278.497 1.714.636.72.189 1.376.162 1.895.098.58-.073 1.782-.728 2.033-1.431.251-.703.251-1.306.175-1.431-.075-.126-.276-.201-.577-.352z"></path></svg>
+                                        </div>
+                                        <div>
+                                            <p class="font-title-lg text-title-lg text-on-surface font-extrabold tracking-tight">Hubungi WhatsApp Cabang</p>
+                                            <p class="text-sm text-on-surface-variant mt-0.5">Pilih cabang terdekat untuk respon layanan instan.</p>
+                                        </div>
                                     </div>
-                                    <div class="min-w-0">
-                                        <p class="font-label-sm text-label-sm text-on-surface-variant uppercase">WhatsApp Pendaftaran</p>
-                                        <p class="font-title-md text-title-md font-bold text-on-surface truncate">
-                                            {{ $settings['navbar_wa_center'] ?? setting('navbar_wa_center', '0811-778-2155') }}
-                                        </p>
-                                        <p class="font-body-sm text-body-sm text-on-surface-variant">Respon Cepat Hari Kerja</p>
-                                    </div>
-                                </a>
-                                <div class="flex flex-col p-space-sm rounded-xl bg-surface-container-low">
-                                    <div class="w-10 h-10 rounded-lg bg-primary text-on-primary flex items-center justify-center shrink-0 mb-space-xs">
-                                        <span class="material-symbols-outlined text-[20px]">call</span>
-                                    </div>
-                                    <div class="min-w-0">
-                                        <p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Call Center Resmi</p>
-                                        <p class="font-title-md text-title-md font-bold text-on-surface truncate">
-                                            {{ $settings['navbar_call_center'] ?? setting('navbar_call_center', '(0771) 21555') }}
-                                        </p>
-                                        <p class="font-body-sm text-body-sm text-on-surface-variant">
-                                            {{ $settings['office_hours'] ?? setting('office_hours', 'Senin - Jumat: 08.00 - 15.00 WIB') }}
-                                        </p>
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                        <!-- Cabang 1 -->
+                                        <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $settings['branch_1_wa'] ?? '08117782155') }}" target="_blank" class="relative overflow-hidden flex flex-col justify-center p-4 rounded-xl bg-white border border-status-success/10 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+                                            <div class="absolute top-0 right-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity translate-x-2 group-hover:translate-x-0 duration-300">
+                                                <span class="material-symbols-outlined text-status-success text-[20px]">arrow_outward</span>
+                                            </div>
+                                            <span class="text-[11px] font-bold text-status-success uppercase tracking-widest mb-1">{{ $settings['branch_1_name'] ?? 'Tanjungpinang' }}</span>
+                                            <span class="text-lg font-extrabold text-on-surface group-hover:text-primary transition-colors flex items-center gap-1.5"><svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-status-success"><path d="M12.031 0C5.394 0 0 5.394 0 12.031a11.97 11.97 0 001.6 5.96L0 24l6.17-1.6a11.97 11.97 0 005.861 1.53h.005c6.634 0 12.028-5.394 12.028-12.031S18.665 0 12.031 0zM12.036 21.905h-.003a9.944 9.944 0 01-5.068-1.378l-.363-.215-3.774.989.998-3.68-.236-.375a9.957 9.957 0 01-1.524-5.215c0-5.512 4.484-9.997 10.002-9.997 2.671 0 5.18 1.04 7.067 2.93a9.972 9.972 0 012.923 7.07c-.001 5.511-4.485 9.996-9.998 9.996zm5.485-7.493c-.301-.151-1.782-.879-2.059-.979-.277-.1-.478-.151-.678.151-.2.301-.777.979-.953 1.18-.175.201-.352.226-.653.076a8.212 8.212 0 01-2.417-1.492 9.074 9.074 0 01-1.684-2.096c-.176-.301-.019-.464.132-.614.136-.135.301-.352.452-.527.151-.176.201-.301.301-.502.1-.2.05-.376-.025-.527-.075-.151-.678-1.631-.928-2.234-.244-.588-.493-.508-.678-.517-.175-.008-.376-.008-.577-.008a1.1 1.1 0 00-.791.368c-.277.301-1.055 1.029-1.055 2.51s1.08 2.912 1.23 3.113c.151.2 2.122 3.238 5.139 4.54.718.311 1.278.497 1.714.636.72.189 1.376.162 1.895.098.58-.073 1.782-.728 2.033-1.431.251-.703.251-1.306.175-1.431-.075-.126-.276-.201-.577-.352z"></path></svg> {{ $settings['branch_1_wa'] ?? '0811-778-2155' }}</span>
+                                        </a>
+                                        <!-- Cabang 2 -->
+                                        <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $settings['branch_2_wa'] ?? '08123456789') }}" target="_blank" class="relative overflow-hidden flex flex-col justify-center p-4 rounded-xl bg-white border border-status-success/10 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+                                            <div class="absolute top-0 right-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity translate-x-2 group-hover:translate-x-0 duration-300">
+                                                <span class="material-symbols-outlined text-status-success text-[20px]">arrow_outward</span>
+                                            </div>
+                                            <span class="text-[11px] font-bold text-status-success uppercase tracking-widest mb-1">{{ $settings['branch_2_name'] ?? 'Kijang' }}</span>
+                                            <span class="text-lg font-extrabold text-on-surface group-hover:text-primary transition-colors flex items-center gap-1.5"><svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-status-success"><path d="M12.031 0C5.394 0 0 5.394 0 12.031a11.97 11.97 0 001.6 5.96L0 24l6.17-1.6a11.97 11.97 0 005.861 1.53h.005c6.634 0 12.028-5.394 12.028-12.031S18.665 0 12.031 0zM12.036 21.905h-.003a9.944 9.944 0 01-5.068-1.378l-.363-.215-3.774.989.998-3.68-.236-.375a9.957 9.957 0 01-1.524-5.215c0-5.512 4.484-9.997 10.002-9.997 2.671 0 5.18 1.04 7.067 2.93a9.972 9.972 0 012.923 7.07c-.001 5.511-4.485 9.996-9.998 9.996zm5.485-7.493c-.301-.151-1.782-.879-2.059-.979-.277-.1-.478-.151-.678.151-.2.301-.777.979-.953 1.18-.175.201-.352.226-.653.076a8.212 8.212 0 01-2.417-1.492 9.074 9.074 0 01-1.684-2.096c-.176-.301-.019-.464.132-.614.136-.135.301-.352.452-.527.151-.176.201-.301.301-.502.1-.2.05-.376-.025-.527-.075-.151-.678-1.631-.928-2.234-.244-.588-.493-.508-.678-.517-.175-.008-.376-.008-.577-.008a1.1 1.1 0 00-.791.368c-.277.301-1.055 1.029-1.055 2.51s1.08 2.912 1.23 3.113c.151.2 2.122 3.238 5.139 4.54.718.311 1.278.497 1.714.636.72.189 1.376.162 1.895.098.58-.073 1.782-.728 2.033-1.431.251-.703.251-1.306.175-1.431-.075-.126-.276-.201-.577-.352z"></path></svg> {{ $settings['branch_2_wa'] ?? '0812-345-6789' }}</span>
+                                        </a>
+                                        <!-- Cabang 3 -->
+                                        <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $settings['branch_3_wa'] ?? '08134567890') }}" target="_blank" class="relative overflow-hidden flex flex-col justify-center p-4 rounded-xl bg-white border border-status-success/10 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+                                            <div class="absolute top-0 right-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity translate-x-2 group-hover:translate-x-0 duration-300">
+                                                <span class="material-symbols-outlined text-status-success text-[20px]">arrow_outward</span>
+                                            </div>
+                                            <span class="text-[11px] font-bold text-status-success uppercase tracking-widest mb-1">{{ $settings['branch_3_name'] ?? 'Tj. Uban' }}</span>
+                                            <span class="text-lg font-extrabold text-on-surface group-hover:text-primary transition-colors flex items-center gap-1.5"><svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-status-success"><path d="M12.031 0C5.394 0 0 5.394 0 12.031a11.97 11.97 0 001.6 5.96L0 24l6.17-1.6a11.97 11.97 0 005.861 1.53h.005c6.634 0 12.028-5.394 12.028-12.031S18.665 0 12.031 0zM12.036 21.905h-.003a9.944 9.944 0 01-5.068-1.378l-.363-.215-3.774.989.998-3.68-.236-.375a9.957 9.957 0 01-1.524-5.215c0-5.512 4.484-9.997 10.002-9.997 2.671 0 5.18 1.04 7.067 2.93a9.972 9.972 0 012.923 7.07c-.001 5.511-4.485 9.996-9.998 9.996zm5.485-7.493c-.301-.151-1.782-.879-2.059-.979-.277-.1-.478-.151-.678.151-.2.301-.777.979-.953 1.18-.175.201-.352.226-.653.076a8.212 8.212 0 01-2.417-1.492 9.074 9.074 0 01-1.684-2.096c-.176-.301-.019-.464.132-.614.136-.135.301-.352.452-.527.151-.176.201-.301.301-.502.1-.2.05-.376-.025-.527-.075-.151-.678-1.631-.928-2.234-.244-.588-.493-.508-.678-.517-.175-.008-.376-.008-.577-.008a1.1 1.1 0 00-.791.368c-.277.301-1.055 1.029-1.055 2.51s1.08 2.912 1.23 3.113c.151.2 2.122 3.238 5.139 4.54.718.311 1.278.497 1.714.636.72.189 1.376.162 1.895.098.58-.073 1.782-.728 2.033-1.431.251-.703.251-1.306.175-1.431-.075-.126-.276-.201-.577-.352z"></path></svg> {{ $settings['branch_3_wa'] ?? '0813-456-7890' }}</span>
+                                        </a>
                                     </div>
                                 </div>
-                                <div class="flex flex-col p-space-sm rounded-xl bg-surface-container-low">
-                                    <div class="w-10 h-10 rounded-lg bg-secondary text-on-secondary flex items-center justify-center shrink-0 mb-space-xs">
-                                        <span class="material-symbols-outlined text-[20px]">location_on</span>
+
+                                <!-- Baris Bawah: Call Center & Lokasi -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+                                    <!-- Call Center -->
+                                    <div class="relative overflow-hidden flex flex-col p-space-md rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 hover:shadow-md transition-all duration-300 group cursor-default">
+                                        <div class="absolute -right-4 -top-4 opacity-[0.03] group-hover:opacity-10 transition-opacity duration-500 group-hover:scale-110 transform">
+                                            <span class="material-symbols-outlined text-[120px] text-primary">headset_mic</span>
+                                        </div>
+                                        <div class="w-12 h-12 rounded-xl bg-primary text-white flex items-center justify-center shrink-0 mb-4 shadow-md shadow-primary/30 relative z-10 group-hover:-translate-y-1 transition-transform">
+                                            <span class="material-symbols-outlined text-[24px]">call</span>
+                                        </div>
+                                        <div class="min-w-0 relative z-10">
+                                            <p class="font-label-sm text-label-sm text-primary uppercase font-bold tracking-widest mb-1">Call Center Resmi</p>
+                                            <p class="text-2xl font-extrabold text-on-surface truncate">
+                                                {{ $settings['navbar_call_center'] ?? setting('navbar_call_center', '(0771) 21555') }}
+                                            </p>
+                                            <p class="text-sm font-medium text-on-surface-variant mt-2 flex items-center gap-1.5">
+                                                <span class="material-symbols-outlined text-[16px] text-primary">schedule</span>
+                                                {{ $settings['office_hours'] ?? setting('office_hours', 'Senin - Jumat: 08.00 - 15.00 WIB') }}
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div class="min-w-0">
-                                        <p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Kantor Pusat Pelayanan</p>
-                                        <p class="font-body-sm text-body-sm text-on-surface font-semibold leading-snug">
-                                            {{ $settings['footer_address'] ?? setting('footer_address', 'Jl. MT Haryono No. 56, Batu 3, Tanjungpinang') }}
-                                        </p>
+
+                                    <!-- Lokasi -->
+                                    <div class="relative overflow-hidden flex flex-col p-space-md rounded-2xl bg-gradient-to-br from-secondary/10 to-secondary/5 border border-secondary/20 hover:shadow-md transition-all duration-300 group cursor-default">
+                                        <div class="absolute -right-4 -top-4 opacity-[0.03] group-hover:opacity-10 transition-opacity duration-500 group-hover:scale-110 transform">
+                                            <span class="material-symbols-outlined text-[120px] text-secondary">location_on</span>
+                                        </div>
+                                        <div class="w-12 h-12 rounded-xl bg-secondary text-white flex items-center justify-center shrink-0 mb-4 shadow-md shadow-secondary/30 relative z-10 group-hover:-translate-y-1 transition-transform">
+                                            <span class="material-symbols-outlined text-[24px]">location_on</span>
+                                        </div>
+                                        <div class="min-w-0 relative z-10">
+                                            <p class="font-label-sm text-label-sm text-secondary uppercase font-bold tracking-widest mb-1">Kantor Pusat Pelayanan</p>
+                                            <p class="text-base font-semibold text-on-surface leading-relaxed pr-8">
+                                                {{ $settings['footer_address'] ?? setting('footer_address', 'Jl. MT Haryono No. 56, Batu 3, Tanjungpinang') }}
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

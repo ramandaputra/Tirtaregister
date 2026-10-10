@@ -53,6 +53,7 @@
             border-radius: 0.75rem;
         }
     </style>
+    <link rel="icon" type="image/png" href="{{ asset('img/favicon.png') }}">
 </head>
 <body class="font-sans antialiased text-gray-900 bg-gray-900">
 
@@ -72,7 +73,7 @@
             <!-- Logo & Brand -->
             <div class="mb-10 text-center flex flex-col items-center">
                 <div class="w-20 h-20 bg-white rounded-2xl shadow-md p-3 mb-4 flex items-center justify-center transform transition hover:rotate-3">
-                    <img src="{{ asset('img/icon.png') }}" alt="Logo Tirta Kepri" class="w-full h-full object-contain" onerror="this.src='{{ asset('img/logo tirta.png') }}'">
+                    <img src="{{ asset('img/logo tirta.png') }}" alt="Logo Tirta Kepri" class="w-full h-full object-contain" onerror="this.src='{{ asset('img/logo tirta.png') }}'">
                 </div>
                 <h1 class="text-2xl font-bold text-gray-900 tracking-tight">Portal Admin</h1>
                 <p class="text-sm text-gray-700 mt-1 font-medium">PERUMDA Air Minum Tirta Kepri</p>

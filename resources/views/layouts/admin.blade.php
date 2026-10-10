@@ -26,6 +26,7 @@
             }
         }
     </script>
+    <link rel="icon" type="image/png" href="{{ asset('img/favicon.png') }}">
 </head>
 <body class="bg-surface-ice text-on-surface antialiased min-h-screen">
 
