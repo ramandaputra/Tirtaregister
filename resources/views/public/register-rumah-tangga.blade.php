@@ -269,6 +269,7 @@
                                 <select name="rayon_id" id="rayon_id" required class="form-select disabled:opacity-50" disabled>
                                     <option value="">[ Pilih Kelurahan Terlebih Dahulu ]</option>
                                 </select>
+                                <p class="text-xs text-red-600 font-bold mt-2">Jika Rayon tidak ada dalam daftar. Pilih Manual melalui maps</p>
                             </div>
                             
                             <!-- Geolocation -->
@@ -467,8 +468,34 @@
                     });
             }
 
+            let mapTriggeredVillageChange = false;
+
             villageSelect.addEventListener('change', function() {
                 loadRayons(this.value, null, pendingGeoData);
+
+                if (!mapTriggeredVillageChange && this.value) {
+                    let kelurahanName = this.options[this.selectedIndex].text;
+                    let searchName = kelurahanName.replace(/kelurahan\s+/ig, '').trim();
+                    let query = encodeURIComponent(searchName + ", Kepulauan Riau");
+
+                    fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${query}&limit=1`)
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data && data.length > 0) {
+                                let lat = parseFloat(data[0].lat);
+                                let lon = parseFloat(data[0].lon);
+                                
+                                map.setView([lat, lon], 15);
+                                marker.setLatLng([lat, lon]);
+                                
+                                latInput.value = lat.toFixed(6);
+                                lngInput.value = lon.toFixed(6);
+                            }
+                        })
+                        .catch(err => console.error('Geocoding error:', err));
+                }
+                
+                mapTriggeredVillageChange = false;
             });
 
             // Trigger on load for validation back
@@ -561,6 +588,7 @@
 
                             // 2. Trigger penentuan Rayon berdasarkan kelurahan yang dipilih
                             pendingGeoData = addr;
+                            mapTriggeredVillageChange = true;
                             villageSelect.dispatchEvent(new Event('change'));
                         }
                     })

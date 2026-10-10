@@ -22,8 +22,8 @@ class ConnectionRequestController extends Controller
         $occupations = Occupation::all();
         $villages = DB::table('kodwil26')
             ->select('kelurahan as kodekelurahan', 'kelurahan', 'kecamatan as kodekecamatan')
-            ->distinct()
-            ->orderBy('kelurahan')
+            ->groupBy('kelurahan', 'kecamatan')
+            ->orderByRaw('MIN(koderayon) ASC')
             ->get();
         $purposes = Purpose::all();
         $buildingTypes = DB::table('jenisbangunanpribadi')->get();
@@ -39,8 +39,8 @@ class ConnectionRequestController extends Controller
         $occupations = Occupation::all();
         $villages = DB::table('kodwil26')
             ->select('kelurahan as kodekelurahan', 'kelurahan', 'kecamatan as kodekecamatan')
-            ->distinct()
-            ->orderBy('kelurahan')
+            ->groupBy('kelurahan', 'kecamatan')
+            ->orderByRaw('MIN(koderayon) ASC')
             ->get();
         $purposes = Purpose::all();
         $buildingTypes = DB::table('jenisbangunanfasum')->get();
