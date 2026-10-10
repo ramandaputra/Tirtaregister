@@ -32,8 +32,8 @@
     <!-- Mobile Top Bar -->
     <div class="lg:hidden flex items-center justify-between p-4 bg-white border-b border-surface-border sticky top-0 z-40">
         <div class="flex items-center gap-2">
-            <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
-                <img src="{{ asset('img/icon.jpg') }}" alt="Logo" class="w-5 h-5 object-contain rounded">
+            <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+                <img src="{{ asset('img/logo tirta.png') }}" alt="Logo" class="w-8 h-8 object-contain">
             </div>
             <h2 class="font-bold text-sm text-primary uppercase leading-tight truncate">Tirta Kepri</h2>
         </div>
@@ -53,8 +53,8 @@
                 
                 <!-- Header Brand -->
                 <div class="p-5 border-b border-surface-border flex items-center gap-3 shrink-0">
-                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary shrink-0">
-                        <img src="{{ asset('img/icon.jpg') }}" alt="Logo" class="w-6 h-6 object-contain rounded">
+                    <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary shrink-0">
+                        <img src="{{ asset('img/logo tirta.png') }}" alt="Logo" class="w-10 h-10 object-contain">
                     </div>
                     <div class="flex flex-col min-w-0">
                         <h2 class="font-bold text-base text-primary uppercase leading-tight truncate">Tirta Kepri</h2>
@@ -68,7 +68,7 @@
                         Navigasi Utama
                     </div>
 
-                    <!-- Item Dashboard -->
+                    <!-- Item Dasbor -->
                     @php 
                         $isSuper = auth()->user()->hasRole('superadmin');
                         $dashboardRoute = $isSuper ? route('superadmin.dashboard') : route('admin.pelanggan.dashboard');
@@ -77,7 +77,7 @@
                     <a href="{{ $dashboardRoute }}" 
                        class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 {{ $dashboardActive ? 'bg-primary text-white shadow-sm' : 'text-gray-600 hover:bg-gray-100/80 hover:text-gray-900' }}">
                         <span class="material-symbols-outlined text-[20px] shrink-0">dashboard</span>
-                        <span class="truncate">Dashboard Utama</span>
+                        <span class="truncate">Dasbor Utama</span>
                     </a>
 
                     <!-- Menus for Pelayanan (admin & superadmin) -->
@@ -109,7 +109,7 @@
                     <a href="{{ route('superadmin.settings.index') }}" 
                        class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 {{ request()->routeIs('superadmin.settings.*') ? 'bg-primary text-white shadow-sm' : 'text-gray-600 hover:bg-gray-100/80 hover:text-gray-900' }}">
                         <span class="material-symbols-outlined text-[20px] shrink-0">web</span>
-                        <span class="truncate">Edit Beranda & Site</span>
+                        <span class="truncate">Edit Beranda & Situs</span>
                     </a>
 
                     <!-- Header Section Manajemen Pengguna -->
@@ -133,12 +133,16 @@
                 </nav>
             </div>
 
-            <!-- Profil User & Logout (Footer Sidebar) -->
+            <!-- Profil Pengguna & Keluar (Footer Sidebar) -->
             <div class="p-4 border-t border-surface-border bg-gray-50/50 shrink-0">
                 <div class="flex items-center justify-between gap-2">
-                    <div class="flex items-center gap-2.5 min-w-0">
-                        <div class="w-9 h-9 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-sm">
-                            {{ strtoupper(substr(auth()->user()->name ?? 'SA', 0, 2)) }}
+                    <div class="flex items-center gap-2.5 min-w-0 flex-1">
+                        <div class="w-9 h-9 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-sm overflow-hidden">
+                            @if(auth()->user()->profile_photo_path)
+                                <img src="{{ asset('storage/' . auth()->user()->profile_photo_path) }}" alt="Foto Profil" class="w-full h-full object-cover">
+                            @else
+                                {{ strtoupper(substr(auth()->user()->name ?? 'SA', 0, 2)) }}
+                            @endif
                         </div>
                         <div class="flex flex-col min-w-0">
                             <p class="font-semibold text-xs text-gray-900 truncate leading-tight">
@@ -150,14 +154,22 @@
                         </div>
                     </div>
 
-                    <form action="{{ route('logout') }}" method="POST" class="shrink-0">
-                        @csrf
-                        <button type="submit" 
-                                class="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors flex items-center justify-center" 
-                                title="Keluar">
-                            <span class="material-symbols-outlined text-[20px]">logout</span>
-                        </button>
-                    </form>
+                    <div class="flex items-center gap-1 shrink-0">
+                        <a href="{{ route('profile.edit') }}" 
+                           class="p-2 text-gray-400 hover:text-primary hover:bg-primary/10 rounded-lg transition-colors flex items-center justify-center" 
+                           title="Pengaturan Profil">
+                            <span class="material-symbols-outlined text-[20px]">settings</span>
+                        </a>
+
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" 
+                                    class="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors flex items-center justify-center" 
+                                    title="Keluar">
+                                <span class="material-symbols-outlined text-[20px]">logout</span>
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </aside>
@@ -189,5 +201,9 @@
         toggleBtn?.addEventListener('click', toggleSidebar);
         overlay?.addEventListener('click', toggleSidebar);
     </script>
+    @stack('scripts')
 </body>
 </html>
+
+
+

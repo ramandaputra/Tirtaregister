@@ -20,7 +20,7 @@
                     <div class="bg-white p-6 rounded-2xl border border-surface-border shadow-sm flex items-center justify-between">
                         <div>
                             <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Total Berita</p>
-                            <h3 class="text-3xl font-bold text-on-surface">{{ $totalNews ?? 0 }}</h3>
+                            <h3 class="text-3xl font-bold text-on-surface counter-animate" data-target="{{ $totalNews ?? 0 }}">0</h3>
                             <a href="{{ route('superadmin.news.index') }}" class="text-xs text-primary font-semibold hover:underline mt-2 inline-block">Kelola Berita →</a>
                         </div>
                         <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
@@ -31,7 +31,7 @@
                     <div class="bg-white p-6 rounded-2xl border border-surface-border shadow-sm flex items-center justify-between">
                         <div>
                             <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Akun Admin</p>
-                            <h3 class="text-3xl font-bold text-on-surface">{{ $totalAdmins ?? 0 }}</h3>
+                            <h3 class="text-3xl font-bold text-on-surface counter-animate" data-target="{{ $totalAdmins ?? 0 }}">0</h3>
                             <a href="{{ route('superadmin.admins.index') }}" class="text-xs text-primary font-semibold hover:underline mt-2 inline-block">Kelola Akun →</a>
                         </div>
                         <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
@@ -42,7 +42,7 @@
                     <div class="bg-white p-6 rounded-2xl border border-surface-border shadow-sm flex items-center justify-between">
                         <div>
                             <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Pengaturan Website</p>
-                            <h3 class="text-3xl font-bold text-on-surface">{{ $totalSettings ?? 0 }} <span class="text-xs font-normal text-gray-500">Key</span></h3>
+                            <h3 class="text-3xl font-bold text-on-surface"><span class="counter-animate" data-target="{{ $totalSettings ?? 0 }}">0</span> <span class="text-xs font-normal text-gray-500">Key</span></h3>
                             <a href="{{ route('superadmin.settings.index') }}" class="text-xs text-primary font-semibold hover:underline mt-2 inline-block">Edit Beranda & Site →</a>
                         </div>
                         <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
@@ -56,7 +56,7 @@
                     <div class="bg-white p-6 rounded-2xl border border-surface-border shadow-sm flex items-center justify-between">
                         <div>
                             <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Total Pendaftaran</p>
-                            <h3 class="text-3xl font-bold text-on-surface">{{ $totalPendaftaran ?? 0 }}</h3>
+                            <h3 class="text-3xl font-bold text-on-surface counter-animate" data-target="{{ $totalPendaftaran ?? 0 }}">0</h3>
                             <a href="{{ route('admin.pelanggan.index') }}" class="text-xs text-primary font-semibold hover:underline mt-2 inline-block">Lihat Daftar Pelanggan →</a>
                         </div>
                         <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
@@ -67,7 +67,7 @@
                     <div class="bg-white p-6 rounded-2xl border border-surface-border shadow-sm flex items-center justify-between">
                         <div>
                             <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Pelanggan (Pribadi)</p>
-                            <h3 class="text-3xl font-bold text-on-surface">{{ $totalPribadi ?? 0 }}</h3>
+                            <h3 class="text-3xl font-bold text-on-surface counter-animate" data-target="{{ $totalPribadi ?? 0 }}">0</h3>
                             <a href="{{ route('admin.pelanggan.index') }}" class="text-xs text-primary font-semibold hover:underline mt-2 inline-block">Lihat Pelanggan →</a>
                         </div>
                         <div class="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center text-status-success">
@@ -78,7 +78,7 @@
                     <div class="bg-white p-6 rounded-2xl border border-surface-border shadow-sm flex items-center justify-between">
                         <div>
                             <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Prioritas (Fasum)</p>
-                            <h3 class="text-3xl font-bold text-on-surface">{{ $totalFasilitasUmum ?? 0 }}</h3>
+                            <h3 class="text-3xl font-bold text-on-surface counter-animate" data-target="{{ $totalFasilitasUmum ?? 0 }}">0</h3>
                             <a href="{{ route('admin.pelanggan.prioritas') }}" class="text-xs text-primary font-semibold hover:underline mt-2 inline-block">Lihat Prioritas →</a>
                         </div>
                         <div class="w-12 h-12 bg-amber-500/10 rounded-xl flex items-center justify-center text-amber-600">
@@ -113,8 +113,8 @@
                                             {{ $req->nama }}
                                         </td>
                                         <td class="px-6 py-3">
-                                            @if($req->tipe == 'MBR')
-                                                <span class="inline-flex items-center px-2 py-1 rounded-md text-[10px] font-bold bg-amber-100 text-amber-800">MBR</span>
+                                            @if($req->tipe == 'PRIORITAS')
+                                                <span class="inline-flex items-center px-2 py-1 rounded-md text-[10px] font-bold bg-amber-100 text-amber-800">PRIORITAS</span>
                                             @else
                                                 <span class="inline-flex items-center px-2 py-1 rounded-md text-[10px] font-bold bg-emerald-100 text-emerald-800">{{ $req->tipe ?? 'REGULER' }}</span>
                                             @endif
@@ -182,7 +182,7 @@
                                 @forelse($latestLogs ?? [] as $log)
                                     <tr class="hover:bg-gray-50 transition-colors">
                                         <td class="px-6 py-3 text-gray-500 text-xs">
-                                            {{ $log->created_at->format('d M Y') }}
+                                            {{ $log->created_at->translatedFormat('d M Y') }}
                                         </td>
                                         <td class="px-6 py-3 text-gray-500 text-xs font-medium">
                                             {{ $log->created_at->format('H:i') }} WIB
@@ -243,5 +243,30 @@
             }
         });
     }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const counters = document.querySelectorAll('.counter-animate');
+        
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = parseInt(counter.innerText.replace(/\./g, '')) || 0; 
+                const speed = 25; 
+
+                const inc = target / speed;
+
+                if (count < target) {
+                    let nextCount = Math.ceil(count + inc);
+                    if (nextCount > target) nextCount = target;
+                    counter.innerText = nextCount.toLocaleString('id-ID');
+                    setTimeout(updateCount, 40);
+                } else {
+                    counter.innerText = target.toLocaleString('id-ID');
+                }
+            };
+            updateCount();
+        });
+    });
 </script>
 @endsection
+

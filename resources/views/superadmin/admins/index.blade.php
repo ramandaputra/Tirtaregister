@@ -65,7 +65,7 @@
             <table class="w-full text-center border-collapse">
                 <thead>
                     <tr class="bg-gray-50/80 border-b border-surface-border text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                        <th class="py-3.5 px-6">Nama Admin</th>
+                        <th class="py-3.5 px-6 text-left">Nama Admin</th>
                         <th class="py-3.5 px-6">Email</th>
                         <th class="py-3.5 px-6">Peran (Role)</th>
                         <th class="py-3.5 px-6">Status</th>
@@ -75,10 +75,14 @@
                 <tbody class="divide-y divide-surface-border text-sm">
                     @forelse($admins as $admin)
                         <tr class="hover:bg-gray-50/50 transition duration-150">
-                            <td class="py-4 px-6 font-semibold text-gray-900">
-                                <div class="flex items-center justify-center gap-3">
-                                    <div class="w-8 h-8 rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center text-xs shrink-0">
-                                        {{ strtoupper(substr($admin->name, 0, 2)) }}
+                            <td class="py-4 px-6 font-semibold text-gray-900 text-left">
+                                <div class="flex items-center justify-start gap-3">
+                                    <div class="w-8 h-8 rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center text-xs shrink-0 overflow-hidden">
+                                        @if($admin->profile_photo_path)
+                                            <img src="{{ asset('storage/' . $admin->profile_photo_path) }}" alt="Foto Profil" class="w-full h-full object-cover">
+                                        @else
+                                            {{ strtoupper(substr($admin->name, 0, 2)) }}
+                                        @endif
                                     </div>
                                     <span>{{ $admin->name }}</span>
                                 </div>
@@ -100,10 +104,10 @@
                                     <a href="{{ route('superadmin.admins.edit', $admin->id) }}" class="p-2 text-gray-400 hover:text-primary hover:bg-gray-100 rounded-lg transition" title="Edit">
                                         <span class="material-symbols-outlined text-[18px]">edit</span>
                                     </a>
-                                    <form action="{{ route('superadmin.admins.destroy', $admin->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus admin ini?')">
+                                    <form id="delete-form-{{ $admin->id }}" action="{{ route('superadmin.admins.destroy', $admin->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition" title="Hapus">
+                                        <button type="button" onclick="confirmDelete({{ $admin->id }}, '{{ addslashes($admin->name) }}')" class="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition" title="Hapus">
                                             <span class="material-symbols-outlined text-[18px]">delete</span>
                                         </button>
                                     </form>
@@ -122,3 +126,27 @@
 
 </div>
 @endsection
+@push('scripts')
+<script>
+    function confirmDelete(id, name) {
+        Swal.fire({
+            title: 'Hapus Admin?',
+            text: `Yakin ingin menghapus akun admin ${name}? Tindakan ini tidak dapat dibatalkan!`,
+            icon: 'error',
+            showCancelButton: true,
+            confirmButtonColor: '#ef4444',
+            cancelButtonColor: '#9ca3af',
+            confirmButtonText: 'Ya, Hapus!',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-form-' + id).submit();
+            }
+        });
+    }
+</script>
+@endpush
+
+
+
+

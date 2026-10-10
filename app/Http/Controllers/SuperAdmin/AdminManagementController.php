@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\SuperAdmin;
 
 use App\Http\Controllers\Controller;
+use App\Models\ActivityLog;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
@@ -12,8 +13,17 @@ class AdminManagementController extends Controller
     // 1. Tampilkan Halaman Tabel Admin
     public function index()
     {
-        // Menggunakan eager loading 'roles' agar query ringan
-        $admins = User::with('roles')->latest()->paginate(15);
+        // Menggunakan left join ke tabel roles untuk mengurutkan berdasarkan nama role (superadmin lebih dulu karena desc)
+        $admins = User::with('roles')
+            ->leftJoin('model_has_roles', function ($join) {
+                $join->on('users.id', '=', 'model_has_roles.model_id')
+                    ->where('model_has_roles.model_type', User::class);
+            })
+            ->leftJoin('roles', 'model_has_roles.role_id', '=', 'roles.id')
+            ->select('users.*')
+            ->orderBy('roles.name', 'desc')
+            ->latest('users.created_at')
+            ->paginate(15);
 
         return view('superadmin.admins.index', compact('admins'));
     }
@@ -45,6 +55,15 @@ class AdminManagementController extends Controller
 
         // 2. Assign Role menggunakan Spatie
         $user->assignRole($request->role);
+
+        ActivityLog::create([
+            'user_id' => auth()->id(),
+            'action' => 'Create',
+            'model_type' => 'User',
+            'model_id' => $user->id,
+            'description' => 'Menambahkan akun admin baru: '.$user->name,
+            'ip_address' => request()->ip(),
+        ]);
 
         return redirect()->route('superadmin.admins.index')
             ->with('success', 'Admin berhasil ditambahkan.');
@@ -84,6 +103,15 @@ class AdminManagementController extends Controller
         // 2. Update role pengguna di tabel relasi Spatie
         $admin->syncRoles([$request->role]);
 
+        ActivityLog::create([
+            'user_id' => auth()->id(),
+            'action' => 'Update',
+            'model_type' => 'User',
+            'model_id' => $admin->id,
+            'description' => 'Mengubah data akun admin: '.$admin->name,
+            'ip_address' => request()->ip(),
+        ]);
+
         return redirect()->route('superadmin.admins.index')
             ->with('success', 'Data admin berhasil diperbarui.');
     }
@@ -96,6 +124,15 @@ class AdminManagementController extends Controller
         // Hapus relasi role terlebih dahulu sebelum menghapus user
         $admin->syncRoles([]);
         $admin->delete();
+
+        ActivityLog::create([
+            'user_id' => auth()->id(),
+            'action' => 'Delete',
+            'model_type' => 'User',
+            'model_id' => $id,
+            'description' => 'Menghapus akun admin: '.$admin->name,
+            'ip_address' => request()->ip(),
+        ]);
 
         return redirect()->route('superadmin.admins.index')
             ->with('success', 'Admin berhasil dihapus.');

@@ -265,17 +265,22 @@
                             </div>
                             
                             <div>
-                                <label class="form-label">Rayon <span class="text-red-500">*</span></label>
-                                <select name="rayon_id" id="rayon_id" required class="form-select disabled:opacity-50" disabled>
-                                    <option value="">[ Pilih Kelurahan Terlebih Dahulu ]</option>
-                                </select>
-                                <p class="text-xs text-red-600 font-bold mt-2">Jika Rayon tidak ada dalam daftar. Pilih Manual melalui maps</p>
+                                <label class="form-label">Rayon (Area/Jalan) <span class="text-red-500">*</span></label>
+                                <input type="text" name="rayon_id" id="rayon_id" value="{{ old('rayon_id') }}" required class="form-input" placeholder="Otomatis terisi dari map atau ketik manual...">
                             </div>
                             
                             <!-- Geolocation -->
                             <div class="col-span-1 md:col-span-2">
-                                <label class="form-label">Pilih Lokasi di Map (Geolocation) <span class="text-red-500">*</span></label>
-                                <p class="text-xs text-gray-500 mb-2">Geser pin merah untuk menentukan koordinat lokasi secara presisi.</p>
+                                <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-2 gap-3">
+                                    <div>
+                                        <label class="form-label mb-0">Pilih Lokasi di Map (Geolocation) <span class="text-red-500">*</span></label>
+                                        <p class="text-xs text-gray-500 mt-1">Geser pin merah untuk menentukan koordinat lokasi secara presisi.</p>
+                                    </div>
+                                    <button type="button" id="btn-find-me" class="inline-flex items-center gap-1.5 px-4 py-2 bg-blue-50 text-primary border border-blue-200 rounded-lg text-sm font-semibold hover:bg-blue-100 transition-colors w-full sm:w-auto justify-center">
+                                        <span class="material-symbols-outlined text-[18px]">my_location</span>
+                                        Temukan Lokasi Saya
+                                    </button>
+                                </div>
                                 <div id="map"></div>
                                 <div class="flex gap-4 mt-3">
                                     <input type="text" id="latitude" name="latitude" value="{{ old('latitude') }}" readonly required placeholder="Latitude" class="form-input bg-gray-100 text-sm">
@@ -381,101 +386,20 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // ==========================================
-            // 1. AJAX Dependent Dropdown (Kelurahan -> Rayon)
-            // ==========================================
             const villageSelect = document.getElementById('village_id');
-            const rayonSelect = document.getElementById('rayon_id');
-            const oldRayonId = "{{ old('rayon_id') }}";
+            const rayonInput = document.getElementById('rayon_id');
             let pendingGeoData = null;
-
-            function normalizeForMatch(text) {
-                if (!text) return '';
-                return text.toLowerCase()
-                    .replace(/jalan\s+/g, '')
-                    .replace(/jl\.\s*/g, '')
-                    .replace(/jl\s+/g, '')
-                    .replace(/perumahan\s+/g, '')
-                    .replace(/perum\.\s*/g, '')
-                    .replace(/perum\s+/g, '')
-                    .replace(/komplek\s+/g, '')
-                    .replace(/komp\.\s*/g, '')
-                    .replace(/komp\s+/g, '')
-                    .replace(/kampung\s+/g, '')
-                    .replace(/kp\.\s*/g, '')
-                    .replace(/lorong\s+/g, '')
-                    .replace(/lr\.\s*/g, '')
-                    .replace(/pelantar\s+/g, '')
-                    .replace(/[^a-z0-9]/g, '')
-                    .trim();
-            }
-
-            function loadRayons(villageId, selectedRayon = null, geoDataToMatch = null) {
-                rayonSelect.innerHTML = '<option value="">Memuat data...</option>';
-                rayonSelect.disabled = true;
-
-                if (!villageId) {
-                    rayonSelect.innerHTML = '<option value="">[ Pilih Kelurahan Terlebih Dahulu ]</option>';
-                    return;
-                }
-
-                fetch(`/api/villages/${villageId}/rayons`)
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.length === 0) {
-                            rayonSelect.innerHTML = '<option value="">[ Tidak ada rayon tersedia ]</option>';
-                            return;
-                        }
-                        
-                        rayonSelect.innerHTML = '<option value="">Pilih Rayon...</option>';
-                        let bestMatchOption = null;
-                        
-                        data.forEach(rayon => {
-                            const option = document.createElement('option');
-                            option.value = rayon.id;
-                            option.textContent = rayon.name;
-                            
-                            // Logika auto-select
-                            if (selectedRayon && selectedRayon == rayon.id) {
-                                option.selected = true;
-                            } else if (geoDataToMatch) {
-                                let normRayon = normalizeForMatch(rayon.name);
-                                if (normRayon.length > 3) {
-                                    for (let key in geoDataToMatch) {
-                                        let val = geoDataToMatch[key];
-                                        if (val && typeof val === 'string') {
-                                            let normGeo = normalizeForMatch(val);
-                                            if (normGeo.length > 3 && (normGeo.includes(normRayon) || normRayon.includes(normGeo))) {
-                                                bestMatchOption = option;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                            rayonSelect.appendChild(option);
-                        });
-                        
-                        if (bestMatchOption && !selectedRayon) {
-                            bestMatchOption.selected = true;
-                        }
-                        
-                        rayonSelect.disabled = false;
-                        pendingGeoData = null;
-                    })
-                    .catch(err => {
-                        console.error('Error fetching rayons:', err);
-                        rayonSelect.innerHTML = '<option value="">Gagal memuat rayon</option>';
-                    });
-            }
 
             let mapTriggeredVillageChange = false;
 
             villageSelect.addEventListener('change', function() {
-                loadRayons(this.value, null, pendingGeoData);
-
                 if (!mapTriggeredVillageChange && this.value) {
                     let kelurahanName = this.options[this.selectedIndex].text;
                     let searchName = kelurahanName.replace(/kelurahan\s+/ig, '').trim();
+                    
+                    // Langsung isi rayon dengan nama kelurahan agar tidak kosong/delay
+                    rayonInput.value = searchName;
+
                     let query = encodeURIComponent(searchName + ", Kepulauan Riau");
 
                     fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${query}&limit=1`)
@@ -497,11 +421,6 @@
                 
                 mapTriggeredVillageChange = false;
             });
-
-            // Trigger on load for validation back
-            if (villageSelect.value) {
-                loadRayons(villageSelect.value, oldRayonId);
-            }
 
             // ==========================================
             // 2. Leaflet Geolocation Map
@@ -586,7 +505,15 @@
                                 }
                             }
 
-                            // 2. Trigger penentuan Rayon berdasarkan kelurahan yang dipilih
+                            // 2. Isi kolom Rayon secara otomatis dari map
+                            if (addr.road) {
+                                rayonInput.value = addr.road;
+                            } else if (addr.neighbourhood) {
+                                rayonInput.value = addr.neighbourhood;
+                            } else if (addr.suburb) {
+                                rayonInput.value = addr.suburb;
+                            }
+
                             pendingGeoData = addr;
                             mapTriggeredVillageChange = true;
                             villageSelect.dispatchEvent(new Event('change'));
@@ -604,6 +531,39 @@
                 marker.setLatLng(e.latlng);
                 updateInputs(e.latlng.lat, e.latlng.lng);
             });
+            
+            const btnFindMe = document.getElementById('btn-find-me');
+            if (btnFindMe) {
+                btnFindMe.addEventListener('click', function() {
+                    const originalText = this.innerHTML;
+                    this.innerHTML = '<span class="material-symbols-outlined text-[18px]">hourglass_empty</span> Mencari...';
+                    this.disabled = true;
+
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(function(position) {
+                            const lat = position.coords.latitude;
+                            const lng = position.coords.longitude;
+                            map.setView([lat, lng], 17);
+                            marker.setLatLng([lat, lng]);
+                            updateInputs(lat, lng);
+                            
+                            btnFindMe.innerHTML = originalText;
+                            btnFindMe.disabled = false;
+                        }, function(error) {
+                            alert("Gagal mendapatkan lokasi. Pastikan GPS aktif dan Anda mengizinkan akses lokasi pada browser.");
+                            btnFindMe.innerHTML = originalText;
+                            btnFindMe.disabled = false;
+                        }, {
+                            enableHighAccuracy: true,
+                            timeout: 10000
+                        });
+                    } else {
+                        alert("Browser Anda tidak mendukung fitur lokasi.");
+                        this.innerHTML = originalText;
+                        this.disabled = false;
+                    }
+                });
+            }
             
             // Try HTML5 geolocation if inputs are empty
             if(!latInput.value && navigator.geolocation) {

@@ -144,7 +144,7 @@
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-mobile md:gap-gutter items-center">
                         <div class="lg:col-span-7 space-y-space-md">
                             <div class="inline-flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-surface-container-low text-primary">
-                                <img src="{{ setting('site_icon') ? asset('storage/' . setting('site_icon')) : asset('img/icon.jpg') }}" alt="Logo" class="w-4 h-4 object-contain">
+                                <img src="{{ setting('site_icon') ? asset('storage/' . setting('site_icon')) : asset('img/logo tirta.png') }}" alt="Logo" class="w-6 h-6 object-contain">
                                 <span class="font-label-sm text-label-sm uppercase tracking-wider">
                                     {{ $settings['hero_badge'] ?? setting('hero_badge', 'Layanan Pasang Baru Mandiri & Cepat') }}
                                 </span>
@@ -535,6 +535,12 @@
                     const icon = document.getElementById('trackingModalIcon');
                     const statusText = document.getElementById('trackingModalStatus');
                     const messageText = document.getElementById('trackingModalMessage');
+                    const qrWrapper = document.getElementById('trackingModalQRWrapper');
+                    const qrCode = document.getElementById('trackingModalQRCode');
+                    
+                    qrWrapper.classList.add('hidden');
+                    qrWrapper.classList.remove('flex');
+                    qrCode.innerHTML = '';
 
                     iconWrapper.className = 'w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center mb-4';
                     icon.className = 'material-symbols-outlined text-3xl text-blue-500 animate-spin';
@@ -562,6 +568,20 @@
                             statusText.textContent = 'Data Ditemukan!';
                             statusText.classList.replace('text-gray-800', 'text-green-600');
                             messageText.innerHTML = 'Pendaftar: <b>' + data.message.replace('Data ditemukan: ', '') + '</b><br><span class="inline-block mt-3 px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">' + data.status + '</span>';
+                            
+                            if (data.receipt_url) {
+                                qrWrapper.classList.remove('hidden');
+                                qrWrapper.classList.add('flex');
+                                new QRCode(qrCode, {
+                                    text: data.receipt_url,
+                                    width: 120,
+                                    height: 120,
+                                    colorDark: "#000000",
+                                    colorLight: "#ffffff",
+                                    correctLevel: QRCode.CorrectLevel.M
+                                });
+                                document.getElementById('trackingModalReceiptBtn').href = data.receipt_url;
+                            }
                         } else {
                             iconWrapper.className = 'w-16 h-16 rounded-full bg-red-50 flex items-center justify-center mb-4';
                             icon.className = 'material-symbols-outlined text-4xl text-red-500';
@@ -651,6 +671,14 @@
                 </div>
                 <h4 id="trackingModalStatus" class="text-xl font-bold text-gray-800 mb-2">Mencari Data...</h4>
                 <p id="trackingModalMessage" class="text-gray-500 text-sm leading-relaxed">Mohon tunggu sebentar.</p>
+                
+                <div id="trackingModalQRWrapper" class="mt-5 hidden flex-col items-center w-full">
+                    <div id="trackingModalQRCode" class="p-3 bg-white rounded-xl shadow-sm border border-gray-100 mb-3 inline-block"></div>
+                    <a id="trackingModalReceiptBtn" href="#" target="_blank" class="px-4 py-2 bg-blue-50 hover:bg-blue-100 text-primary rounded-lg text-sm font-bold transition-colors inline-flex items-center gap-2">
+                        <span class="material-symbols-outlined text-[18px]">receipt_long</span>
+                        Buka Bukti Pendaftaran
+                    </a>
+                </div>
             </div>
             
             <!-- Footer -->
@@ -661,5 +689,8 @@
             </div>
         </div>
     </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </body>
 </html>
+

@@ -64,7 +64,7 @@
                     <label class="block text-sm font-semibold text-gray-700 mb-2">Tipe Pendaftaran <span class="text-red-500">*</span></label>
                     <select name="tipe" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition outline-none">
                         <option value="REGULER" {{ old('tipe') == 'REGULER' ? 'selected' : '' }}>REGULER (Pribadi)</option>
-                        <option value="MBR" {{ old('tipe') == 'MBR' ? 'selected' : '' }}>MBR (Fasilitas Umum)</option>
+                        <option value="PRIORITAS" {{ old('tipe') == 'PRIORITAS' ? 'selected' : '' }}>PRIORITAS (Fasilitas Umum)</option>
                     </select>
                 </div>
 

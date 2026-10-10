@@ -10,7 +10,7 @@
                 <div class="flex items-center gap-space-sm mb-space-md">
 
                     <div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center">
-                        <img src="{{ setting('site_icon') ? asset('storage/' . setting('site_icon')) : asset('img/icon.jpg') }}" alt="Logo" class="w-7 h-7 object-contain rounded">
+                        <img src="{{ setting('site_icon') ? asset('storage/' . setting('site_icon')) : asset('img/logo tirta.png') }}" alt="Logo" class="w-10 h-10 object-contain">
                     </div>
 
                     <div>
@@ -167,3 +167,4 @@
     </div>
 
 </footer>
+

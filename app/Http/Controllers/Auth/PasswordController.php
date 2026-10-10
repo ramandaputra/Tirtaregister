@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
+use App\Models\ActivityLog;
 
 class PasswordController extends Controller
 {
@@ -22,6 +23,15 @@ class PasswordController extends Controller
 
         $request->user()->update([
             'password' => Hash::make($validated['password']),
+        ]);
+
+        ActivityLog::create([
+            'user_id' => auth()->id(),
+            'action' => 'Update',
+            'model_type' => 'User',
+            'model_id' => auth()->id(),
+            'description' => 'Mengubah kata sandi (password) profil pribadi',
+            'ip_address' => request()->ip(),
         ]);
 
         return back()->with('status', 'password-updated');

@@ -29,7 +29,7 @@
         <div class="h-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin flex items-center justify-between">
             {{-- Logo --}}
             <div class="flex items-center gap-space-md shrink-0">
-                <img alt="Logo PERUMDA Air Minum Tirta Kepri" class="h-8 w-auto object-contain rounded" src="{{ setting('site_icon') ? asset('storage/' . setting('site_icon')) : asset('img/icon.jpg') }}">
+                <img alt="Logo PERUMDA Air Minum Tirta Kepri" class="h-10 w-auto object-contain" src="{{ setting('site_icon') ? asset('storage/' . setting('site_icon')) : asset('img/logo tirta.png') }}">
                 <div class="flex flex-col justify-center leading-tight">
                     <span class="font-title-md text-title-md text-primary font-bold tracking-tight uppercase">{{ strtoupper($settings['company_short_name'] ?? setting('company_short_name', 'TIRTA KEPRI')) }}</span>
                     <span class="hidden sm:block font-label-sm text-label-sm text-on-surface-variant font-medium tracking-wide">PERUMDA AIR MINUM PROV. KEPRI</span>
@@ -97,3 +97,4 @@
         });
     </script>
 </header>
+

@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\DB;
 
 class StoreConnectionRequest extends FormRequest
 {
@@ -31,21 +30,7 @@ class StoreConnectionRequest extends FormRequest
             'rt' => 'required|string|max:3',
             'rw' => 'required|string|max:3',
             'village_id' => 'required|exists:kodwil26,kelurahan',
-            'rayon_id' => [
-                'required',
-                'exists:kodwil26,koderayon',
-                function ($attribute, $value, $fail) {
-                    $villageName = $this->input('village_id');
-                    $valid = DB::table('kodwil26')
-                        ->where('kelurahan', $villageName)
-                        ->where('koderayon', $value)
-                        ->exists();
-
-                    if (! $valid) {
-                        $fail('Rayon yang dipilih tidak valid untuk kelurahan tersebut.');
-                    }
-                },
-            ],
+            'rayon_id' => 'required|string',
             'latitude' => 'required|string',
             'longitude' => 'required|string',
 

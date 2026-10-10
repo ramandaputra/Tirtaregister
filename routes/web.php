@@ -45,6 +45,10 @@ Route::get('/api/villages/{village}/rayons', [ConnectionRequestController::class
 Route::get('/api/track', [ConnectionRequestController::class, 'trackStatus'])
     ->name('public.track');
 
+Route::get('/track/receipt/{regNumber}', [ConnectionRequestController::class, 'previewReceipt'])
+    ->name('public.track.receipt')
+    ->where('regNumber', '.*');
+
 Route::post('/pasang-baru', [ConnectionRequestController::class, 'store'])
     ->name('public.register.store');
 
@@ -200,3 +204,5 @@ Route::middleware(['auth', 'verified'])->group(function () {
 */
 
 require __DIR__.'/auth.php';
+
+

@@ -64,7 +64,7 @@ Buat file layout utama admin agar semua halaman dashboard memiliki sidebar yang 
             <!-- Brand Logo / Title -->
             <div class="p-6 border-b border-surface-border flex items-center gap-3">
                 <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
-                    <img src="{{ asset('img/icon.jpg') }}" alt="Logo" class="w-6 h-6 object-contain rounded">
+                    <img src="{{ asset('img/logo tirta.png') }}" alt="Logo" class="w-10 h-10 object-contain">
                 </div>
                 <div>
                     <h2 class="font-bold text-base text-primary uppercase leading-none">Tirta Kepri</h2>
@@ -138,3 +138,4 @@ Buat file layout utama admin agar semua halaman dashboard memiliki sidebar yang 
 
 </body>
 </html>
+

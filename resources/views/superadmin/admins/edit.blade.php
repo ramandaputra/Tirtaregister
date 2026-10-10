@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- KONTEN UTAMA -->
-<main class="flex-1 p-8 overflow-y-auto">
+<div>
     <div class="max-w-[1200px] mx-auto">
         
         <!-- Header Page (Banner Style) -->
@@ -113,5 +113,5 @@
         </div>
 
     </div>
-</main>
+</div>
 @endsection

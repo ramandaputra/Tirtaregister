@@ -326,13 +326,20 @@
 </div>
 
   @if(!auth()->check())
-  <!-- Tombol Publik di Bawah Resi -->
-  <div class="public-action-buttons w-full max-w-[650px] mx-auto mt-10 flex justify-center pb-12">
-    <button onclick="selesaikanPendaftaran()" class="px-8 py-4 bg-primary hover:bg-[#004e69] text-white rounded-2xl text-lg font-bold shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 flex items-center gap-3 border border-white/20">
-      <span class="material-symbols-outlined text-[28px]">print</span>
-      Selesaikan & Unduh Resi
-    </button>
-  </div>
+      <!-- Tombol Publik di Bawah Resi -->
+    <div class="public-action-buttons w-full max-w-[650px] mx-auto mt-10 flex justify-center pb-12">
+      @if(isset($is_preview) && $is_preview)
+      <button onclick="window.print()" class="px-8 py-4 bg-primary hover:bg-[#004e69] text-white rounded-2xl text-lg font-bold shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 flex items-center gap-3 border border-white/20">
+        <span class="material-symbols-outlined text-[28px]">print</span>
+        Cetak / Simpan PDF
+      </button>
+      @else
+      <button onclick="selesaikanPendaftaran()" class="px-8 py-4 bg-primary hover:bg-[#004e69] text-white rounded-2xl text-lg font-bold shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 flex items-center gap-3 border border-white/20">
+        <span class="material-symbols-outlined text-[28px]">print</span>
+        Selesaikan & Unduh Resi
+      </button>
+      @endif
+    </div>
   @endif
 
 </div>
@@ -369,3 +376,5 @@
     }
 </script>
 @endsection
+
+

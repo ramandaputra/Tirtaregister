@@ -35,8 +35,9 @@
 
                 <!-- Tabel Data Berita -->
                 <div class="bg-white rounded-xl shadow-sm border border-surface-border overflow-hidden">
-                    <table class="w-full text-center border-collapse">
-                        <thead>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-center border-collapse">
+                            <thead>
                             <tr class="bg-gray-50 border-b text-xs font-bold uppercase text-gray-600">
                                 <th class="p-4">Gambar</th>
                                 <th class="p-4">Judul Berita</th>
@@ -71,7 +72,7 @@
                                             <span class="text-gray-400 font-semibold text-xs">Draft</span>
                                         @endif
                                     </td>
-                                    <td class="p-4 text-xs text-gray-500">{{ $item->created_at ? $item->created_at->format('d M Y') : '-' }}</td>
+                                    <td class="p-4 text-xs text-gray-500">{{ $item->created_at ? $item->created_at->translatedFormat('d M Y') : '-' }}</td>
                                     <td class="p-4 text-center">
                                         <div class="flex items-center justify-center gap-2">
                                             <a href="{{ route('superadmin.news.edit', $item->id) }}" class="p-1.5 text-blue-600 hover:bg-blue-50 rounded transition" title="Edit">
@@ -93,7 +94,8 @@
                                 </tr>
                             @endforelse
                         </tbody>
-                    </table>
+                        </table>
+                    </div>
                 </div>
 
                 <!-- Paginasi -->
@@ -104,3 +106,5 @@
                 </div>
             </div>
 @endsection
+
+

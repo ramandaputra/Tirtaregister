@@ -29,7 +29,7 @@
                                 @forelse($logs as $log)
                                     <tr class="hover:bg-gray-50 transition-colors">
                                         <td class="px-6 py-4 text-gray-500">
-                                            {{ $log->created_at->format('d M Y') }}
+                                            {{ $log->created_at->translatedFormat('d M Y') }}
                                         </td>
                                         <td class="px-6 py-4 text-gray-500 font-medium">
                                             {{ $log->created_at->format('H:i:s') }} WIB
@@ -79,3 +79,4 @@
 
             </div>
 @endsection
+

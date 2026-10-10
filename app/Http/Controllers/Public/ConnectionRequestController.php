@@ -16,10 +16,9 @@ use Illuminate\Support\Facades\DB;
 
 class ConnectionRequestController extends Controller
 {
-    // Menampilkan halaman formulir Rumah Tangga
     public function createRumahTangga()
     {
-        $occupations = Occupation::all();
+        $occupations = DB::table('pekerjaan')->get();
         $villages = DB::table('kodwil26')
             ->select('kelurahan as kodekelurahan', 'kelurahan', 'kecamatan as kodekecamatan')
             ->groupBy('kelurahan', 'kecamatan')
@@ -33,10 +32,9 @@ class ConnectionRequestController extends Controller
         return view('public.register-rumah-tangga', compact('occupations', 'villages', 'purposes', 'buildingTypes', 'ownerships', 'waterSources'));
     }
 
-    // Menampilkan halaman formulir Fasilitas Umum
     public function createFasilitasUmum()
     {
-        $occupations = Occupation::all();
+        $occupations = DB::table('pekerjaan')->get();
         $villages = DB::table('kodwil26')
             ->select('kelurahan as kodekelurahan', 'kelurahan', 'kecamatan as kodekecamatan')
             ->groupBy('kelurahan', 'kecamatan')
@@ -112,9 +110,9 @@ class ConnectionRequestController extends Controller
         ]);
 
         // Ambil nama dari relasi jika ada
-        $occupationName = Occupation::find($request->occupation_id)->name ?? null;
+        $occupationName = DB::table('pekerjaan')->where('id', $request->occupation_id)->first()->name ?? null;
         $waterSourceName = WaterSource::find($request->water_source_id)->name ?? null;
-        $namaRayon = DB::table('kodwil26')->where('koderayon', $request->rayon_id)->first()->namarayon ?? null;
+        $namaRayon = DB::table('kodwil26')->where('koderayon', $request->rayon_id)->first()->namarayon ?? $request->rayon_id;
 
         // 4. Sinkronisasi ke tabel Pendaftaran (Legacy) agar muncul di "Daftar Pelanggan"
         Pendaftaran::create([
@@ -141,7 +139,7 @@ class ConnectionRequestController extends Controller
             'peruntukan' => $request->purpose_id,
             'kepemilikan' => $request->ownership_id,
             'airyangdigunakansaatini' => $waterSourceName,
-            'tipe' => ($request->connection_type == 'Rumah Tangga' || $request->connection_type == 'rumah-tangga') ? 'REGULER' : 'MBR',
+            'tipe' => ($request->connection_type == 'Rumah Tangga' || $request->connection_type == 'rumah-tangga') ? 'REGULER' : 'PRIORITAS',
             'tgldaftar' => now()->format('Y-m-d H:i:s'),
         ]);
 
@@ -203,6 +201,17 @@ class ConnectionRequestController extends Controller
         ]);
     }
 
+    public function previewReceipt($regNumber)
+    {
+        $connectionRequest = ConnectionRequest::where('registration_number', $regNumber)->firstOrFail();
+
+        return view('pendaftaran.receipt', [
+            'data' => $connectionRequest,
+            'auto_print' => false,
+            'is_preview' => true,
+        ]);
+    }
+
     public function trackStatus(Request $request)
     {
         $query = $request->input('query');
@@ -218,17 +227,19 @@ class ConnectionRequestController extends Controller
         if ($cr) {
             $status = $cr->status ?? 'pending';
             $msg = 'Pengajuan sedang diproses (Status: '.ucfirst($status).')';
+            $receiptUrl = route('public.track.receipt', ['regNumber' => $cr->registration_number]);
 
             return response()->json([
                 'success' => true,
                 'message' => 'Data ditemukan: '.$cr->full_name,
                 'status' => $msg,
+                'receipt_url' => $receiptUrl,
             ]);
         }
 
         // Cek di Pendaftaran (Legacy)
         $legacy = Pendaftaran::where('nomorreg', $query)
-            ->orWhere('nik', $query)
+            ->orWhere('no_ktp', $query)
             ->first();
 
         if ($legacy) {
@@ -245,3 +256,4 @@ class ConnectionRequestController extends Controller
         ], 404);
     }
 }
+

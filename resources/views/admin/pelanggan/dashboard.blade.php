@@ -22,7 +22,7 @@
         <div class="bg-white p-6 rounded-2xl border border-surface-border shadow-sm flex items-center justify-between">
             <div>
                 <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Total Pendaftaran</p>
-                <h3 class="text-3xl font-bold text-on-surface">{{ $totalPendaftaran }}</h3>
+                <h3 class="text-3xl font-bold text-on-surface counter-animate" data-target="{{ $totalPendaftaran }}">0</h3>
                 <a href="{{ route('admin.pelanggan.index') }}" class="text-xs text-primary font-semibold hover:underline mt-2 inline-block">Semua Data →</a>
             </div>
             <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
@@ -33,7 +33,7 @@
         <div class="bg-white p-6 rounded-2xl border border-surface-border shadow-sm flex items-center justify-between">
             <div>
                 <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Sambungan Pribadi</p>
-                <h3 class="text-3xl font-bold text-on-surface">{{ $totalPribadi }}</h3>
+                <h3 class="text-3xl font-bold text-on-surface counter-animate" data-target="{{ $totalPribadi }}">0</h3>
                 <a href="{{ route('admin.pelanggan.index') }}" class="text-xs text-primary font-semibold hover:underline mt-2 inline-block">Lihat Detail →</a>
             </div>
             <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600">
@@ -44,7 +44,7 @@
         <div class="bg-white p-6 rounded-2xl border border-surface-border shadow-sm flex items-center justify-between border-l-4 border-l-red-500">
             <div>
                 <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Pelanggan Prioritas</p>
-                <h3 class="text-3xl font-bold text-red-600">{{ $totalFasilitasUmum }}</h3>
+                <h3 class="text-3xl font-bold text-red-600 counter-animate" data-target="{{ $totalFasilitasUmum }}">0</h3>
                 <a href="{{ route('admin.pelanggan.prioritas') }}" class="text-xs text-red-600 font-semibold hover:underline mt-2 inline-block">Tabel Prioritas →</a>
             </div>
             <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center text-red-600">
@@ -75,8 +75,8 @@
                         <td class="p-4 text-sm font-medium">{{ $req->nomorreg }}</td>
                         <td class="p-4 text-sm">{{ $req->nama }}</td>
                         <td class="p-4 text-sm">
-                            @if($req->tipe == 'MBR')
-                                <span class="bg-red-100 text-red-700 px-2.5 py-1 rounded-full text-xs font-bold">MBR</span>
+                            @if($req->tipe == 'PRIORITAS')
+                                <span class="bg-red-100 text-red-700 px-2.5 py-1 rounded-full text-xs font-bold">PRIORITAS</span>
                             @else
                                 <span class="bg-blue-100 text-blue-700 px-2.5 py-1 rounded-full text-xs font-bold">{{ $req->tipe ?? 'REGULER' }}</span>
                             @endif
@@ -111,6 +111,31 @@
 </div>
 
 <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const counters = document.querySelectorAll('.counter-animate');
+        
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                // parse integer, ignore formatting for calculation
+                const count = parseInt(counter.innerText.replace(/\./g, '')) || 0; 
+                const speed = 25; 
+
+                const inc = target / speed;
+
+                if (count < target) {
+                    let nextCount = Math.ceil(count + inc);
+                    if (nextCount > target) nextCount = target;
+                    counter.innerText = nextCount.toLocaleString('id-ID');
+                    setTimeout(updateCount, 40);
+                } else {
+                    counter.innerText = target.toLocaleString('id-ID');
+                }
+            };
+            updateCount();
+        });
+    });
+
     function confirmDelete(button) {
         Swal.fire({
             title: 'Hapus Data?',

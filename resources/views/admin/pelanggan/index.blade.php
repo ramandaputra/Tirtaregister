@@ -47,8 +47,8 @@
                         <td class="p-4 text-sm">{{ $req->nama }}</td>
                         <!-- Disembunyikan sesuai permintaan: class="hidden" -->
                         <td class="hidden p-4 text-sm">
-                            @if($req->tipe == 'MBR')
-                                <span class="bg-red-100 text-red-700 px-2.5 py-1 rounded-full text-xs font-bold">MBR</span>
+                            @if($req->tipe == 'PRIORITAS')
+                                <span class="bg-red-100 text-red-700 px-2.5 py-1 rounded-full text-xs font-bold">PRIORITAS</span>
                             @else
                                 <span class="bg-blue-100 text-blue-700 px-2.5 py-1 rounded-full text-xs font-bold">{{ $req->tipe ?? 'REGULER' }}</span>
                             @endif
