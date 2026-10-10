@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\ConnectionRequest;
+use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
 
 class AdminPelangganController extends Controller
@@ -14,12 +15,12 @@ class AdminPelangganController extends Controller
     public function dashboard()
     {
         // Statistik Pelanggan / Pendaftaran
-        $totalPendaftaran = \App\Models\Pendaftaran::count();
-        $totalPribadi = \App\Models\Pendaftaran::where('tipe', 'REGULER')->count();
-        $totalFasilitasUmum = \App\Models\Pendaftaran::where('tipe', '!=', 'REGULER')->orWhereNull('tipe')->count();
-        
+        $totalPendaftaran = Pendaftaran::count();
+        $totalPribadi = Pendaftaran::where('tipe', 'REGULER')->count();
+        $totalFasilitasUmum = Pendaftaran::where('tipe', '!=', 'REGULER')->orWhereNull('tipe')->count();
+
         // Pendaftaran terbaru
-        $recentRequests = \App\Models\Pendaftaran::orderBy('tgldaftar', 'desc')->orderBy('nomorreg', 'desc')->take(5)->get();
+        $recentRequests = Pendaftaran::orderBy('tgldaftar', 'desc')->orderBy('nomorreg', 'desc')->take(5)->get();
 
         return view('admin.pelanggan.dashboard', compact(
             'totalPendaftaran',
@@ -34,16 +35,17 @@ class AdminPelangganController extends Controller
      */
     public function index(Request $request)
     {
-        $query = \App\Models\Pendaftaran::where('tipe', 'REGULER');
-        
+        $query = Pendaftaran::where('tipe', 'REGULER');
+
         if ($request->has('search')) {
-            $query->where(function($q) use ($request) {
-                $q->where('nama', 'like', '%' . $request->search . '%')
-                  ->orWhere('nomorreg', 'like', '%' . $request->search . '%');
+            $query->where(function ($q) use ($request) {
+                $q->where('nama', 'like', '%'.$request->search.'%')
+                    ->orWhere('nomorreg', 'like', '%'.$request->search.'%');
             });
         }
 
         $pelanggan = $query->orderBy('tgldaftar', 'desc')->orderBy('nomorreg', 'desc')->paginate(15);
+
         return view('admin.pelanggan.index', compact('pelanggan'));
     }
 
@@ -52,20 +54,22 @@ class AdminPelangganController extends Controller
      */
     public function prioritas(Request $request)
     {
-        $query = \App\Models\Pendaftaran::where(function($q) {
+        $query = Pendaftaran::where(function ($q) {
             $q->where('tipe', '!=', 'REGULER')->orWhereNull('tipe');
         });
 
         if ($request->has('search')) {
-            $query->where(function($q) use ($request) {
-                $q->where('nama', 'like', '%' . $request->search . '%')
-                  ->orWhere('nomorreg', 'like', '%' . $request->search . '%');
+            $query->where(function ($q) use ($request) {
+                $q->where('nama', 'like', '%'.$request->search.'%')
+                    ->orWhere('nomorreg', 'like', '%'.$request->search.'%');
             });
         }
 
         $pelanggan = $query->orderBy('tgldaftar', 'desc')->orderBy('nomorreg', 'desc')->paginate(15);
+
         return view('admin.pelanggan.prioritas', compact('pelanggan'));
     }
+
     /**
      * Tampilkan form Tambah Pelanggan
      */
@@ -87,7 +91,7 @@ class AdminPelangganController extends Controller
             'tgldaftar' => 'nullable|date',
         ]);
 
-        \App\Models\Pendaftaran::create([
+        Pendaftaran::create([
             'nomorreg' => $request->nomorreg,
             'nama' => $request->nama,
             'alamat' => $request->alamat,
@@ -103,7 +107,8 @@ class AdminPelangganController extends Controller
      */
     public function edit($id)
     {
-        $pelanggan = \App\Models\Pendaftaran::findOrFail($id);
+        $pelanggan = Pendaftaran::findOrFail($id);
+
         return view('admin.pelanggan.edit', compact('pelanggan'));
     }
 
@@ -112,7 +117,7 @@ class AdminPelangganController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $pelanggan = \App\Models\Pendaftaran::findOrFail($id);
+        $pelanggan = Pendaftaran::findOrFail($id);
 
         $request->validate([
             'nama' => 'required|string|max:255',
@@ -136,11 +141,11 @@ class AdminPelangganController extends Controller
      */
     public function destroy($id)
     {
-        $pelanggan = \App\Models\Pendaftaran::findOrFail($id);
+        $pelanggan = Pendaftaran::findOrFail($id);
         $pelanggan->delete();
 
         // Hapus juga dari ConnectionRequest jika ada
-        $cr = \App\Models\ConnectionRequest::where('registration_number', $id)->first();
+        $cr = ConnectionRequest::where('registration_number', $id)->first();
         if ($cr) {
             $cr->delete();
         }
@@ -153,11 +158,11 @@ class AdminPelangganController extends Controller
      */
     public function show($id)
     {
-        $pelanggan = \App\Models\Pendaftaran::findOrFail($id);
-        
+        $pelanggan = Pendaftaran::findOrFail($id);
+
         // Coba cari data upload & koordinat tambahan dari tabel connection_requests jika ada
-        $connectionRequest = \App\Models\ConnectionRequest::where('registration_number', $id)->first();
-        
+        $connectionRequest = ConnectionRequest::where('registration_number', $id)->first();
+
         return view('admin.pelanggan.show', compact('pelanggan', 'connectionRequest'));
     }
 
@@ -166,9 +171,10 @@ class AdminPelangganController extends Controller
      */
     public function print($id)
     {
-        $pelanggan = \App\Models\Pendaftaran::findOrFail($id);
-        $connectionRequest = \App\Models\ConnectionRequest::where('registration_number', $id)->first();
+        $pelanggan = Pendaftaran::findOrFail($id);
+        $connectionRequest = ConnectionRequest::where('registration_number', $id)->first();
         $data = $connectionRequest ?? $pelanggan;
+
         return view('pendaftaran.receipt', compact('pelanggan', 'data'));
     }
 }

@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
+use App\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\Model;
 
 class News extends Model
-
 {
-    use \App\Traits\LogsActivity;
+    use LogsActivity;
 
     protected $fillable = [
         'title',
@@ -19,4 +19,3 @@ class News extends Model
         'is_published',
     ];
 }
-

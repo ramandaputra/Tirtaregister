@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\DB;
 
 class StoreConnectionRequest extends FormRequest
 {
@@ -20,32 +21,34 @@ class StoreConnectionRequest extends FormRequest
             'phone_number' => 'required|string|max:15',
             'email' => 'nullable|email|max:255',
             'kk_number' => 'required|numeric|digits:16',
-            'occupation_id' => 'required|exists:occupations,id',
+            'occupation_id' => 'required|exists:pekerjaan,id',
             'ktp_file' => 'required|file|mimes:jpg,jpeg,png|max:2048', // Max 2MB
             'kk_file' => 'required|file|mimes:jpg,jpeg,png|max:2048', // Max 2MB
             'house_image_file' => 'required|file|mimes:jpg,jpeg,png|max:5120', // Foto Rumah (Max 5MB)
-            
+
             'installation_address' => 'required|string',
             'house_number' => 'required|string|max:50',
             'rt' => 'required|string|max:3',
             'rw' => 'required|string|max:3',
-            'village_id' => 'required|exists:kelurahan,kodekelurahan',
+            'village_id' => 'required|exists:kodwil26,kelurahan',
             'rayon_id' => [
                 'required',
-                'exists:rayon,koderayon',
+                'exists:kodwil26,koderayon',
                 function ($attribute, $value, $fail) {
-                    $villageId = $this->input('village_id');
-                    $village = \App\Models\Village::where('kodekelurahan', $villageId)->first();
-                    $rayon = \App\Models\Rayon::where('koderayon', $value)->first();
-                    
-                    if ($village && $rayon && $village->kodekecamatan !== $rayon->kodearea) {
-                        $fail('Rayon yang dipilih tidak valid untuk kelurahan/kecamatan tersebut.');
+                    $villageName = $this->input('village_id');
+                    $valid = DB::table('kodwil26')
+                        ->where('kelurahan', $villageName)
+                        ->where('koderayon', $value)
+                        ->exists();
+
+                    if (! $valid) {
+                        $fail('Rayon yang dipilih tidak valid untuk kelurahan tersebut.');
                     }
                 },
             ],
             'latitude' => 'required|string',
             'longitude' => 'required|string',
-            
+
             'purpose_id' => 'required|string',
             'building_type_id' => 'required|string',
             'ownership_id' => 'required|string',
@@ -53,7 +56,7 @@ class StoreConnectionRequest extends FormRequest
             'building_area' => 'required|numeric|min:0',
             'occupants_count' => 'required|numeric|min:0',
             'water_source_id' => 'required|string',
-            
+
             'company_name' => 'nullable|required_if:connection_type,Fasilitas Umum|string|max:255',
             'facility_type_id' => 'nullable|required_if:connection_type,Fasilitas Umum|string',
         ];

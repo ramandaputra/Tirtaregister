@@ -1,26 +1,23 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Admin\AdminPelangganController;
 // ============================================================
 // CONTROLLERS
 // ============================================================
 
 // Public
+use App\Http\Controllers\Admin\CustomerRequestController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Public\ConnectionRequestController;
-
 // Admin
-use App\Http\Controllers\Admin\CustomerRequestController;
-use App\Http\Controllers\Admin\AdminPelangganController;
-
+use App\Http\Controllers\Public\ConnectionRequestController;
+use App\Http\Controllers\SuperAdmin\ActivityLogController;
 // Super Admin
-use App\Http\Controllers\SuperAdmin\DashboardController;
-use App\Http\Controllers\SuperAdmin\SettingController;
-use App\Http\Controllers\SuperAdmin\NewsController as AdminNewsController;
 use App\Http\Controllers\SuperAdmin\AdminManagementController;
-
+use App\Http\Controllers\SuperAdmin\DashboardController;
+use App\Http\Controllers\SuperAdmin\NewsController as AdminNewsController;
+use App\Http\Controllers\SuperAdmin\SettingController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,7 +58,6 @@ Route::get('/berita', [NewsController::class, 'index'])
 Route::get('/berita/{slug}', [NewsController::class, 'show'])
     ->name('news.show');
 
-
 /*
 |--------------------------------------------------------------------------
 | 2. ROUTE TERPROTEKSI
@@ -85,9 +81,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
         if (auth()->user()->hasRole('admin')) {
             return redirect()->route('admin.pelanggan.dashboard');
         }
+
         return redirect('/');
     })->name('dashboard');
-
 
     /*
     |--------------------------------------------------------------------------
@@ -106,7 +102,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::delete('/profile', 'destroy')
             ->name('profile.destroy');
     });
-
 
     /*
     |--------------------------------------------------------------------------
@@ -132,7 +127,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::get('/dashboard', [DashboardController::class, 'index'])
                 ->name('dashboard');
 
-
             // --------------------------------------------------------
             // Pengaturan Website
             // --------------------------------------------------------
@@ -143,12 +137,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::post('/settings', [SettingController::class, 'update'])
                 ->name('settings.update');
 
-
             // --------------------------------------------------------
             // Log Aktivitas
             // --------------------------------------------------------
 
-            Route::get('/logs', [\App\Http\Controllers\SuperAdmin\ActivityLogController::class, 'index'])
+            Route::get('/logs', [ActivityLogController::class, 'index'])
                 ->name('logs.index');
 
             // --------------------------------------------------------
@@ -156,7 +149,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
             // --------------------------------------------------------
 
             Route::resource('news', AdminNewsController::class);
-
 
             // --------------------------------------------------------
             // Manajemen Admin (SUDAH DIREVISI)
@@ -167,7 +159,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
                     'show', // Hanya mengecualikan halaman 'show' (edit & update tetap diaktifkan)
                 ]);
         });
-
 
     /*
     |--------------------------------------------------------------------------
@@ -202,11 +193,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         });
 });
 
-
 /*
 |--------------------------------------------------------------------------
 | 5. ROUTE AUTENTIKASI
 |--------------------------------------------------------------------------
 */
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';

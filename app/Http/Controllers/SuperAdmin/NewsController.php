@@ -5,14 +5,15 @@ namespace App\Http\Controllers\SuperAdmin;
 use App\Http\Controllers\Controller;
 use App\Models\News;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class NewsController extends Controller
 {
     public function index()
     {
         $news = News::latest()->paginate(15);
+
         return view('superadmin.news.index', compact('news'));
     }
 
@@ -37,7 +38,7 @@ class NewsController extends Controller
 
         News::create([
             'title' => $request->title,
-            'slug' => Str::slug($request->title) . '-' . time(),
+            'slug' => Str::slug($request->title).'-'.time(),
             'category' => $request->category,
             'excerpt' => Str::limit(strip_tags($request->content), 150),
             'content' => $request->content,
@@ -72,7 +73,7 @@ class NewsController extends Controller
 
         $news->update([
             'title' => $request->title,
-            'slug' => Str::slug($request->title) . '-' . time(),
+            'slug' => Str::slug($request->title).'-'.time(),
             'category' => $request->category,
             'excerpt' => Str::limit(strip_tags($request->content), 150),
             'content' => $request->content,

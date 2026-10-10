@@ -7,12 +7,12 @@ use App\Http\Requests\StoreConnectionRequest;
 use App\Models\ConnectionRequest;
 use App\Models\FacilityType;
 use App\Models\Occupation;
+use App\Models\Pendaftaran;
 use App\Models\Purpose;
 use App\Models\Rayon;
-use App\Models\Village;
 use App\Models\WaterSource;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
 class ConnectionRequestController extends Controller
 {
@@ -20,7 +20,11 @@ class ConnectionRequestController extends Controller
     public function createRumahTangga()
     {
         $occupations = Occupation::all();
-        $villages = Village::all();
+        $villages = DB::table('kodwil26')
+            ->select('kelurahan as kodekelurahan', 'kelurahan', 'kecamatan as kodekecamatan')
+            ->distinct()
+            ->orderBy('kelurahan')
+            ->get();
         $purposes = Purpose::all();
         $buildingTypes = DB::table('jenisbangunanpribadi')->get();
         $ownerships = DB::table('kepemilikan')->get();
@@ -33,7 +37,11 @@ class ConnectionRequestController extends Controller
     public function createFasilitasUmum()
     {
         $occupations = Occupation::all();
-        $villages = Village::all();
+        $villages = DB::table('kodwil26')
+            ->select('kelurahan as kodekelurahan', 'kelurahan', 'kecamatan as kodekecamatan')
+            ->distinct()
+            ->orderBy('kelurahan')
+            ->get();
         $purposes = Purpose::all();
         $buildingTypes = DB::table('jenisbangunanfasum')->get();
         $ownerships = DB::table('kepemilikanfasum')->get();
@@ -46,18 +54,11 @@ class ConnectionRequestController extends Controller
     // Endpoint AJAX untuk mendapatkan Rayon
     public function getRayons($villageId)
     {
-        // Temukan kelurahan berdasarkan kodekelurahan
-        $village = Village::where('kodekelurahan', $villageId)->first();
-        
-        $kodearea = $village ? $village->kodekecamatan : '-';
-
-        // Filter rayon berdasarkan kodearea (kecamatan) dari kelurahan
-        $rayons = Rayon::where('kodearea', $kodearea)->get()->map(function ($r) {
-            return [
-                'id' => $r->koderayon,
-                'name' => $r->namarayon,
-            ];
-        });
+        $rayons = DB::table('kodwil26')
+            ->where('kelurahan', $villageId)
+            ->select('koderayon as id', 'namarayon as name')
+            ->orderBy('namarayon')
+            ->get();
 
         return response()->json($rayons);
     }
@@ -111,12 +112,12 @@ class ConnectionRequestController extends Controller
         ]);
 
         // Ambil nama dari relasi jika ada
-        $occupationName = \App\Models\Occupation::find($request->occupation_id)->name ?? null;
-        $waterSourceName = \App\Models\WaterSource::find($request->water_source_id)->name ?? null;
-        $namaRayon = \App\Models\Rayon::where('koderayon', $request->rayon_id)->first()->namarayon ?? null;
+        $occupationName = Occupation::find($request->occupation_id)->name ?? null;
+        $waterSourceName = WaterSource::find($request->water_source_id)->name ?? null;
+        $namaRayon = DB::table('kodwil26')->where('koderayon', $request->rayon_id)->first()->namarayon ?? null;
 
         // 4. Sinkronisasi ke tabel Pendaftaran (Legacy) agar muncul di "Daftar Pelanggan"
-        \App\Models\Pendaftaran::create([
+        Pendaftaran::create([
             'nomorreg' => $regNumber,
             'nama' => $request->full_name,
             'no_ktp' => $request->nik,
@@ -157,32 +158,36 @@ class ConnectionRequestController extends Controller
         $maxNumber = 0;
 
         // Ambil nomor tertinggi dari ConnectionRequest bulan dan tahun ini
-        $latestCR = \App\Models\ConnectionRequest::where('registration_number', 'like', "%/REG/%/{$currentYear}")
+        $latestCR = ConnectionRequest::where('registration_number', 'like', "%/REG/%/{$currentYear}")
             ->get();
-        
+
         foreach ($latestCR as $cr) {
             $parts = explode('/', str_replace(' ', '', $cr->registration_number));
             // parts[0] = XXXX, parts[1] = REG, parts[2] = Rayon, parts[3] = Bulan, parts[4] = Tahun
             if (isset($parts[3]) && $parts[3] === $currentMonthRoman && isset($parts[0]) && is_numeric($parts[0])) {
-                $num = (int)$parts[0];
-                if ($num > $maxNumber) $maxNumber = $num;
+                $num = (int) $parts[0];
+                if ($num > $maxNumber) {
+                    $maxNumber = $num;
+                }
             }
         }
 
         // Ambil nomor tertinggi dari Pendaftaran (legacy) bulan dan tahun ini
-        $latestPendaftaran = \App\Models\Pendaftaran::where('nomorreg', 'like', "%/REG/%/{$currentYear}")
+        $latestPendaftaran = Pendaftaran::where('nomorreg', 'like', "%/REG/%/{$currentYear}")
             ->get();
-            
+
         foreach ($latestPendaftaran as $p) {
             $parts = explode('/', str_replace(' ', '', $p->nomorreg));
             if (isset($parts[3]) && $parts[3] === $currentMonthRoman && isset($parts[0]) && is_numeric($parts[0])) {
-                $num = (int)$parts[0];
-                if ($num > $maxNumber) $maxNumber = $num;
+                $num = (int) $parts[0];
+                if ($num > $maxNumber) {
+                    $maxNumber = $num;
+                }
             }
         }
 
         $nextNumber = str_pad($maxNumber + 1, 4, '0', STR_PAD_LEFT);
-        
+
         // Format standar: 0172/REG/1/X/2026
         return "{$nextNumber}/REG/1/{$currentMonthRoman}/{$currentYear}";
     }
@@ -191,16 +196,17 @@ class ConnectionRequestController extends Controller
     public function success($regNumber)
     {
         $connectionRequest = ConnectionRequest::where('registration_number', $regNumber)->firstOrFail();
+
         return view('pendaftaran.receipt', [
             'data' => $connectionRequest,
-            'auto_print' => true
+            'auto_print' => true,
         ]);
     }
 
-    public function trackStatus(\Illuminate\Http\Request $request)
+    public function trackStatus(Request $request)
     {
         $query = $request->input('query');
-        if (!$query) {
+        if (! $query) {
             return response()->json(['success' => false, 'message' => 'Query tidak boleh kosong.'], 400);
         }
 
@@ -211,30 +217,31 @@ class ConnectionRequestController extends Controller
 
         if ($cr) {
             $status = $cr->status ?? 'pending';
-            $msg = 'Pengajuan sedang diproses (Status: ' . ucfirst($status) . ')';
+            $msg = 'Pengajuan sedang diproses (Status: '.ucfirst($status).')';
+
             return response()->json([
                 'success' => true,
-                'message' => 'Data ditemukan: ' . $cr->full_name,
-                'status' => $msg
+                'message' => 'Data ditemukan: '.$cr->full_name,
+                'status' => $msg,
             ]);
         }
 
         // Cek di Pendaftaran (Legacy)
-        $legacy = \App\Models\Pendaftaran::where('nomorreg', $query)
+        $legacy = Pendaftaran::where('nomorreg', $query)
             ->orWhere('nik', $query)
             ->first();
-            
+
         if ($legacy) {
             return response()->json([
                 'success' => true,
-                'message' => 'Data ditemukan: ' . $legacy->nama,
-                'status' => 'Terdaftar (Legacy)'
+                'message' => 'Data ditemukan: '.$legacy->nama,
+                'status' => 'Terdaftar (Legacy)',
             ]);
         }
 
         return response()->json([
             'success' => false,
-            'message' => 'Data tidak ditemukan.'
+            'message' => 'Data tidak ditemukan.',
         ], 404);
     }
 }

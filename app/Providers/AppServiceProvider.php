@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Auth\Events\Login;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,8 +27,8 @@ class AppServiceProvider extends ServiceProvider
             return $user->hasRole('superadmin') ? true : null;
         });
 
-        \Illuminate\Support\Facades\Event::listen(function (\Illuminate\Auth\Events\Login $event) {
-            logActivity('Login', 'Pengguna ' . $event->user->name . ' telah berhasil login.', 'User', $event->user->id);
+        Event::listen(function (Login $event) {
+            logActivity('Login', 'Pengguna '.$event->user->name.' telah berhasil login.', 'User', $event->user->id);
         });
     }
 }

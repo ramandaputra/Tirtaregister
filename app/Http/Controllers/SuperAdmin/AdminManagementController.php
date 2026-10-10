@@ -5,6 +5,7 @@ namespace App\Http\Controllers\SuperAdmin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class AdminManagementController extends Controller
 {
@@ -13,13 +14,15 @@ class AdminManagementController extends Controller
     {
         // Menggunakan eager loading 'roles' agar query ringan
         $admins = User::with('roles')->latest()->paginate(15);
+
         return view('superadmin.admins.index', compact('admins'));
     }
 
     // 2. Tampilkan Form Tambah Admin
     public function create()
     {
-        $roles = \Spatie\Permission\Models\Role::all();
+        $roles = Role::all();
+
         return view('superadmin.admins.create', compact('roles'));
     }
 
@@ -27,16 +30,16 @@ class AdminManagementController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'     => 'required|string|max:255',
-            'email'    => 'required|email|unique:users,email',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8|confirmed',
-            'role'     => 'required|string',
+            'role' => 'required|string',
         ]);
 
         // 1. Buat User baru (tanpa memasukkan 'role' ke kolom users)
         $user = User::create([
-            'name'     => $request->name,
-            'email'    => $request->email,
+            'name' => $request->name,
+            'email' => $request->email,
             'password' => bcrypt($request->password),
         ]);
 
@@ -51,7 +54,8 @@ class AdminManagementController extends Controller
     public function edit($id)
     {
         $admin = User::findOrFail($id);
-        $roles = \Spatie\Permission\Models\Role::all();
+        $roles = Role::all();
+
         return view('superadmin.admins.edit', compact('admin', 'roles'));
     }
 
@@ -61,13 +65,13 @@ class AdminManagementController extends Controller
         $admin = User::findOrFail($id);
 
         $request->validate([
-            'name'  => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $id,
-            'role'  => 'required|string',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,'.$id,
+            'role' => 'required|string',
         ]);
 
         // 1. Update data dasar user
-        $admin->name  = $request->name;
+        $admin->name = $request->name;
         $admin->email = $request->email;
 
         // Update password jika diisi
@@ -88,7 +92,7 @@ class AdminManagementController extends Controller
     public function destroy($id)
     {
         $admin = User::findOrFail($id);
-        
+
         // Hapus relasi role terlebih dahulu sebelum menghapus user
         $admin->syncRoles([]);
         $admin->delete();

@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\User;
-use Spatie\Permission\Models\Role;
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class RoleAndUserSeeder extends Seeder
 {
@@ -13,12 +13,12 @@ class RoleAndUserSeeder extends Seeder
     {
         // 1. Buat Role
         $superAdminRole = Role::create(['name' => 'super-admin']);
-        $adminRole      = Role::create(['name' => 'admin']);
+        $adminRole = Role::create(['name' => 'admin']);
 
         // 2. Buat Akun Super Admin Utama
         $superAdmin = User::create([
-            'name'     => 'PUSINPEL',
-            'email'    => 'pusinpel@tirtakepri.co.id',
+            'name' => 'PUSINPEL',
+            'email' => 'pusinpel@tirtakepri.co.id',
             'password' => Hash::make('password123'), // Ubah password saat produksi
         ]);
 

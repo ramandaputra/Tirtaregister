@@ -1,44 +1,44 @@
 <?php
 
+use App\Models\ActivityLog;
 use App\Models\Setting;
 
-if (!function_exists('setting')) {
+if (! function_exists('setting')) {
     /**
      * Ambil nilai dari tabel settings berdasarkan key.
      *
-     * @param string|null $key
-     * @param mixed $default
+     * @param  mixed  $default
      * @return mixed
      */
     function setting(?string $key = null, $default = null)
     {
         if (is_null($key)) {
-            return new Setting();
+            return new Setting;
         }
 
         return Setting::get($key, $default);
     }
 }
 
-if (!function_exists('logActivity')) {
+if (! function_exists('logActivity')) {
     /**
      * Catat aktivitas log.
      *
-     * @param string $action
-     * @param string $description
-     * @param string|null $modelType
-     * @param int|null $modelId
+     * @param  string  $action
+     * @param  string  $description
+     * @param  string|null  $modelType
+     * @param  int|null  $modelId
      * @return void
      */
     function logActivity($action, $description, $modelType = null, $modelId = null)
     {
-        $ipAddress = request()->header('X-Forwarded-For') 
-                        ? trim(explode(',', request()->header('X-Forwarded-For'))[0]) 
-                        : (request()->header('Client-Ip') 
-                            ? request()->header('Client-Ip') 
+        $ipAddress = request()->header('X-Forwarded-For')
+                        ? trim(explode(',', request()->header('X-Forwarded-For'))[0])
+                        : (request()->header('Client-Ip')
+                            ? request()->header('Client-Ip')
                             : request()->ip());
 
-        \App\Models\ActivityLog::create([
+        ActivityLog::create([
             'user_id' => auth()->check() ? auth()->id() : null,
             'action' => $action,
             'model_type' => $modelType,

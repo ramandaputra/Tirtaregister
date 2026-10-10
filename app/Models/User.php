@@ -8,7 +8,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use Notifiable, HasRoles, \App\Traits\LogsActivity;
+    use \App\Traits\LogsActivity, HasRoles, Notifiable;
 
     protected $fillable = [
         'name',
@@ -31,8 +31,8 @@ class User extends Authenticatable
 
         return match ($primaryRole) {
             'superadmin' => 'Super Admin',
-            'admin'      => 'Admin',
-            default      => $primaryRole ? ucfirst($primaryRole) : 'Admin',
+            'admin' => 'Admin',
+            default => $primaryRole ? ucfirst($primaryRole) : 'Admin',
         };
     }
 }

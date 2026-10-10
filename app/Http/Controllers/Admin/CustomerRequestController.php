@@ -12,6 +12,7 @@ class CustomerRequestController extends Controller
     public function index()
     {
         $requests = ConnectionRequest::latest()->paginate(15);
+
         return view('admin.requests.index', compact('requests'));
     }
 
@@ -19,6 +20,7 @@ class CustomerRequestController extends Controller
     public function show($id)
     {
         $requestData = ConnectionRequest::findOrFail($id);
+
         return view('admin.requests.show', compact('requestData'));
     }
 
@@ -26,7 +28,7 @@ class CustomerRequestController extends Controller
     public function update(Request $request, $id)
     {
         $connection = ConnectionRequest::findOrFail($id);
-        
+
         $request->validate([
             'status' => 'required|in:pending,survey,approved,rejected',
             'notes' => 'nullable|string',

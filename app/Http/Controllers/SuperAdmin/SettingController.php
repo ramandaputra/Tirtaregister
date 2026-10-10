@@ -24,7 +24,7 @@ class SettingController extends Controller
 
         // Simpan input teks biasa
         foreach ($data as $key => $value) {
-            if (!$request->hasFile($key) && $value !== null) {
+            if (! $request->hasFile($key) && $value !== null) {
                 Setting::updateOrCreate(
                     ['key' => $key],
                     ['value' => $value]

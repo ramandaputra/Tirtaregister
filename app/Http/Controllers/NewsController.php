@@ -25,7 +25,7 @@ class NewsController extends Controller
     public function show($slug)
     {
         $news = News::where('slug', $slug)->firstOrFail();
-        
+
         // Dapatkan berita terbaru lainnya untuk bagian "Berita Terkait"
         $relatedNews = News::where('id', '!=', $news->id)->latest()->take(3)->get();
 
@@ -60,16 +60,16 @@ class NewsController extends Controller
         $news = News::findOrFail($id);
 
         $request->validate([
-            'title'    => 'required|string|max:255',
+            'title' => 'required|string|max:255',
             'category' => 'required|string|max:100',
-            'content'  => 'required',
-            'image'    => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'content' => 'required',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
         ]);
 
         $data = [
-            'title'    => $request->title,
+            'title' => $request->title,
             'category' => $request->category,
-            'content'  => $request->content,
+            'content' => $request->content,
         ];
 
         if ($request->hasFile('image')) {
