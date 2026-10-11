@@ -1,5 +1,5 @@
 @php
-    $settings = \App\Models\Setting::pluck('value', 'key')->toArray();
+    $settings = \App\Models\Setting::allKeyValues();
 @endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -177,7 +177,7 @@
                                             <span class="absolute inset-y-0 left-0 pl-space-sm flex items-center pointer-events-none text-on-surface-variant">
                                                 <span class="material-symbols-outlined text-[20px]">search</span>
                                             </span>
-                                            <input class="w-full h-11 pl-10 pr-space-md rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md placeholder:text-outline focus:outline-none shadow-sm" id="trackInput" placeholder="Masukkan Nomor Registrasi 000/REG/0/0/0000 atau NIK" required="" type="text">
+                                            <input class="w-full h-11 pl-10 pr-space-md rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md placeholder:text-outline focus:outline-none shadow-sm" id="trackInput" placeholder="Masukkan Nomor Registrasi 0000/REG/0/0/0000 atau NIK" required="" type="text">
                                         </div>
                                         <button class="h-11 px-space-lg rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-on-primary-fixed-variant transition-colors flex items-center justify-center gap-space-xs shrink-0 shadow-sm" type="submit" onclick="event.preventDefault(); window.handleTracking(event); return false;">
                                             <span class="material-symbols-outlined text-[18px]">travel_explore</span>
@@ -607,19 +607,23 @@
                             icon.textContent = 'check_circle';
                             statusText.textContent = 'Data Ditemukan!';
                             statusText.classList.replace('text-gray-800', 'text-green-600');
-                            messageText.innerHTML = 'Pendaftar: <b>' + data.message.replace('Data ditemukan: ', '') + '</b><br><span class="inline-block mt-3 px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">' + data.status + '</span>';
+                            
+                            let regInfo = data.reg_number ? '<br><span class="text-xs text-gray-500 font-medium">No. Registrasi: <b class="text-gray-800">' + data.reg_number + '</b></span>' : '';
+                            messageText.innerHTML = 'Pendaftar: <b>' + data.message.replace('Data ditemukan: ', '') + '</b>' + regInfo + '<br><span class="inline-block mt-3 px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">' + data.status + '</span>';
                             
                             if (data.receipt_url) {
                                 qrWrapper.classList.remove('hidden');
                                 qrWrapper.classList.add('flex');
-                                new QRCode(qrCode, {
-                                    text: data.receipt_url,
-                                    width: 120,
-                                    height: 120,
-                                    colorDark: "#000000",
-                                    colorLight: "#ffffff",
-                                    correctLevel: QRCode.CorrectLevel.M
-                                });
+                                if (typeof QRCode !== 'undefined') {
+                                    new QRCode(qrCode, {
+                                        text: data.receipt_url,
+                                        width: 120,
+                                        height: 120,
+                                        colorDark: "#000000",
+                                        colorLight: "#ffffff",
+                                        correctLevel: QRCode.CorrectLevel.M
+                                    });
+                                }
                                 document.getElementById('trackingModalReceiptBtn').href = data.receipt_url;
                             }
                         } else {

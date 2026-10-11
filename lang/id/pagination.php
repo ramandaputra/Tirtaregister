@@ -1,1 +1,3 @@
-<?php return [ "previous" => "&laquo; Sebelumnya", "next" => "Selanjutnya &raquo;" ];
+<?php
+
+return ['previous' => '&laquo; Sebelumnya', 'next' => 'Selanjutnya &raquo;'];

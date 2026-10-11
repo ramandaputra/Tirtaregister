@@ -150,7 +150,7 @@
 
     <!-- Main Content Layout -->
     <main class="flex-grow w-full pt-28">
-        <div class="max-w-7xl mx-auto px-6 py-8 md:py-12 w-full space-y-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8 md:py-12 w-full space-y-8 sm:space-y-10">
             
             <!-- Header Section Modern & Elegan -->
             <header class="flex flex-col items-center text-center max-w-3xl mx-auto space-y-4 pt-2 pb-2">
@@ -276,7 +276,7 @@
 
             <!-- Section Pengaduan 24/7 -->
             @php
-                $settings = \App\Models\Setting::pluck('value', 'key')->toArray();
+                $settings = \App\Models\Setting::allKeyValues();
             @endphp
             <section class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary to-on-primary-container text-on-primary shadow-lg border border-primary-container/30 p-6 md:p-8">
                 <div class="absolute -right-16 -bottom-16 w-64 h-64 bg-primary-container/20 rounded-full blur-3xl pointer-events-none"></div>

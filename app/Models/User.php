@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
+use App\Traits\LogsActivity;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use \App\Traits\LogsActivity, HasRoles, Notifiable;
+    use HasFactory, HasRoles, LogsActivity, Notifiable;
 
     protected $fillable = [
         'name',

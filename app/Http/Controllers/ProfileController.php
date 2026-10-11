@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\ActivityLog;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
-use App\Models\ActivityLog;
 
 class ProfileController extends Controller
 {
@@ -31,8 +32,8 @@ class ProfileController extends Controller
         $user->fill($request->validated());
 
         if ($request->hasFile('profile_photo')) {
-            if ($user->profile_photo_path && \Illuminate\Support\Facades\Storage::disk('public')->exists($user->profile_photo_path)) {
-                \Illuminate\Support\Facades\Storage::disk('public')->delete($user->profile_photo_path);
+            if ($user->profile_photo_path && Storage::disk('public')->exists($user->profile_photo_path)) {
+                Storage::disk('public')->delete($user->profile_photo_path);
             }
             $user->profile_photo_path = $request->file('profile_photo')->store('profile-photos', 'public');
         }
@@ -48,7 +49,7 @@ class ProfileController extends Controller
             'action' => 'Update',
             'model_type' => 'User',
             'model_id' => auth()->id(),
-            'description' => 'Mengubah profil pengguna: ' . auth()->user()->name,
+            'description' => 'Mengubah profil pengguna: '.auth()->user()->name,
             'ip_address' => request()->ip(),
         ]);
 

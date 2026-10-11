@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Tirta Kepri')</title>
+    <title>
+        @hasSection('full_title')
+            @yield('full_title')
+        @else
+            @yield('title', 'Tirta Kepri')
+        @endif
+    </title>
     <!-- Fonts & CDN -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>

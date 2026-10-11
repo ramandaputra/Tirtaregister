@@ -11,12 +11,12 @@
             <h1 class="text-2xl font-bold tracking-tight">Detail Pendaftaran</h1>
             <p class="text-white/80 text-sm mt-1">No. Registrasi: <span class="font-semibold">{{ $pelanggan->nomorreg }}</span></p>
         </div>
-        <div class="flex items-center gap-3 shrink-0">
-            <a href="javascript:history.back()" class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-xl text-sm font-semibold transition flex items-center gap-2">
+        <div class="flex flex-wrap items-center gap-2 sm:gap-3 w-full sm:w-auto shrink-0">
+            <a href="javascript:history.back()" class="px-3.5 sm:px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-xl text-xs sm:text-sm font-semibold transition flex items-center gap-2">
                 <span class="material-symbols-outlined text-[18px]">arrow_back</span>
                 Kembali
             </a>
-            <a href="{{ route('admin.pelanggan.print', $pelanggan->nomorreg) }}" class="px-4 py-2 bg-white text-primary hover:bg-gray-100 rounded-xl text-sm font-bold shadow-sm transition flex items-center gap-2">
+            <a href="{{ route('admin.pelanggan.print', $pelanggan->nomorreg) }}" class="px-3.5 sm:px-4 py-2 bg-white text-primary hover:bg-gray-100 rounded-xl text-xs sm:text-sm font-bold shadow-sm transition flex items-center gap-2">
                 <span class="material-symbols-outlined text-[18px]">print</span>
                 Cetak Bukti
             </a>

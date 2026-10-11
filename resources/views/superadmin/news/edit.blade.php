@@ -9,7 +9,7 @@
                         <h1 class="text-2xl font-bold tracking-tight">Edit Artikel Berita</h1>
                         <p class="text-white/80 text-sm mt-1">Perbarui data artikel berita publik PERUMDA Air Minum Tirta Kepri.</p>
                     </div>
-                    <a href="javascript:history.back()" class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-xl text-sm font-semibold transition flex items-center gap-2 border border-white/20">
+                    <a href="javascript:history.back()" class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-xl text-sm font-semibold transition flex items-center justify-center gap-2 w-full sm:w-auto shrink-0 border border-white/20">
                         <span class="material-symbols-outlined text-[18px]">arrow_back</span>
                         <span>Kembali</span>
                     </a>
@@ -59,11 +59,11 @@
                         </div>
 
                         <!-- Submit Button -->
-                        <div class="flex justify-end gap-3 pt-4 border-t border-surface-border">
-                            <a href="{{ route('superadmin.news.index') }}" class="px-5 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-sm font-semibold transition">
+                        <div class="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-3 pt-4 border-t border-surface-border">
+                            <a href="{{ route('superadmin.news.index') }}" class="px-5 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-sm font-semibold transition text-center">
                                 Batal
                             </a>
-                            <button type="submit" class="px-5 py-2.5 bg-primary hover:bg-primary/90 text-white rounded-xl text-sm font-semibold transition shadow-sm">
+                            <button type="submit" class="px-5 py-2.5 bg-primary hover:bg-primary/90 text-white rounded-xl text-sm font-semibold transition shadow-sm text-center">
                                 Simpan Perubahan
                             </button>
                         </div>

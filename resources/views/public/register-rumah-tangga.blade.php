@@ -143,17 +143,17 @@
     @include('layouts.partials.navbar')
 
     <main class="flex-grow w-full pt-28 pb-20">
-        <div class="max-w-4xl mx-auto px-6 w-full space-y-10">
-            <header class="flex flex-col items-center text-center space-y-4 pt-4">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 w-full space-y-8 sm:space-y-10">
+            <header class="flex flex-col items-center text-center space-y-3 sm:space-y-4 pt-4">
                 <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-100 text-primary border border-blue-200 text-xs font-bold tracking-wider uppercase">
                     <span class="material-symbols-outlined text-[16px]">home</span>
                     Sambungan Rumah Tangga
                 </div>
-                <h1 class="text-3xl md:text-4xl font-bold tracking-tight leading-tight">Formulir Pendaftaran Pasang Baru</h1>
-                <p class="text-sm md:text-base text-gray-600 max-w-2xl">Lengkapi seluruh data dengan benar untuk keperluan administrasi dan survei lokasi.</p>
+                <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight leading-tight">Formulir Pendaftaran Pasang Baru</h1>
+                <p class="text-xs sm:text-sm md:text-base text-gray-600 max-w-2xl">Lengkapi seluruh data dengan benar untuk keperluan administrasi dan survei lokasi.</p>
             </header>
 
-            <div class="bg-white rounded-3xl p-5 sm:p-8 md:p-12 shadow-lg border border-surface-border relative overflow-hidden">
+            <div class="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-12 shadow-lg border border-surface-border relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary to-blue-400"></div>
                 
                 @if(session('success'))
@@ -283,9 +283,9 @@
                                     </button>
                                 </div>
                                 <div id="map"></div>
-                                <div class="flex gap-4 mt-3">
-                                    <input type="text" id="latitude" name="latitude" value="{{ old('latitude') }}" readonly required placeholder="Latitude" class="form-input bg-gray-100 text-sm">
-                                    <input type="text" id="longitude" name="longitude" value="{{ old('longitude') }}" readonly required placeholder="Longitude" class="form-input bg-gray-100 text-sm">
+                                <div class="flex flex-col sm:flex-row gap-2 sm:gap-4 mt-3">
+                                    <input type="text" id="latitude" name="latitude" value="{{ old('latitude', '0.916700') }}" readonly placeholder="Latitude" class="form-input bg-gray-100 text-sm">
+                                    <input type="text" id="longitude" name="longitude" value="{{ old('longitude', '104.450000') }}" readonly placeholder="Longitude" class="form-input bg-gray-100 text-sm">
                                 </div>
                             </div>
                         </div>
@@ -438,6 +438,9 @@
                 defaultLat = parseFloat(latInput.value);
                 defaultLng = parseFloat(lngInput.value);
                 zoomLevel = 16;
+            } else {
+                latInput.value = defaultLat.toFixed(6);
+                lngInput.value = defaultLng.toFixed(6);
             }
 
             const map = L.map('map').setView([defaultLat, defaultLng], zoomLevel);
@@ -574,6 +577,21 @@
                     map.setView([lat, lng], 16);
                     marker.setLatLng([lat, lng]);
                     updateInputs(lat, lng);
+                });
+            }
+
+            // Form submit safety check
+            const registerForm = document.querySelector('form');
+            if (registerForm) {
+                registerForm.addEventListener('submit', function() {
+                    if (!latInput.value) latInput.value = '0.916700';
+                    if (!lngInput.value) lngInput.value = '104.450000';
+                    if (!rayonInput.value && villageSelect.value) {
+                        rayonInput.value = villageSelect.options[villageSelect.selectedIndex].text.replace(/kelurahan\s+/ig, '').trim();
+                    }
+                    if (!rayonInput.value) {
+                        rayonInput.value = 'JL. SAMUDERA';
+                    }
                 });
             }
         });

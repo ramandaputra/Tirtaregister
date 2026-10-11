@@ -10,15 +10,15 @@
                         <p class="text-white/80 text-sm mt-1">Tambah, edit, atau hapus artikel berita publik PERUMDA Air Minum Tirta Kepri.</p>
                     </div>
                     
-                    <div class="flex items-center gap-3 shrink-0">
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto shrink-0">
                         <a href="{{ route('superadmin.settings.index') }}" 
-                           class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-xl text-sm font-semibold transition flex items-center gap-2">
+                           class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-xl text-sm font-semibold transition flex items-center justify-center gap-2 border border-white/20">
                             <span class="material-symbols-outlined text-[18px]">settings</span>
                             <span>Pengaturan Website</span>
                         </a>
 
                         <a href="{{ route('superadmin.news.create') }}" 
-                           class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-xl text-sm font-semibold transition flex items-center gap-2">
+                           class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-xl text-sm font-semibold transition flex items-center justify-center gap-2 border border-white/20">
                             <span class="material-symbols-outlined text-[18px]">add</span>
                             <span>Tambah Berita Baru</span>
                         </a>

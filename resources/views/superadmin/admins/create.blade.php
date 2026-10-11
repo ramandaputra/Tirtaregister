@@ -13,7 +13,7 @@
             </div>
             
             <a href="javascript:history.back()" 
-               class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-xl text-sm font-semibold transition flex items-center gap-2 shrink-0">
+               class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-xl text-sm font-semibold transition flex items-center justify-center gap-2 w-full sm:w-auto shrink-0 border border-white/20">
                 <span class="material-symbols-outlined text-[18px]">arrow_back</span>
                 <span>Kembali ke Daftar Admin</span>
             </a>
@@ -89,13 +89,13 @@
                 </div>
 
                 <!-- Tombol Aksi Simpan -->
-                <div class="flex items-center justify-end gap-3 pt-4 border-t border-surface-border">
+                <div class="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-3 pt-4 border-t border-surface-border">
                     <a href="{{ route('superadmin.admins.index') }}" 
-                       class="px-5 py-2.5 rounded-xl border border-surface-border text-gray-700 text-sm font-semibold hover:bg-gray-50 transition">
+                       class="px-5 py-2.5 rounded-xl border border-surface-border text-gray-700 text-sm font-semibold hover:bg-gray-50 transition text-center">
                         Batal
                     </a>
                     <button type="submit" 
-                            class="px-5 py-2.5 rounded-xl bg-primary text-white text-sm font-bold hover:bg-primary/90 transition shadow-sm flex items-center gap-2">
+                            class="px-5 py-2.5 rounded-xl bg-primary text-white text-sm font-bold hover:bg-primary/90 transition shadow-sm flex items-center justify-center gap-2">
                         <span class="material-symbols-outlined text-[18px]">save</span>
                         <span>Simpan Akun</span>
                     </button>

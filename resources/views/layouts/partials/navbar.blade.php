@@ -1,6 +1,6 @@
 @php
     // Ambil setting dari database
-    $settings = \App\Models\Setting::pluck('value', 'key')->toArray();
+    $settings = \App\Models\Setting::allKeyValues();
 @endphp
 
 

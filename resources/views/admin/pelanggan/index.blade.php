@@ -11,16 +11,16 @@
             <p class="text-white/80 text-sm mt-1">Semua data pendaftaran pelanggan masuk untuk kategori Pribadi (Rumah Tangga).</p>
         </div>
         
-        <div class="flex items-center gap-3 shrink-0">
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto shrink-0">
             <!-- Tambah Data -->
-            <a href="{{ route('admin.pelanggan.create') }}" class="px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-xl text-sm font-semibold transition flex items-center gap-2 border border-white/20 backdrop-blur-sm">
+            <a href="{{ route('admin.pelanggan.create') }}" class="px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-xl text-sm font-semibold transition flex items-center justify-center gap-2 border border-white/20 backdrop-blur-sm">
                 <span class="material-symbols-outlined text-[18px]">add</span>
                 <span>Tambah Pelanggan</span>
             </a>
             
             <!-- Search Form -->
-            <form method="GET" action="{{ route('admin.pelanggan.index') }}" class="flex">
-                <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari Nama / No. Reg..." class="w-full md:w-64 px-4 py-2 border-0 rounded-l-xl text-sm focus:outline-none focus:ring-2 focus:ring-white/50 text-gray-900 bg-white shadow-inner">
+            <form method="GET" action="{{ route('admin.pelanggan.index') }}" class="flex w-full sm:w-auto">
+                <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari Nama / No. Reg..." class="w-full sm:w-56 md:w-64 px-4 py-2 border-0 rounded-l-xl text-sm focus:outline-none focus:ring-2 focus:ring-white/50 text-gray-900 bg-white shadow-inner">
                 <button type="submit" class="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-r-xl text-sm font-semibold transition backdrop-blur-sm border-l border-white/20">Cari</button>
             </form>
         </div>

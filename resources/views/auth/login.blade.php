@@ -57,7 +57,7 @@
 </head>
 <body class="font-sans antialiased text-gray-900 bg-gray-900">
 
-    <div class="min-h-screen relative flex items-center justify-start px-6 sm:px-16 md:px-24 lg:px-40 overflow-hidden">
+    <div class="min-h-screen relative flex items-center justify-center sm:justify-start px-4 sm:px-16 md:px-24 lg:px-40 overflow-hidden py-8">
         
         <!-- Full Background Image with Overlay -->
         <div class="absolute inset-0 z-0 animate-bg-fade opacity-0">
@@ -68,7 +68,7 @@
         <!-- Card Container with Entrance Animation -->
         <div class="w-full max-w-[420px] z-10 animate-slide-in opacity-0">
             <!-- Glassmorphism Login Card -->
-            <div class="relative w-full bg-white/60 backdrop-blur-xl border border-white/40 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] rounded-[2rem] p-8 sm:p-10 transition-all duration-500 hover:shadow-[0_12px_48px_0_rgba(0,0,0,0.4)] hover:bg-white/70 hover:-translate-y-1">
+            <div class="relative w-full bg-white/60 backdrop-blur-xl border border-white/40 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] rounded-[2rem] p-6 sm:p-10 transition-all duration-500 hover:shadow-[0_12px_48px_0_rgba(0,0,0,0.4)] hover:bg-white/70 hover:-translate-y-1">
             
             <!-- Logo & Brand -->
             <div class="mb-10 text-center flex flex-col items-center">
