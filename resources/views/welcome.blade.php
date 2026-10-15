@@ -1,5 +1,6 @@
 @php
     $settings = \App\Models\Setting::allKeyValues();
+    $branchContacts = \App\Models\Setting::getBranchContacts();
 @endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -448,7 +449,7 @@
                                 </p>
                             </div>
                             <div class="flex flex-col gap-space-md">
-                                <!-- Baris Atas: WhatsApp 3 Cabang -->
+                                <!-- Baris Atas: WhatsApp Cabang & Contact Person -->
                                 <div class="p-space-md rounded-2xl bg-gradient-to-br from-status-success/10 to-status-success/5 border border-status-success/20 shadow-sm">
                                     <div class="flex items-center gap-4 mb-5">
                                         <div class="w-12 h-12 rounded-xl bg-status-success text-white flex items-center justify-center shrink-0 shadow-md shadow-status-success/30">
@@ -459,31 +460,24 @@
                                             <p class="text-sm text-on-surface-variant mt-0.5">Pilih cabang terdekat untuk respon layanan instan.</p>
                                         </div>
                                     </div>
-                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                        <!-- Cabang 1 -->
-                                        <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $settings['branch_1_wa'] ?? '08117782155') }}" target="_blank" class="relative overflow-hidden flex flex-col justify-center p-4 rounded-xl bg-white border border-status-success/10 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
-                                            <div class="absolute top-0 right-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity translate-x-2 group-hover:translate-x-0 duration-300">
-                                                <span class="material-symbols-outlined text-status-success text-[20px]">arrow_outward</span>
-                                            </div>
-                                            <span class="text-[11px] font-bold text-status-success uppercase tracking-widest mb-1">{{ $settings['branch_1_name'] ?? 'Tanjungpinang' }}</span>
-                                            <span class="text-lg font-extrabold text-on-surface group-hover:text-primary transition-colors flex items-center gap-1.5"><svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-status-success"><path d="M12.031 0C5.394 0 0 5.394 0 12.031a11.97 11.97 0 001.6 5.96L0 24l6.17-1.6a11.97 11.97 0 005.861 1.53h.005c6.634 0 12.028-5.394 12.028-12.031S18.665 0 12.031 0zM12.036 21.905h-.003a9.944 9.944 0 01-5.068-1.378l-.363-.215-3.774.989.998-3.68-.236-.375a9.957 9.957 0 01-1.524-5.215c0-5.512 4.484-9.997 10.002-9.997 2.671 0 5.18 1.04 7.067 2.93a9.972 9.972 0 012.923 7.07c-.001 5.511-4.485 9.996-9.998 9.996zm5.485-7.493c-.301-.151-1.782-.879-2.059-.979-.277-.1-.478-.151-.678.151-.2.301-.777.979-.953 1.18-.175.201-.352.226-.653.076a8.212 8.212 0 01-2.417-1.492 9.074 9.074 0 01-1.684-2.096c-.176-.301-.019-.464.132-.614.136-.135.301-.352.452-.527.151-.176.201-.301.301-.502.1-.2.05-.376-.025-.527-.075-.151-.678-1.631-.928-2.234-.244-.588-.493-.508-.678-.517-.175-.008-.376-.008-.577-.008a1.1 1.1 0 00-.791.368c-.277.301-1.055 1.029-1.055 2.51s1.08 2.912 1.23 3.113c.151.2 2.122 3.238 5.139 4.54.718.311 1.278.497 1.714.636.72.189 1.376.162 1.895.098.58-.073 1.782-.728 2.033-1.431.251-.703.251-1.306.175-1.431-.075-.126-.276-.201-.577-.352z"></path></svg> {{ $settings['branch_1_wa'] ?? '0811-778-2155' }}</span>
-                                        </a>
-                                        <!-- Cabang 2 -->
-                                        <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $settings['branch_2_wa'] ?? '08123456789') }}" target="_blank" class="relative overflow-hidden flex flex-col justify-center p-4 rounded-xl bg-white border border-status-success/10 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
-                                            <div class="absolute top-0 right-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity translate-x-2 group-hover:translate-x-0 duration-300">
-                                                <span class="material-symbols-outlined text-status-success text-[20px]">arrow_outward</span>
-                                            </div>
-                                            <span class="text-[11px] font-bold text-status-success uppercase tracking-widest mb-1">{{ $settings['branch_2_name'] ?? 'Kijang' }}</span>
-                                            <span class="text-lg font-extrabold text-on-surface group-hover:text-primary transition-colors flex items-center gap-1.5"><svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-status-success"><path d="M12.031 0C5.394 0 0 5.394 0 12.031a11.97 11.97 0 001.6 5.96L0 24l6.17-1.6a11.97 11.97 0 005.861 1.53h.005c6.634 0 12.028-5.394 12.028-12.031S18.665 0 12.031 0zM12.036 21.905h-.003a9.944 9.944 0 01-5.068-1.378l-.363-.215-3.774.989.998-3.68-.236-.375a9.957 9.957 0 01-1.524-5.215c0-5.512 4.484-9.997 10.002-9.997 2.671 0 5.18 1.04 7.067 2.93a9.972 9.972 0 012.923 7.07c-.001 5.511-4.485 9.996-9.998 9.996zm5.485-7.493c-.301-.151-1.782-.879-2.059-.979-.277-.1-.478-.151-.678.151-.2.301-.777.979-.953 1.18-.175.201-.352.226-.653.076a8.212 8.212 0 01-2.417-1.492 9.074 9.074 0 01-1.684-2.096c-.176-.301-.019-.464.132-.614.136-.135.301-.352.452-.527.151-.176.201-.301.301-.502.1-.2.05-.376-.025-.527-.075-.151-.678-1.631-.928-2.234-.244-.588-.493-.508-.678-.517-.175-.008-.376-.008-.577-.008a1.1 1.1 0 00-.791.368c-.277.301-1.055 1.029-1.055 2.51s1.08 2.912 1.23 3.113c.151.2 2.122 3.238 5.139 4.54.718.311 1.278.497 1.714.636.72.189 1.376.162 1.895.098.58-.073 1.782-.728 2.033-1.431.251-.703.251-1.306.175-1.431-.075-.126-.276-.201-.577-.352z"></path></svg> {{ $settings['branch_2_wa'] ?? '0812-345-6789' }}</span>
-                                        </a>
-                                        <!-- Cabang 3 -->
-                                        <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $settings['branch_3_wa'] ?? '08134567890') }}" target="_blank" class="relative overflow-hidden flex flex-col justify-center p-4 rounded-xl bg-white border border-status-success/10 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
-                                            <div class="absolute top-0 right-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity translate-x-2 group-hover:translate-x-0 duration-300">
-                                                <span class="material-symbols-outlined text-status-success text-[20px]">arrow_outward</span>
-                                            </div>
-                                            <span class="text-[11px] font-bold text-status-success uppercase tracking-widest mb-1">{{ $settings['branch_3_name'] ?? 'Tj. Uban' }}</span>
-                                            <span class="text-lg font-extrabold text-on-surface group-hover:text-primary transition-colors flex items-center gap-1.5"><svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-status-success"><path d="M12.031 0C5.394 0 0 5.394 0 12.031a11.97 11.97 0 001.6 5.96L0 24l6.17-1.6a11.97 11.97 0 005.861 1.53h.005c6.634 0 12.028-5.394 12.028-12.031S18.665 0 12.031 0zM12.036 21.905h-.003a9.944 9.944 0 01-5.068-1.378l-.363-.215-3.774.989.998-3.68-.236-.375a9.957 9.957 0 01-1.524-5.215c0-5.512 4.484-9.997 10.002-9.997 2.671 0 5.18 1.04 7.067 2.93a9.972 9.972 0 012.923 7.07c-.001 5.511-4.485 9.996-9.998 9.996zm5.485-7.493c-.301-.151-1.782-.879-2.059-.979-.277-.1-.478-.151-.678.151-.2.301-.777.979-.953 1.18-.175.201-.352.226-.653.076a8.212 8.212 0 01-2.417-1.492 9.074 9.074 0 01-1.684-2.096c-.176-.301-.019-.464.132-.614.136-.135.301-.352.452-.527.151-.176.201-.301.301-.502.1-.2.05-.376-.025-.527-.075-.151-.678-1.631-.928-2.234-.244-.588-.493-.508-.678-.517-.175-.008-.376-.008-.577-.008a1.1 1.1 0 00-.791.368c-.277.301-1.055 1.029-1.055 2.51s1.08 2.912 1.23 3.113c.151.2 2.122 3.238 5.139 4.54.718.311 1.278.497 1.714.636.72.189 1.376.162 1.895.098.58-.073 1.782-.728 2.033-1.431.251-.703.251-1.306.175-1.431-.075-.126-.276-.201-.577-.352z"></path></svg> {{ $settings['branch_3_wa'] ?? '0813-456-7890' }}</span>
-                                        </a>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                                        @foreach($branchContacts as $contact)
+                                            <a href="{{ format_wa_url($contact['wa']) }}" target="_blank" class="relative overflow-hidden flex flex-col justify-center p-4 rounded-xl bg-white border border-status-success/10 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
+                                                <div class="absolute top-0 right-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity translate-x-2 group-hover:translate-x-0 duration-300">
+                                                    <span class="material-symbols-outlined text-status-success text-[20px]">arrow_outward</span>
+                                                </div>
+                                                <div class="flex items-center justify-between mb-1.5 pr-6">
+                                                    <span class="text-[11px] font-bold text-status-success uppercase tracking-widest">{{ $contact['branch'] }}</span>
+                                                    @if(!empty($contact['name']))
+                                                        <span class="text-[10px] font-semibold text-primary px-2 py-0.5 rounded-full bg-primary/10">{{ $contact['name'] }}</span>
+                                                    @endif
+                                                </div>
+                                                <span class="text-base md:text-lg font-extrabold text-on-surface group-hover:text-primary transition-colors flex items-center gap-1.5 font-mono">
+                                                    <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-status-success shrink-0"><path d="M12.031 0C5.394 0 0 5.394 0 12.031a11.97 11.97 0 001.6 5.96L0 24l6.17-1.6a11.97 11.97 0 005.861 1.53h.005c6.634 0 12.028-5.394 12.028-12.031S18.665 0 12.031 0zM12.036 21.905h-.003a9.944 9.944 0 01-5.068-1.378l-.363-.215-3.774.989.998-3.68-.236-.375a9.957 9.957 0 01-1.524-5.215c0-5.512 4.484-9.997 10.002-9.997 2.671 0 5.18 1.04 7.067 2.93a9.972 9.972 0 012.923 7.07c-.001 5.511-4.485 9.996-9.998 9.996zm5.485-7.493c-.301-.151-1.782-.879-2.059-.979-.277-.1-.478-.151-.678.151-.2.301-.777.979-.953 1.18-.175.201-.352.226-.653.076a8.212 8.212 0 01-2.417-1.492 9.074 9.074 0 01-1.684-2.096c-.176-.301-.019-.464.132-.614.136-.135.301-.352.452-.527.151-.176.201-.301.301-.502.1-.2.05-.376-.025-.527-.075-.151-.678-1.631-.928-2.234-.244-.588-.493-.508-.678-.517-.175-.008-.376-.008-.577-.008a1.1 1.1 0 00-.791.368c-.277.301-1.055 1.029-1.055 2.51s1.08 2.912 1.23 3.113c.151.2 2.122 3.238 5.139 4.54.718.311 1.278.497 1.714.636.72.189 1.376.162 1.895.098.58-.073 1.782-.728 2.033-1.431.251-.703.251-1.306.175-1.431-.075-.126-.276-.201-.577-.352z"></path></svg>
+                                                    {{ $contact['wa'] }}
+                                                </span>
+                                            </a>
+                                        @endforeach
                                     </div>
                                 </div>
 
@@ -608,7 +602,7 @@
                             statusText.textContent = 'Data Ditemukan!';
                             statusText.classList.replace('text-gray-800', 'text-green-600');
                             
-                            let regInfo = data.reg_number ? '<br><span class="text-xs text-gray-500 font-medium">No. Registrasi: <b class="text-gray-800">' + data.reg_number + '</b></span>' : '';
+                            let regInfo = data.reg_number ? '<br><span class="text-xs text-gray-500 font-medium">No. Registrasi: <b class="text-gray-800">' + data.reg_number + '</b>' + (data.golongan ? ' &bull; Golongan: <b class="text-blue-600">' + data.golongan + '</b>' : '') + '</span>' : '';
                             messageText.innerHTML = 'Pendaftar: <b>' + data.message.replace('Data ditemukan: ', '') + '</b>' + regInfo + '<br><span class="inline-block mt-3 px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">' + data.status + '</span>';
                             
                             if (data.receipt_url) {

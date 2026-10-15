@@ -84,7 +84,12 @@
                                             {{ strtoupper(substr($admin->name, 0, 2)) }}
                                         @endif
                                     </div>
-                                    <span>{{ $admin->name }}</span>
+                                    <div class="text-left">
+                                        <span class="block text-gray-900 font-semibold">{{ $admin->name }}</span>
+                                        <span class="inline-flex items-center text-[11px] font-medium text-primary bg-primary/5 px-2 py-0.5 rounded-md mt-0.5">
+                                            @<span>{{ $admin->username ?: strtolower(explode('@', $admin->email)[0]) }}</span>
+                                        </span>
+                                    </div>
                                 </div>
                             </td>
                             <td class="py-4 px-6 text-gray-600">{{ $admin->email }}</td>

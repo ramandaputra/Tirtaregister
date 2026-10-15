@@ -34,7 +34,15 @@ class StoreConnectionRequest extends FormRequest
             'latitude' => 'nullable|string',
             'longitude' => 'nullable|string',
 
-            'purpose_id' => 'required|string',
+            'purpose_id' => [
+                'required',
+                'string',
+                function ($attribute, $value, $fail) {
+                    if ($this->connection_type === 'Rumah Tangga' && strcasecmp($value, 'kantor') === 0) {
+                        $fail('Peruntukan "Kantor" tidak tersedia untuk Sambungan Rumah Tangga.');
+                    }
+                },
+            ],
             'building_type_id' => 'required|string',
             'ownership_id' => 'required|string',
             'land_area' => 'required|numeric|min:0',

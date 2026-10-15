@@ -185,6 +185,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::post('/pelanggan', [AdminPelangganController::class, 'store'])->name('pelanggan.store');
             Route::get('/pelanggan/edit/{id}', [AdminPelangganController::class, 'edit'])->name('pelanggan.edit')->where('id', '.*');
             Route::put('/pelanggan/update/{id}', [AdminPelangganController::class, 'update'])->name('pelanggan.update')->where('id', '.*');
+            Route::patch('/pelanggan/update-status/{id}', [AdminPelangganController::class, 'updateStatus'])->name('pelanggan.updateStatus')->where('id', '.*');
             Route::delete('/pelanggan/destroy/{id}', [AdminPelangganController::class, 'destroy'])->name('pelanggan.destroy')->where('id', '.*');
             Route::get('/pelanggan/print/{id}', [AdminPelangganController::class, 'print'])->name('pelanggan.print')->where('id', '.*');
             Route::get('/pelanggan/show/{id}', [AdminPelangganController::class, 'show'])->name('pelanggan.show')->where('id', '.*');

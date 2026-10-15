@@ -305,7 +305,9 @@
                                 <select name="purpose_id" required class="form-select">
                                     <option value="">Pilih...</option>
                                     @foreach($purposes as $p)
-                                        <option value="{{ $p->peruntukan }}" {{ old('purpose_id') == $p->peruntukan ? 'selected' : '' }}>{{ $p->peruntukan }}</option>
+                                        @if(strcasecmp($p->peruntukan, 'kantor') !== 0)
+                                            <option value="{{ $p->peruntukan }}" {{ old('purpose_id') == $p->peruntukan ? 'selected' : '' }}>{{ $p->peruntukan }}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>

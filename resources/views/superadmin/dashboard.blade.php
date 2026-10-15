@@ -87,6 +87,51 @@
                     </div>
                 </div>
 
+                <!-- Stat Cards Grid (Status Pemasangan Sambungan Air) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div class="bg-white p-6 rounded-2xl border border-surface-border shadow-sm flex items-center justify-between border-l-4 border-l-emerald-500 hover:shadow-md transition">
+                        <div class="flex-1 pr-4">
+                            <div class="flex items-center gap-2 mb-1">
+                                <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Sudah Terpasang</p>
+                                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">
+                                    {{ ($totalPendaftaran ?? 0) > 0 ? round(($totalTerpasang / $totalPendaftaran) * 100, 1) : 0 }}%
+                                </span>
+                            </div>
+                            <h3 class="text-3xl font-bold text-emerald-600 counter-animate" data-target="{{ $totalTerpasang ?? 0 }}">0</h3>
+                            <div class="w-full bg-gray-100 rounded-full h-1.5 mt-2.5 overflow-hidden">
+                                <div class="bg-emerald-500 h-1.5 rounded-full" style="width: {{ ($totalPendaftaran ?? 0) > 0 ? round(($totalTerpasang / $totalPendaftaran) * 100, 1) : 0 }}%"></div>
+                            </div>
+                            <a href="{{ route('admin.pelanggan.index', ['status' => 'terpasang']) }}" class="text-xs text-emerald-700 font-semibold hover:underline mt-2 inline-flex items-center gap-1">
+                                Lihat Pelanggan Terpasang →
+                            </a>
+                        </div>
+                        <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600 shrink-0">
+                            <span class="material-symbols-outlined text-[28px]">check_circle</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border border-surface-border shadow-sm flex items-center justify-between border-l-4 border-l-amber-500 hover:shadow-md transition">
+                        <div class="flex-1 pr-4">
+                            <div class="flex items-center gap-2 mb-1">
+                                <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Belum Terpasang</p>
+                                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">
+                                    {{ ($totalPendaftaran ?? 0) > 0 ? round(($totalBelumTerpasang / $totalPendaftaran) * 100, 1) : 0 }}%
+                                </span>
+                            </div>
+                            <h3 class="text-3xl font-bold text-amber-600 counter-animate" data-target="{{ $totalBelumTerpasang ?? 0 }}">0</h3>
+                            <div class="w-full bg-gray-100 rounded-full h-1.5 mt-2.5 overflow-hidden">
+                                <div class="bg-amber-500 h-1.5 rounded-full" style="width: {{ ($totalPendaftaran ?? 0) > 0 ? round(($totalBelumTerpasang / $totalPendaftaran) * 100, 1) : 0 }}%"></div>
+                            </div>
+                            <a href="{{ route('admin.pelanggan.index', ['status' => 'belum']) }}" class="text-xs text-amber-700 font-semibold hover:underline mt-2 inline-flex items-center gap-1">
+                                Lihat Belum Terpasang →
+                            </a>
+                        </div>
+                        <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center text-amber-600 shrink-0">
+                            <span class="material-symbols-outlined text-[28px]">pending_actions</span>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Pendaftaran Terbaru -->
                 <div class="bg-white rounded-2xl border border-surface-border shadow-sm overflow-hidden">
                     <div class="p-5 border-b border-surface-border flex items-center justify-between">
@@ -99,6 +144,7 @@
                                     <th class="px-6 py-4">No. Registrasi</th>
                                     <th class="px-6 py-4">Nama Pendaftar</th>
                                     <th class="px-6 py-4">Tipe</th>
+                                    <th class="px-6 py-4">Golongan</th>
                                     <th class="px-6 py-4">Status</th>
                                     <th class="px-6 py-4 text-center">Aksi</th>
                                 </tr>
@@ -118,6 +164,11 @@
                                             @else
                                                 <span class="inline-flex items-center px-2 py-1 rounded-md text-[10px] font-bold bg-emerald-100 text-emerald-800">{{ $req->tipe ?? 'REGULER' }}</span>
                                             @endif
+                                        </td>
+                                        <td class="px-6 py-3">
+                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700 border border-slate-200">
+                                                {{ $req->golongan }}
+                                            </span>
                                         </td>
                                         <td class="px-6 py-3">
                                             @if($req->flagpasang == 1)
@@ -146,7 +197,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="5" class="px-6 py-8 text-center text-gray-500">
+                                        <td colspan="6" class="px-6 py-8 text-center text-gray-500">
                                             Belum ada data pendaftaran terbaru.
                                         </td>
                                     </tr>

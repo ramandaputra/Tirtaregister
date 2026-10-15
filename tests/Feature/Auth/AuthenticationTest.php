@@ -30,6 +30,40 @@ class AuthenticationTest extends TestCase
         $response->assertRedirect(route('dashboard', absolute: false));
     }
 
+    public function test_users_can_authenticate_using_username(): void
+    {
+        $user = User::factory()->create([
+            'username' => 'petugas_air',
+            'email' => 'petugas@tirtakepri.co.id',
+            'password' => bcrypt('secret123'),
+        ]);
+
+        $response = $this->post('/login', [
+            'login' => 'petugas_air',
+            'password' => 'secret123',
+        ]);
+
+        $this->assertAuthenticatedAs($user);
+        $response->assertRedirect(route('dashboard', absolute: false));
+    }
+
+    public function test_users_can_authenticate_using_case_insensitive_username(): void
+    {
+        $user = User::factory()->create([
+            'username' => 'pusimpel',
+            'email' => 'pusimpel@tirtakepri.co.id',
+            'password' => bcrypt('password123'),
+        ]);
+
+        $response = $this->post('/login', [
+            'login' => 'PUSIMPEL',
+            'password' => 'password123',
+        ]);
+
+        $this->assertAuthenticatedAs($user);
+        $response->assertRedirect(route('dashboard', absolute: false));
+    }
+
     public function test_users_can_not_authenticate_with_invalid_password(): void
     {
         $user = User::factory()->create();

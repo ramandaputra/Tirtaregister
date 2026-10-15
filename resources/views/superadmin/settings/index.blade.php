@@ -42,15 +42,15 @@
                 <form action="{{ route('superadmin.settings.update') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
                     @csrf
 
-                    <!-- 0. IDENTITAS WEBSITE & FOOTER -->
+                    <!-- 0. IDENTITAS WEBSITE -->
                     <div class="bg-white rounded-2xl p-6 shadow-sm border border-surface-border">
                         <div class="flex items-center gap-3 pb-4 mb-6 border-b border-surface-border">
                             <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center font-bold text-sm">
                                 0
                             </div>
                             <div>
-                                <h2 class="text-lg font-bold text-on-surface">Identitas Website & Footer</h2>
-                                <p class="text-xs text-on-surface-variant">Judul tab browser, nama instansi, logo ikon, dan teks footer bawah</p>
+                                <h2 class="text-lg font-bold text-on-surface">Identitas Website Utama</h2>
+                                <p class="text-xs text-on-surface-variant">Judul tab browser, nama instansi, dan logo favicon website</p>
                             </div>
                         </div>
 
@@ -81,12 +81,6 @@
                                 @endif
                                 <input type="file" name="site_icon" accept="image/*" 
                                        class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20">
-                            </div>
-
-                            <div>
-                                <label class="block text-sm font-semibold text-on-surface mb-2">Deskripsi Singkat Footer</label>
-                                <textarea name="footer_description" rows="2" 
-                                          class="w-full px-4 py-2.5 rounded-lg border border-surface-border focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm">{{ $settings['footer_description'] ?? 'Portal resmi PERUMDA Air Minum Tirta Kepri. Memberikan layanan air bersih yang berkualitas, transparan, dan berkelanjutan bagi masyarakat Provinsi Kepulauan Riau.' }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -121,44 +115,86 @@
                                 </div>
                             </div>
 
-                            <div class="md:col-span-2 mt-2">
-                                <h3 class="font-bold text-sm text-primary mb-3">Kontak WhatsApp 3 Cabang</h3>
-                            </div>
-                            
-                            <!-- Cabang 1 -->
-                            <div class="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-3 p-4 border border-surface-border rounded-lg bg-surface-container-lowest">
-                                <div>
-                                    <label class="block text-xs font-semibold text-on-surface mb-1">Nama Cabang 1</label>
-                                    <input type="text" name="branch_1_name" value="{{ $settings['branch_1_name'] ?? 'Tanjungpinang' }}" class="w-full px-3 py-2.5 rounded-lg border border-surface-border text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
+                            <div class="md:col-span-2 mt-4 pt-4 border-t border-surface-border">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+                                    <div>
+                                        <div class="flex items-center gap-2">
+                                            <h3 class="font-bold text-base text-primary flex items-center gap-2">
+                                                <span class="material-symbols-outlined text-[20px] text-status-success">support_agent</span>
+                                                Kontak WhatsApp Pelayanan Cabang
+                                            </h3>
+                                            <span class="hidden sm:inline-flex items-center gap-1 text-[11px] text-primary font-medium bg-primary/10 px-2.5 py-0.5 rounded-full">
+                                                <span class="material-symbols-outlined text-[14px]">drag_pan</span>
+                                                Drag &amp; drop untuk atur urutan
+                                            </span>
+                                        </div>
+                                        <p class="text-xs text-on-surface-variant mt-0.5">Kelola kontak WhatsApp pelayanan per cabang. Anda dapat menambah lebih dari 1 contact person per cabang, mengurangi, serta menggeser (drag &amp; drop) posisi urutan kontak.</p>
+                                    </div>
+                                    <button type="button" id="btn-add-contact" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-primary text-white hover:bg-primary/90 font-semibold text-xs transition-colors shrink-0 cursor-pointer shadow-sm">
+                                        <span class="material-symbols-outlined text-[18px]">add_circle</span>
+                                        <span>Tambah Contact Person</span>
+                                    </button>
                                 </div>
-                                <div>
-                                    <label class="block text-xs font-semibold text-on-surface mb-1">WhatsApp Cabang 1</label>
-                                    <input type="text" name="branch_1_wa" value="{{ $settings['branch_1_wa'] ?? '0811-778-2155' }}" class="w-full px-3 py-2.5 rounded-lg border border-surface-border text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
-                                </div>
-                            </div>
 
-                            <!-- Cabang 2 -->
-                            <div class="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-3 p-4 border border-surface-border rounded-lg bg-surface-container-lowest">
-                                <div>
-                                    <label class="block text-xs font-semibold text-on-surface mb-1">Nama Cabang 2</label>
-                                    <input type="text" name="branch_2_name" value="{{ $settings['branch_2_name'] ?? 'Kijang' }}" class="w-full px-3 py-2.5 rounded-lg border border-surface-border text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
-                                </div>
-                                <div>
-                                    <label class="block text-xs font-semibold text-on-surface mb-1">WhatsApp Cabang 2</label>
-                                    <input type="text" name="branch_2_wa" value="{{ $settings['branch_2_wa'] ?? '0812-345-6789' }}" class="w-full px-3 py-2.5 rounded-lg border border-surface-border text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
-                                </div>
-                            </div>
+                                <!-- Container list kontak -->
+                                <div id="branch-contacts-list" class="space-y-3">
+                                    @php
+                                        $contactsList = \App\Models\Setting::getBranchContacts();
+                                    @endphp
+                                    @foreach($contactsList as $idx => $contact)
+                                        <div class="contact-item p-4 border border-surface-border rounded-xl bg-surface-container-lowest transition-all hover:border-primary/40 relative group" data-index="{{ $idx }}">
+                                            <div class="flex items-center justify-between pb-3 mb-3 border-b border-surface-border/60">
+                                                <div class="flex items-center gap-2">
+                                                    <div class="drag-handle cursor-grab active:cursor-grabbing p-1.5 -ml-1 text-slate-400 hover:text-primary rounded-lg hover:bg-primary/10 transition-colors flex items-center justify-center select-none touch-none" title="Tahan dan geser (drag & drop) untuk mengatur urutan posisi">
+                                                        <span class="material-symbols-outlined text-[20px]">drag_indicator</span>
+                                                    </div>
+                                                    <div class="flex items-center border border-surface-border rounded-lg bg-surface-container-low overflow-hidden">
+                                                        <button type="button" class="btn-move-up p-1 text-slate-400 hover:text-primary hover:bg-white rounded-l transition-colors disabled:opacity-20 disabled:pointer-events-none cursor-pointer" title="Geser kontak ke atas" {{ $idx === 0 ? 'disabled' : '' }}>
+                                                            <span class="material-symbols-outlined text-[16px] block">arrow_upward</span>
+                                                        </button>
+                                                        <div class="w-[1px] h-3.5 bg-surface-border"></div>
+                                                        <button type="button" class="btn-move-down p-1 text-slate-400 hover:text-primary hover:bg-white rounded-r transition-colors disabled:opacity-20 disabled:pointer-events-none cursor-pointer" title="Geser kontak ke bawah" {{ $idx === count($contactsList) - 1 ? 'disabled' : '' }}>
+                                                            <span class="material-symbols-outlined text-[16px] block">arrow_downward</span>
+                                                        </button>
+                                                    </div>
+                                                    <span class="material-symbols-outlined text-primary text-[18px]">badge</span>
+                                                    <span class="contact-number-label text-xs font-bold text-on-surface uppercase tracking-wider">Kontak #{{ $idx + 1 }}</span>
+                                                </div>
+                                                <button type="button" class="btn-remove-contact inline-flex items-center gap-1 text-xs font-medium text-red-500 hover:text-red-700 hover:bg-red-50 px-2.5 py-1 rounded-lg transition-colors cursor-pointer" title="Hapus Kontak Ini">
+                                                    <span class="material-symbols-outlined text-[16px]">delete</span>
+                                                    <span>Hapus</span>
+                                                </button>
+                                            </div>
 
-                            <!-- Cabang 3 -->
-                            <div class="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-3 p-4 border border-surface-border rounded-lg bg-surface-container-lowest">
-                                <div>
-                                    <label class="block text-xs font-semibold text-on-surface mb-1">Nama Cabang 3</label>
-                                    <input type="text" name="branch_3_name" value="{{ $settings['branch_3_name'] ?? 'Tanjung Uban' }}" class="w-full px-3 py-2.5 rounded-lg border border-surface-border text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
+                                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                                <div>
+                                                    <label class="block text-xs font-semibold text-on-surface mb-1">Nama Cabang / Wilayah <span class="text-red-500">*</span></label>
+                                                    <select name="branch_contacts[{{ $idx }}][branch]" required class="w-full px-3 py-2 rounded-lg border border-surface-border text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white">
+                                                        <option value="" disabled {{ empty($contact['branch']) ? 'selected' : '' }}>-- Pilih Cabang --</option>
+                                                        <option value="Tanjungpinang" {{ ($contact['branch'] ?? '') === 'Tanjungpinang' ? 'selected' : '' }}>Tanjungpinang</option>
+                                                        <option value="Kijang" {{ ($contact['branch'] ?? '') === 'Kijang' ? 'selected' : '' }}>Kijang</option>
+                                                        <option value="Tanjung Uban" {{ ($contact['branch'] ?? '') === 'Tanjung Uban' ? 'selected' : '' }}>Tanjung Uban</option>
+                                                        @if(!empty($contact['branch']) && !in_array($contact['branch'], ['Tanjungpinang', 'Kijang', 'Tanjung Uban']))
+                                                            <option value="{{ $contact['branch'] }}" selected>{{ $contact['branch'] }}</option>
+                                                        @endif
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <label class="block text-xs font-semibold text-on-surface mb-1">Nama Petugas / Contact Person</label>
+                                                    <input type="text" name="branch_contacts[{{ $idx }}][name]" value="{{ $contact['name'] }}" placeholder="Contoh: Arni / Petugas 1" class="w-full px-3 py-2 rounded-lg border border-surface-border text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
+                                                </div>
+                                                <div>
+                                                    <label class="block text-xs font-semibold text-on-surface mb-1">Nomor WhatsApp <span class="text-red-500">*</span></label>
+                                                    <div class="relative flex items-center">
+                                                        <span class="material-symbols-outlined absolute left-2.5 text-status-success text-[18px]">chat</span>
+                                                        <input type="text" name="branch_contacts[{{ $idx }}][wa]" value="{{ $contact['wa'] }}" placeholder="Contoh: 0812-7018-2886" required class="w-full pl-9 pr-3 py-2 rounded-lg border border-surface-border text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary font-mono">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
-                                <div>
-                                    <label class="block text-xs font-semibold text-on-surface mb-1">WhatsApp Cabang 3</label>
-                                    <input type="text" name="branch_3_wa" value="{{ $settings['branch_3_wa'] ?? '0813-456-7890' }}" class="w-full px-3 py-2.5 rounded-lg border border-surface-border text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -284,43 +320,15 @@
                         </div>
                     </div>
 
-                    <!-- 3. BAGIAN BAGIAN INFORMASI / BANNER BERITA -->
+                    <!-- 3. BAGIAN PALING BAWAH: FOOTER WEBSITE -->
                     <div class="bg-white rounded-2xl p-6 shadow-sm border border-surface-border">
                         <div class="flex items-center gap-3 pb-4 mb-6 border-b border-surface-border">
                             <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center font-bold text-sm">
                                 3
                             </div>
                             <div>
-                                <h2 class="text-lg font-bold text-on-surface">Section Banner Berita & Pengumuman</h2>
-                                <p class="text-xs text-on-surface-variant">Teks pengantar pada area portal berita dan pengumuman resmi</p>
-                            </div>
-                        </div>
-
-                        <div class="space-y-5">
-                            <div>
-                                <label class="block text-sm font-semibold text-on-surface mb-2">Judul Banner Berita</label>
-                                <input type="text" name="news_hero_title" 
-                                       value="{{ $settings['news_hero_title'] ?? 'Pusat Berita & Pengumuman' }}" 
-                                       class="w-full px-4 py-2.5 rounded-lg border border-surface-border focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm">
-                            </div>
-
-                            <div>
-                                <label class="block text-sm font-semibold text-on-surface mb-2">Deskripsi Subtitle Banner Berita</label>
-                                <textarea name="news_hero_subtitle" rows="2" 
-                                          class="w-full px-4 py-2.5 rounded-lg border border-surface-border focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm">{{ $settings['news_hero_subtitle'] ?? 'Dapatkan kabar terbaru mengenai operasional, perawatan jaringan, hingga informasi pelayanan pelanggan PERUMDA Air Minum Tirta Kepri.' }}</textarea>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 4. BAGIAN PALING BAWAH: FOOTER WEBSITE -->
-                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-surface-border">
-                        <div class="flex items-center gap-3 pb-4 mb-6 border-b border-surface-border">
-                            <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center font-bold text-sm">
-                                4
-                            </div>
-                            <div>
                                 <h2 class="text-lg font-bold text-on-surface">Footer Website (Bagian Bawah)</h2>
-                                <p class="text-xs text-on-surface-variant">Deskripsi perusahaan dan alamat kontak pada bagian dasar beranda</p>
+                                <p class="text-xs text-on-surface-variant">Deskripsi perusahaan dan alamat kantor pusat pada bagian dasar beranda</p>
                             </div>
                         </div>
 
@@ -343,11 +351,11 @@
                         </div>
                     </div>
 
-                    <!-- 5. SECTION PENGADUAN 24/7 (HALAMAN BERITA) -->
+                    <!-- 4. SECTION PENGADUAN 24/7 (HALAMAN BERITA) -->
                     <div class="bg-white rounded-2xl p-6 shadow-sm border border-surface-border">
                         <div class="flex items-center gap-3 pb-4 mb-6 border-b border-surface-border">
                             <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center font-bold text-sm">
-                                5
+                                4
                             </div>
                             <div>
                                 <h2 class="text-lg font-bold text-on-surface">Layanan Pengaduan 24/7 (Halaman Berita)</h2>
@@ -385,7 +393,7 @@
                                                value="{{ $settings['news_247_call'] ?? '(0771) 21574' }}" 
                                                class="w-full pl-10 pr-4 py-2.5 rounded-lg border border-surface-border focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm">
                                     </div>
-                                    <p class="text-[11px] text-on-surface-variant mt-2">* Nomor WhatsApp pengaduan menggunakan 3 nomor cabang yang telah diatur pada bagian "Top Bar & Header Navbar".</p>
+                                    <p class="text-[11px] text-on-surface-variant mt-2">* Nomor WhatsApp pengaduan menggunakan kontak pelayanan cabang yang telah diatur pada bagian "Top Bar & Header Navbar".</p>
                                 </div>
                             </div>
                         </div>
@@ -400,4 +408,232 @@
                     </div>
                 </form>
             </div>
+</div>
 @endsection
+
+@push('scripts')
+    <!-- SortableJS untuk Drag & Drop Urutan Kontak -->
+    <script src="{{ asset('js/sortable.min.js') }}"></script>
+    <script>
+        if (typeof Sortable === 'undefined') {
+            document.write('<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"><\/script>');
+        }
+    </script>
+
+    <style>
+        .sortable-ghost {
+            opacity: 0.35 !important;
+            border: 2px dashed #0284c7 !important;
+            background-color: rgba(2, 132, 199, 0.05) !important;
+        }
+        .sortable-chosen {
+            background-color: rgba(2, 132, 199, 0.08) !important;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+        }
+        .sortable-drag {
+            opacity: 1 !important;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.25) !important;
+            transform: scale(1.01) !important;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const list = document.getElementById('branch-contacts-list');
+            const btnAdd = document.getElementById('btn-add-contact');
+
+            if (btnAdd && list) {
+                function reindexContacts() {
+                    const items = list.querySelectorAll('.contact-item');
+                    items.forEach((item, index) => {
+                        item.dataset.index = index;
+
+                        const label = item.querySelector('.contact-number-label');
+                        if (label) {
+                            label.textContent = 'Kontak #' + (index + 1);
+                        }
+
+                        const inputs = item.querySelectorAll('input, select');
+                        inputs.forEach(input => {
+                            const name = input.getAttribute('name');
+                            if (name) {
+                                input.setAttribute('name', name.replace(/branch_contacts\[\d+\]/, `branch_contacts[${index}]`));
+                            }
+                        });
+
+                        const btnUp = item.querySelector('.btn-move-up');
+                        const btnDown = item.querySelector('.btn-move-down');
+                        if (btnUp) {
+                            btnUp.disabled = (index === 0);
+                        }
+                        if (btnDown) {
+                            btnDown.disabled = (index === items.length - 1);
+                        }
+                    });
+                }
+
+                // Initial reindex to ensure button states are accurate
+                reindexContacts();
+
+                // Inisialisasi SortableJS
+                if (typeof Sortable !== 'undefined') {
+                    new Sortable(list, {
+                        handle: '.drag-handle',
+                        animation: 200,
+                        ghostClass: 'sortable-ghost',
+                        chosenClass: 'sortable-chosen',
+                        dragClass: 'sortable-drag',
+                        onEnd: function () {
+                            reindexContacts();
+                        }
+                    });
+                } else {
+                    // Fallback Native HTML5 Drag and Drop strictly bound to handle
+                    function bindHtml5Drag(item) {
+                        const handle = item.querySelector('.drag-handle');
+                        if (!handle) return;
+                        handle.setAttribute('draggable', 'true');
+                        handle.addEventListener('dragstart', function (e) {
+                            window.__draggedItem = item;
+                            e.dataTransfer.effectAllowed = 'move';
+                            item.classList.add('opacity-40');
+                        });
+                        handle.addEventListener('dragend', function () {
+                            if (window.__draggedItem) {
+                                window.__draggedItem.classList.remove('opacity-40');
+                                window.__draggedItem = null;
+                            }
+                            reindexContacts();
+                        });
+                        item.addEventListener('dragover', function (e) {
+                            e.preventDefault();
+                            e.dataTransfer.dropEffect = 'move';
+                            if (window.__draggedItem && window.__draggedItem !== item) {
+                                const rect = item.getBoundingClientRect();
+                                const next = (e.clientY - rect.top) / (rect.bottom - rect.top) > 0.5;
+                                list.insertBefore(window.__draggedItem, next ? item.nextSibling : item);
+                            }
+                        });
+                    }
+                    list.querySelectorAll('.contact-item').forEach(bindHtml5Drag);
+                }
+
+                // Tambah Contact Person Baru
+                btnAdd.addEventListener('click', function () {
+                    const currentCount = list.querySelectorAll('.contact-item').length;
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'contact-item p-4 border border-surface-border rounded-xl bg-surface-container-lowest transition-all hover:border-primary/40 relative group';
+                    itemDiv.dataset.index = currentCount;
+                    itemDiv.innerHTML = `
+                        <div class="flex items-center justify-between pb-3 mb-3 border-b border-surface-border/60">
+                            <div class="flex items-center gap-2">
+                                <div class="drag-handle cursor-grab active:cursor-grabbing p-1.5 -ml-1 text-slate-400 hover:text-primary rounded-lg hover:bg-primary/10 transition-colors flex items-center justify-center select-none touch-none" title="Tahan dan geser (drag & drop) untuk mengatur urutan posisi">
+                                    <span class="material-symbols-outlined text-[20px]">drag_indicator</span>
+                                </div>
+                                <div class="flex items-center border border-surface-border rounded-lg bg-surface-container-low overflow-hidden">
+                                    <button type="button" class="btn-move-up p-1 text-slate-400 hover:text-primary hover:bg-white rounded-l transition-colors disabled:opacity-20 disabled:pointer-events-none cursor-pointer" title="Geser kontak ke atas">
+                                        <span class="material-symbols-outlined text-[16px] block">arrow_upward</span>
+                                    </button>
+                                    <div class="w-[1px] h-3.5 bg-surface-border"></div>
+                                    <button type="button" class="btn-move-down p-1 text-slate-400 hover:text-primary hover:bg-white rounded-r transition-colors disabled:opacity-20 disabled:pointer-events-none cursor-pointer" title="Geser kontak ke bawah">
+                                        <span class="material-symbols-outlined text-[16px] block">arrow_downward</span>
+                                    </button>
+                                </div>
+                                <span class="material-symbols-outlined text-primary text-[18px]">badge</span>
+                                <span class="contact-number-label text-xs font-bold text-on-surface uppercase tracking-wider">Kontak #${currentCount + 1}</span>
+                            </div>
+                            <button type="button" class="btn-remove-contact inline-flex items-center gap-1 text-xs font-medium text-red-500 hover:text-red-700 hover:bg-red-50 px-2.5 py-1 rounded-lg transition-colors cursor-pointer" title="Hapus Kontak Ini">
+                                <span class="material-symbols-outlined text-[16px]">delete</span>
+                                <span>Hapus</span>
+                            </button>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                            <div>
+                                <label class="block text-xs font-semibold text-on-surface mb-1">Nama Cabang / Wilayah <span class="text-red-500">*</span></label>
+                                <select name="branch_contacts[${currentCount}][branch]" required class="w-full px-3 py-2 rounded-lg border border-surface-border text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary bg-white">
+                                    <option value="" disabled selected>-- Pilih Cabang --</option>
+                                    <option value="Tanjungpinang">Tanjungpinang</option>
+                                    <option value="Kijang">Kijang</option>
+                                    <option value="Tanjung Uban">Tanjung Uban</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-on-surface mb-1">Nama Petugas / Contact Person</label>
+                                <input type="text" name="branch_contacts[${currentCount}][name]" placeholder="Contoh: Petugas 2 / Budi" class="w-full px-3 py-2 rounded-lg border border-surface-border text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-on-surface mb-1">Nomor WhatsApp <span class="text-red-500">*</span></label>
+                                <div class="relative flex items-center">
+                                    <span class="material-symbols-outlined absolute left-2.5 text-status-success text-[18px]">chat</span>
+                                    <input type="text" name="branch_contacts[${currentCount}][wa]" placeholder="Contoh: 0812-xxxx-xxxx" required class="w-full pl-9 pr-3 py-2 rounded-lg border border-surface-border text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary font-mono">
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    list.appendChild(itemDiv);
+                    reindexContacts();
+
+                    if (typeof Sortable === 'undefined' && typeof bindHtml5Drag === 'function') {
+                        bindHtml5Drag(itemDiv);
+                    }
+
+                    const firstInput = itemDiv.querySelector('input');
+                    if (firstInput) {
+                        firstInput.focus();
+                    }
+                });
+
+                // Handler Klik untuk Naikkan, Turunkan, dan Hapus
+                list.addEventListener('click', function (e) {
+                    const moveUpBtn = e.target.closest('.btn-move-up');
+                    if (moveUpBtn && !moveUpBtn.disabled) {
+                        const item = moveUpBtn.closest('.contact-item');
+                        const prev = item?.previousElementSibling;
+                        if (item && prev) {
+                            list.insertBefore(item, prev);
+                            reindexContacts();
+                            item.classList.add('ring-2', 'ring-primary/50');
+                            setTimeout(() => item.classList.remove('ring-2', 'ring-primary/50'), 400);
+                        }
+                        return;
+                    }
+
+                    const moveDownBtn = e.target.closest('.btn-move-down');
+                    if (moveDownBtn && !moveDownBtn.disabled) {
+                        const item = moveDownBtn.closest('.contact-item');
+                        const next = item?.nextElementSibling;
+                        if (item && next) {
+                            list.insertBefore(next, item);
+                            reindexContacts();
+                            item.classList.add('ring-2', 'ring-primary/50');
+                            setTimeout(() => item.classList.remove('ring-2', 'ring-primary/50'), 400);
+                        }
+                        return;
+                    }
+
+                    const removeBtn = e.target.closest('.btn-remove-contact');
+                    if (removeBtn) {
+                        const item = removeBtn.closest('.contact-item');
+                        if (item) {
+                            const total = list.querySelectorAll('.contact-item').length;
+                            if (total <= 1) {
+                                alert('Minimal harus ada 1 kontak cabang yang tersimpan.');
+                                return;
+                            }
+                            item.remove();
+                            reindexContacts();
+                        }
+                    }
+                });
+
+                // Pastikan seluruh kontak selalu diurutkan ulang tepat sebelum form disimpan
+                const form = list.closest('form');
+                if (form) {
+                    form.addEventListener('submit', function () {
+                        reindexContacts();
+                    });
+                }
+            }
+        });
+    </script>
+@endpush

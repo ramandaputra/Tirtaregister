@@ -36,9 +36,36 @@ class ConnectionRequest extends Model
         'water_source_id',
         'company_name',
         'facility_type_id',
+        'kelompok_pelanggan_id',
+        'golongan_pelanggan_id',
         'ktp_file_path',
         'house_image_path',
         'status',
         'notes',
     ];
+
+    /**
+     * Dapatkan golongan yang ditentukan secara otomatis oleh sistem
+     */
+    public function getGolonganAttribute(): string
+    {
+        $pendaftaran = Pendaftaran::where('nomorreg', $this->registration_number)->first();
+        if ($pendaftaran && ! empty($pendaftaran->golongan)) {
+            return $pendaftaran->golongan;
+        }
+
+        $tipe = ($this->connection_type == 'Rumah Tangga' || $this->connection_type == 'rumah-tangga') ? 'REGULER' : 'PRIORITAS';
+
+        return Pendaftaran::determineGolongan($this->building_type_id, $tipe);
+    }
+
+    public function kelompokPelanggan()
+    {
+        return $this->belongsTo(KelompokPelanggan::class, 'kelompok_pelanggan_id');
+    }
+
+    public function golonganPelanggan()
+    {
+        return $this->belongsTo(GolonganPelanggan::class, 'golongan_pelanggan_id');
+    }
 }

@@ -41,14 +41,27 @@ class AdminManagementController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'username' => 'nullable|string|max:50|alpha_dash|unique:users,username',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8|confirmed',
             'role' => 'required|string',
         ]);
 
-        // 1. Buat User baru (tanpa memasukkan 'role' ke kolom users)
+        $username = $request->filled('username')
+            ? strtolower($request->username)
+            : strtolower(explode('@', $request->email)[0]);
+
+        $baseUsername = $username;
+        $counter = 1;
+        while (User::where('username', $username)->exists()) {
+            $username = $baseUsername.$counter;
+            $counter++;
+        }
+
+        // 1. Buat User baru
         $user = User::create([
             'name' => $request->name,
+            'username' => $username,
             'email' => $request->email,
             'password' => bcrypt($request->password),
         ]);
@@ -61,7 +74,7 @@ class AdminManagementController extends Controller
             'action' => 'Create',
             'model_type' => 'User',
             'model_id' => $user->id,
-            'description' => 'Menambahkan akun admin baru: '.$user->name,
+            'description' => 'Menambahkan akun admin baru: '.$user->name.' (@'.$user->username.')',
             'ip_address' => request()->ip(),
         ]);
 
@@ -85,6 +98,7 @@ class AdminManagementController extends Controller
 
         $request->validate([
             'name' => 'required|string|max:255',
+            'username' => 'nullable|string|max:50|alpha_dash|unique:users,username,'.$id,
             'email' => 'required|email|unique:users,email,'.$id,
             'role' => 'required|string',
         ]);
@@ -92,6 +106,9 @@ class AdminManagementController extends Controller
         // 1. Update data dasar user
         $admin->name = $request->name;
         $admin->email = $request->email;
+        if ($request->filled('username')) {
+            $admin->username = strtolower($request->username);
+        }
 
         // Update password jika diisi
         if ($request->filled('password')) {

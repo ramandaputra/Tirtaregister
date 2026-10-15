@@ -22,6 +22,10 @@ class DashboardController extends Controller
         $totalPendaftaran = Pendaftaran::count();
         $totalPribadi = Pendaftaran::where('tipe', 'REGULER')->count();
         $totalFasilitasUmum = Pendaftaran::where('tipe', '!=', 'REGULER')->orWhereNull('tipe')->count();
+        $totalTerpasang = Pendaftaran::where('flagpasang', 1)->count();
+        $totalBelumTerpasang = Pendaftaran::where(function ($q) {
+            $q->where('flagpasang', 0)->orWhereNull('flagpasang');
+        })->count();
 
         // Mengambil pendaftaran terbaru untuk preview (urutkan tanggal dan nomor registrasi untuk hari yang sama)
         $recentPendaftaran = Pendaftaran::orderBy('tgldaftar', 'desc')->orderBy('nomorreg', 'desc')->take(10)->get();
@@ -35,6 +39,7 @@ class DashboardController extends Controller
         return view('superadmin.dashboard', compact(
             'totalNews', 'totalAdmins', 'totalSettings',
             'totalPendaftaran', 'totalPribadi', 'totalFasilitasUmum',
+            'totalTerpasang', 'totalBelumTerpasang',
             'recentPendaftaran', 'latestNews', 'latestLogs'
         ));
     }

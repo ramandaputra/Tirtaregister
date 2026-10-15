@@ -48,3 +48,35 @@ if (! function_exists('logActivity')) {
         ]);
     }
 }
+
+if (! function_exists('format_wa_url')) {
+    /**
+     * Format nomor WhatsApp menjadi link wa.me yang valid internasional.
+     */
+    function format_wa_url(?string $phone, ?string $message = null): string
+    {
+        $clean = preg_replace('/[^0-9]/', '', (string) $phone);
+        if (str_starts_with($clean, '0')) {
+            $clean = '62'.substr($clean, 1);
+        }
+
+        $url = 'https://wa.me/'.$clean;
+        if (! empty($message)) {
+            $url .= '?text='.urlencode($message);
+        }
+
+        return $url;
+    }
+}
+
+if (! function_exists('branch_contacts')) {
+    /**
+     * Ambil daftar kontak cabang WhatsApp.
+     *
+     * @return array<int, array{branch: string, name: string, wa: string}>
+     */
+    function branch_contacts(): array
+    {
+        return Setting::getBranchContacts();
+    }
+}

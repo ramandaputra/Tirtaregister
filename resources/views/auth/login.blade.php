@@ -90,17 +90,20 @@
             <form method="POST" action="{{ route('login') }}" class="space-y-6">
                 @csrf
 
-                <!-- Email Input -->
+                <!-- Username / Email Input -->
                 <div class="space-y-1.5">
-                    <label for="email" class="block text-sm font-semibold text-gray-800">Alamat Email</label>
+                    <label for="login" class="block text-sm font-semibold text-gray-800">Username atau Email</label>
                     <div class="relative group">
                         <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400 group-focus-within:text-primary transition-colors">
-                            <span class="material-symbols-outlined text-[20px]">mail</span>
+                            <span class="material-symbols-outlined text-[20px]">person</span>
                         </div>
-                        <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus
+                        <input id="login" type="text" name="login" value="{{ old('login', old('email')) }}" required autofocus
                             class="block w-full pl-11 pr-4 py-3.5 bg-white/80 border border-white/50 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm"
-                            placeholder="nama@tirtakepri.co.id">
+                            placeholder="Masukkan username atau email">
                     </div>
+                    @error('login')
+                        <p class="text-red-600 text-xs font-semibold mt-1">{{ $message }}</p>
+                    @enderror
                     @error('email')
                         <p class="text-red-600 text-xs font-semibold mt-1">{{ $message }}</p>
                     @enderror

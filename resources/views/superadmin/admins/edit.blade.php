@@ -46,6 +46,16 @@
                         @enderror
                     </div>
 
+                    <!-- Username -->
+                    <div>
+                        <label class="block text-sm font-semibold text-on-surface mb-2">Username <span class="text-xs text-gray-500 font-normal">(Untuk login tanpa email)</span></label>
+                        <input type="text" name="username" value="{{ old('username', $admin->username) }}" placeholder="contoh: budi_admin" 
+                               class="w-full px-4 py-2.5 text-sm border @error('username') border-red-500 @else border-surface-border @enderror rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
+                        @error('username')
+                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+
                     <!-- Peran / Role -->
                     <div>
                         <label class="block text-sm font-semibold text-on-surface mb-2">Peran (Role) <span class="text-red-500">*</span></label>

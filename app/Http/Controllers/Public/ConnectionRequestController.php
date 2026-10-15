@@ -23,7 +23,7 @@ class ConnectionRequestController extends Controller
             ->groupBy('kelurahan', 'kecamatan')
             ->orderByRaw('MIN(koderayon) ASC')
             ->get();
-        $purposes = Purpose::all();
+        $purposes = Purpose::whereRaw('LOWER(peruntukan) != ?', ['kantor'])->get();
         $buildingTypes = DB::table('jenisbangunanpribadi')->get();
         $ownerships = DB::table('kepemilikan')->get();
         $waterSources = WaterSource::all();
@@ -76,6 +76,9 @@ class ConnectionRequestController extends Controller
         $lngVal = $request->longitude ?: '104.4500';
 
         // 3. Simpan ke Database
+        $tipe = ($request->connection_type == 'Rumah Tangga' || $request->connection_type == 'rumah-tangga') ? 'REGULER' : 'PRIORITAS';
+        $resolved = Pendaftaran::resolveKelompokDanGolongan($request->building_type_id, $tipe);
+
         $connection = ConnectionRequest::create([
             'connection_type' => $request->connection_type,
             'registration_number' => $regNumber,
@@ -106,6 +109,8 @@ class ConnectionRequestController extends Controller
 
             'company_name' => $request->company_name,
             'facility_type_id' => $request->facility_type_id,
+            'kelompok_pelanggan_id' => $resolved['kelompok_pelanggan_id'],
+            'golongan_pelanggan_id' => $resolved['golongan_pelanggan_id'],
 
             'ktp_file_path' => $ktpPath,
             'house_image_path' => $houseImagePath,
@@ -142,7 +147,10 @@ class ConnectionRequestController extends Controller
             'peruntukan' => $request->purpose_id,
             'kepemilikan' => $request->ownership_id,
             'airyangdigunakansaatini' => $waterSourceName,
-            'tipe' => ($request->connection_type == 'Rumah Tangga' || $request->connection_type == 'rumah-tangga') ? 'REGULER' : 'PRIORITAS',
+            'tipe' => $tipe,
+            'golongan' => $resolved['golongan'],
+            'kelompok_pelanggan_id' => $resolved['kelompok_pelanggan_id'],
+            'golongan_pelanggan_id' => $resolved['golongan_pelanggan_id'],
             'tgldaftar' => now()->format('Y-m-d H:i:s'),
         ]);
 
@@ -272,6 +280,7 @@ class ConnectionRequestController extends Controller
                 'message' => 'Data ditemukan: '.$cr->full_name,
                 'status' => $msg,
                 'reg_number' => $cr->registration_number,
+                'golongan' => $cr->golongan,
                 'receipt_url' => $receiptUrl,
             ]);
         }
@@ -309,6 +318,7 @@ class ConnectionRequestController extends Controller
                 'message' => 'Data ditemukan: '.$legacy->nama,
                 'status' => 'Terdaftar (Tipe: '.$tipe.')',
                 'reg_number' => $legacy->nomorreg,
+                'golongan' => $legacy->golongan,
                 'receipt_url' => $receiptUrl,
             ]);
         }

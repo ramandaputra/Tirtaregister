@@ -20,11 +20,34 @@
             
             <!-- Search Form -->
             <form method="GET" action="{{ route('admin.pelanggan.index') }}" class="flex w-full sm:w-auto">
+                @if(request('status'))
+                    <input type="hidden" name="status" value="{{ request('status') }}">
+                @endif
                 <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari Nama / No. Reg..." class="w-full sm:w-56 md:w-64 px-4 py-2 border-0 rounded-l-xl text-sm focus:outline-none focus:ring-2 focus:ring-white/50 text-gray-900 bg-white shadow-inner">
                 <button type="submit" class="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-r-xl text-sm font-semibold transition backdrop-blur-sm border-l border-white/20">Cari</button>
             </form>
         </div>
     </div>
+
+    @if(request('status'))
+        <div class="mb-4 flex flex-wrap items-center gap-2">
+            <span class="text-xs text-gray-500 font-medium">Filter Aktif:</span>
+            @if(request('status') === 'terpasang')
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">
+                    <span class="material-symbols-outlined text-[14px]">check_circle</span>
+                    Status: Sudah Terpasang
+                    <a href="{{ route('admin.pelanggan.index', request()->except('status')) }}" class="hover:text-emerald-950 font-bold ml-1 text-sm" title="Hapus Filter">×</a>
+                </span>
+            @elseif(request('status') === 'belum')
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-800">
+                    <span class="material-symbols-outlined text-[14px]">pending_actions</span>
+                    Status: Belum Terpasang
+                    <a href="{{ route('admin.pelanggan.index', request()->except('status')) }}" class="hover:text-amber-950 font-bold ml-1 text-sm" title="Hapus Filter">×</a>
+                </span>
+            @endif
+            <a href="{{ route('admin.pelanggan.index') }}" class="text-xs text-primary hover:underline ml-2">Reset Semua Filter</a>
+        </div>
+    @endif
 
     <div class="bg-white rounded-2xl shadow-sm border border-surface-border overflow-hidden">
         <div class="overflow-x-auto">
@@ -34,8 +57,10 @@
                         <th class="p-4 font-semibold border-b border-surface-border">No. Registrasi</th>
                         <th class="p-4 font-semibold border-b border-surface-border">Tanggal</th>
                         <th class="p-4 font-semibold border-b border-surface-border">Nama Lengkap</th>
+                        <th class="p-4 font-semibold border-b border-surface-border">Golongan</th>
                         <!-- Disembunyikan sesuai permintaan: class="hidden" -->
                         <th class="hidden p-4 font-semibold border-b border-surface-border">Jenis</th>
+                        <th class="p-4 font-semibold border-b border-surface-border">Status</th>
                         <th class="p-4 font-semibold border-b border-surface-border text-center">Aksi</th>
                     </tr>
                 </thead>
@@ -45,12 +70,26 @@
                         <td class="p-4 text-sm font-medium">{{ $req->nomorreg }}</td>
                         <td class="p-4 text-sm text-gray-600">{{ \Carbon\Carbon::parse($req->tgldaftar)->format('d/m/Y') }}</td>
                         <td class="p-4 text-sm">{{ $req->nama }}</td>
+                        <td class="p-4 text-sm">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200">
+                                {{ $req->golongan }}
+                            </span>
+                        </td>
                         <!-- Disembunyikan sesuai permintaan: class="hidden" -->
                         <td class="hidden p-4 text-sm">
                             @if($req->tipe == 'PRIORITAS')
                                 <span class="bg-red-100 text-red-700 px-2.5 py-1 rounded-full text-xs font-bold">PRIORITAS</span>
                             @else
                                 <span class="bg-blue-100 text-blue-700 px-2.5 py-1 rounded-full text-xs font-bold">{{ $req->tipe ?? 'REGULER' }}</span>
+                            @endif
+                        </td>
+                        <td class="p-4 text-sm">
+                            @if($req->flagpasang == 1)
+                                <span class="inline-flex items-center px-2 py-1 rounded-md text-[10px] font-bold bg-green-100 text-green-800">Terpasang</span>
+                            @elseif($req->flagproblem == 1)
+                                <span class="inline-flex items-center px-2 py-1 rounded-md text-[10px] font-bold bg-red-100 text-red-800">Bermasalah</span>
+                            @else
+                                <span class="inline-flex items-center px-2 py-1 rounded-md text-[10px] font-bold bg-yellow-100 text-yellow-800">Proses</span>
                             @endif
                         </td>
                         <td class="p-4 text-sm text-center">
@@ -73,7 +112,7 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="4" class="p-8 text-center text-gray-500">Tidak ada data pendaftaran ditemukan.</td>
+                        <td colspan="6" class="p-8 text-center text-gray-500">Tidak ada data pendaftaran ditemukan.</td>
                     </tr>
                     @endforelse
                 </tbody>
@@ -82,7 +121,7 @@
         
         <div class="px-6 py-4 border-t border-surface-border bg-gray-50">
             <div class="[&>nav]:flex [&>nav]:items-center [&>nav]:justify-between [&>nav]:gap-4">
-                {{ $pelanggan->links() }}
+                {{ $pelanggan->appends(request()->query())->links() }}
             </div>
         </div>
     </div>

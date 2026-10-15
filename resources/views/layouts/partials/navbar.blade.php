@@ -1,6 +1,7 @@
 @php
     // Ambil setting dari database
     $settings = \App\Models\Setting::allKeyValues();
+    $branchContacts = \App\Models\Setting::getBranchContacts();
 @endphp
 
 
@@ -55,26 +56,30 @@
                     <span class="material-symbols-outlined text-status-success text-[18px]">support_agent</span>
                     <div class="flex flex-col text-left pr-space-xs">
                         <span class="font-label-sm text-label-sm text-on-surface-variant leading-none">Pengaduan WA</span>
-                        <span class="font-label-md text-label-md text-primary font-bold leading-tight flex items-center gap-1">3 Cabang <span class="material-symbols-outlined text-[14px]">expand_more</span></span>
+                        <span class="font-label-md text-label-md text-primary font-bold leading-tight flex items-center gap-1">Kontak Cabang <span class="material-symbols-outlined text-[14px]">expand_more</span></span>
                     </div>
                     
                     <!-- Dropdown menu -->
-                    <div class="absolute top-full right-0 mt-2 w-64 bg-white rounded-2xl shadow-xl border border-surface-border p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 transform origin-top-right group-hover:scale-100 scale-95 duration-200">
+                    <div class="absolute top-full right-0 mt-2 w-72 bg-white rounded-2xl shadow-xl border border-surface-border p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 transform origin-top-right group-hover:scale-100 scale-95 duration-200 max-h-96 overflow-y-auto">
                         <div class="px-3 py-2 border-b border-surface-border mb-1">
-                            <p class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Pilih Cabang WA</p>
+                            <p class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Pilih Kontak WhatsApp Cabang</p>
                         </div>
-                        <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $settings['branch_1_wa'] ?? '08117782155') }}" target="_blank" class="flex flex-col p-3 rounded-xl hover:bg-surface-container-low transition-colors group/item">
-                            <span class="text-[11px] font-bold text-primary uppercase mb-0.5">{{ $settings['branch_1_name'] ?? 'Tanjungpinang' }}</span>
-                            <span class="text-sm font-bold text-status-success flex items-center gap-1.5"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12.031 0C5.394 0 0 5.394 0 12.031a11.97 11.97 0 001.6 5.96L0 24l6.17-1.6a11.97 11.97 0 005.861 1.53h.005c6.634 0 12.028-5.394 12.028-12.031S18.665 0 12.031 0zM12.036 21.905h-.003a9.944 9.944 0 01-5.068-1.378l-.363-.215-3.774.989.998-3.68-.236-.375a9.957 9.957 0 01-1.524-5.215c0-5.512 4.484-9.997 10.002-9.997 2.671 0 5.18 1.04 7.067 2.93a9.972 9.972 0 012.923 7.07c-.001 5.511-4.485 9.996-9.998 9.996zm5.485-7.493c-.301-.151-1.782-.879-2.059-.979-.277-.1-.478-.151-.678.151-.2.301-.777.979-.953 1.18-.175.201-.352.226-.653.076a8.212 8.212 0 01-2.417-1.492 9.074 9.074 0 01-1.684-2.096c-.176-.301-.019-.464.132-.614.136-.135.301-.352.452-.527.151-.176.201-.301.301-.502.1-.2.05-.376-.025-.527-.075-.151-.678-1.631-.928-2.234-.244-.588-.493-.508-.678-.517-.175-.008-.376-.008-.577-.008a1.1 1.1 0 00-.791.368c-.277.301-1.055 1.029-1.055 2.51s1.08 2.912 1.23 3.113c.151.2 2.122 3.238 5.139 4.54.718.311 1.278.497 1.714.636.72.189 1.376.162 1.895.098.58-.073 1.782-.728 2.033-1.431.251-.703.251-1.306.175-1.431-.075-.126-.276-.201-.577-.352z"></path></svg> {{ $settings['branch_1_wa'] ?? '0811-778-2155' }}</span>
-                        </a>
-                        <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $settings['branch_2_wa'] ?? '08123456789') }}" target="_blank" class="flex flex-col p-3 rounded-xl hover:bg-surface-container-low transition-colors group/item">
-                            <span class="text-[11px] font-bold text-primary uppercase mb-0.5">{{ $settings['branch_2_name'] ?? 'Kijang' }}</span>
-                            <span class="text-sm font-bold text-status-success flex items-center gap-1.5"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12.031 0C5.394 0 0 5.394 0 12.031a11.97 11.97 0 001.6 5.96L0 24l6.17-1.6a11.97 11.97 0 005.861 1.53h.005c6.634 0 12.028-5.394 12.028-12.031S18.665 0 12.031 0zM12.036 21.905h-.003a9.944 9.944 0 01-5.068-1.378l-.363-.215-3.774.989.998-3.68-.236-.375a9.957 9.957 0 01-1.524-5.215c0-5.512 4.484-9.997 10.002-9.997 2.671 0 5.18 1.04 7.067 2.93a9.972 9.972 0 012.923 7.07c-.001 5.511-4.485 9.996-9.998 9.996zm5.485-7.493c-.301-.151-1.782-.879-2.059-.979-.277-.1-.478-.151-.678.151-.2.301-.777.979-.953 1.18-.175.201-.352.226-.653.076a8.212 8.212 0 01-2.417-1.492 9.074 9.074 0 01-1.684-2.096c-.176-.301-.019-.464.132-.614.136-.135.301-.352.452-.527.151-.176.201-.301.301-.502.1-.2.05-.376-.025-.527-.075-.151-.678-1.631-.928-2.234-.244-.588-.493-.508-.678-.517-.175-.008-.376-.008-.577-.008a1.1 1.1 0 00-.791.368c-.277.301-1.055 1.029-1.055 2.51s1.08 2.912 1.23 3.113c.151.2 2.122 3.238 5.139 4.54.718.311 1.278.497 1.714.636.72.189 1.376.162 1.895.098.58-.073 1.782-.728 2.033-1.431.251-.703.251-1.306.175-1.431-.075-.126-.276-.201-.577-.352z"></path></svg> {{ $settings['branch_2_wa'] ?? '0812-345-6789' }}</span>
-                        </a>
-                        <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $settings['branch_3_wa'] ?? '08134567890') }}" target="_blank" class="flex flex-col p-3 rounded-xl hover:bg-surface-container-low transition-colors group/item">
-                            <span class="text-[11px] font-bold text-primary uppercase mb-0.5">{{ $settings['branch_3_name'] ?? 'Tanjung Uban' }}</span>
-                            <span class="text-sm font-bold text-status-success flex items-center gap-1.5"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12.031 0C5.394 0 0 5.394 0 12.031a11.97 11.97 0 001.6 5.96L0 24l6.17-1.6a11.97 11.97 0 005.861 1.53h.005c6.634 0 12.028-5.394 12.028-12.031S18.665 0 12.031 0zM12.036 21.905h-.003a9.944 9.944 0 01-5.068-1.378l-.363-.215-3.774.989.998-3.68-.236-.375a9.957 9.957 0 01-1.524-5.215c0-5.512 4.484-9.997 10.002-9.997 2.671 0 5.18 1.04 7.067 2.93a9.972 9.972 0 012.923 7.07c-.001 5.511-4.485 9.996-9.998 9.996zm5.485-7.493c-.301-.151-1.782-.879-2.059-.979-.277-.1-.478-.151-.678.151-.2.301-.777.979-.953 1.18-.175.201-.352.226-.653.076a8.212 8.212 0 01-2.417-1.492 9.074 9.074 0 01-1.684-2.096c-.176-.301-.019-.464.132-.614.136-.135.301-.352.452-.527.151-.176.201-.301.301-.502.1-.2.05-.376-.025-.527-.075-.151-.678-1.631-.928-2.234-.244-.588-.493-.508-.678-.517-.175-.008-.376-.008-.577-.008a1.1 1.1 0 00-.791.368c-.277.301-1.055 1.029-1.055 2.51s1.08 2.912 1.23 3.113c.151.2 2.122 3.238 5.139 4.54.718.311 1.278.497 1.714.636.72.189 1.376.162 1.895.098.58-.073 1.782-.728 2.033-1.431.251-.703.251-1.306.175-1.431-.075-.126-.276-.201-.577-.352z"></path></svg> {{ $settings['branch_3_wa'] ?? '0813-456-7890' }}</span>
-                        </a>
+                        <div class="space-y-1">
+                            @foreach($branchContacts as $contact)
+                                <a href="{{ format_wa_url($contact['wa']) }}" target="_blank" class="flex flex-col p-2.5 rounded-xl hover:bg-surface-container-low transition-colors group/item">
+                                    <div class="flex items-center justify-between gap-2 mb-0.5">
+                                        <span class="text-[11px] font-bold text-primary uppercase">{{ $contact['branch'] }}</span>
+                                        @if(!empty($contact['name']))
+                                            <span class="text-[10px] font-medium px-2 py-0.5 rounded-full bg-primary/10 text-primary shrink-0">{{ $contact['name'] }}</span>
+                                        @endif
+                                    </div>
+                                    <span class="text-xs font-bold text-status-success flex items-center gap-1.5 font-mono">
+                                        <svg viewBox="0 0 24 24" fill="currentColor" class="w-3.5 h-3.5 shrink-0"><path d="M12.031 0C5.394 0 0 5.394 0 12.031a11.97 11.97 0 001.6 5.96L0 24l6.17-1.6a11.97 11.97 0 005.861 1.53h.005c6.634 0 12.028-5.394 12.028-12.031S18.665 0 12.031 0zM12.036 21.905h-.003a9.944 9.944 0 01-5.068-1.378l-.363-.215-3.774.989.998-3.68-.236-.375a9.957 9.957 0 01-1.524-5.215c0-5.512 4.484-9.997 10.002-9.997 2.671 0 5.18 1.04 7.067 2.93a9.972 9.972 0 012.923 7.07c-.001 5.511-4.485 9.996-9.998 9.996zm5.485-7.493c-.301-.151-1.782-.879-2.059-.979-.277-.1-.478-.151-.678.151-.2.301-.777.979-.953 1.18-.175.201-.352.226-.653.076a8.212 8.212 0 01-2.417-1.492 9.074 9.074 0 01-1.684-2.096c-.176-.301-.019-.464.132-.614.136-.135.301-.352.452-.527.151-.176.201-.301.301-.502.1-.2.05-.376-.025-.527-.075-.151-.678-1.631-.928-2.234-.244-.588-.493-.508-.678-.517-.175-.008-.376-.008-.577-.008a1.1 1.1 0 00-.791.368c-.277.301-1.055 1.029-1.055 2.51s1.08 2.912 1.23 3.113c.151.2 2.122 3.238 5.139 4.54.718.311 1.278.497 1.714.636.72.189 1.376.162 1.895.098.58-.073 1.782-.728 2.033-1.431.251-.703.251-1.306.175-1.431-.075-.126-.276-.201-.577-.352z"></path></svg>
+                                        {{ $contact['wa'] }}
+                                    </span>
+                                </a>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
                 <a href="{{ route('login') }}" class="w-9 h-9 rounded-full bg-primary hover:bg-on-primary-fixed-variant text-on-primary flex items-center justify-center transition-all shadow-sm focus:outline-none" title="Masuk ke Halaman Login">
@@ -97,22 +102,24 @@
          <div class="mt-4 p-4 rounded-xl bg-surface-container-low border border-surface-border">
             <div class="flex items-center gap-2 mb-3">
                 <span class="material-symbols-outlined text-status-success text-[18px]">support_agent</span>
-                <span class="font-label-sm text-label-sm text-on-surface font-bold uppercase tracking-wide">Pengaduan WhatsApp</span>
+                <span class="font-label-sm text-label-sm text-on-surface font-bold uppercase tracking-wide">Pengaduan WhatsApp Cabang</span>
             </div>
             
-            <div class="space-y-2">
-                <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $settings['branch_1_wa'] ?? '08117782155') }}" target="_blank" class="flex justify-between items-center bg-white p-3 rounded-xl border border-surface-border shadow-sm active:scale-95 transition-transform">
-                    <span class="text-[11px] font-bold text-primary uppercase">{{ $settings['branch_1_name'] ?? 'Tanjungpinang' }}</span>
-                    <span class="text-sm font-bold text-status-success flex items-center gap-1.5"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12.031 0C5.394 0 0 5.394 0 12.031a11.97 11.97 0 001.6 5.96L0 24l6.17-1.6a11.97 11.97 0 005.861 1.53h.005c6.634 0 12.028-5.394 12.028-12.031S18.665 0 12.031 0zM12.036 21.905h-.003a9.944 9.944 0 01-5.068-1.378l-.363-.215-3.774.989.998-3.68-.236-.375a9.957 9.957 0 01-1.524-5.215c0-5.512 4.484-9.997 10.002-9.997 2.671 0 5.18 1.04 7.067 2.93a9.972 9.972 0 012.923 7.07c-.001 5.511-4.485 9.996-9.998 9.996zm5.485-7.493c-.301-.151-1.782-.879-2.059-.979-.277-.1-.478-.151-.678.151-.2.301-.777.979-.953 1.18-.175.201-.352.226-.653.076a8.212 8.212 0 01-2.417-1.492 9.074 9.074 0 01-1.684-2.096c-.176-.301-.019-.464.132-.614.136-.135.301-.352.452-.527.151-.176.201-.301.301-.502.1-.2.05-.376-.025-.527-.075-.151-.678-1.631-.928-2.234-.244-.588-.493-.508-.678-.517-.175-.008-.376-.008-.577-.008a1.1 1.1 0 00-.791.368c-.277.301-1.055 1.029-1.055 2.51s1.08 2.912 1.23 3.113c.151.2 2.122 3.238 5.139 4.54.718.311 1.278.497 1.714.636.72.189 1.376.162 1.895.098.58-.073 1.782-.728 2.033-1.431.251-.703.251-1.306.175-1.431-.075-.126-.276-.201-.577-.352z"></path></svg> {{ $settings['branch_1_wa'] ?? '0811-778-2155' }}</span>
-                </a>
-                <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $settings['branch_2_wa'] ?? '08123456789') }}" target="_blank" class="flex justify-between items-center bg-white p-3 rounded-xl border border-surface-border shadow-sm active:scale-95 transition-transform">
-                    <span class="text-[11px] font-bold text-primary uppercase">{{ $settings['branch_2_name'] ?? 'Kijang' }}</span>
-                    <span class="text-sm font-bold text-status-success flex items-center gap-1.5"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12.031 0C5.394 0 0 5.394 0 12.031a11.97 11.97 0 001.6 5.96L0 24l6.17-1.6a11.97 11.97 0 005.861 1.53h.005c6.634 0 12.028-5.394 12.028-12.031S18.665 0 12.031 0zM12.036 21.905h-.003a9.944 9.944 0 01-5.068-1.378l-.363-.215-3.774.989.998-3.68-.236-.375a9.957 9.957 0 01-1.524-5.215c0-5.512 4.484-9.997 10.002-9.997 2.671 0 5.18 1.04 7.067 2.93a9.972 9.972 0 012.923 7.07c-.001 5.511-4.485 9.996-9.998 9.996zm5.485-7.493c-.301-.151-1.782-.879-2.059-.979-.277-.1-.478-.151-.678.151-.2.301-.777.979-.953 1.18-.175.201-.352.226-.653.076a8.212 8.212 0 01-2.417-1.492 9.074 9.074 0 01-1.684-2.096c-.176-.301-.019-.464.132-.614.136-.135.301-.352.452-.527.151-.176.201-.301.301-.502.1-.2.05-.376-.025-.527-.075-.151-.678-1.631-.928-2.234-.244-.588-.493-.508-.678-.517-.175-.008-.376-.008-.577-.008a1.1 1.1 0 00-.791.368c-.277.301-1.055 1.029-1.055 2.51s1.08 2.912 1.23 3.113c.151.2 2.122 3.238 5.139 4.54.718.311 1.278.497 1.714.636.72.189 1.376.162 1.895.098.58-.073 1.782-.728 2.033-1.431.251-.703.251-1.306.175-1.431-.075-.126-.276-.201-.577-.352z"></path></svg> {{ $settings['branch_2_wa'] ?? '0812-345-6789' }}</span>
-                </a>
-                <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $settings['branch_3_wa'] ?? '08134567890') }}" target="_blank" class="flex justify-between items-center bg-white p-3 rounded-xl border border-surface-border shadow-sm active:scale-95 transition-transform">
-                    <span class="text-[11px] font-bold text-primary uppercase">{{ $settings['branch_3_name'] ?? 'Tj. Uban' }}</span>
-                    <span class="text-sm font-bold text-status-success flex items-center gap-1.5"><svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12.031 0C5.394 0 0 5.394 0 12.031a11.97 11.97 0 001.6 5.96L0 24l6.17-1.6a11.97 11.97 0 005.861 1.53h.005c6.634 0 12.028-5.394 12.028-12.031S18.665 0 12.031 0zM12.036 21.905h-.003a9.944 9.944 0 01-5.068-1.378l-.363-.215-3.774.989.998-3.68-.236-.375a9.957 9.957 0 01-1.524-5.215c0-5.512 4.484-9.997 10.002-9.997 2.671 0 5.18 1.04 7.067 2.93a9.972 9.972 0 012.923 7.07c-.001 5.511-4.485 9.996-9.998 9.996zm5.485-7.493c-.301-.151-1.782-.879-2.059-.979-.277-.1-.478-.151-.678.151-.2.301-.777.979-.953 1.18-.175.201-.352.226-.653.076a8.212 8.212 0 01-2.417-1.492 9.074 9.074 0 01-1.684-2.096c-.176-.301-.019-.464.132-.614.136-.135.301-.352.452-.527.151-.176.201-.301.301-.502.1-.2.05-.376-.025-.527-.075-.151-.678-1.631-.928-2.234-.244-.588-.493-.508-.678-.517-.175-.008-.376-.008-.577-.008a1.1 1.1 0 00-.791.368c-.277.301-1.055 1.029-1.055 2.51s1.08 2.912 1.23 3.113c.151.2 2.122 3.238 5.139 4.54.718.311 1.278.497 1.714.636.72.189 1.376.162 1.895.098.58-.073 1.782-.728 2.033-1.431.251-.703.251-1.306.175-1.431-.075-.126-.276-.201-.577-.352z"></path></svg> {{ $settings['branch_3_wa'] ?? '0813-456-7890' }}</span>
-                </a>
+            <div class="space-y-2 max-h-60 overflow-y-auto pr-1">
+                @foreach($branchContacts as $contact)
+                    <a href="{{ format_wa_url($contact['wa']) }}" target="_blank" class="flex justify-between items-center bg-white p-3 rounded-xl border border-surface-border shadow-sm active:scale-95 transition-transform">
+                        <div>
+                            <span class="text-[11px] font-bold text-primary uppercase block">{{ $contact['branch'] }}</span>
+                            @if(!empty($contact['name']))
+                                <span class="text-[10px] text-on-surface-variant font-medium">{{ $contact['name'] }}</span>
+                            @endif
+                        </div>
+                        <span class="text-xs font-bold text-status-success flex items-center gap-1.5 font-mono">
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 shrink-0"><path d="M12.031 0C5.394 0 0 5.394 0 12.031a11.97 11.97 0 001.6 5.96L0 24l6.17-1.6a11.97 11.97 0 005.861 1.53h.005c6.634 0 12.028-5.394 12.028-12.031S18.665 0 12.031 0zM12.036 21.905h-.003a9.944 9.944 0 01-5.068-1.378l-.363-.215-3.774.989.998-3.68-.236-.375a9.957 9.957 0 01-1.524-5.215c0-5.512 4.484-9.997 10.002-9.997 2.671 0 5.18 1.04 7.067 2.93a9.972 9.972 0 012.923 7.07c-.001 5.511-4.485 9.996-9.998 9.996zm5.485-7.493c-.301-.151-1.782-.879-2.059-.979-.277-.1-.478-.151-.678.151-.2.301-.777.979-.953 1.18-.175.201-.352.226-.653.076a8.212 8.212 0 01-2.417-1.492 9.074 9.074 0 01-1.684-2.096c-.176-.301-.019-.464.132-.614.136-.135.301-.352.452-.527.151-.176.201-.301.301-.502.1-.2.05-.376-.025-.527-.075-.151-.678-1.631-.928-2.234-.244-.588-.493-.508-.678-.517-.175-.008-.376-.008-.577-.008a1.1 1.1 0 00-.791.368c-.277.301-1.055 1.029-1.055 2.51s1.08 2.912 1.23 3.113c.151.2 2.122 3.238 5.139 4.54.718.311 1.278.497 1.714.636.72.189 1.376.162 1.895.098.58-.073 1.782-.728 2.033-1.431.251-.703.251-1.306.175-1.431-.075-.126-.276-.201-.577-.352z"></path></svg>
+                            {{ $contact['wa'] }}
+                        </span>
+                    </a>
+                @endforeach
             </div>
          </div>
     </div>
